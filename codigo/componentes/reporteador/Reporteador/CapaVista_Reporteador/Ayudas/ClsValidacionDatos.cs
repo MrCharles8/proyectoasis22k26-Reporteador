@@ -5,7 +5,7 @@ using System.Windows.Forms;
 
 
 
-namespace CapaVista_Reportedor.Ayudas
+namespace CapaVista_Reporteador.Ayudas
 {
     public class ClsValidacionDatos
     {

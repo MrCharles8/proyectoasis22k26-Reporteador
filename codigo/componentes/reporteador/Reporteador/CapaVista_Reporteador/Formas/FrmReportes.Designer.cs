@@ -38,7 +38,7 @@
             this.ReporteadorPbFooter = new System.Windows.Forms.PictureBox();
             this.ReporteadorPbBanner = new System.Windows.Forms.PictureBox();
             this.ReporteadorLblRutaReporte = new System.Windows.Forms.Label();
-            this.eporteadorLblNombreReporte = new System.Windows.Forms.Label();
+            this.ReporteadorLblNombreReporte = new System.Windows.Forms.Label();
             this.ReporteadorLblDatosBuscarReporte = new System.Windows.Forms.Label();
             this.ReporteadorTxtRutaReporte = new System.Windows.Forms.TextBox();
             this.ReporteadorTxtNombreReporte = new System.Windows.Forms.TextBox();
@@ -48,9 +48,9 @@
             this.ReporteadorTxtNombreReporte2 = new System.Windows.Forms.TextBox();
             this.ReporteadorDtpFechaReporte = new System.Windows.Forms.DateTimePicker();
             this.ReporteadorPnlFiltroBuscarReporte = new System.Windows.Forms.Panel();
-            this.btnRuta1 = new CapaVista_BtnRuta.BtnRuta();
-            this.btnGuardar1 = new CapaVista_BtnGuardar.BtnGuardar();
-            this.btnImprimir1 = new CapaVista_BtnImprimir.BtnImprimir();
+            this.BtnRuta = new CapaVista_BtnRuta.BtnRuta();
+            this.BtnGuardar = new CapaVista_BtnGuardar.BtnGuardar();
+            this.BtnImprimir = new CapaVista_BtnImprimir.BtnImprimir();
             ((System.ComponentModel.ISupportInitialize)(this.ReporteadorPbLogo)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.ReporteadorPbFooter)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.ReporteadorPbBanner)).BeginInit();
@@ -95,16 +95,16 @@
             this.ReporteadorLblRutaReporte.TabIndex = 3;
             this.ReporteadorLblRutaReporte.Text = "Ruta del reporte: *";
             // 
-            // eporteadorLblNombreReporte
+            // ReporteadorLblNombreReporte
             // 
-            this.eporteadorLblNombreReporte.AutoSize = true;
-            this.eporteadorLblNombreReporte.Font = new System.Drawing.Font("Tahoma", 12.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.eporteadorLblNombreReporte.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(35)))), ((int)(((byte)(87)))), ((int)(((byte)(91)))));
-            this.eporteadorLblNombreReporte.Location = new System.Drawing.Point(28, 186);
-            this.eporteadorLblNombreReporte.Name = "eporteadorLblNombreReporte";
-            this.eporteadorLblNombreReporte.Size = new System.Drawing.Size(174, 21);
-            this.eporteadorLblNombreReporte.TabIndex = 4;
-            this.eporteadorLblNombreReporte.Text = "Nombre del reporte: *";
+            this.ReporteadorLblNombreReporte.AutoSize = true;
+            this.ReporteadorLblNombreReporte.Font = new System.Drawing.Font("Tahoma", 12.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.ReporteadorLblNombreReporte.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(35)))), ((int)(((byte)(87)))), ((int)(((byte)(91)))));
+            this.ReporteadorLblNombreReporte.Location = new System.Drawing.Point(28, 186);
+            this.ReporteadorLblNombreReporte.Name = "ReporteadorLblNombreReporte";
+            this.ReporteadorLblNombreReporte.Size = new System.Drawing.Size(174, 21);
+            this.ReporteadorLblNombreReporte.TabIndex = 4;
+            this.ReporteadorLblNombreReporte.Text = "Nombre del reporte: *";
             // 
             // ReporteadorLblDatosBuscarReporte
             // 
@@ -239,28 +239,30 @@
             this.ReporteadorPnlFiltroBuscarReporte.Size = new System.Drawing.Size(462, 88);
             this.ReporteadorPnlFiltroBuscarReporte.TabIndex = 13;
             // 
-            // btnRuta1
+            // BtnRuta
             // 
-            this.btnRuta1.CampoTextoRuta = null;
-            this.btnRuta1.Location = new System.Drawing.Point(718, 101);
-            this.btnRuta1.Name = "btnRuta1";
-            this.btnRuta1.Size = new System.Drawing.Size(56, 56);
-            this.btnRuta1.TabIndex = 14;
+            this.BtnRuta.CampoTextoRuta = null;
+            this.BtnRuta.Location = new System.Drawing.Point(718, 101);
+            this.BtnRuta.Name = "BtnRuta";
+            this.BtnRuta.Size = new System.Drawing.Size(56, 56);
+            this.BtnRuta.TabIndex = 14;
             // 
-            // btnGuardar1
+            // BtnGuardar
             // 
-            this.btnGuardar1.Location = new System.Drawing.Point(83, 227);
-            this.btnGuardar1.Name = "btnGuardar1";
-            this.btnGuardar1.Size = new System.Drawing.Size(56, 56);
-            this.btnGuardar1.TabIndex = 15;
+            this.BtnGuardar.Location = new System.Drawing.Point(83, 227);
+            this.BtnGuardar.Name = "BtnGuardar";
+            this.BtnGuardar.Size = new System.Drawing.Size(56, 56);
+            this.BtnGuardar.TabIndex = 15;
+            this.BtnGuardar.TxtNombreReporte = null;
+            this.BtnGuardar.TxtRutaReporte = null;
             // 
-            // btnImprimir1
+            // BtnImprimir
             // 
-            this.btnImprimir1.Location = new System.Drawing.Point(150, 227);
-            this.btnImprimir1.Name = "btnImprimir1";
-            this.btnImprimir1.RutaReporte = null;
-            this.btnImprimir1.Size = new System.Drawing.Size(56, 56);
-            this.btnImprimir1.TabIndex = 16;
+            this.BtnImprimir.Location = new System.Drawing.Point(150, 227);
+            this.BtnImprimir.Name = "BtnImprimir";
+            this.BtnImprimir.RutaReporte = null;
+            this.BtnImprimir.Size = new System.Drawing.Size(56, 56);
+            this.BtnImprimir.TabIndex = 16;
             // 
             // FrmReportes
             // 
@@ -268,9 +270,9 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(239)))), ((int)(((byte)(230)))), ((int)(((byte)(214)))));
             this.ClientSize = new System.Drawing.Size(874, 661);
-            this.Controls.Add(this.btnImprimir1);
-            this.Controls.Add(this.btnGuardar1);
-            this.Controls.Add(this.btnRuta1);
+            this.Controls.Add(this.BtnImprimir);
+            this.Controls.Add(this.BtnGuardar);
+            this.Controls.Add(this.BtnRuta);
             this.Controls.Add(this.ReporteadorDtpFechaReporte);
             this.Controls.Add(this.ReporteadorTxtNombreReporte2);
             this.Controls.Add(this.ReporteadorChkFechaReporte);
@@ -279,12 +281,13 @@
             this.Controls.Add(this.ReporteadorTxtNombreReporte);
             this.Controls.Add(this.ReporteadorTxtRutaReporte);
             this.Controls.Add(this.ReporteadorLblDatosBuscarReporte);
-            this.Controls.Add(this.eporteadorLblNombreReporte);
+            this.Controls.Add(this.ReporteadorLblNombreReporte);
             this.Controls.Add(this.ReporteadorLblRutaReporte);
             this.Controls.Add(this.ReporteadorPbLogo);
             this.Controls.Add(this.ReporteadorPbFooter);
             this.Controls.Add(this.ReporteadorPbBanner);
             this.Controls.Add(this.ReporteadorPnlFiltroBuscarReporte);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MaximizeBox = false;
             this.MaximumSize = new System.Drawing.Size(890, 700);
@@ -307,7 +310,7 @@
         private System.Windows.Forms.PictureBox ReporteadorPbFooter;
         private System.Windows.Forms.PictureBox ReporteadorPbLogo;
         private System.Windows.Forms.Label ReporteadorLblRutaReporte;
-        private System.Windows.Forms.Label eporteadorLblNombreReporte;
+        private System.Windows.Forms.Label ReporteadorLblNombreReporte;
         private System.Windows.Forms.Label ReporteadorLblDatosBuscarReporte;
         private System.Windows.Forms.TextBox ReporteadorTxtRutaReporte;
         private System.Windows.Forms.TextBox ReporteadorTxtNombreReporte;
@@ -317,8 +320,8 @@
         private System.Windows.Forms.TextBox ReporteadorTxtNombreReporte2;
         private System.Windows.Forms.DateTimePicker ReporteadorDtpFechaReporte;
         private System.Windows.Forms.Panel ReporteadorPnlFiltroBuscarReporte;
-        private CapaVista_BtnRuta.BtnRuta btnRuta1;
-        private CapaVista_BtnGuardar.BtnGuardar btnGuardar1;
-        private CapaVista_BtnImprimir.BtnImprimir btnImprimir1;
+        private CapaVista_BtnRuta.BtnRuta BtnRuta;
+        private CapaVista_BtnGuardar.BtnGuardar BtnGuardar;
+        private CapaVista_BtnImprimir.BtnImprimir BtnImprimir;
     }
 }

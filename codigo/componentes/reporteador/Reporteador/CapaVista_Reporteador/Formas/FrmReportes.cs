@@ -31,9 +31,9 @@ namespace CapaVista_Reporteador
             // NO QUITAR.
             // BtnRuta sigue llenando el TextBox de la ruta.
 
-            if (btnRuta1 != null)
+            if (BtnRuta != null)
             {
-                btnRuta1.CampoTextoRuta =
+                BtnRuta.CampoTextoRuta =
                     ReporteadorTxtRutaReporte;
             }
 
@@ -42,24 +42,24 @@ namespace CapaVista_Reporteador
             // BTN GUARDAR
             // =====================================================
 
-            if (btnGuardar1 != null)
+            if (BtnGuardar != null)
             {
-                btnGuardar1.TxtNombreReporte =
+                BtnGuardar.TxtNombreReporte =
                     ReporteadorTxtNombreReporte;
 
-                btnGuardar1.TxtRutaReporte =
+                BtnGuardar.TxtRutaReporte =
                     ReporteadorTxtRutaReporte;
 
                 // El UserControl solamente avisa del Click.
-                btnGuardar1.Click += BtnGuardar1_Click;
+                BtnGuardar.Click += BtnGuardar1_Click;
             }
 
             // =====================================================
             // BTN Imprimir
             // =====================================================
-            if (btnImprimir1 != null)
+            if (BtnImprimir != null)
             {
-                btnImprimir1.RutaReporte = null;
+                BtnImprimir.RutaReporte = null;
             }
 
             ReporteadorDgvReportes.SelectionChanged +=
@@ -80,18 +80,18 @@ namespace CapaVista_Reporteador
             try
             {
                 // Volver a asegurar la conexión de los controles
-                if (btnRuta1 != null)
+                if (BtnRuta != null)
                 {
-                    btnRuta1.CampoTextoRuta =
+                    BtnRuta.CampoTextoRuta =
                         ReporteadorTxtRutaReporte;
                 }
 
-                if (btnGuardar1 != null)
+                if (BtnGuardar != null)
                 {
-                    btnGuardar1.TxtNombreReporte =
+                    BtnGuardar.TxtNombreReporte =
                         ReporteadorTxtNombreReporte;
 
-                    btnGuardar1.TxtRutaReporte =
+                    BtnGuardar.TxtRutaReporte =
                         ReporteadorTxtRutaReporte;
                 }
 
@@ -467,14 +467,14 @@ namespace CapaVista_Reporteador
         {
             try
             {
-                if (btnImprimir1 == null)
+                if (BtnImprimir == null)
                 {
                     return;
                 }
 
                 if (ReporteadorDgvReportes.CurrentRow == null)
                 {
-                    btnImprimir1.RutaReporte = null;
+                    BtnImprimir.RutaReporte = null;
                     return;
                 }
 
@@ -487,16 +487,16 @@ namespace CapaVista_Reporteador
                 if (valorRuta == null ||
                     valorRuta == DBNull.Value)
                 {
-                    btnImprimir1.RutaReporte = null;
+                    BtnImprimir.RutaReporte = null;
                     return;
                 }
 
-                btnImprimir1.RutaReporte =
+                BtnImprimir.RutaReporte =
                     valorRuta.ToString();
             }
             catch
             {
-                btnImprimir1.RutaReporte = null;
+                BtnImprimir.RutaReporte = null;
             }
         }
 

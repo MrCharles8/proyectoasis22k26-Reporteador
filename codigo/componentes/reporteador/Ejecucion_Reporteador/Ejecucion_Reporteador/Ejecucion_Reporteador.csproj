@@ -33,8 +33,8 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="CapaVista_Reportedor">
-      <HintPath>..\..\Reporteador\CapaVista_Reportedor\bin\Debug\CapaVista_Reportedor.dll</HintPath>
+    <Reference Include="CapaVista_Reporteador">
+      <HintPath>..\..\Reporteador\CapaVista_Reporteador\bin\Debug\CapaVista_Reporteador.dll</HintPath>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
