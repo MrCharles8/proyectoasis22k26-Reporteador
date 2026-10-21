@@ -17,42 +17,22 @@ namespace CapaVista_TransporteInterno_Logistica.Formas
             InitializeComponent();
         }
 
-        private void pictureBox1_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void label1_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void label1_Click_1(object sender, EventArgs e)
-        {
-
-        }
-
-        private void button1_Click(object sender, EventArgs e)
+        private void LogisticaBtnGestionViajes_Click(object sender, EventArgs e)
         {
             FrmGestionViajes frmGestionViajes = new FrmGestionViajes();
             frmGestionViajes.ShowDialog();
         }
 
-        private void button2_Click(object sender, EventArgs e)
+        private void LogisticaBtnControlTransporte_Click(object sender, EventArgs e)
         {
             FrmControlTransporte frmControlTransporte = new FrmControlTransporte();
             frmControlTransporte.ShowDialog();
         }
 
-        private void button3_Click(object sender, EventArgs e)
+        private void LogisticaBtnConsultasTransporte_Click(object sender, EventArgs e)
         {
-            FrmConsultaTransporte frmConsultaTransporte = new FrmConsultaTransporte();
-            frmConsultaTransporte.ShowDialog();
-        }
-
-        private void panel1_Paint(object sender, PaintEventArgs e)
-        {
-
+            FrmConsultaTransporte frmConsultasTransporte = new FrmConsultaTransporte();
+            frmConsultasTransporte.ShowDialog();
         }
     }
 }

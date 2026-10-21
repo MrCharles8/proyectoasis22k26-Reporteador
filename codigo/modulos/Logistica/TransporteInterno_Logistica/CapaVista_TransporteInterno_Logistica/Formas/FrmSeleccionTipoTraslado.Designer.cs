@@ -29,13 +29,13 @@
         private void InitializeComponent()
         {
             this.pnlEncabezado = new System.Windows.Forms.Panel();
-            this.lblTitulo = new System.Windows.Forms.Label();
             this.lblSubtitulo = new System.Windows.Forms.Label();
+            this.lblTitulo = new System.Windows.Forms.Label();
             this.grpTipoTraslado = new System.Windows.Forms.GroupBox();
-            this.rdbInterno = new System.Windows.Forms.RadioButton();
-            this.rdbExterno = new System.Windows.Forms.RadioButton();
-            this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
+            this.label1 = new System.Windows.Forms.Label();
+            this.rdbExterno = new System.Windows.Forms.RadioButton();
+            this.rdbInterno = new System.Windows.Forms.RadioButton();
             this.btnAceptar = new System.Windows.Forms.Button();
             this.btnCancelar = new System.Windows.Forms.Button();
             this.pnlEncabezado.SuspendLayout();
@@ -53,6 +53,17 @@
             this.pnlEncabezado.Size = new System.Drawing.Size(682, 90);
             this.pnlEncabezado.TabIndex = 0;
             // 
+            // lblSubtitulo
+            // 
+            this.lblSubtitulo.AutoSize = true;
+            this.lblSubtitulo.BackColor = System.Drawing.Color.Transparent;
+            this.lblSubtitulo.ForeColor = System.Drawing.Color.White;
+            this.lblSubtitulo.Location = new System.Drawing.Point(27, 53);
+            this.lblSubtitulo.Name = "lblSubtitulo";
+            this.lblSubtitulo.Size = new System.Drawing.Size(281, 19);
+            this.lblSubtitulo.TabIndex = 1;
+            this.lblSubtitulo.Text = "Seleccione el tipo de traslado para continuar.";
+            // 
             // lblTitulo
             // 
             this.lblTitulo.AutoSize = true;
@@ -61,20 +72,9 @@
             this.lblTitulo.ForeColor = System.Drawing.Color.White;
             this.lblTitulo.Location = new System.Drawing.Point(25, 15);
             this.lblTitulo.Name = "lblTitulo";
-            this.lblTitulo.Size = new System.Drawing.Size(244, 40);
+            this.lblTitulo.Size = new System.Drawing.Size(189, 31);
             this.lblTitulo.TabIndex = 0;
             this.lblTitulo.Text = "Tipo de Traslado";
-            // 
-            // lblSubtitulo
-            // 
-            this.lblSubtitulo.AutoSize = true;
-            this.lblSubtitulo.BackColor = System.Drawing.Color.Transparent;
-            this.lblSubtitulo.ForeColor = System.Drawing.Color.White;
-            this.lblSubtitulo.Location = new System.Drawing.Point(27, 53);
-            this.lblSubtitulo.Name = "lblSubtitulo";
-            this.lblSubtitulo.Size = new System.Drawing.Size(354, 23);
-            this.lblSubtitulo.TabIndex = 1;
-            this.lblSubtitulo.Text = "Seleccione el tipo de traslado para continuar.";
             // 
             // grpTipoTraslado
             // 
@@ -91,27 +91,15 @@
             this.grpTipoTraslado.TabStop = false;
             this.grpTipoTraslado.Text = "Tipo de traslado";
             // 
-            // rdbInterno
+            // label2
             // 
-            this.rdbInterno.AutoSize = true;
-            this.rdbInterno.Checked = true;
-            this.rdbInterno.Location = new System.Drawing.Point(25, 40);
-            this.rdbInterno.Name = "rdbInterno";
-            this.rdbInterno.Size = new System.Drawing.Size(172, 29);
-            this.rdbInterno.TabIndex = 0;
-            this.rdbInterno.TabStop = true;
-            this.rdbInterno.Text = "Traslado interno";
-            this.rdbInterno.UseVisualStyleBackColor = true;
-            // 
-            // rdbExterno
-            // 
-            this.rdbExterno.AutoSize = true;
-            this.rdbExterno.Location = new System.Drawing.Point(275, 40);
-            this.rdbExterno.Name = "rdbExterno";
-            this.rdbExterno.Size = new System.Drawing.Size(176, 29);
-            this.rdbExterno.TabIndex = 1;
-            this.rdbExterno.Text = "Traslado externo";
-            this.rdbExterno.UseVisualStyleBackColor = true;
+            this.label2.Font = new System.Drawing.Font("Segoe UI", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label2.ForeColor = System.Drawing.Color.Gray;
+            this.label2.Location = new System.Drawing.Point(22, 72);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(210, 55);
+            this.label2.TabIndex = 3;
+            this.label2.Text = "Entre bodegas o áreas de producción.";
             // 
             // label1
             // 
@@ -123,15 +111,27 @@
             this.label1.TabIndex = 2;
             this.label1.Text = "Entre sucursales o instalaciones externas.";
             // 
-            // label2
+            // rdbExterno
             // 
-            this.label2.Font = new System.Drawing.Font("Segoe UI", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label2.ForeColor = System.Drawing.Color.Gray;
-            this.label2.Location = new System.Drawing.Point(22, 72);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(210, 55);
-            this.label2.TabIndex = 3;
-            this.label2.Text = "Entre bodegas o áreas de producción.";
+            this.rdbExterno.AutoSize = true;
+            this.rdbExterno.Location = new System.Drawing.Point(275, 40);
+            this.rdbExterno.Name = "rdbExterno";
+            this.rdbExterno.Size = new System.Drawing.Size(144, 24);
+            this.rdbExterno.TabIndex = 1;
+            this.rdbExterno.Text = "Traslado externo";
+            this.rdbExterno.UseVisualStyleBackColor = true;
+            // 
+            // rdbInterno
+            // 
+            this.rdbInterno.AutoSize = true;
+            this.rdbInterno.Checked = true;
+            this.rdbInterno.Location = new System.Drawing.Point(25, 40);
+            this.rdbInterno.Name = "rdbInterno";
+            this.rdbInterno.Size = new System.Drawing.Size(141, 24);
+            this.rdbInterno.TabIndex = 0;
+            this.rdbInterno.TabStop = true;
+            this.rdbInterno.Text = "Traslado interno";
+            this.rdbInterno.UseVisualStyleBackColor = true;
             // 
             // btnAceptar
             // 
@@ -145,6 +145,7 @@
             this.btnAceptar.TabIndex = 2;
             this.btnAceptar.Text = "✔ Aceptar";
             this.btnAceptar.UseVisualStyleBackColor = false;
+            this.btnAceptar.Click += new System.EventHandler(this.btnAceptar_Click);
             // 
             // btnCancelar
             // 
@@ -162,7 +163,7 @@
             // 
             // FrmSeleccionTipoTraslado
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 23F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 17F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(251)))), ((int)(((byte)(246)))), ((int)(((byte)(242)))));
             this.ClientSize = new System.Drawing.Size(682, 393);
