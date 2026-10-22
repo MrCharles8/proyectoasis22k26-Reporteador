@@ -15,6 +15,8 @@ namespace CapaVista_Inventario_Logistica.Formas
         public FrmMantenimientoBodegas()
         {
             InitializeComponent();
+
+            LogisticaNavBodega.NavegadorMetConfigurar("tblBodega", 4, 6);
         }
 
         

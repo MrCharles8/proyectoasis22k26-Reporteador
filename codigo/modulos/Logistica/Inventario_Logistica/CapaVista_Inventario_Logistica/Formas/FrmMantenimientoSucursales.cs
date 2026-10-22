@@ -16,6 +16,7 @@ namespace CapaVista_Inventario_Logistica.Formas
         public FrmMantenimientoSucursales()
         {
             InitializeComponent();
+            LogisticaNavSucursales.NavegadorMetConfigurar("tblSucursal", 4, 6);
         }
 
         private void LogisticaProcAbrirMantenimientoBodegas()
