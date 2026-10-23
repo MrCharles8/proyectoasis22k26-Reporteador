@@ -15,6 +15,8 @@ namespace CapaVista_Inventario_Logistica.Formas
         public FrmMantenimientoLinea()
         {
             InitializeComponent();
+
+            LogisticaNavLinea.NavegadorMetConfigurar("tblLinea", 4, 6);
         }
 
     }
