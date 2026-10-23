@@ -1,81 +1,114 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿// ============================================================================
+// MÓDULO: LOGÍSTICA
+// FORMULARIO: FrmMDILogistica
+// DESCRIPCIÓN:
+// Formulario principal del módulo de Logística, encargado de gestionar la
+// navegación y el acceso a los diferentes submódulos del sistema, incluyendo
+// inventario, catálogo de productos, ubicaciones, transporte, traslados,
+// auditoría y cierre de inventario.
+//
+// Implementa métodos estandarizados para abrir formularios secundarios,
+// actualizar la información del usuario activo y administrar los eventos
+// de los botones del menú principal.
+//
+// RESPONSABLE: VELVETH SARAÍ CHAVEZ MEJÍA       0901 23 6269
+// ============================================================================
+
+
+using System;
 using System.Windows.Forms;
-using CapaVista_Inventario_Logistica;
 using CapaVista_Inventario_Logistica.Formas;
-using CapaVista_TransporteExterno_Logistica;
-using CapaVista_Traslados_Logistica;
+using CapaVista_TransporteInterno_Logistica.Formas;
+using CapaVista_Traslados_Logistica.Formas;
 using CapaVista_MuestreoAuditoria_Logistica;
 using CapaVista_CierreInventario.Forms;
-using CapaVista_TransporteInterno_Logistica.Formas;
 
 namespace CapaVista_Logistica
 {
     public partial class FrmMDILogistica : Form
     {
+        // Constructor principal
         public FrmMDILogistica()
         {
             InitializeComponent();
-
-
         }
+
+        // ============================================
+        // MÉTODOS DEL MDI
+        // ============================================
+
+        // Actualizar información del usuario para mostrar en el formulario principal 
+        // Metodo que debiamos utilizar obligatoriamente por Componente de Seguridad
         public void LogisticaMetActualizarInfoUsuario(string Nombre, string Rol)
         {
             LogisticaLblUsuario.Text = Nombre;
             LogisticaLblRolUsuario.Text = Rol;
+
             LogisticaLbUsuarioRol.Left = LogisticaLblUsuario.Right + 30;
         }
 
-        private void LogisticaBtnUbicaciones_Click(object sender, EventArgs e)
+        // Abrir formularios secundarios
+        private void LogisticaMetAbrirFormulario(
+            Form Formulario)
         {
-            CapaVista_Inventario_Logistica.Formas.FrmMantenimientoSucursales frmMantenimientoSucursales = new CapaVista_Inventario_Logistica.Formas.FrmMantenimientoSucursales();
-            frmMantenimientoSucursales.ShowDialog();
+            using (Formulario)
+            {
+                Formulario.StartPosition = FormStartPosition.CenterParent;
+                Formulario.ShowDialog(this);
+            }
         }
 
-        private void LogisticaBtnCatalogo_Click(object sender, EventArgs e)
+        // ============================================
+        // EVENTOS DE BOTONES
+        // ============================================
+
+        // Ubicaciones / Sucursales
+        private void LogisticaBtnUbicaciones_Click(
+            object sender, EventArgs e)
         {
-            CapaVista_Inventario_Logistica.Formas.FrmMantenimientoProducto frmMantenimientoProducto = new CapaVista_Inventario_Logistica.Formas.FrmMantenimientoProducto();
-            frmMantenimientoProducto.ShowDialog();
+            LogisticaMetAbrirFormulario(new FrmMantenimientoSucursales());
         }
 
-       
-
-        private void LogisticaBtnInventario_Click(object sender, EventArgs e)
+        // Catálogo de productos
+        private void LogisticaBtnCatalogo_Click(
+            object sender, EventArgs e)
         {
-            CapaVista_Inventario_Logistica.Formas.FrmMantenimientoStock frmMantenimientoStock = new CapaVista_Inventario_Logistica.Formas.FrmMantenimientoStock();
-            frmMantenimientoStock.ShowDialog();
+            LogisticaMetAbrirFormulario(new FrmMantenimientoProducto());
         }
 
-        private void LogisticaBtnGestionTransporte_Click(object sender, EventArgs e)
+        // Inventario / Stock
+        private void LogisticaBtnInventario_Click(
+            object sender, EventArgs e)
         {
-            CapaVista_TransporteInterno_Logistica.Formas.FrmSeleccionTipoTraslado frmnTransporte = new CapaVista_TransporteInterno_Logistica.Formas.FrmSeleccionTipoTraslado();
-            frmnTransporte.ShowDialog();
-
+            LogisticaMetAbrirFormulario(new FrmMantenimientoStock());
         }
 
-        private void LogisticaBtnTraslado_Click(object sender, EventArgs e)
+        // Gestión de transporte
+        private void LogisticaBtnGestionTransporte_Click(
+            object sender, EventArgs e)
         {
-            CapaVista_Traslados_Logistica.Formas.FrmTraslados frmTraslado = new CapaVista_Traslados_Logistica.Formas.FrmTraslados();
-            frmTraslado.ShowDialog();
+            LogisticaMetAbrirFormulario(new FrmSeleccionTipoTraslado());
         }
 
-        private void LogisticaBtnAuditoria_Click(object sender, EventArgs e)
+        // Traslados
+        private void LogisticaBtnTraslado_Click(
+            object sender, EventArgs e)
         {
-            CapaVista_MuestreoAuditoria_Logistica.FrmAuditoriaInventario frmAuditoriaInventario = new CapaVista_MuestreoAuditoria_Logistica.FrmAuditoriaInventario();
-            frmAuditoriaInventario.ShowDialog();
-
+            LogisticaMetAbrirFormulario(new FrmTraslados());
         }
 
-        private void LogisticaBtnCierredeInventario_Click(object sender, EventArgs e)
+        // Auditoría de inventario
+        private void LogisticaBtnAuditoria_Click(
+            object sender, EventArgs e)
         {
-            CapaVista_CierreInventario.Forms.FrmCierreInventario frmCierreInventario = new CapaVista_CierreInventario.Forms.FrmCierreInventario();
-            frmCierreInventario.ShowDialog();
+            LogisticaMetAbrirFormulario(new FrmAuditoriaInventario());
+        }
+
+        // Cierre de inventario
+        private void LogisticaBtnCierredeInventario_Click(
+            object sender, EventArgs e)
+        {
+            LogisticaMetAbrirFormulario(new FrmCierreInventario());
         }
     }
 }
