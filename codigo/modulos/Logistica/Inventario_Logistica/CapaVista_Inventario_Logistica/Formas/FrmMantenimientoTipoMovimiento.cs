@@ -15,6 +15,7 @@ namespace CapaVista_Inventario_Logistica.Formas
         public FrmMantenimientoTipoMovimiento()
         {
             InitializeComponent();
+            LogisticaNavTipoMovimiento.NavegadorMetConfigurar("tblTipoMovimiento", 4, 6);
         }
     }
 }
