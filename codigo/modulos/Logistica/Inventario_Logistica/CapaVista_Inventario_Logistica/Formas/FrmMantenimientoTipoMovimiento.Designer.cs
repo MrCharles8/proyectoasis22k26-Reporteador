@@ -29,33 +29,34 @@
         private void InitializeComponent()
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FrmMantenimientoTipoMovimiento));
-            this.panel1 = new System.Windows.Forms.Panel();
-            this.navegador1 = new CapaVista_Navegador.Navegador();
+            this.LogisticaPnlTipoMovimiento = new System.Windows.Forms.Panel();
+            this.LogisticaNavTipoMovimiento = new CapaVista_Navegador.Navegador();
             this.LogisticaLblDescripcionTipoMovimiento = new System.Windows.Forms.Label();
             this.LogisiticaLblTituloTipoMovimiento = new System.Windows.Forms.Label();
-            this.panel1.SuspendLayout();
+            this.LogisticaPnlTipoMovimiento.SuspendLayout();
             this.SuspendLayout();
             // 
-            // panel1
+            // LogisticaPnlTipoMovimiento
             // 
-            this.panel1.BackgroundImage = global::CapaVista_Inventario_Logistica.Properties.Resources.FondoLogica2;
-            this.panel1.Controls.Add(this.navegador1);
-            this.panel1.Controls.Add(this.LogisticaLblDescripcionTipoMovimiento);
-            this.panel1.Controls.Add(this.LogisiticaLblTituloTipoMovimiento);
-            this.panel1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panel1.Location = new System.Drawing.Point(0, 0);
-            this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(1144, 741);
-            this.panel1.TabIndex = 0;
+            this.LogisticaPnlTipoMovimiento.BackgroundImage = global::CapaVista_Inventario_Logistica.Properties.Resources.FondoLogica2;
+            this.LogisticaPnlTipoMovimiento.Controls.Add(this.LogisticaNavTipoMovimiento);
+            this.LogisticaPnlTipoMovimiento.Controls.Add(this.LogisticaLblDescripcionTipoMovimiento);
+            this.LogisticaPnlTipoMovimiento.Controls.Add(this.LogisiticaLblTituloTipoMovimiento);
+            this.LogisticaPnlTipoMovimiento.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.LogisticaPnlTipoMovimiento.Location = new System.Drawing.Point(0, 0);
+            this.LogisticaPnlTipoMovimiento.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.LogisticaPnlTipoMovimiento.Name = "LogisticaPnlTipoMovimiento";
+            this.LogisticaPnlTipoMovimiento.Size = new System.Drawing.Size(1525, 912);
+            this.LogisticaPnlTipoMovimiento.TabIndex = 0;
             // 
-            // navegador1
+            // LogisticaNavTipoMovimiento
             // 
-            this.navegador1.BackColor = System.Drawing.Color.Transparent;
-            this.navegador1.Location = new System.Drawing.Point(30, 136);
-            this.navegador1.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
-            this.navegador1.Name = "navegador1";
-            this.navegador1.Size = new System.Drawing.Size(1078, 90);
-            this.navegador1.TabIndex = 2;
+            this.LogisticaNavTipoMovimiento.BackColor = System.Drawing.Color.Transparent;
+            this.LogisticaNavTipoMovimiento.Location = new System.Drawing.Point(40, 167);
+            this.LogisticaNavTipoMovimiento.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.LogisticaNavTipoMovimiento.Name = "LogisticaNavTipoMovimiento";
+            this.LogisticaNavTipoMovimiento.Size = new System.Drawing.Size(1437, 111);
+            this.LogisticaNavTipoMovimiento.TabIndex = 2;
             // 
             // LogisticaLblDescripcionTipoMovimiento
             // 
@@ -63,9 +64,10 @@
             this.LogisticaLblDescripcionTipoMovimiento.BackColor = System.Drawing.Color.Transparent;
             this.LogisticaLblDescripcionTipoMovimiento.Font = new System.Drawing.Font("Tahoma", 12.75F);
             this.LogisticaLblDescripcionTipoMovimiento.ForeColor = System.Drawing.Color.Black;
-            this.LogisticaLblDescripcionTipoMovimiento.Location = new System.Drawing.Point(43, 92);
+            this.LogisticaLblDescripcionTipoMovimiento.Location = new System.Drawing.Point(57, 113);
+            this.LogisticaLblDescripcionTipoMovimiento.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.LogisticaLblDescripcionTipoMovimiento.Name = "LogisticaLblDescripcionTipoMovimiento";
-            this.LogisticaLblDescripcionTipoMovimiento.Size = new System.Drawing.Size(430, 42);
+            this.LogisticaLblDescripcionTipoMovimiento.Size = new System.Drawing.Size(568, 54);
             this.LogisticaLblDescripcionTipoMovimiento.TabIndex = 1;
             this.LogisticaLblDescripcionTipoMovimiento.Text = "Configura los tipos de movimiento de inventario y define \r\nsu efecto de entrada o" +
     " salida.";
@@ -76,35 +78,37 @@
             this.LogisiticaLblTituloTipoMovimiento.BackColor = System.Drawing.Color.Transparent;
             this.LogisiticaLblTituloTipoMovimiento.Font = new System.Drawing.Font("Lucida Fax", 20.25F, System.Drawing.FontStyle.Bold);
             this.LogisiticaLblTituloTipoMovimiento.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(62)))), ((int)(((byte)(138)))), ((int)(((byte)(132)))));
-            this.LogisiticaLblTituloTipoMovimiento.Location = new System.Drawing.Point(41, 42);
+            this.LogisiticaLblTituloTipoMovimiento.Location = new System.Drawing.Point(55, 52);
+            this.LogisiticaLblTituloTipoMovimiento.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.LogisiticaLblTituloTipoMovimiento.Name = "LogisiticaLblTituloTipoMovimiento";
-            this.LogisiticaLblTituloTipoMovimiento.Size = new System.Drawing.Size(306, 32);
+            this.LogisiticaLblTituloTipoMovimiento.Size = new System.Drawing.Size(375, 40);
             this.LogisiticaLblTituloTipoMovimiento.TabIndex = 0;
             this.LogisiticaLblTituloTipoMovimiento.Text = "Tipo de Movimiento";
             // 
             // FrmMantenimientoTipoMovimiento
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(251)))), ((int)(((byte)(246)))), ((int)(((byte)(242)))));
-            this.ClientSize = new System.Drawing.Size(1144, 741);
-            this.Controls.Add(this.panel1);
+            this.ClientSize = new System.Drawing.Size(1525, 912);
+            this.Controls.Add(this.LogisticaPnlTipoMovimiento);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
+            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.MaximizeBox = false;
             this.Name = "FrmMantenimientoTipoMovimiento";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "5008 - Tipo de Movimiento";
-            this.panel1.ResumeLayout(false);
-            this.panel1.PerformLayout();
+            this.LogisticaPnlTipoMovimiento.ResumeLayout(false);
+            this.LogisticaPnlTipoMovimiento.PerformLayout();
             this.ResumeLayout(false);
 
         }
 
         #endregion
 
-        private System.Windows.Forms.Panel panel1;
-        private CapaVista_Navegador.Navegador navegador1;
+        private System.Windows.Forms.Panel LogisticaPnlTipoMovimiento;
+        private CapaVista_Navegador.Navegador LogisticaNavTipoMovimiento;
         private System.Windows.Forms.Label LogisticaLblDescripcionTipoMovimiento;
         private System.Windows.Forms.Label LogisiticaLblTituloTipoMovimiento;
     }

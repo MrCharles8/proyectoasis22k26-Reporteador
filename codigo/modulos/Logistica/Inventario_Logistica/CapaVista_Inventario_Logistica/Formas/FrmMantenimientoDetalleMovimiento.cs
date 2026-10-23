@@ -15,6 +15,7 @@ namespace CapaVista_Inventario_Logistica.Formas
         public FrmMantenimientoDetalleMovimiento()
         {
             InitializeComponent();
+            LogisticaNavDetalleMovimiento.NavegadorMetConfigurar("tblDetalleTraslado", 4, 6);
         }
     }
 }
