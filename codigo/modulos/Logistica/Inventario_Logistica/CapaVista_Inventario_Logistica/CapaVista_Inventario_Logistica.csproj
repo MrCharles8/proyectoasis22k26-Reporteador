@@ -227,5 +227,9 @@
   <ItemGroup>
     <None Include="Resources\btn_bodega.png" />
   </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Ayudas\" />
+    <Folder Include="Reportes\" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
