@@ -15,6 +15,8 @@ namespace CapaVista_Inventario_Logistica.Formas
         public FrmMantenimientoCategoria()
         {
             InitializeComponent();
+
+            LogisticaNavCategoria.NavegadorMetConfigurar("tblCategoria", 4, 6);
         }
 
      
