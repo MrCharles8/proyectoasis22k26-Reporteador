@@ -1,11 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace CapaVista_Inventario_Logistica.Formas
@@ -15,6 +8,7 @@ namespace CapaVista_Inventario_Logistica.Formas
         public FrmMantenimientoProducto()
         {
             InitializeComponent();
+            LogisticaNavProducto.NavegadorMetConfigurar("tblProducto", 4, 6);
         }
 
         private void LogisticaProcAbrirMantenimientoCategoria()
@@ -25,17 +19,10 @@ namespace CapaVista_Inventario_Logistica.Formas
             }
         }
 
-        private void LogisticaNavProducto_Load(object sender, EventArgs e)
-        {
-            // Se eliminó la llamada duplicada a InitializeComponent()
-            LogisticaNavProducto.NavegadorMetConfigurar("tblProducto", 4, 5);
-        }
-
         private void LogisticaBtnCategoria_Click(object sender, EventArgs e)
         {
             LogisticaProcAbrirMantenimientoCategoria();
         }
-
 
         private void LogisticaProcAbrirMantenimientoMarca()
         {
@@ -57,6 +44,7 @@ namespace CapaVista_Inventario_Logistica.Formas
                 FrmLinea.ShowDialog(this);
             }
         }
+
         private void LogisticaBtnLinea_Click(object sender, EventArgs e)
         {
             LogisticaProcAbrirMantenimientoLinea();
