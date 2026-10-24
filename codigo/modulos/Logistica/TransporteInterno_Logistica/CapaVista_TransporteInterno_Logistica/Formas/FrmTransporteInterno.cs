@@ -15,6 +15,7 @@ namespace CapaVista_TransporteInterno_Logistica.Formas
         public FrmTransporteInterno()
         {
             InitializeComponent();
+            LogisticaNavTransporteInterno.NavegadorMetConfigurar("tblTransporte", 4, 6);
         }
 
         private void LogisticaBtnGestionViajes_Click(object sender, EventArgs e)
@@ -33,6 +34,11 @@ namespace CapaVista_TransporteInterno_Logistica.Formas
         {
             FrmConsultaTransporte frmConsultasTransporte = new FrmConsultaTransporte();
             frmConsultasTransporte.ShowDialog();
+        }
+
+        private void FrmTransporteInterno_Load(object sender, EventArgs e)
+        {
+
         }
     }
 }
