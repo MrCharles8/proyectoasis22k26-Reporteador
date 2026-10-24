@@ -15,6 +15,8 @@ namespace CapaVista_TransporteInterno_Logistica.Formas
         public FrmConsultaTransporte()
         {
             InitializeComponent();
+
+            LogisticaNavTransporteInterno.NavegadorMetConfigurar("tblEncabezadoViaje", 4, 6);
         }
     }
 }
