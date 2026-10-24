@@ -1,4 +1,5 @@
-﻿using System;
+﻿using CapaControlador_Inventario_Logistica.Modelos_de_Controladores;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -12,10 +13,13 @@ namespace CapaVista_Inventario_Logistica.Formas
 {
     public partial class FrmMantenimientoTipoMovimiento : Form
     {
+        ClsModelosTipoMovimiento _Datos = new ClsModelosTipoMovimiento();
+        Dictionary<string, object> _Fuentes = new Dictionary<string, object>();
         public FrmMantenimientoTipoMovimiento()
         {
             InitializeComponent();
-            LogisticaNavTipoMovimiento.NavegadorMetConfigurar("tblTipoMovimiento", 4, 6);
+            _Fuentes.Add("DsMantenimientoTipoMovimiento", _Datos.LogisticaMetObtenerTodos());
+            LogisticaNavTipoMovimiento.NavegadorMetConfigurar("tblTipoMovimiento", 4, 6, _Fuentes);
         }
     }
 }
