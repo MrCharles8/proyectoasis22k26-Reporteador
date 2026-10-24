@@ -30,6 +30,9 @@
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FrmMantenimientoStock));
             this.panel1 = new System.Windows.Forms.Panel();
+            this.LogisticaBtnTipoMovimiento = new System.Windows.Forms.Button();
+            this.LogisticaBtnDetalleMovimiento = new System.Windows.Forms.Button();
+            this.LogisticaBtnMovimientoInventario = new System.Windows.Forms.Button();
             this.LogisticaBtnSalirStock = new System.Windows.Forms.Button();
             this.LogisticaBtnFinStock = new System.Windows.Forms.Button();
             this.LogisticaBtnSiguienteStock = new System.Windows.Forms.Button();
@@ -67,7 +70,6 @@
             this.LogisticaLblStockVirual = new System.Windows.Forms.Label();
             this.LogisticaPnlListadoMovimiento = new System.Windows.Forms.Panel();
             this.LogisticaLblListadoStock = new System.Windows.Forms.Label();
-            this.LogisticaBtnMovimientoInventario = new System.Windows.Forms.Button();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.LogisticaDgvListadoStock)).BeginInit();
             this.LogistinaPnlDatosMovimiento.SuspendLayout();
@@ -80,6 +82,8 @@
             // 
             this.panel1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(251)))), ((int)(((byte)(246)))), ((int)(((byte)(242)))));
             this.panel1.BackgroundImage = global::CapaVista_Inventario_Logistica.Properties.Resources.FondoLogica2;
+            this.panel1.Controls.Add(this.LogisticaBtnTipoMovimiento);
+            this.panel1.Controls.Add(this.LogisticaBtnDetalleMovimiento);
             this.panel1.Controls.Add(this.LogisticaBtnMovimientoInventario);
             this.panel1.Controls.Add(this.LogisticaBtnSalirStock);
             this.panel1.Controls.Add(this.LogisticaBtnFinStock);
@@ -105,6 +109,55 @@
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(1144, 741);
             this.panel1.TabIndex = 0;
+            // 
+            // LogisticaBtnTipoMovimiento
+            // 
+            this.LogisticaBtnTipoMovimiento.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(242)))), ((int)(((byte)(216)))), ((int)(((byte)(197)))));
+            this.LogisticaBtnTipoMovimiento.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(210)))), ((int)(((byte)(99)))), ((int)(((byte)(46)))));
+            this.LogisticaBtnTipoMovimiento.FlatAppearance.BorderSize = 2;
+            this.LogisticaBtnTipoMovimiento.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.LogisticaBtnTipoMovimiento.Font = new System.Drawing.Font("Tahoma", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.LogisticaBtnTipoMovimiento.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(62)))), ((int)(((byte)(138)))), ((int)(((byte)(132)))));
+            this.LogisticaBtnTipoMovimiento.Location = new System.Drawing.Point(899, 58);
+            this.LogisticaBtnTipoMovimiento.Name = "LogisticaBtnTipoMovimiento";
+            this.LogisticaBtnTipoMovimiento.Size = new System.Drawing.Size(136, 52);
+            this.LogisticaBtnTipoMovimiento.TabIndex = 36;
+            this.LogisticaBtnTipoMovimiento.Text = "Tipo de Movimiento";
+            this.LogisticaBtnTipoMovimiento.UseVisualStyleBackColor = false;
+            this.LogisticaBtnTipoMovimiento.Click += new System.EventHandler(this.LogisticaBtnTipoMovimiento_Click);
+            // 
+            // LogisticaBtnDetalleMovimiento
+            // 
+            this.LogisticaBtnDetalleMovimiento.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(242)))), ((int)(((byte)(216)))), ((int)(((byte)(197)))));
+            this.LogisticaBtnDetalleMovimiento.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(210)))), ((int)(((byte)(99)))), ((int)(((byte)(46)))));
+            this.LogisticaBtnDetalleMovimiento.FlatAppearance.BorderSize = 2;
+            this.LogisticaBtnDetalleMovimiento.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.LogisticaBtnDetalleMovimiento.Font = new System.Drawing.Font("Tahoma", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.LogisticaBtnDetalleMovimiento.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(62)))), ((int)(((byte)(138)))), ((int)(((byte)(132)))));
+            this.LogisticaBtnDetalleMovimiento.Location = new System.Drawing.Point(743, 58);
+            this.LogisticaBtnDetalleMovimiento.Name = "LogisticaBtnDetalleMovimiento";
+            this.LogisticaBtnDetalleMovimiento.Size = new System.Drawing.Size(136, 52);
+            this.LogisticaBtnDetalleMovimiento.TabIndex = 35;
+            this.LogisticaBtnDetalleMovimiento.Text = "Detalle de Movimiento";
+            this.LogisticaBtnDetalleMovimiento.UseVisualStyleBackColor = false;
+            this.LogisticaBtnDetalleMovimiento.Click += new System.EventHandler(this.LogisticaBtnDetalleMovimiento_Click);
+            // 
+            // LogisticaBtnMovimientoInventario
+            // 
+            this.LogisticaBtnMovimientoInventario.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(242)))), ((int)(((byte)(216)))), ((int)(((byte)(197)))));
+            this.LogisticaBtnMovimientoInventario.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.LogisticaBtnMovimientoInventario.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(210)))), ((int)(((byte)(99)))), ((int)(((byte)(46)))));
+            this.LogisticaBtnMovimientoInventario.FlatAppearance.BorderSize = 2;
+            this.LogisticaBtnMovimientoInventario.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.LogisticaBtnMovimientoInventario.Font = new System.Drawing.Font("Tahoma", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.LogisticaBtnMovimientoInventario.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(62)))), ((int)(((byte)(138)))), ((int)(((byte)(132)))));
+            this.LogisticaBtnMovimientoInventario.Location = new System.Drawing.Point(579, 58);
+            this.LogisticaBtnMovimientoInventario.Name = "LogisticaBtnMovimientoInventario";
+            this.LogisticaBtnMovimientoInventario.Size = new System.Drawing.Size(136, 52);
+            this.LogisticaBtnMovimientoInventario.TabIndex = 4;
+            this.LogisticaBtnMovimientoInventario.Text = "Movimiento de Inventario";
+            this.LogisticaBtnMovimientoInventario.UseVisualStyleBackColor = false;
+            this.LogisticaBtnMovimientoInventario.Click += new System.EventHandler(this.LogisticaBtnMovimientoInventario_Click);
             // 
             // LogisticaBtnSalirStock
             // 
@@ -571,21 +624,6 @@
             this.LogisticaLblListadoStock.TabIndex = 0;
             this.LogisticaLblListadoStock.Text = "Listado de Stock\r\n";
             // 
-            // LogisticaBtnMovimientoInventario
-            // 
-            this.LogisticaBtnMovimientoInventario.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(242)))), ((int)(((byte)(216)))), ((int)(((byte)(197)))));
-            this.LogisticaBtnMovimientoInventario.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.LogisticaBtnMovimientoInventario.FlatAppearance.BorderSize = 0;
-            this.LogisticaBtnMovimientoInventario.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.LogisticaBtnMovimientoInventario.Font = new System.Drawing.Font("Segoe UI", 6.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.LogisticaBtnMovimientoInventario.Location = new System.Drawing.Point(1027, 12);
-            this.LogisticaBtnMovimientoInventario.Name = "LogisticaBtnMovimientoInventario";
-            this.LogisticaBtnMovimientoInventario.Size = new System.Drawing.Size(60, 66);
-            this.LogisticaBtnMovimientoInventario.TabIndex = 4;
-            this.LogisticaBtnMovimientoInventario.Text = "Movimiento Inventario";
-            this.LogisticaBtnMovimientoInventario.UseVisualStyleBackColor = false;
-            this.LogisticaBtnMovimientoInventario.Click += new System.EventHandler(this.LogisticaBtnMovimientoInventario_Click);
-            // 
             // FrmMantenimientoStock
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -652,5 +690,7 @@
         private System.Windows.Forms.Label LogisticaLblEstadoStock;
         private System.Windows.Forms.Label LogisticaLblEstadoVenta;
         private System.Windows.Forms.Button LogisticaBtnMovimientoInventario;
+        private System.Windows.Forms.Button LogisticaBtnTipoMovimiento;
+        private System.Windows.Forms.Button LogisticaBtnDetalleMovimiento;
     }
 }
