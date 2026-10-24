@@ -31,7 +31,8 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="CapaControlador_Inventario_Logistica">
+    <Reference Include="CapaControlador_Inventario_Logistica, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
       <HintPath>..\CapaControlador_Inventario_Logistica\bin\Debug\CapaControlador_Inventario_Logistica.dll</HintPath>
     </Reference>
     <Reference Include="CapaVista_Navegador">
@@ -151,8 +152,10 @@
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
     </EmbeddedResource>
+    <EmbeddedResource Include="Reportes\RpReporteTipoMovimiento.rdlc" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="Properties\DataSources\CapaControlador_Inventario_Logistica.Modelos_de_Controladores.ClsModelosTipoMovimiento.datasource" />
     <None Include="Resources\btn_guardar.png" />
   </ItemGroup>
   <ItemGroup>
@@ -229,7 +232,9 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Ayudas\" />
-    <Folder Include="Reportes\" />
+  </ItemGroup>
+  <ItemGroup>
+    <Analyzer Include="bin\Debug\CapaControlador_Inventario_Logistica.dll" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
