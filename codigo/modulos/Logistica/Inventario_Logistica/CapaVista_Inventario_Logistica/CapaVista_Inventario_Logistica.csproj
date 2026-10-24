@@ -236,5 +236,23 @@
   <ItemGroup>
     <Analyzer Include="bin\Debug\CapaControlador_Inventario_Logistica.dll" />
   </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\ImgStock.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\imgMovimientoInventario.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\imgdetalleMovimiento.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\imgtipoMovimiento.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\6.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\7.png" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

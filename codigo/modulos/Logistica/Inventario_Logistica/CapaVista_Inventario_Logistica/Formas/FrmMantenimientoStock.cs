@@ -17,16 +17,31 @@ namespace CapaVista_Inventario_Logistica.Formas
             InitializeComponent();
         }
 
-        private void LogisticaProcAbrirMantenimientoMovimientoInventario()
+        private void LogisticaMetAbrirFormulario(
+         Form Formulario)
         {
-            using (FrmMantenimientoMovimientoInventario FrmMovimientoInventario = new FrmMantenimientoMovimientoInventario())
+            using (Formulario)
             {
-                FrmMovimientoInventario.ShowDialog(this);
+                Formulario.StartPosition = FormStartPosition.CenterParent;
+                Formulario.ShowDialog(this);
             }
         }
+
         private void LogisticaBtnMovimientoInventario_Click(object sender, EventArgs e)
         {
-            LogisticaProcAbrirMantenimientoMovimientoInventario();
+            LogisticaMetAbrirFormulario(new FrmMantenimientoMovimientoInventario());
+
+        }
+
+        private void LogisticaBtnDetalleMovimiento_Click(object sender, EventArgs e)
+        {
+            LogisticaMetAbrirFormulario(new FrmMantenimientoDetalleMovimiento());
+
+        }
+
+        private void LogisticaBtnTipoMovimiento_Click(object sender, EventArgs e)
+        {
+            LogisticaMetAbrirFormulario(new FrmMantenimientoTipoMovimiento());
 
         }
     }
