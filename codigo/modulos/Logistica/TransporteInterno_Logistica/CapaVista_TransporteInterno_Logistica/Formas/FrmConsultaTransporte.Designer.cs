@@ -39,7 +39,7 @@
             // LogisticaNavTransporteInterno
             // 
             this.LogisticaNavTransporteInterno.BackColor = System.Drawing.Color.Transparent;
-            this.LogisticaNavTransporteInterno.Location = new System.Drawing.Point(0, -18);
+            this.LogisticaNavTransporteInterno.Location = new System.Drawing.Point(19, 118);
             this.LogisticaNavTransporteInterno.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.LogisticaNavTransporteInterno.Name = "LogisticaNavTransporteInterno";
             this.LogisticaNavTransporteInterno.Size = new System.Drawing.Size(1437, 111);
@@ -49,7 +49,7 @@
             // 
             this.pictureBox1.BackColor = System.Drawing.Color.Transparent;
             this.pictureBox1.Image = global::CapaVista_TransporteInterno_Logistica.Properties.Resources._7;
-            this.pictureBox1.Location = new System.Drawing.Point(1231, 106);
+            this.pictureBox1.Location = new System.Drawing.Point(1118, 256);
             this.pictureBox1.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.pictureBox1.Name = "pictureBox1";
             this.pictureBox1.Size = new System.Drawing.Size(283, 322);
@@ -61,7 +61,7 @@
             this.label2.AutoSize = true;
             this.label2.BackColor = System.Drawing.Color.Transparent;
             this.label2.Font = new System.Drawing.Font("Tahoma", 12.75F);
-            this.label2.Location = new System.Drawing.Point(15, 146);
+            this.label2.Location = new System.Drawing.Point(14, 63);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(697, 27);
             this.label2.TabIndex = 10;
@@ -73,7 +73,7 @@
             this.LogisticaLblTituloTransporteInterno.BackColor = System.Drawing.Color.Transparent;
             this.LogisticaLblTituloTransporteInterno.Font = new System.Drawing.Font("Lucida Fax", 20.25F, System.Drawing.FontStyle.Bold);
             this.LogisticaLblTituloTransporteInterno.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(62)))), ((int)(((byte)(138)))), ((int)(((byte)(132)))));
-            this.LogisticaLblTituloTransporteInterno.Location = new System.Drawing.Point(12, 106);
+            this.LogisticaLblTituloTransporteInterno.Location = new System.Drawing.Point(12, 23);
             this.LogisticaLblTituloTransporteInterno.Name = "LogisticaLblTituloTransporteInterno";
             this.LogisticaLblTituloTransporteInterno.Size = new System.Drawing.Size(551, 40);
             this.LogisticaLblTituloTransporteInterno.TabIndex = 9;
@@ -85,7 +85,7 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackgroundImage = global::CapaVista_TransporteInterno_Logistica.Properties.Resources.FondoLogistica;
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.ClientSize = new System.Drawing.Size(1371, 750);
+            this.ClientSize = new System.Drawing.Size(1525, 912);
             this.Controls.Add(this.LogisticaNavTransporteInterno);
             this.Controls.Add(this.pictureBox1);
             this.Controls.Add(this.label2);
