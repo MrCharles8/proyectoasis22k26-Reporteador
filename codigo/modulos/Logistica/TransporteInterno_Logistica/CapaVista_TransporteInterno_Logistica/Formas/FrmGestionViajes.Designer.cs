@@ -30,38 +30,25 @@
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FrmGestionViajes));
             this.LogisticaNavTransporteInterno = new CapaVista_Navegador.Navegador();
-            this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.label1 = new System.Windows.Forms.Label();
             this.LogisticaLblTituloTransporteInterno = new System.Windows.Forms.Label();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
             // 
             // LogisticaNavTransporteInterno
             // 
             this.LogisticaNavTransporteInterno.BackColor = System.Drawing.Color.Transparent;
-            this.LogisticaNavTransporteInterno.Location = new System.Drawing.Point(-17, -13);
+            this.LogisticaNavTransporteInterno.Location = new System.Drawing.Point(-8, 41);
             this.LogisticaNavTransporteInterno.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.LogisticaNavTransporteInterno.Name = "LogisticaNavTransporteInterno";
             this.LogisticaNavTransporteInterno.Size = new System.Drawing.Size(1437, 111);
             this.LogisticaNavTransporteInterno.TabIndex = 11;
-            // 
-            // pictureBox1
-            // 
-            this.pictureBox1.BackColor = System.Drawing.Color.Transparent;
-            this.pictureBox1.Image = global::CapaVista_TransporteInterno_Logistica.Properties.Resources._7;
-            this.pictureBox1.Location = new System.Drawing.Point(1091, 89);
-            this.pictureBox1.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(283, 322);
-            this.pictureBox1.TabIndex = 10;
-            this.pictureBox1.TabStop = false;
             // 
             // label1
             // 
             this.label1.AutoSize = true;
             this.label1.BackColor = System.Drawing.Color.Transparent;
             this.label1.Font = new System.Drawing.Font("Tahoma", 12.75F);
-            this.label1.Location = new System.Drawing.Point(345, 111);
+            this.label1.Location = new System.Drawing.Point(330, 12);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(696, 27);
             this.label1.TabIndex = 9;
@@ -73,7 +60,7 @@
             this.LogisticaLblTituloTransporteInterno.BackColor = System.Drawing.Color.Transparent;
             this.LogisticaLblTituloTransporteInterno.Font = new System.Drawing.Font("Lucida Fax", 20.25F, System.Drawing.FontStyle.Bold);
             this.LogisticaLblTituloTransporteInterno.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(62)))), ((int)(((byte)(138)))), ((int)(((byte)(132)))));
-            this.LogisticaLblTituloTransporteInterno.Location = new System.Drawing.Point(12, 100);
+            this.LogisticaLblTituloTransporteInterno.Location = new System.Drawing.Point(-3, 1);
             this.LogisticaLblTituloTransporteInterno.Name = "LogisticaLblTituloTransporteInterno";
             this.LogisticaLblTituloTransporteInterno.Size = new System.Drawing.Size(327, 40);
             this.LogisticaLblTituloTransporteInterno.TabIndex = 8;
@@ -85,16 +72,15 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackgroundImage = global::CapaVista_TransporteInterno_Logistica.Properties.Resources.FondoLogistica;
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.ClientSize = new System.Drawing.Size(1371, 750);
+            this.ClientSize = new System.Drawing.Size(1525, 912);
             this.Controls.Add(this.LogisticaNavTransporteInterno);
-            this.Controls.Add(this.pictureBox1);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.LogisticaLblTituloTransporteInterno);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.Name = "FrmGestionViajes";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "5016-Gestión de viajes";
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -103,7 +89,6 @@
         #endregion
 
         private CapaVista_Navegador.Navegador LogisticaNavTransporteInterno;
-        private System.Windows.Forms.PictureBox pictureBox1;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label LogisticaLblTituloTransporteInterno;
     }

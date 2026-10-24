@@ -15,6 +15,7 @@ namespace CapaVista_TransporteInterno_Logistica.Formas
         public FrmGestionViajes()
         {
             InitializeComponent();
+            LogisticaNavTransporteInterno.NavegadorMetConfigurar("tblEncabezadoViaje", 4, 6);
         }
 
         private void cboSolicitudTraslado_SelectedIndexChanged(object sender, EventArgs e)
