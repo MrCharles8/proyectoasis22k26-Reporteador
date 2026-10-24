@@ -15,9 +15,21 @@ namespace CapaVista_TransporteInterno_Logistica.Formas
         public FrmControlTransporte()
         {
             InitializeComponent();
+
+            LogisticaNavTransporteInterno.NavegadorMetConfigurar("tblTelemetriaTemperatura", 4, 6);
         }
 
         private void txtObservacionesInspeccion_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void LogisticaNavTransporteInterno_Load(object sender, EventArgs e)
+        {
+
+        }
+
+        private void FrmControlTransporte_Load(object sender, EventArgs e)
         {
 
         }
