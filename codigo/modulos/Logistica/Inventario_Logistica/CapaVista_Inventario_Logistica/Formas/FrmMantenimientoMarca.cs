@@ -15,7 +15,7 @@ namespace CapaVista_Inventario_Logistica.Formas
         public FrmMantenimientoMarca()
         {
             InitializeComponent();
-            LogisticaNavMarca.NavegadorMetConfigurar("tblMarca", 4, 6);
+            LogisticaNavMarca.NavegadorMetConfigurar("tblmarca", 4, 6);
         }
 
     }

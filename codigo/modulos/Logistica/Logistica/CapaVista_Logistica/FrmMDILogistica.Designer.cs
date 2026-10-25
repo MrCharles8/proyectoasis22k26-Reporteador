@@ -183,6 +183,7 @@
             this.LogisticaBtnCerrarSesion.Size = new System.Drawing.Size(264, 42);
             this.LogisticaBtnCerrarSesion.TabIndex = 9;
             this.LogisticaBtnCerrarSesion.UseVisualStyleBackColor = false;
+            this.LogisticaBtnCerrarSesion.Click += new System.EventHandler(this.LogisticaBtnCerrarSesion_Click);
             // 
             // LogisticaBtnEnlace
             // 
@@ -631,6 +632,7 @@
             this.LogisticaBtnHamburguesa.Size = new System.Drawing.Size(20, 25);
             this.LogisticaBtnHamburguesa.TabIndex = 10;
             this.LogisticaBtnHamburguesa.UseVisualStyleBackColor = true;
+            this.LogisticaBtnHamburguesa.Click += new System.EventHandler(this.LogisticaBtnHamburguesa_Click);
             // 
             // FrmMDILogistica
             // 

@@ -31,6 +31,9 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="CapaModelo_TransporteInterno_Logistica">
+      <HintPath>..\CapaModelo_TransporteInterno_Logistica\bin\Debug\CapaModelo_TransporteInterno_Logistica.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
     <Reference Include="System.Xml.Linq" />

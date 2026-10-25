@@ -60,9 +60,9 @@ namespace CapaModelo_Traslados_Logistica.Repositorios
                 "T.estadoTraslado " +
                 "FROM tblTraslado T " +
                 "INNER JOIN tblBodega BO " +
-                "ON BO.Pk_Bodega = T.Fk_Bodega_OrigenCodigo " +
+                "ON BO.Pk_Bodega = T.Fk_Bodega_Origen_Codigo " +
                 "INNER JOIN tblBodega BD " +
-                "ON BD.Pk_Bodega = T.Fk_Bodega_DestinoCodigo " +
+                "ON BD.Pk_Bodega = T.Fk_Bodega_Destino_Codigo " +
                 "LEFT JOIN tblTransporte TR " +
                 "ON TR.Pk_Transporte = T.Fk_Transporte_Codigo " +
                 "ORDER BY T.fechaSolicitudTraslado DESC, " +
@@ -88,12 +88,15 @@ namespace CapaModelo_Traslados_Logistica.Repositorios
                         using (OdbcCommand Comando = new OdbcCommand(
                             "INSERT INTO tblTraslado " +
                             "(codigoTraslado, " +
-                            "Fk_Bodega_OrigenCodigo, " +
-                            "Fk_Bodega_DestinoCodigo, " +
+                            "Fk_Bodega_Origen_Codigo, " +
+                            "Fk_Bodega_Destino_Codigo, " +
                             "Fk_Transporte_Codigo, " +
                             "fechaSolicitudTraslado, " +
-                            "fechaSalidaTraslado, estadoTraslado) " +
-                            "VALUES (?, ?, ?, ?, ?, ?, ?)",
+                            "fechaSalidaTraslado, " +
+                            "fechaLlegadaTraslado, " +
+                            "estadoTraslado, " +
+                            "observacionesTraslado) " +
+                            "VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)",
                             Conexion, Transaccion))
                         {
                             Comando.Parameters.AddWithValue(
@@ -108,8 +111,8 @@ namespace CapaModelo_Traslados_Logistica.Repositorios
                             Comando.Parameters.AddWithValue(
                                 "transporte",
                                 Traslado.IdTransporte.HasValue
-                                ? (object)Traslado.IdTransporte.Value
-                                : DBNull.Value);
+                                    ? (object)Traslado.IdTransporte.Value
+                                    : DBNull.Value);
 
                             Comando.Parameters.AddWithValue(
                                 "fechaSolicitud", Traslado.FechaSolicitud);
@@ -117,11 +120,21 @@ namespace CapaModelo_Traslados_Logistica.Repositorios
                             Comando.Parameters.AddWithValue(
                                 "fechaSalida",
                                 Traslado.FechaSalida.HasValue
-                                ? (object)Traslado.FechaSalida.Value
-                                : DBNull.Value);
+                                    ? (object)Traslado.FechaSalida.Value
+                                    : DBNull.Value);
+
+                            Comando.Parameters.AddWithValue(
+                                "fechaLlegada",
+                                Traslado.FechaLlegada.HasValue
+                                    ? (object)Traslado.FechaLlegada.Value
+                                    : DBNull.Value);
 
                             Comando.Parameters.AddWithValue(
                                 "estado", Traslado.Estado);
+
+                            Comando.Parameters.AddWithValue(
+                                "observaciones",
+                                Traslado.Observaciones ?? String.Empty);
 
                             Comando.ExecuteNonQuery();
                         }
@@ -134,6 +147,7 @@ namespace CapaModelo_Traslados_Logistica.Repositorios
                                 ComandoId.ExecuteScalar());
                         }
 
+                        // GUARDAR DETALLES DEL TRASLADO
                         foreach (ClsEntidadDetalleTraslado Detalle
                             in Traslado.Detalles)
                         {

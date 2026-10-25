@@ -37,6 +37,10 @@
     <Reference Include="CapaVista_TransporteExterno_Logistica">
       <HintPath>..\..\TransporteExterno_Logistica\CapaVista_TransporteExterno_Logistica\bin\Debug\CapaVista_TransporteExterno_Logistica.dll</HintPath>
     </Reference>
+    <Reference Include="CapaVista_TransporteInterno_Logistica, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>bin\Debug\CapaVista_TransporteInterno_Logistica.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
     <Reference Include="System.Drawing" />
@@ -117,6 +121,7 @@
     <None Include="Resources\panelestandarizado1.png" />
     <None Include="Resources\71.png" />
     <None Include="Resources\f844b316-02c8-41af-9c16-226a1ef14d22.png" />
+    <None Include="Resources\FondoLogica2.png" />
     <Content Include="Resources\FondoLogistica.png" />
     <Content Include="Resources\panelestandarizado.png" />
     <Content Include="Resources\resumenTransporte.png" />

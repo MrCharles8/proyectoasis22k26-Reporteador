@@ -13,13 +13,14 @@ namespace CapaVista_Inventario_Logistica.Formas
 {
     public partial class FrmMantenimientoTipoMovimiento : Form
     {
-        ClsModelosTipoMovimiento _Datos = new ClsModelosTipoMovimiento();
-        Dictionary<string, object> _Fuentes = new Dictionary<string, object>();
+        /*ClsModelosTipoMovimiento _Datos = new ClsModelosTipoMovimiento();*/
+        /* Dictionary<string, object> _Fuentes = new Dictionary<string, object>();*/
         public FrmMantenimientoTipoMovimiento()
         {
             InitializeComponent();
-            _Fuentes.Add("DsMantenimientoTipoMovimiento", _Datos.LogisticaMetObtenerTodos());
-            LogisticaNavTipoMovimiento.NavegadorMetConfigurar("tblTipoMovimiento", 4, 6, _Fuentes);
+            /*_Fuentes.Add("DsMantenimientoTipoMovimiento", _Datos.LogisticaMetObtenerTodos());*/
+            /* LogisticaNavTipoMovimiento.NavegadorMetConfigurar("tblTipoMovimiento", 4, 6 , _Fuentes); */
+            LogisticaNavTipoMovimiento.NavegadorMetConfigurar("tbltipomovimiento", 4, 6);
         }
     }
 }
