@@ -1,4 +1,9 @@
-﻿using System;
+﻿/*
+ * Autor: José Xavier Bolaños Tenas
+ * Carné: 0901-23-2128
+ * Descripción: Configura el formulario de mantenimiento para los detalles de movimientos de inventario.
+ */
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
