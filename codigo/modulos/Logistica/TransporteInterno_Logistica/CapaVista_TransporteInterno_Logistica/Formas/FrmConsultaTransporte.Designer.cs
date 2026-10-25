@@ -29,41 +29,22 @@
         private void InitializeComponent()
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FrmConsultaTransporte));
-            this.LogisticaNavTransporteInterno = new CapaVista_Navegador.Navegador();
-            this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.label2 = new System.Windows.Forms.Label();
             this.LogisticaLblTituloTransporteInterno = new System.Windows.Forms.Label();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
+            this.LogisticaPnlConsultaTransporte = new System.Windows.Forms.Panel();
+            this.LogisticaNavTransporteInterno = new CapaVista_Navegador.Navegador();
+            this.LogisticaPnlConsultaTransporte.SuspendLayout();
             this.SuspendLayout();
-            // 
-            // LogisticaNavTransporteInterno
-            // 
-            this.LogisticaNavTransporteInterno.BackColor = System.Drawing.Color.Transparent;
-            this.LogisticaNavTransporteInterno.Location = new System.Drawing.Point(19, 118);
-            this.LogisticaNavTransporteInterno.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.LogisticaNavTransporteInterno.Name = "LogisticaNavTransporteInterno";
-            this.LogisticaNavTransporteInterno.Size = new System.Drawing.Size(1437, 111);
-            this.LogisticaNavTransporteInterno.TabIndex = 12;
-            // 
-            // pictureBox1
-            // 
-            this.pictureBox1.BackColor = System.Drawing.Color.Transparent;
-            this.pictureBox1.Image = global::CapaVista_TransporteInterno_Logistica.Properties.Resources._7;
-            this.pictureBox1.Location = new System.Drawing.Point(1118, 256);
-            this.pictureBox1.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(283, 322);
-            this.pictureBox1.TabIndex = 11;
-            this.pictureBox1.TabStop = false;
             // 
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.BackColor = System.Drawing.Color.Transparent;
+            this.label2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(251)))), ((int)(((byte)(246)))), ((int)(((byte)(242)))));
             this.label2.Font = new System.Drawing.Font("Tahoma", 12.75F);
-            this.label2.Location = new System.Drawing.Point(14, 63);
+            this.label2.Location = new System.Drawing.Point(37, 62);
+            this.label2.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(697, 27);
+            this.label2.Size = new System.Drawing.Size(530, 21);
             this.label2.TabIndex = 10;
             this.label2.Text = "Consulta el historial de viajes y genera reportes de transporte interno.";
             // 
@@ -73,37 +54,59 @@
             this.LogisticaLblTituloTransporteInterno.BackColor = System.Drawing.Color.Transparent;
             this.LogisticaLblTituloTransporteInterno.Font = new System.Drawing.Font("Lucida Fax", 20.25F, System.Drawing.FontStyle.Bold);
             this.LogisticaLblTituloTransporteInterno.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(62)))), ((int)(((byte)(138)))), ((int)(((byte)(132)))));
-            this.LogisticaLblTituloTransporteInterno.Location = new System.Drawing.Point(12, 23);
+            this.LogisticaLblTituloTransporteInterno.Location = new System.Drawing.Point(35, 9);
+            this.LogisticaLblTituloTransporteInterno.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.LogisticaLblTituloTransporteInterno.Name = "LogisticaLblTituloTransporteInterno";
-            this.LogisticaLblTituloTransporteInterno.Size = new System.Drawing.Size(551, 40);
+            this.LogisticaLblTituloTransporteInterno.Size = new System.Drawing.Size(447, 32);
             this.LogisticaLblTituloTransporteInterno.TabIndex = 9;
             this.LogisticaLblTituloTransporteInterno.Text = "Consulta de Viajes y Reportes";
             // 
+            // LogisticaPnlConsultaTransporte
+            // 
+            this.LogisticaPnlConsultaTransporte.BackColor = System.Drawing.Color.Transparent;
+            this.LogisticaPnlConsultaTransporte.BackgroundImage = global::CapaVista_TransporteInterno_Logistica.Properties.Resources.FondoLogica2;
+            this.LogisticaPnlConsultaTransporte.Controls.Add(this.LogisticaLblTituloTransporteInterno);
+            this.LogisticaPnlConsultaTransporte.Controls.Add(this.label2);
+            this.LogisticaPnlConsultaTransporte.Controls.Add(this.LogisticaNavTransporteInterno);
+            this.LogisticaPnlConsultaTransporte.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.LogisticaPnlConsultaTransporte.Location = new System.Drawing.Point(0, 0);
+            this.LogisticaPnlConsultaTransporte.Name = "LogisticaPnlConsultaTransporte";
+            this.LogisticaPnlConsultaTransporte.Size = new System.Drawing.Size(1144, 741);
+            this.LogisticaPnlConsultaTransporte.TabIndex = 13;
+            // 
+            // LogisticaNavTransporteInterno
+            // 
+            this.LogisticaNavTransporteInterno.Location = new System.Drawing.Point(30, 85);
+            this.LogisticaNavTransporteInterno.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.LogisticaNavTransporteInterno.Name = "LogisticaNavTransporteInterno";
+            this.LogisticaNavTransporteInterno.Size = new System.Drawing.Size(1078, 90);
+            this.LogisticaNavTransporteInterno.TabIndex = 0;
+            // 
             // FrmConsultaTransporte
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.BackgroundImage = global::CapaVista_TransporteInterno_Logistica.Properties.Resources.FondoLogistica;
+            this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(251)))), ((int)(((byte)(246)))), ((int)(((byte)(242)))));
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.ClientSize = new System.Drawing.Size(1525, 912);
-            this.Controls.Add(this.LogisticaNavTransporteInterno);
-            this.Controls.Add(this.pictureBox1);
-            this.Controls.Add(this.label2);
-            this.Controls.Add(this.LogisticaLblTituloTransporteInterno);
+            this.ClientSize = new System.Drawing.Size(1144, 741);
+            this.Controls.Add(this.LogisticaPnlConsultaTransporte);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
-            this.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.Margin = new System.Windows.Forms.Padding(2);
+            this.MaximizeBox = false;
             this.Name = "FrmConsultaTransporte";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "5014-Consultas de Transporte";
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
+            this.LogisticaPnlConsultaTransporte.ResumeLayout(false);
+            this.LogisticaPnlConsultaTransporte.PerformLayout();
             this.ResumeLayout(false);
-            this.PerformLayout();
 
         }
 
         #endregion
-        private CapaVista_Navegador.Navegador LogisticaNavTransporteInterno;
-        private System.Windows.Forms.PictureBox pictureBox1;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label LogisticaLblTituloTransporteInterno;
+        private System.Windows.Forms.Panel LogisticaPnlConsultaTransporte;
+        private CapaVista_Navegador.Navegador LogisticaNavTransporteInterno;
     }
 }

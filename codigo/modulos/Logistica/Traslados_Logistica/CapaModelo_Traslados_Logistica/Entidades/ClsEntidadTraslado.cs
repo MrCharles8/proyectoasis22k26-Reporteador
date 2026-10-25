@@ -14,7 +14,11 @@ namespace CapaModelo_Traslados_Logistica.Entidades
         public int? IdTransporte { get; set; }
         public DateTime FechaSolicitud { get; set; }
         public DateTime? FechaSalida { get; set; }
+        public DateTime? FechaLlegada { get; set; }
         public string Estado { get; set; }
-        public List<ClsEntidadDetalleTraslado> Detalles { get; set; } = new List<ClsEntidadDetalleTraslado>();
+        public string Observaciones { get; set; }
+
+        public List<ClsEntidadDetalleTraslado> Detalles { get; set; }
+            = new List<ClsEntidadDetalleTraslado>();
     }
 }

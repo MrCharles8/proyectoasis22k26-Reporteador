@@ -61,29 +61,71 @@ namespace CapaVista_Traslados_Logistica.Formas
         }
 
         // Carga los catálogos usados por los combos y actualiza la lista de traslados.
+
         private void LogisticaProcCargarListas()
         {
-            LogisticaCboBodegaOrigen.DataSource = _ControladorTraslado.LogisticaFuncListarBodegas();
-            LogisticaCboBodegaOrigen.DisplayMember = "nombreBodega";
-            LogisticaCboBodegaOrigen.ValueMember = "idBodega";
+            try
+            {
+                DataTable Bodegas = _ControladorTraslado.LogisticaFuncListarBodegas();
 
-            LogisticaCboBodegaDestinoTraslados.DataSource = _ControladorTraslado.LogisticaFuncListarBodegas();
-            LogisticaCboBodegaDestinoTraslados.DisplayMember = "nombreBodega";
-            LogisticaCboBodegaDestinoTraslados.ValueMember = "idBodega";
+                LogisticaCboBodegaOrigen.DisplayMember = "nombreBodega";
+                LogisticaCboBodegaOrigen.ValueMember = "idBodega";
+                LogisticaCboBodegaOrigen.DataSource = Bodegas;
 
-            LogisticaCboProductoTraslados.DataSource = _ControladorTraslado.LogisticaFuncListarProductos();
-            LogisticaCboProductoTraslados.DisplayMember = "descripcionProducto";
-            LogisticaCboProductoTraslados.ValueMember = "idProducto";
+                LogisticaCboBodegaDestinoTraslados.DisplayMember = "nombreBodega";
+                LogisticaCboBodegaDestinoTraslados.ValueMember = "idBodega";
+                LogisticaCboBodegaDestinoTraslados.DataSource =
+                    _ControladorTraslado.LogisticaFuncListarBodegas();
+            }
+            catch (Exception Excepcion)
+            {
+                throw new Exception("Error al cargar BODEGAS: " + Excepcion.Message, Excepcion);
+            }
 
-            LogisticaCboTransporteTraslado.DataSource = _ControladorTraslado.LogisticaFuncListarTransportes();
-            LogisticaCboTransporteTraslado.DisplayMember = "descripcionTransporte";
-            LogisticaCboTransporteTraslado.ValueMember = "idTransporte";
+            try
+            {
+                LogisticaCboProductoTraslados.DisplayMember = "descripcionProducto";
+                LogisticaCboProductoTraslados.ValueMember = "idProducto";
+                LogisticaCboProductoTraslados.DataSource =
+                    _ControladorTraslado.LogisticaFuncListarProductos();
+            }
+            catch (Exception Excepcion)
+            {
+                throw new Exception("Error al cargar PRODUCTOS: " + Excepcion.Message, Excepcion);
+            }
 
-            LogisticaCboEstadoTraslado.DataSource = _ControladorTraslado.LogisticaFuncListarEstados();
-            LogisticaCboEstadoTraslado.DisplayMember = "estadoTraslado";
-            LogisticaCboEstadoTraslado.ValueMember = "estadoTraslado";
+            try
+            {
+                LogisticaCboTransporteTraslado.DisplayMember = "descripcionTransporte";
+                LogisticaCboTransporteTraslado.ValueMember = "idTransporte";
+                LogisticaCboTransporteTraslado.DataSource =
+                    _ControladorTraslado.LogisticaFuncListarTransportes();
+            }
+            catch (Exception Excepcion)
+            {
+                throw new Exception("Error al cargar TRANSPORTES: " + Excepcion.Message, Excepcion);
+            }
 
-            LogisticaProcCargarTraslados();
+            try
+            {
+                LogisticaCboEstadoTraslado.DisplayMember = "estadoTraslado";
+                LogisticaCboEstadoTraslado.ValueMember = "estadoTraslado";
+                LogisticaCboEstadoTraslado.DataSource =
+                    _ControladorTraslado.LogisticaFuncListarEstados();
+            }
+            catch (Exception Excepcion)
+            {
+                throw new Exception("Error al cargar ESTADOS: " + Excepcion.Message, Excepcion);
+            }
+
+            try
+            {
+                LogisticaProcCargarTraslados();
+            }
+            catch (Exception Excepcion)
+            {
+                throw new Exception("Error al cargar TRASLADOS: " + Excepcion.Message, Excepcion);
+            }
         }
 
         // Vincula las columnas visibles del grid con los campos devueltos por el controlador.
@@ -147,6 +189,8 @@ namespace CapaVista_Traslados_Logistica.Formas
         }
 
         // Envía los datos capturados al controlador y refresca la lista tras guardar.
+
+        // Envía los datos capturados al controlador y refresca la lista tras guardar.
         private void LogisticaProcGuardarTraslado(object Sender, EventArgs E)
         {
             try
@@ -154,30 +198,54 @@ namespace CapaVista_Traslados_Logistica.Formas
                 DataTable TablaDetalles = new DataTable();
                 TablaDetalles.Columns.Add("idProducto", typeof(int));
                 TablaDetalles.Columns.Add("cantidad", typeof(int));
+
                 foreach (DataGridViewRow Fila in LogisticaDgvProductoTraslados.Rows)
                 {
-                    TablaDetalles.Rows.Add(Convert.ToInt32(Fila.Cells["idProducto"].Value),
+                    TablaDetalles.Rows.Add(
+                        Convert.ToInt32(Fila.Cells["idProducto"].Value),
                         Convert.ToInt32(Fila.Cells["cantidadProducto"].Value));
                 }
 
                 _ControladorTraslado.LogisticaProcGuardarTraslado(
                     LogisticaTxtCodigoTraslado.Text.Trim(),
-                    LogisticaCboBodegaOrigen.SelectedValue == null ? 0 : Convert.ToInt32(LogisticaCboBodegaOrigen.SelectedValue),
-                    LogisticaCboBodegaDestinoTraslados.SelectedValue == null ? 0 : Convert.ToInt32(LogisticaCboBodegaDestinoTraslados.SelectedValue),
-                    LogisticaCboTransporteTraslado.SelectedValue == null ? (int?)null : Convert.ToInt32(LogisticaCboTransporteTraslado.SelectedValue),
+                    LogisticaCboBodegaOrigen.SelectedValue == null
+                        ? 0
+                        : Convert.ToInt32(LogisticaCboBodegaOrigen.SelectedValue),
+                    LogisticaCboBodegaDestinoTraslados.SelectedValue == null
+                        ? 0
+                        : Convert.ToInt32(LogisticaCboBodegaDestinoTraslados.SelectedValue),
+                    LogisticaCboTransporteTraslado.SelectedValue == null
+                        ? (int?)null
+                        : Convert.ToInt32(LogisticaCboTransporteTraslado.SelectedValue),
                     LogisticaDtpFechaSalidaTraslados.Value,
-                    LogisticaCboEstadoTraslado.SelectedValue == null ? String.Empty : LogisticaCboEstadoTraslado.SelectedValue.ToString(),
-                    TablaDetalles);
+                    LogisticaCboEstadoTraslado.SelectedValue == null
+                        ? String.Empty
+                        : LogisticaCboEstadoTraslado.SelectedValue.ToString(),
+                    TablaDetalles,
+                    LogisticaTxtObservacionesTraslado.Text.Trim()
+                );
+
                 LogisticaProcCargarTraslados();
-                MessageBox.Show("Traslado guardado correctamente.", "Traslados", MessageBoxButtons.OK, MessageBoxIcon.Information);
+
+                MessageBox.Show(
+                    "Traslado guardado correctamente.",
+                    "Traslados",
+                    MessageBoxButtons.OK,
+                    MessageBoxIcon.Information);
+
                 LogisticaProcLimpiarControles(LogisticaPnlDatosTraslados);
                 LogisticaPnlDatosTraslados.Enabled = false;
             }
             catch (Exception Excepcion)
             {
-                MessageBox.Show(Excepcion.Message, "No se pudo guardar el traslado", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                MessageBox.Show(
+                    Excepcion.Message,
+                    "No se pudo guardar el traslado",
+                    MessageBoxButtons.OK,
+                    MessageBoxIcon.Warning);
             }
         }
+
 
         // Habilita el panel para iniciar la captura de un traslado.
         private void LogisticaProcHabilitarCaptura(object Sender, EventArgs E)

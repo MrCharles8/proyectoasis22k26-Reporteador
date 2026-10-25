@@ -22,6 +22,7 @@ using CapaVista_TransporteInterno_Logistica.Formas;
 using CapaVista_Traslados_Logistica.Formas;
 using CapaVista_MuestreoAuditoria_Logistica;
 using CapaVista_CierreInventario.Forms;
+using System.Drawing;
 
 namespace CapaVista_Logistica
 {
@@ -109,6 +110,66 @@ namespace CapaVista_Logistica
             object sender, EventArgs e)
         {
             LogisticaMetAbrirFormulario(new FrmCierreInventario());
+        }
+
+        private void LogisticaBtnCerrarSesion_Click(object sender, EventArgs e)
+        {
+            DialogResult resultado = MessageBox.Show(
+        "¿Seguro que deseas cerrar sesión?",
+        "Cerrar sesión",
+        MessageBoxButtons.YesNo,
+        MessageBoxIcon.Question);
+
+            if (resultado == DialogResult.Yes)
+            {
+                this.Close();
+            }
+        }
+
+        // ============================================
+        // BOTÓN HAMBURGUESA - EXPANDIR / CONTRAER MENÚ
+        // ============================================
+
+        private void LogisticaBtnHamburguesa_Click(object sender, EventArgs e)
+        {
+            if (LogisticaPnlNavegador.Width == 270)
+            {
+                // Contraer menú lateral
+                LogisticaPnlNavegador.Width = 64;
+
+                // Reubicar panel principal
+                LogisticaPnlBanner.Location = new Point(73, 34);
+
+                // Reubicar botón hamburguesa
+                LogisticaBtnHamburguesa.Location = new Point(73, 8);
+
+                // Reubicar información del usuario
+                label1.Location = new Point(128, 8);
+                LogisticaLblUsuario.Location = new Point(228, 9);
+
+                // Reubicar información del rol
+                label2.Location = new Point(500, 9);
+                LogisticaLblRolUsuario.Location = new Point(546, 9);
+            }
+            else
+            {
+                // Expandir menú lateral
+                LogisticaPnlNavegador.Width = 270;
+
+                // Restaurar panel principal
+                LogisticaPnlBanner.Location = new Point(279, 34);
+
+                // Restaurar botón hamburguesa
+                LogisticaBtnHamburguesa.Location = new Point(279, 8);
+
+                // Restaurar información del usuario
+                label1.Location = new Point(334, 8);
+                LogisticaLblUsuario.Location = new Point(434, 9);
+
+                // Restaurar información del rol
+                label2.Location = new Point(706, 9);
+                LogisticaLblRolUsuario.Location = new Point(752, 9);
+            }
         }
     }
 }
