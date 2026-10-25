@@ -1,4 +1,9 @@
-﻿using System;
+﻿/*
+ * Autor: José Xavier Bolaños Tenas
+ * Carné: 0901-23-2128
+ * Descripción: Representa los datos de un tipo de movimiento de inventario.
+ */
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;

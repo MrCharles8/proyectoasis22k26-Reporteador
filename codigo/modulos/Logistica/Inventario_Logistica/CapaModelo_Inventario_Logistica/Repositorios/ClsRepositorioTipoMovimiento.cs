@@ -1,4 +1,9 @@
-﻿using CapaModelo_Inventario_Logistica.Contratos;
+﻿/*
+ * Autor: José Xavier Bolaños Tenas
+ * Carné: 0901-23-2128
+ * Descripción: Consulta y convierte los registros de tipos de movimiento en entidades del modelo.
+ */
+using CapaModelo_Inventario_Logistica.Contratos;
 using CapaModelo_Inventario_Logistica.Entidades;
 using System;
 using System.Collections.Generic;

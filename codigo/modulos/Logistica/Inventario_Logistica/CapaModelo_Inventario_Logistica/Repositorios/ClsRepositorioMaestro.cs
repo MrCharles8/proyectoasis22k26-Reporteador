@@ -1,4 +1,9 @@
-﻿using System;
+﻿/*
+ * Autor: José Xavier Bolaños Tenas
+ * Carné: 0901-23-2128
+ * Descripción: Ejecuta consultas a la base de datos y devuelve sus resultados en tablas.
+ */
+using System;
 using System.Collections.Generic;
 using System.Data;
 using System.Linq;
