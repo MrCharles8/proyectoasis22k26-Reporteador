@@ -122,5 +122,11 @@
     <Content Include="Resources\resumenTransporte.png" />
     <Content Include="Resources\resumenTraslado.png" />
   </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\CapaControlador_TransporteInterno_Logistica\CapaControlador_TransporteInterno_Logistica.csproj">
+      <Project>{f609f5aa-795e-4721-bbd7-96366f1a170b}</Project>
+      <Name>CapaControlador_TransporteInterno_Logistica</Name>
+    </ProjectReference>
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
