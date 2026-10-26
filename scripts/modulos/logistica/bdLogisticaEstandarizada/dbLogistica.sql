@@ -1,7 +1,6 @@
 -- REVISION V1.1
 -- TERMINUS ERP | Logistica | Estandarizacion BD V1.1 | 24/10/2026
 -- Script de CREACION para base vacia
-
 CREATE DATABASE IF NOT EXISTS dbLogistica;
 USE dbLogistica;
 
@@ -145,7 +144,7 @@ CREATE TABLE IF NOT EXISTS tblEncabezadoViaje (
 Pk_EncabezadoViaje BIGINT AUTO_INCREMENT NOT NULL,
     fechaDocumentoEncabezadoViaje DATETIME NOT NULL,
     horaSalidaEncabezadoViaje DATETIME NOT NULL,
-    horaLlegadaEncabezadoViaje DATETIME NOT NULL,
+    horaLlegadaEncabezadoViaje DATETIME NULL,
     requiereCadenaFrioEncabezadoViaje BOOLEAN NOT NULL DEFAULT TRUE,
     estadoViajeEncabezadoViaje VARCHAR(30) NOT NULL DEFAULT 'EN_CURSO',
     pesoTotalEncabezadoViaje DECIMAL(18,3) NOT NULL,
@@ -356,9 +355,9 @@ CREATE TABLE IF NOT EXISTS tblMovimientoInventario (
 Pk_MovimientoInventario INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
     Fk_TipoMovimiento_Codigo INT NOT NULL,
 
-    Fk_Bodega_Origen_Codigo INT NOT NULL,
-    Fk_Bodega_Destino_Codigo INT NOT NULL,
-    Fk_Transporte_Codigo INT NOT NULL,
+    Fk_Bodega_Origen_Codigo INT NULL,
+    Fk_Bodega_Destino_Codigo INT NULL,
+    Fk_Transporte_Codigo INT NULL,
     fechaMovimientoInventario DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP,
 
     observacionesMovimientoInventario VARCHAR(500) NOT NULL,
@@ -403,10 +402,10 @@ Pk_Traslado INT NOT NULL AUTO_INCREMENT,
     codigoTraslado VARCHAR(30) NOT NULL,
     Fk_Bodega_Origen_Codigo INT NOT NULL,
     Fk_Bodega_Destino_Codigo INT NOT NULL,
-    Fk_Transporte_Codigo INT NOT NULL,
+    Fk_Transporte_Codigo INT NULL,
     fechaSolicitudTraslado DATETIME NOT NULL,
-    fechaSalidaTraslado DATETIME NOT NULL,
-    fechaLlegadaTraslado DATETIME NOT NULL,
+    fechaSalidaTraslado DATETIME NULL,
+    fechaLlegadaTraslado DATETIME NULL,
     estadoTraslado ENUM('SOLICITADO','EN_TRANSITO','RECIBIDO','CANCELADO') NOT NULL DEFAULT 'SOLICITADO',
     observacionesTraslado VARCHAR(500) NOT NULL,
     created_at TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,
@@ -495,7 +494,7 @@ Pk_ServicioTransporteExterno INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
  direccionDestinoServicioTransporteExterno VARCHAR(500) NOT NULL,
  fechaContratacionServicioTransporteExterno DATE NOT NULL,
  fechaEstimadaEntregaServicioTransporteExterno DATE NOT NULL,
- fechaEntregaRealServicioTransporteExterno DATE NOT NULL,
+ fechaEntregaRealServicioTransporteExterno DATE NULL,
  created_at TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,
  updated_at TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
  CONSTRAINT uqServicioNumeroGuia UNIQUE (numeroGuiaServicioTransporteExterno),
@@ -613,8 +612,8 @@ Pk_SolicitudPagoTransporte INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
  Fk_ServicioTransporteExterno_Codigo INT NOT NULL,
  codigoSolicitudPagoTransporte VARCHAR(30) NOT NULL,
  estadoSolicitudPagoTransporte VARCHAR(30) NOT NULL DEFAULT 'Solicitado',
- referenciaBancariaSolicitudPagoTransporte VARCHAR(100) NOT NULL,
- fechaPagoSolicitudPagoTransporte DATE NOT NULL,
+ referenciaBancariaSolicitudPagoTransporte VARCHAR(100) NULL,
+ fechaPagoSolicitudPagoTransporte DATE NULL,
  created_at TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,
  updated_at TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
  CONSTRAINT uqSolicitudServicio UNIQUE (Fk_ServicioTransporteExterno_Codigo),
@@ -647,8 +646,7 @@ JOIN tblSolicitudPagoTransporte s ON s.Fk_ServicioTransporteExterno_Codigo = t.P
 
 DROP PROCEDURE IF EXISTS spGenerarSolicitudPagoTransporte;
 DELIMITER $$
--- La referencia bancaria y fecha de pago son obligatorias para mantener NOT NULL.
--- Deben enviarse valores reales; no se generan fechas de pago ficticias.
+-- La referencia bancaria y la fecha de pago pueden quedar NULL mientras el pago esté pendiente.
 CREATE PROCEDURE spGenerarSolicitudPagoTransporte(
     IN pIdServicio INT,
     IN pReferenciaBancaria VARCHAR(100),
@@ -661,9 +659,6 @@ BEGIN
     IF NOT EXISTS (SELECT 1 FROM tblCostoTransporte
                    WHERE Fk_ServicioTransporteExterno_Codigo = pIdServicio) THEN
         SIGNAL SQLSTATE '45000' SET MESSAGE_TEXT = 'El servicio no existe o no tiene costo registrado';
-    END IF;
-    IF pReferenciaBancaria IS NULL OR TRIM(pReferenciaBancaria) = '' OR pFechaPago IS NULL THEN
-        SIGNAL SQLSTATE '45000' SET MESSAGE_TEXT = 'La referencia bancaria y la fecha de pago son obligatorias';
     END IF;
     INSERT INTO tblSolicitudPagoTransporte (
         Fk_ServicioTransporteExterno_Codigo,
@@ -702,8 +697,8 @@ BEGIN
     DECLARE vGuia VARCHAR(30);
     DECLARE EXIT HANDLER FOR SQLEXCEPTION BEGIN ROLLBACK; RESIGNAL; END;
     START TRANSACTION;
-    IF pTraslado IS NULL OR pFechaReal IS NULL THEN
-        SIGNAL SQLSTATE '45000' SET MESSAGE_TEXT = 'El traslado y la fecha real son obligatorios';
+    IF pTraslado IS NULL THEN
+        SIGNAL SQLSTATE '45000' SET MESSAGE_TEXT = 'El traslado es obligatorio';
     END IF;
     SELECT nombreEmpresaTransportista INTO vEmpresa
     FROM tblEmpresaTransportista WHERE Pk_EmpresaTransportista = pEmpresa;

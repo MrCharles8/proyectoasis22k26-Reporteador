@@ -1,4 +1,18 @@
-﻿using System;
+﻿/*
+ * Responsable: Velveth Saraì Chavez Mejìa
+ * Carne: 0901 23 6269  
+ * 
+ * Descripción: 
+ * Formulario de mantenimiento de bodegas,
+ * permite ingresar, guardar, modificar y eliminar bodegas en el sistema
+ * a traves del navegador incluyendo la funcionalidad de busqueda y 
+ * filtrado de registros.
+ * 
+ * Fecha: 25/10/2024
+ */
+
+
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
