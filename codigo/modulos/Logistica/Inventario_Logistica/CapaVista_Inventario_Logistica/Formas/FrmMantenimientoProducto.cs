@@ -1,4 +1,16 @@
-﻿using System;
+﻿/*
+ * Responsable: Gabriela Pinto García
+ * Carne: 9959 23 1087
+ * 
+ * Descripción:
+ * Formulario de mantenimiento de productos,
+ * permite ingresar, guardar, modificar y eliminar productos en el sistema
+ * a través del navegador.
+ * 
+ * Fecha: 25/10/2024
+ */
+
+using System;
 using System.Windows.Forms;
 
 namespace CapaVista_Inventario_Logistica.Formas
