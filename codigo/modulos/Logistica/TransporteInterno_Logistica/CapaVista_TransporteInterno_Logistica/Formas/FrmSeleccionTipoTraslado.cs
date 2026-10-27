@@ -1,4 +1,14 @@
-﻿using System;
+﻿// ============================================================================
+// MÓDULO: LOGÍSTICA - TRANSPORTE INTERNO
+// FORMULARIO: FrmSeleccionTipoTraslado
+// DESCRIPCIÓN:
+// Formulario que permite seleccionar el tipo de traslado a realizar, ya sea interno o externo,
+// dentro del submódulo de Transporte Interno.
+// RESPONSABLE: BRIAN ANDREE DE LA CRUZ SOSA 0901-23-6124
+// ============================
+
+
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;

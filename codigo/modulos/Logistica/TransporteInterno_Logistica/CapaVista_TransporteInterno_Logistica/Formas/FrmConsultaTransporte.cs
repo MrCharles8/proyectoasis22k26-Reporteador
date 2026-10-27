@@ -12,7 +12,7 @@
 // Integra las funcionalidades de consulta y reporte para apoyar
 // el seguimiento y la trazabilidad de las operaciones de transporte.
 //
-// RESPONSABLE: BRIAN ANDREE DE LA CRUZ SOSA 0901-23-6124
+// RESPONSABLE: Brayan Moisés Pinzon López 0901-23-10511
 // ============================================================================
 
 using System;
@@ -36,5 +36,9 @@ namespace CapaVista_TransporteInterno_Logistica.Formas
             LogisticaNavTransporteInterno.NavegadorMetConfigurar("tblEncabezadoViaje", 4, 6);
         }
 
+        private void LogisticaPnlConsultaTransporte_Paint(object sender, PaintEventArgs e)
+        {
+
+        }
     }
 }

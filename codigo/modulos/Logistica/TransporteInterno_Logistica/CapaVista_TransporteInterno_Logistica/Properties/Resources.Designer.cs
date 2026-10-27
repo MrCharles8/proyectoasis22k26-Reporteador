@@ -93,6 +93,16 @@ namespace CapaVista_TransporteInterno_Logistica.Properties {
         /// <summary>
         ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap FondoLogica21 {
+            get {
+                object obj = ResourceManager.GetObject("FondoLogica21", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap FondoLogistica {
             get {
                 object obj = ResourceManager.GetObject("FondoLogistica", resourceCulture);

@@ -13,7 +13,7 @@
 // Integra el componente Navegador para administrar los registros
 // relacionados con el control del transporte.
 //
-// RESPONSABLE: BRIAN ANDREE DE LA CRUZ SOSA 0901-23-6124
+// RESPONSABLE: Brayan Moisés Pinzon López 0901-23-10511
 // ============================================================================
 
 using System;
