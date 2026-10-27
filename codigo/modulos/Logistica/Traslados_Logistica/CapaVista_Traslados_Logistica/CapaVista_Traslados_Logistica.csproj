@@ -86,31 +86,7 @@
     <None Include="Resources\6.png" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Resources\Logistica.png" />
-  </ItemGroup>
-  <ItemGroup>
     <None Include="Resources\logo.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Resources\panel_fondo.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Resources\panel1.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Resources\btn_ayuda_logistica.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Resources\btn_buscar_logistica.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Resources\btn_cancelar_logistica.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Resources\btn_guardar_logistica.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Resources\btn_nuevo_logistica.png" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\7.png" />
