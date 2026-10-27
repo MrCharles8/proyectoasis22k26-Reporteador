@@ -122,6 +122,7 @@
     <None Include="Resources\71.png" />
     <None Include="Resources\f844b316-02c8-41af-9c16-226a1ef14d22.png" />
     <None Include="Resources\FondoLogica2.png" />
+    <None Include="Resources\FondoLogica21.png" />
     <Content Include="Resources\FondoLogistica.png" />
     <Content Include="Resources\panelestandarizado.png" />
     <Content Include="Resources\resumenTransporte.png" />

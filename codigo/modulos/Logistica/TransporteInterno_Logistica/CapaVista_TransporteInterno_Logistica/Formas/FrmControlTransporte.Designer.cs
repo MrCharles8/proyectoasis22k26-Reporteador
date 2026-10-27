@@ -65,7 +65,6 @@
             // LogisticaPnlControlTransporte
             // 
             this.LogisticaPnlControlTransporte.BackColor = System.Drawing.Color.Transparent;
-            this.LogisticaPnlControlTransporte.BackgroundImage = global::CapaVista_TransporteInterno_Logistica.Properties.Resources.FondoLogica2;
             this.LogisticaPnlControlTransporte.Controls.Add(this.LogisticaNavTransporteInterno);
             this.LogisticaPnlControlTransporte.Dock = System.Windows.Forms.DockStyle.Fill;
             this.LogisticaPnlControlTransporte.Location = new System.Drawing.Point(0, 0);

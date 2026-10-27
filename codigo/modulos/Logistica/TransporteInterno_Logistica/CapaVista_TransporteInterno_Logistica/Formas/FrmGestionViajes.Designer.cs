@@ -63,7 +63,6 @@
             // 
             // LogisticaPnlGestionViajes
             // 
-            this.LogisticaPnlGestionViajes.BackgroundImage = global::CapaVista_TransporteInterno_Logistica.Properties.Resources.FondoLogica2;
             this.LogisticaPnlGestionViajes.Controls.Add(this.LogisticaNavTransporteInterno);
             this.LogisticaPnlGestionViajes.Dock = System.Windows.Forms.DockStyle.Fill;
             this.LogisticaPnlGestionViajes.Location = new System.Drawing.Point(0, 0);

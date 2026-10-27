@@ -63,8 +63,8 @@
             // 
             // LogisticaPnlConsultaTransporte
             // 
-            this.LogisticaPnlConsultaTransporte.BackColor = System.Drawing.Color.Transparent;
-            this.LogisticaPnlConsultaTransporte.BackgroundImage = global::CapaVista_TransporteInterno_Logistica.Properties.Resources.FondoLogica2;
+            this.LogisticaPnlConsultaTransporte.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(251)))), ((int)(((byte)(246)))), ((int)(((byte)(242)))));
+            this.LogisticaPnlConsultaTransporte.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
             this.LogisticaPnlConsultaTransporte.Controls.Add(this.LogisticaLblTituloTransporteInterno);
             this.LogisticaPnlConsultaTransporte.Controls.Add(this.label2);
             this.LogisticaPnlConsultaTransporte.Controls.Add(this.LogisticaNavTransporteInterno);
@@ -73,6 +73,7 @@
             this.LogisticaPnlConsultaTransporte.Name = "LogisticaPnlConsultaTransporte";
             this.LogisticaPnlConsultaTransporte.Size = new System.Drawing.Size(1144, 741);
             this.LogisticaPnlConsultaTransporte.TabIndex = 13;
+            this.LogisticaPnlConsultaTransporte.Paint += new System.Windows.Forms.PaintEventHandler(this.LogisticaPnlConsultaTransporte_Paint);
             // 
             // LogisticaNavTransporteInterno
             // 

@@ -146,7 +146,7 @@
             // 
             // LogisticaPnlTransporteInterno
             // 
-            this.LogisticaPnlTransporteInterno.BackgroundImage = global::CapaVista_TransporteInterno_Logistica.Properties.Resources.FondoLogica2;
+            this.LogisticaPnlTransporteInterno.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
             this.LogisticaPnlTransporteInterno.Controls.Add(this.LogisticaBtnGestionViajes);
             this.LogisticaPnlTransporteInterno.Controls.Add(this.LogisticaBtnControlTransporte);
             this.LogisticaPnlTransporteInterno.Controls.Add(this.LogisticaBtnConsultasTransporte);
@@ -180,7 +180,7 @@
             this.Controls.Add(this.LogisticaPnlTransporteInterno);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
-            this.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.Margin = new System.Windows.Forms.Padding(2);
             this.MaximizeBox = false;
             this.Name = "FrmTransporteInterno";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
