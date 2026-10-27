@@ -1,4 +1,15 @@
-﻿using System;
+﻿/*
+*Responsable: Nills Berducido Gómez
+* Carne: 0901 23 14275
+
+*Descripción:
+*Formulario de cierre de inventario
+* permite realizar el cierre mensual validando los datos que se tienen
+
+* Fecha: 26 / 10 / 2026
+*/
+
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
