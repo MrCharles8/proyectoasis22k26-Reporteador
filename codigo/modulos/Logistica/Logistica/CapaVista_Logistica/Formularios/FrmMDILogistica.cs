@@ -28,7 +28,7 @@ using System.Windows.Forms;
 using CapaVista_Inventario_Logistica.Formularios;
 
 // Formularios del módulo de Traslados.
-using CapaVista_Traslados_Logistica.Formas;
+using CapaVista_Traslados_Logistica.Formularios;
 
 // Formularios del módulo de Muestreo y Auditoría.
 using CapaVista_MuestreoAuditoria_Logistica;

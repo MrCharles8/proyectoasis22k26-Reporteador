@@ -25,7 +25,7 @@ namespace CapaVista_Inventario_Logistica.Formularios
             // Configuración del navegador para detalles
             // de movimientos de inventario.
             LogisticaNavDetalleMovimiento.NavegadorMetConfigurar(
-                "tbldetallemovimiento", 4, 6);
+                "tblDetalleMovimiento", 4, 6);
         }
     }
 }

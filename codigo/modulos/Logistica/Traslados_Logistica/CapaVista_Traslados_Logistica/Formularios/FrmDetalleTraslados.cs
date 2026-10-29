@@ -11,7 +11,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace CapaVista_Traslados_Logistica.Formas
+namespace CapaVista_Traslados_Logistica.Formularios
 {
     public partial class FrmDetalleTraslados : Form
     {
