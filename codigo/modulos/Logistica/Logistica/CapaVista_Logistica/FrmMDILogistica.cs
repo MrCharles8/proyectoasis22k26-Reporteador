@@ -18,7 +18,6 @@
 using System;
 using System.Windows.Forms;
 using CapaVista_Inventario_Logistica.Formas;
-using CapaVista_TransporteInterno_Logistica.Formas;
 using CapaVista_Traslados_Logistica.Formas;
 using CapaVista_MuestreoAuditoria_Logistica;
 using CapaVista_CierreInventario.Forms;
@@ -88,7 +87,7 @@ namespace CapaVista_Logistica
         private void LogisticaBtnGestionTransporte_Click(
             object sender, EventArgs e)
         {
-            LogisticaMetAbrirFormulario(new FrmSeleccionTipoTraslado());
+
         }
 
         // Traslados
