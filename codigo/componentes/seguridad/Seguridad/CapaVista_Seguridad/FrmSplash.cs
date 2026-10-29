@@ -117,7 +117,7 @@ namespace CapaVista_Seguridad
                         //break;
 
                     //case "RRHH":
-                        //var MdiRrhh = now FrmMDIRrhh();
+                        //var MdiRrhh = new FrmMDIRrhh();
                         //MdiRrhh.RrhhMetActualizarInfoUsuario(
                         //ClsSesionSeguridad.NombreEmpleado,
                         //ClsSesionSeguridad.SeguridadMetRolesComoTexto());
