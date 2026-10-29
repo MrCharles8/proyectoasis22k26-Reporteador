@@ -47,76 +47,113 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Formas\CostosYPagosDelServicio.cs">
+    <Compile Include="Formularios\CostosYPagosDelServicio.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Formas\CostosYPagosDelServicio.Designer.cs">
+    <Compile Include="Formularios\CostosYPagosDelServicio.Designer.cs">
       <DependentUpon>CostosYPagosDelServicio.cs</DependentUpon>
     </Compile>
-    <Compile Include="Formas\IncidenciasEHistorial.cs">
+    <Compile Include="Formularios\IncidenciasEHistorial.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Formas\IncidenciasEHistorial.Designer.cs">
+    <Compile Include="Formularios\IncidenciasEHistorial.Designer.cs">
       <DependentUpon>IncidenciasEHistorial.cs</DependentUpon>
     </Compile>
-    <Compile Include="Formas\ListadoTransporteExterno.cs">
+    <Compile Include="Formularios\ListadoTransporteExterno.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Formas\ListadoTransporteExterno.Designer.cs">
+    <Compile Include="Formularios\ListadoTransporteExterno.Designer.cs">
       <DependentUpon>ListadoTransporteExterno.cs</DependentUpon>
     </Compile>
-    <Compile Include="Formas\ProductosATrasladar.cs">
+    <Compile Include="Formularios\ProductosATrasladar.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Formas\ProductosATrasladar.Designer.cs">
+    <Compile Include="Formularios\ProductosATrasladar.Designer.cs">
       <DependentUpon>ProductosATrasladar.cs</DependentUpon>
     </Compile>
-    <Compile Include="Formas\RegistroTransporteExterno.cs">
+    <Compile Include="Formularios\RegistroTransporteExterno.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Formas\RegistroTransporteExterno.Designer.cs">
+    <Compile Include="Formularios\RegistroTransporteExterno.Designer.cs">
       <DependentUpon>RegistroTransporteExterno.cs</DependentUpon>
     </Compile>
-    <Compile Include="Formas\RutaYSeguimiento.cs">
+    <Compile Include="Formularios\RutaYSeguimiento.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Formas\RutaYSeguimiento.Designer.cs">
+    <Compile Include="Formularios\RutaYSeguimiento.Designer.cs">
       <DependentUpon>RutaYSeguimiento.cs</DependentUpon>
     </Compile>
-    <Compile Include="Formas\TransporteExterno.cs">
+    <Compile Include="Formularios\TransporteExterno.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Formas\TransporteExterno.Designer.cs">
+    <Compile Include="Formularios\TransporteExterno.Designer.cs">
       <DependentUpon>TransporteExterno.cs</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Formas\CostosYPagosDelServicio.resx">
+    <EmbeddedResource Include="Formularios\CostosYPagosDelServicio.resx">
       <DependentUpon>CostosYPagosDelServicio.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Formas\IncidenciasEHistorial.resx">
+    <EmbeddedResource Include="Formularios\IncidenciasEHistorial.resx">
       <DependentUpon>IncidenciasEHistorial.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Formas\ListadoTransporteExterno.resx">
+    <EmbeddedResource Include="Formularios\ListadoTransporteExterno.resx">
       <DependentUpon>ListadoTransporteExterno.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Formas\ProductosATrasladar.resx">
+    <EmbeddedResource Include="Formularios\ProductosATrasladar.resx">
       <DependentUpon>ProductosATrasladar.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Formas\RegistroTransporteExterno.resx">
+    <EmbeddedResource Include="Formularios\RegistroTransporteExterno.resx">
       <DependentUpon>RegistroTransporteExterno.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Formas\RutaYSeguimiento.resx">
+    <EmbeddedResource Include="Formularios\RutaYSeguimiento.resx">
       <DependentUpon>RutaYSeguimiento.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Formas\TransporteExterno.resx">
+    <EmbeddedResource Include="Formularios\TransporteExterno.resx">
       <DependentUpon>TransporteExterno.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Properties\Resources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Reportes\" />
-    <Folder Include="Resources\" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Resources\btn_anterior.png" />
+    <Content Include="Resources\btn_ayuda.png" />
+    <Content Include="Resources\btn_cancelar.png" />
+    <Content Include="Resources\btn_consultar1.png" />
+    <Content Include="Resources\btn_costoYPagos.png" />
+    <Content Include="Resources\btn_eliminar.png" />
+    <Content Include="Resources\btn_estructuraN_sintexto.png" />
+    <Content Include="Resources\btn_fin.png" />
+    <Content Include="Resources\btn_guardar.png" />
+    <Content Include="Resources\btn_imprimir.png" />
+    <Content Include="Resources\btn_incidenciaEHistorial.png" />
+    <Content Include="Resources\btn_ingresar.png" />
+    <Content Include="Resources\btn_inicio.png" />
+    <Content Include="Resources\btn_listadoTransporteExterno.png" />
+    <Content Include="Resources\btn_modificar.png" />
+    <Content Include="Resources\btn_productoYCarga.png" />
+    <Content Include="Resources\btn_refrescar.png" />
+    <Content Include="Resources\btn_registroDeTransporte.png" />
+    <Content Include="Resources\btn_rutaYSeguimiento.png" />
+    <Content Include="Resources\btn_salir.png" />
+    <Content Include="Resources\btn_siguiente.png" />
+    <Content Include="Resources\FondoDatagriedview.png" />
+    <Content Include="Resources\FondoLogica2.png" />
+    <Content Include="Resources\FondoLogistica.png" />
+    <Content Include="Resources\FondoLogistica1.png" />
+    <Content Include="Resources\panelestandarizado.png" />
+    <Content Include="Resources\PanelTabla.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
