@@ -23,8 +23,6 @@ namespace CapaVista_TransporteInterno_Logistica.Formas
             // Validar si el RadioButton Interno está seleccionado
             if (rdbInterno.Checked)
             {
-               FrmTransporteInterno transporteInterno = new FrmTransporteInterno();
-                transporteInterno.ShowDialog(); // Usa .ShowDialog() si quieres abrirlo como ventana modal
             }
             // Validar si el RadioButton Externo está seleccionado
             else if (rdbExterno.Checked)
