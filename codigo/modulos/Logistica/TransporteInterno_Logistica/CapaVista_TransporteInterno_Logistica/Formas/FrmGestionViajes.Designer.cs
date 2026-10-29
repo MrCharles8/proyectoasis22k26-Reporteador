@@ -31,9 +31,7 @@
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FrmGestionViajes));
             this.label1 = new System.Windows.Forms.Label();
             this.LogisticaLblTituloTransporteInterno = new System.Windows.Forms.Label();
-            this.LogisticaPnlGestionViajes = new System.Windows.Forms.Panel();
             this.LogisticaNavTransporteInterno = new CapaVista_Navegador.Navegador();
-            this.LogisticaPnlGestionViajes.SuspendLayout();
             this.SuspendLayout();
             // 
             // label1
@@ -61,15 +59,6 @@
             this.LogisticaLblTituloTransporteInterno.TabIndex = 8;
             this.LogisticaLblTituloTransporteInterno.Text = "Gestión de Viajes";
             // 
-            // LogisticaPnlGestionViajes
-            // 
-            this.LogisticaPnlGestionViajes.BackgroundImage = global::CapaVista_TransporteInterno_Logistica.Properties.Resources.FondoLogica2;
-            this.LogisticaPnlGestionViajes.Controls.Add(this.LogisticaNavTransporteInterno);
-            this.LogisticaPnlGestionViajes.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.LogisticaPnlGestionViajes.Location = new System.Drawing.Point(0, 0);
-            this.LogisticaPnlGestionViajes.Name = "LogisticaPnlGestionViajes";
-            this.LogisticaPnlGestionViajes.Size = new System.Drawing.Size(1144, 741);
-            this.LogisticaPnlGestionViajes.TabIndex = 12;
             // 
             // LogisticaNavTransporteInterno
             // 
@@ -89,13 +78,11 @@
             this.ClientSize = new System.Drawing.Size(1144, 741);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.LogisticaLblTituloTransporteInterno);
-            this.Controls.Add(this.LogisticaPnlGestionViajes);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Margin = new System.Windows.Forms.Padding(2);
             this.Name = "FrmGestionViajes";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "5016-Gestión de viajes";
-            this.LogisticaPnlGestionViajes.ResumeLayout(false);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -104,7 +91,6 @@
         #endregion
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label LogisticaLblTituloTransporteInterno;
-        private System.Windows.Forms.Panel LogisticaPnlGestionViajes;
         private CapaVista_Navegador.Navegador LogisticaNavTransporteInterno;
     }
 }

@@ -144,11 +144,11 @@ namespace CapaVista_Logistica
                 LogisticaBtnHamburguesa.Location = new Point(73, 8);
 
                 // Reubicar información del usuario
-                label1.Location = new Point(128, 8);
+                LogisticaLblTextoUsuario.Location = new Point(128, 8);
                 LogisticaLblUsuario.Location = new Point(228, 9);
 
                 // Reubicar información del rol
-                label2.Location = new Point(500, 9);
+                LogisticaLblTextoRol.Location = new Point(500, 9);
                 LogisticaLblRolUsuario.Location = new Point(546, 9);
             }
             else
@@ -163,11 +163,11 @@ namespace CapaVista_Logistica
                 LogisticaBtnHamburguesa.Location = new Point(279, 8);
 
                 // Restaurar información del usuario
-                label1.Location = new Point(334, 8);
+                LogisticaLblTextoUsuario.Location = new Point(334, 8);
                 LogisticaLblUsuario.Location = new Point(434, 9);
 
                 // Restaurar información del rol
-                label2.Location = new Point(706, 9);
+                LogisticaLblTextoRol.Location = new Point(706, 9);
                 LogisticaLblRolUsuario.Location = new Point(752, 9);
             }
         }
