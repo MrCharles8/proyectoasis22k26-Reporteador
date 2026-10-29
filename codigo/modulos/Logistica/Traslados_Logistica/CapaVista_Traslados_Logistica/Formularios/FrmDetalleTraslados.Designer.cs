@@ -1,4 +1,4 @@
-﻿namespace CapaVista_Traslados_Logistica.Formas
+﻿namespace CapaVista_Traslados_Logistica.Formularios
 {
     partial class FrmDetalleTraslados
     {
@@ -31,14 +31,6 @@
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FrmDetalleTraslados));
             this.LogisticaPnlDetalleTraslados = new System.Windows.Forms.Panel();
             this.LogisticaDgvDetalleTraslados = new System.Windows.Forms.DataGridView();
-            this.codigoProducto = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.nombreProducto = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.descripcionProducto = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.cantidadProducto = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.pesoUnidad = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.pesoProducto = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.precioProductoUnidad = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.precioProductoTotal = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.LogisticaPnlDatosTraslados = new System.Windows.Forms.Panel();
             this.LogisticaTxtCodigoTransporte = new System.Windows.Forms.TextBox();
             this.LogisticaTxtFechaSalida = new System.Windows.Forms.TextBox();
@@ -60,6 +52,14 @@
             this.LogisticaBtnAyudaTraslados = new System.Windows.Forms.Button();
             this.LogisticaLblSubtituloDetalleTraslados = new System.Windows.Forms.Label();
             this.LogisticaLblTituloDetalleTraslados = new System.Windows.Forms.Label();
+            this.LogisticaDgvtbcCodigoProducto = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.LogisticaDgvtbcNombreProducto = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.LogisticaDgvtbcDescripcionProducto = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.LogisticaDgvtbcCantidadProducto = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.LogisticaDgvtbcPesoUnidad = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.LogisticaDgvtbcPesoProducto = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.LogisticaDgvtbcPrecioProductoUnidad = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.LogisticaDgvtbcPrecioProductoTotal = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.LogisticaPnlDetalleTraslados.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.LogisticaDgvDetalleTraslados)).BeginInit();
             this.LogisticaPnlDatosTraslados.SuspendLayout();
@@ -84,14 +84,14 @@
             this.LogisticaDgvDetalleTraslados.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.LogisticaDgvDetalleTraslados.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.LogisticaDgvDetalleTraslados.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.codigoProducto,
-            this.nombreProducto,
-            this.descripcionProducto,
-            this.cantidadProducto,
-            this.pesoUnidad,
-            this.pesoProducto,
-            this.precioProductoUnidad,
-            this.precioProductoTotal});
+            this.LogisticaDgvtbcCodigoProducto,
+            this.LogisticaDgvtbcNombreProducto,
+            this.LogisticaDgvtbcDescripcionProducto,
+            this.LogisticaDgvtbcCantidadProducto,
+            this.LogisticaDgvtbcPesoUnidad,
+            this.LogisticaDgvtbcPesoProducto,
+            this.LogisticaDgvtbcPrecioProductoUnidad,
+            this.LogisticaDgvtbcPrecioProductoTotal});
             this.LogisticaDgvDetalleTraslados.Location = new System.Drawing.Point(3, 3);
             this.LogisticaDgvDetalleTraslados.Name = "LogisticaDgvDetalleTraslados";
             this.LogisticaDgvDetalleTraslados.ReadOnly = true;
@@ -99,62 +99,6 @@
             this.LogisticaDgvDetalleTraslados.RowTemplate.Height = 24;
             this.LogisticaDgvDetalleTraslados.Size = new System.Drawing.Size(1148, 246);
             this.LogisticaDgvDetalleTraslados.TabIndex = 0;
-            // 
-            // codigoProducto
-            // 
-            this.codigoProducto.HeaderText = "Codigo Producto";
-            this.codigoProducto.MinimumWidth = 6;
-            this.codigoProducto.Name = "codigoProducto";
-            this.codigoProducto.ReadOnly = true;
-            // 
-            // nombreProducto
-            // 
-            this.nombreProducto.HeaderText = "Nombre Producto";
-            this.nombreProducto.MinimumWidth = 6;
-            this.nombreProducto.Name = "nombreProducto";
-            this.nombreProducto.ReadOnly = true;
-            // 
-            // descripcionProducto
-            // 
-            this.descripcionProducto.HeaderText = "Descripcion Producto";
-            this.descripcionProducto.MinimumWidth = 6;
-            this.descripcionProducto.Name = "descripcionProducto";
-            this.descripcionProducto.ReadOnly = true;
-            // 
-            // cantidadProducto
-            // 
-            this.cantidadProducto.HeaderText = "Cantidad Total";
-            this.cantidadProducto.MinimumWidth = 6;
-            this.cantidadProducto.Name = "cantidadProducto";
-            this.cantidadProducto.ReadOnly = true;
-            // 
-            // pesoUnidad
-            // 
-            this.pesoUnidad.HeaderText = "Peso Unidad";
-            this.pesoUnidad.MinimumWidth = 6;
-            this.pesoUnidad.Name = "pesoUnidad";
-            this.pesoUnidad.ReadOnly = true;
-            // 
-            // pesoProducto
-            // 
-            this.pesoProducto.HeaderText = "Peso Total";
-            this.pesoProducto.MinimumWidth = 6;
-            this.pesoProducto.Name = "pesoProducto";
-            this.pesoProducto.ReadOnly = true;
-            // 
-            // precioProductoUnidad
-            // 
-            this.precioProductoUnidad.HeaderText = "Precio Unidad";
-            this.precioProductoUnidad.MinimumWidth = 6;
-            this.precioProductoUnidad.Name = "precioProductoUnidad";
-            this.precioProductoUnidad.ReadOnly = true;
-            // 
-            // precioProductoTotal
-            // 
-            this.precioProductoTotal.HeaderText = "Precio Total";
-            this.precioProductoTotal.MinimumWidth = 6;
-            this.precioProductoTotal.Name = "precioProductoTotal";
-            this.precioProductoTotal.ReadOnly = true;
             // 
             // LogisticaPnlDatosTraslados
             // 
@@ -391,6 +335,62 @@
             this.LogisticaLblTituloDetalleTraslados.TabIndex = 2;
             this.LogisticaLblTituloDetalleTraslados.Text = "DETALLE TRASLADOS";
             // 
+            // LogisticaDgvtbcCodigoProducto
+            // 
+            this.LogisticaDgvtbcCodigoProducto.HeaderText = "Codigo Producto";
+            this.LogisticaDgvtbcCodigoProducto.MinimumWidth = 6;
+            this.LogisticaDgvtbcCodigoProducto.Name = "LogisticaDgvtbcCodigoProducto";
+            this.LogisticaDgvtbcCodigoProducto.ReadOnly = true;
+            // 
+            // LogisticaDgvtbcNombreProducto
+            // 
+            this.LogisticaDgvtbcNombreProducto.HeaderText = "Nombre Producto";
+            this.LogisticaDgvtbcNombreProducto.MinimumWidth = 6;
+            this.LogisticaDgvtbcNombreProducto.Name = "LogisticaDgvtbcNombreProducto";
+            this.LogisticaDgvtbcNombreProducto.ReadOnly = true;
+            // 
+            // LogisticaDgvtbcDescripcionProducto
+            // 
+            this.LogisticaDgvtbcDescripcionProducto.HeaderText = "Descripcion Producto";
+            this.LogisticaDgvtbcDescripcionProducto.MinimumWidth = 6;
+            this.LogisticaDgvtbcDescripcionProducto.Name = "LogisticaDgvtbcDescripcionProducto";
+            this.LogisticaDgvtbcDescripcionProducto.ReadOnly = true;
+            // 
+            // LogisticaDgvtbcCantidadProducto
+            // 
+            this.LogisticaDgvtbcCantidadProducto.HeaderText = "Cantidad Total";
+            this.LogisticaDgvtbcCantidadProducto.MinimumWidth = 6;
+            this.LogisticaDgvtbcCantidadProducto.Name = "LogisticaDgvtbcCantidadProducto";
+            this.LogisticaDgvtbcCantidadProducto.ReadOnly = true;
+            // 
+            // LogisticaDgvtbcPesoUnidad
+            // 
+            this.LogisticaDgvtbcPesoUnidad.HeaderText = "Peso Unidad";
+            this.LogisticaDgvtbcPesoUnidad.MinimumWidth = 6;
+            this.LogisticaDgvtbcPesoUnidad.Name = "LogisticaDgvtbcPesoUnidad";
+            this.LogisticaDgvtbcPesoUnidad.ReadOnly = true;
+            // 
+            // LogisticaDgvtbcPesoProducto
+            // 
+            this.LogisticaDgvtbcPesoProducto.HeaderText = "Peso Total";
+            this.LogisticaDgvtbcPesoProducto.MinimumWidth = 6;
+            this.LogisticaDgvtbcPesoProducto.Name = "LogisticaDgvtbcPesoProducto";
+            this.LogisticaDgvtbcPesoProducto.ReadOnly = true;
+            // 
+            // LogisticaDgvtbcPrecioProductoUnidad
+            // 
+            this.LogisticaDgvtbcPrecioProductoUnidad.HeaderText = "Precio Unidad";
+            this.LogisticaDgvtbcPrecioProductoUnidad.MinimumWidth = 6;
+            this.LogisticaDgvtbcPrecioProductoUnidad.Name = "LogisticaDgvtbcPrecioProductoUnidad";
+            this.LogisticaDgvtbcPrecioProductoUnidad.ReadOnly = true;
+            // 
+            // LogisticaDgvtbcPrecioProductoTotal
+            // 
+            this.LogisticaDgvtbcPrecioProductoTotal.HeaderText = "Precio Total";
+            this.LogisticaDgvtbcPrecioProductoTotal.MinimumWidth = 6;
+            this.LogisticaDgvtbcPrecioProductoTotal.Name = "LogisticaDgvtbcPrecioProductoTotal";
+            this.LogisticaDgvtbcPrecioProductoTotal.ReadOnly = true;
+            // 
             // FrmDetalleTraslados
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
@@ -433,14 +433,6 @@
         private System.Windows.Forms.Label LogisticaLblEstadoTraslado;
         private System.Windows.Forms.Label LogisticaLblFechaSalida;
         private System.Windows.Forms.Label LogisticaLblFechaSolicitud;
-        private System.Windows.Forms.DataGridViewTextBoxColumn codigoProducto;
-        private System.Windows.Forms.DataGridViewTextBoxColumn nombreProducto;
-        private System.Windows.Forms.DataGridViewTextBoxColumn descripcionProducto;
-        private System.Windows.Forms.DataGridViewTextBoxColumn cantidadProducto;
-        private System.Windows.Forms.DataGridViewTextBoxColumn pesoUnidad;
-        private System.Windows.Forms.DataGridViewTextBoxColumn pesoProducto;
-        private System.Windows.Forms.DataGridViewTextBoxColumn precioProductoUnidad;
-        private System.Windows.Forms.DataGridViewTextBoxColumn precioProductoTotal;
         private System.Windows.Forms.Label LogisticaLblFechaRecibido;
         private System.Windows.Forms.TextBox LogisticaTxtCodigoTransporte;
         private System.Windows.Forms.TextBox LogisticaTxtFechaSalida;
@@ -449,5 +441,13 @@
         private System.Windows.Forms.TextBox LogisticaTxtFechaSolicitud;
         private System.Windows.Forms.TextBox LogisticaTxtBodegaOrigen;
         private System.Windows.Forms.Button LogisticaBtnAyudaTraslados;
+        private System.Windows.Forms.DataGridViewTextBoxColumn LogisticaDgvtbcCodigoProducto;
+        private System.Windows.Forms.DataGridViewTextBoxColumn LogisticaDgvtbcNombreProducto;
+        private System.Windows.Forms.DataGridViewTextBoxColumn LogisticaDgvtbcDescripcionProducto;
+        private System.Windows.Forms.DataGridViewTextBoxColumn LogisticaDgvtbcCantidadProducto;
+        private System.Windows.Forms.DataGridViewTextBoxColumn LogisticaDgvtbcPesoUnidad;
+        private System.Windows.Forms.DataGridViewTextBoxColumn LogisticaDgvtbcPesoProducto;
+        private System.Windows.Forms.DataGridViewTextBoxColumn LogisticaDgvtbcPrecioProductoUnidad;
+        private System.Windows.Forms.DataGridViewTextBoxColumn LogisticaDgvtbcPrecioProductoTotal;
     }
 }
