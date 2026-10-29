@@ -64,7 +64,6 @@
             // LogisticaPnlConsultaTransporte
             // 
             this.LogisticaPnlConsultaTransporte.BackColor = System.Drawing.Color.Transparent;
-            this.LogisticaPnlConsultaTransporte.BackgroundImage = global::CapaVista_TransporteInterno_Logistica.Properties.Resources.FondoLogica2;
             this.LogisticaPnlConsultaTransporte.Controls.Add(this.LogisticaLblTituloTransporteInterno);
             this.LogisticaPnlConsultaTransporte.Controls.Add(this.label2);
             this.LogisticaPnlConsultaTransporte.Controls.Add(this.LogisticaNavTransporteInterno);
