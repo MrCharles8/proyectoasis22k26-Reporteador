@@ -1060,6 +1060,4 @@ WHERE TRIGGER_SCHEMA = DATABASE()
     'trDetalleMovimientoBeforeDeleteCerrado',
     'trDetalleMovimientoBeforeInsertCerrado'
   );
-  
-  select * from tblbodega;
 

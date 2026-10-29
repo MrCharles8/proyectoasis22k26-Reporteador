@@ -59,29 +59,11 @@
     <Compile Include="Formas\FrmControlTransporte.Designer.cs">
       <DependentUpon>FrmControlTransporte.cs</DependentUpon>
     </Compile>
-    <Compile Include="Formas\FrmGestionViajes.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Formas\FrmGestionViajes.Designer.cs">
-      <DependentUpon>FrmGestionViajes.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Formas\FrmConsultaTransporte.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Formas\FrmConsultaTransporte.Designer.cs">
-      <DependentUpon>FrmConsultaTransporte.cs</DependentUpon>
-    </Compile>
     <Compile Include="Formas\FrmSeleccionTipoTraslado.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="Formas\FrmSeleccionTipoTraslado.Designer.cs">
       <DependentUpon>FrmSeleccionTipoTraslado.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Formas\FrmTransporteInterno.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Formas\FrmTransporteInterno.Designer.cs">
-      <DependentUpon>FrmTransporteInterno.cs</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Properties\Resources.Designer.cs">
@@ -97,17 +79,8 @@
     <EmbeddedResource Include="Formas\FrmControlTransporte.resx">
       <DependentUpon>FrmControlTransporte.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Formas\FrmGestionViajes.resx">
-      <DependentUpon>FrmGestionViajes.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Formas\FrmConsultaTransporte.resx">
-      <DependentUpon>FrmConsultaTransporte.cs</DependentUpon>
-    </EmbeddedResource>
     <EmbeddedResource Include="Formas\FrmSeleccionTipoTraslado.resx">
       <DependentUpon>FrmSeleccionTipoTraslado.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Formas\FrmTransporteInterno.resx">
-      <DependentUpon>FrmTransporteInterno.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
