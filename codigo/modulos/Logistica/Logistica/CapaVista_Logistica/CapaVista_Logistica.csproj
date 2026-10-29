@@ -62,10 +62,10 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="FrmMDILogistica.cs">
+    <Compile Include="Formularios\FrmMDILogistica.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="FrmMDILogistica.Designer.cs">
+    <Compile Include="Formularios\FrmMDILogistica.Designer.cs">
       <DependentUpon>FrmMDILogistica.cs</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -81,7 +81,7 @@
     <Folder Include="Reportes\" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="FrmMDILogistica.resx">
+    <EmbeddedResource Include="Formularios\FrmMDILogistica.resx">
       <DependentUpon>FrmMDILogistica.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
