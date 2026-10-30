@@ -1,13 +1,13 @@
-﻿@echo off
+@echo off
 :: ============================================================================
 :: BUILD GLOBAL - LOGISTICA
-:: VERSION PORTABLE: FUNCIONA EN CUALQUIER COMPUTADORA, SIN EDITAR RUTAS
+:: VERSION ACTUALIZADA: 9 CARPETAS - PORTABLE SIN EDITAR RUTAS
 :: ============================================================================
 ::
 :: QUE HACE ESTE SCRIPT:
 :: 1. Usa la carpeta donde esta guardado este .bat como raiz de Logistica.
 :: 2. Busca MSBuild de Visual Studio automaticamente (cualquier edicion).
-:: 3. Compila los 8 componentes que pertenecen al modulo de Logistica.
+:: 3. Compila las 9 carpetas que pertenecen al modulo de Logistica.
 ::    Los ejecutables se compilan al final (Ejecucion_Logistica).
 :: 4. Dentro de cada componente compila en orden de capas:
 ::        CapaModelo -> CapaControlador -> CapaVista -> librerias -> ejecutables.
@@ -18,8 +18,8 @@
 :: 7. Deja los logs en la carpeta "logs" y un resumen al final.
 ::
 :: DONDE COLOCARLO:
-::   Guardarlo junto a las ocho carpetas de Logistica:
-::   codigo\modulos\Logistica\Compilar_Logistica.bat
+::   Guardarlo junto a las nueve carpetas de Logistica:
+::   C:\proyectoasis22k26-Reporteador\codigo\modulos\Logistica\Compilar_Logistica_9_Carpetas.bat
 ::
 :: SI ALGO FALLA, REVISA:
 ::   logs\fallidos.txt                  proyectos que no compilaron
@@ -74,14 +74,23 @@ echo Compilacion iniciada: %date% %time% > "%LOG_FILE%"
 :: 2) USAR LA CARPETA DEL MODULO LOGISTICA
 :: --------------------------------------------------------------------------
 set "COMPONENTES_DIR=%ROOT_DIR%"
-if not exist "%COMPONENTES_DIR%\Inventario_Logistica\" goto RAIZ_NO_ENCONTRADA
-if not exist "%COMPONENTES_DIR%\Traslados_Logistica\" goto RAIZ_NO_ENCONTRADA
+if not exist "%COMPONENTES_DIR%\Logistica\" (set "FALTA_COMPONENTE=Logistica" & goto RAIZ_NO_ENCONTRADA)
+if not exist "%COMPONENTES_DIR%\Inventario_Logistica\" (set "FALTA_COMPONENTE=Inventario_Logistica" & goto RAIZ_NO_ENCONTRADA)
+if not exist "%COMPONENTES_DIR%\Traslados_Logistica\" (set "FALTA_COMPONENTE=Traslados_Logistica" & goto RAIZ_NO_ENCONTRADA)
+if not exist "%COMPONENTES_DIR%\TransporteInterno_Logistica\" (set "FALTA_COMPONENTE=TransporteInterno_Logistica" & goto RAIZ_NO_ENCONTRADA)
+if not exist "%COMPONENTES_DIR%\TransporteExterno_Logistica\" (set "FALTA_COMPONENTE=TransporteExterno_Logistica" & goto RAIZ_NO_ENCONTRADA)
+if not exist "%COMPONENTES_DIR%\MuestreoAuditoria_Logistica\" (set "FALTA_COMPONENTE=MuestreoAuditoria_Logistica" & goto RAIZ_NO_ENCONTRADA)
+if not exist "%COMPONENTES_DIR%\CierreInventario_Logistica\" (set "FALTA_COMPONENTE=CierreInventario_Logistica" & goto RAIZ_NO_ENCONTRADA)
+if not exist "%COMPONENTES_DIR%\Enlace_OtrosModulos_Logistica\" (set "FALTA_COMPONENTE=Enlace_OtrosModulos_Logistica" & goto RAIZ_NO_ENCONTRADA)
+if not exist "%COMPONENTES_DIR%\Ejecucion_Logistica\" (set "FALTA_COMPONENTE=Ejecucion_Logistica" & goto RAIZ_NO_ENCONTRADA)
 goto RAIZ_LISTA
 
 :RAIZ_NO_ENCONTRADA
 echo.
 echo [ERROR] No se encontraron las carpetas de Logistica junto a este .bat.
 echo         Carpeta desde la que se busco: %COMPONENTES_DIR%
+echo         Carpeta faltante: %FALTA_COMPONENTE%
+echo         Guarda este BAT directamente en codigo\modulos\Logistica\
 goto FIN_ERROR
 
 :RAIZ_LISTA
@@ -146,7 +155,8 @@ call :CompilarComponente Traslados_Logistica 0
 call :CompilarComponente TransporteInterno_Logistica 0
 call :CompilarComponente TransporteExterno_Logistica 0
 call :CompilarComponente MuestreoAuditoria_Logistica 0
-call :CompilarComponente Cierre_Inventario 0
+call :CompilarComponente CierreInventario_Logistica 0
+call :CompilarComponente Enlace_OtrosModulos_Logistica 0
 call :CompilarComponente Ejecucion_Logistica 1
 if %fail% EQU 0 goto RONDA_FIN
 if %RONDA% GEQ 3 goto RONDA_FIN
@@ -186,7 +196,8 @@ call :VerificarComponente Traslados_Logistica
 call :VerificarComponente TransporteInterno_Logistica
 call :VerificarComponente TransporteExterno_Logistica
 call :VerificarComponente MuestreoAuditoria_Logistica
-call :VerificarComponente Cierre_Inventario
+call :VerificarComponente CierreInventario_Logistica
+call :VerificarComponente Enlace_OtrosModulos_Logistica
 call :VerificarComponente Ejecucion_Logistica
 echo.
 echo ============================================
@@ -198,13 +209,14 @@ call :ListarFaltantes Traslados_Logistica
 call :ListarFaltantes TransporteInterno_Logistica
 call :ListarFaltantes TransporteExterno_Logistica
 call :ListarFaltantes MuestreoAuditoria_Logistica
-call :ListarFaltantes Cierre_Inventario
+call :ListarFaltantes CierreInventario_Logistica
+call :ListarFaltantes Enlace_OtrosModulos_Logistica
 call :ListarFaltantes Ejecucion_Logistica
 echo.
 echo ============================================
 echo COMPILACION FINALIZADA COMPLETAMENTE
 echo ============================================
-if /I "%~1"=="/auto" goto FIN_OK
+if /I "%~1"=="/auto" goto FIN_AUTO
 echo.
 echo Presiona una opcion:
 echo [R] Recompilar
@@ -212,6 +224,12 @@ echo [S] Salir
 choice /c RS /n /m "Seleccion: "
 if errorlevel 2 goto FIN_OK
 if errorlevel 1 goto INICIO
+
+:FIN_AUTO
+if %fail% GTR 0 (
+    echo [ERROR] La compilacion termino con %fail% proyecto(s) fallido(s).
+    endlocal & exit /b 1
+)
 
 :FIN_OK
 endlocal
