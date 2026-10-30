@@ -34,8 +34,11 @@
     <Reference Include="CapaControlador_Logistica">
       <HintPath>..\CapaControlador_Logistica\bin\Debug\CapaControlador_Logistica.dll</HintPath>
     </Reference>
-    <Reference Include="CapaVista_CierreInventario">
-      <HintPath>..\..\Cierre_Inventario\CapaVista_CierreInventario\bin\Debug\CapaVista_CierreInventario.dll</HintPath>
+    <Reference Include="CapaVista_CierreInventario_Logistica">
+      <HintPath>..\..\CierreInventario_Logistica\CapaVista_CierreInventario_Logistica\bin\Debug\CapaVista_CierreInventario_Logistica.dll</HintPath>
+    </Reference>
+    <Reference Include="CapaVista_Enlace_Logistica">
+      <HintPath>..\..\Enlace_OtrosModulos_Logistica\CapaVista_Enlace_Logistica\bin\Debug\CapaVista_Enlace_Logistica.dll</HintPath>
     </Reference>
     <Reference Include="CapaVista_Inventario_Logistica">
       <HintPath>..\..\Inventario_Logistica\CapaVista_Inventario_Logistica\bin\Debug\CapaVista_Inventario_Logistica.dll</HintPath>
