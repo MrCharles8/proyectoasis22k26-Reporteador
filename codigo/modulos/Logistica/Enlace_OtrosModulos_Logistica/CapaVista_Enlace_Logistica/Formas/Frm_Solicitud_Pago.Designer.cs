@@ -1088,7 +1088,7 @@
             this.lblDescripcionSolicitudPago.BackColor = System.Drawing.Color.Transparent;
             this.lblDescripcionSolicitudPago.Font = new System.Drawing.Font("Tahoma", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblDescripcionSolicitudPago.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(62)))), ((int)(((byte)(138)))), ((int)(((byte)(132)))));
-            this.lblDescripcionSolicitudPago.Location = new System.Drawing.Point(187, 70);
+            this.lblDescripcionSolicitudPago.Location = new System.Drawing.Point(138, 62);
             this.lblDescripcionSolicitudPago.Name = "lblDescripcionSolicitudPago";
             this.lblDescripcionSolicitudPago.Size = new System.Drawing.Size(883, 22);
             this.lblDescripcionSolicitudPago.TabIndex = 2;
@@ -1101,7 +1101,7 @@
             this.lblTituloSolicitudPago.BackColor = System.Drawing.Color.Transparent;
             this.lblTituloSolicitudPago.Font = new System.Drawing.Font("Lucida Bright", 25.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblTituloSolicitudPago.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(106)))), ((int)(((byte)(44)))), ((int)(((byte)(18)))));
-            this.lblTituloSolicitudPago.Location = new System.Drawing.Point(239, 20);
+            this.lblTituloSolicitudPago.Location = new System.Drawing.Point(190, 12);
             this.lblTituloSolicitudPago.Name = "lblTituloSolicitudPago";
             this.lblTituloSolicitudPago.Size = new System.Drawing.Size(707, 48);
             this.lblTituloSolicitudPago.TabIndex = 1;
@@ -1111,7 +1111,7 @@
             // 
             this.picChef.BackColor = System.Drawing.Color.Transparent;
             this.picChef.Image = global::CapaVista_Enlace_Logistica.Properties.Resources._7;
-            this.picChef.Location = new System.Drawing.Point(1150, 3);
+            this.picChef.Location = new System.Drawing.Point(1098, 3);
             this.picChef.Name = "picChef";
             this.picChef.Size = new System.Drawing.Size(275, 333);
             this.picChef.TabIndex = 0;
