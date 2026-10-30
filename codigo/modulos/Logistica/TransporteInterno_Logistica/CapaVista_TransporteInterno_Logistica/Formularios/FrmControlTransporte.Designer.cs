@@ -28,15 +28,16 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.navegador1 = new CapaVista_Navegador.Navegador();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FrmControlTransporte));
+            this.LogisticaNavControlTransporte = new CapaVista_Navegador.Navegador();
             this.SuspendLayout();
             // 
-            // navegador1
+            // LogisticaNavControlTransporte
             // 
-            this.navegador1.Location = new System.Drawing.Point(-10, 100);
-            this.navegador1.Name = "navegador1";
-            this.navegador1.Size = new System.Drawing.Size(1438, 111);
-            this.navegador1.TabIndex = 0;
+            this.LogisticaNavControlTransporte.Location = new System.Drawing.Point(-10, 100);
+            this.LogisticaNavControlTransporte.Name = "LogisticaNavControlTransporte";
+            this.LogisticaNavControlTransporte.Size = new System.Drawing.Size(1438, 111);
+            this.LogisticaNavControlTransporte.TabIndex = 0;
             // 
             // FrmControlTransporte
             // 
@@ -44,7 +45,8 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(251)))), ((int)(((byte)(246)))), ((int)(((byte)(242)))));
             this.ClientSize = new System.Drawing.Size(1525, 912);
-            this.Controls.Add(this.navegador1);
+            this.Controls.Add(this.LogisticaNavControlTransporte);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MaximizeBox = false;
             this.Name = "FrmControlTransporte";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
@@ -55,6 +57,6 @@
 
         #endregion
 
-        private CapaVista_Navegador.Navegador navegador1;
+        private CapaVista_Navegador.Navegador LogisticaNavControlTransporte;
     }
 }
