@@ -10,9 +10,9 @@ using System.Windows.Forms;
 
 namespace CapaVista_TransporteInterno_Logistica.Formularios
 {
-    public partial class FrmGestionViajes : Form
+    public partial class LogisticaNavGestionViajes : Form
     {
-        public FrmGestionViajes()
+        public LogisticaNavGestionViajes()
         {
             InitializeComponent();
         }
