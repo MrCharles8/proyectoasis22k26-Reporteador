@@ -29,172 +29,176 @@
         private void InitializeComponent()
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FrmConsultaCierres));
-            this.LogisticaLblTitulo = new System.Windows.Forms.Label();
-            this.label1 = new System.Windows.Forms.Label();
-            this.label2 = new System.Windows.Forms.Label();
-            this.comboBox1 = new System.Windows.Forms.ComboBox();
-            this.label3 = new System.Windows.Forms.Label();
-            this.dateTimePicker1 = new System.Windows.Forms.DateTimePicker();
-            this.dateTimePicker2 = new System.Windows.Forms.DateTimePicker();
-            this.label4 = new System.Windows.Forms.Label();
-            this.dataGridView1 = new System.Windows.Forms.DataGridView();
-            this.textBox1 = new System.Windows.Forms.TextBox();
-            this.button1 = new System.Windows.Forms.Button();
-            this.panel1 = new System.Windows.Forms.Panel();
-            this.panel2 = new System.Windows.Forms.Panel();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
-            this.panel1.SuspendLayout();
+            this.LogisticaLblTituloConsultaCierre = new System.Windows.Forms.Label();
+            this.LogisticaLblSeleccionarPeriodo = new System.Windows.Forms.Label();
+            this.LogisticaLblSucursal = new System.Windows.Forms.Label();
+            this.LogisticaCboSucursal = new System.Windows.Forms.ComboBox();
+            this.LogisticaLblFechaInicial = new System.Windows.Forms.Label();
+            this.LogisticaDtpFechaInicialCierre = new System.Windows.Forms.DateTimePicker();
+            this.LogisticaDtpFechaFinalCierre = new System.Windows.Forms.DateTimePicker();
+            this.LogisticaLblFechaFinal = new System.Windows.Forms.Label();
+            this.LogisticaDvgCierre = new System.Windows.Forms.DataGridView();
+            this.LogisticaTxtNombreCierre = new System.Windows.Forms.TextBox();
+            this.LogisticaBtnBuscar = new System.Windows.Forms.Button();
+            this.LogisticaPnlConsultaCierre = new System.Windows.Forms.Panel();
+            this.LogisticaPbDonButti = new System.Windows.Forms.PictureBox();
+            ((System.ComponentModel.ISupportInitialize)(this.LogisticaDvgCierre)).BeginInit();
+            this.LogisticaPnlConsultaCierre.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.LogisticaPbDonButti)).BeginInit();
             this.SuspendLayout();
             // 
-            // LogisticaLblTitulo
+            // LogisticaLblTituloConsultaCierre
             // 
-            this.LogisticaLblTitulo.AutoSize = true;
-            this.LogisticaLblTitulo.Font = new System.Drawing.Font("Segoe UI", 22.2F, System.Drawing.FontStyle.Bold);
-            this.LogisticaLblTitulo.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(62)))), ((int)(((byte)(138)))), ((int)(((byte)(132)))));
-            this.LogisticaLblTitulo.Location = new System.Drawing.Point(405, 31);
-            this.LogisticaLblTitulo.Name = "LogisticaLblTitulo";
-            this.LogisticaLblTitulo.Size = new System.Drawing.Size(335, 50);
-            this.LogisticaLblTitulo.TabIndex = 1;
-            this.LogisticaLblTitulo.Text = "Consulta de cierre";
+            this.LogisticaLblTituloConsultaCierre.AutoSize = true;
+            this.LogisticaLblTituloConsultaCierre.BackColor = System.Drawing.Color.Transparent;
+            this.LogisticaLblTituloConsultaCierre.Font = new System.Drawing.Font("Segoe UI", 22.2F, System.Drawing.FontStyle.Bold);
+            this.LogisticaLblTituloConsultaCierre.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(62)))), ((int)(((byte)(138)))), ((int)(((byte)(132)))));
+            this.LogisticaLblTituloConsultaCierre.Location = new System.Drawing.Point(405, 31);
+            this.LogisticaLblTituloConsultaCierre.Name = "LogisticaLblTituloConsultaCierre";
+            this.LogisticaLblTituloConsultaCierre.Size = new System.Drawing.Size(335, 50);
+            this.LogisticaLblTituloConsultaCierre.TabIndex = 1;
+            this.LogisticaLblTituloConsultaCierre.Text = "Consulta de cierre";
             // 
-            // label1
+            // LogisticaLblSeleccionarPeriodo
             // 
-            this.label1.AutoSize = true;
-            this.label1.Font = new System.Drawing.Font("Segoe UI", 13.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(62)))), ((int)(((byte)(138)))), ((int)(((byte)(132)))));
-            this.label1.Location = new System.Drawing.Point(136, 116);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(216, 30);
-            this.label1.TabIndex = 2;
-            this.label1.Text = "Seleccionar Periodo";
+            this.LogisticaLblSeleccionarPeriodo.AutoSize = true;
+            this.LogisticaLblSeleccionarPeriodo.Font = new System.Drawing.Font("Segoe UI", 13.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.LogisticaLblSeleccionarPeriodo.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(62)))), ((int)(((byte)(138)))), ((int)(((byte)(132)))));
+            this.LogisticaLblSeleccionarPeriodo.Location = new System.Drawing.Point(136, 116);
+            this.LogisticaLblSeleccionarPeriodo.Name = "LogisticaLblSeleccionarPeriodo";
+            this.LogisticaLblSeleccionarPeriodo.Size = new System.Drawing.Size(216, 30);
+            this.LogisticaLblSeleccionarPeriodo.TabIndex = 2;
+            this.LogisticaLblSeleccionarPeriodo.Text = "Seleccionar Periodo";
             // 
-            // label2
+            // LogisticaLblSucursal
             // 
-            this.label2.AutoSize = true;
-            this.label2.Font = new System.Drawing.Font("Segoe UI", 10.2F);
-            this.label2.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(62)))), ((int)(((byte)(138)))), ((int)(((byte)(132)))));
-            this.label2.Location = new System.Drawing.Point(135, 174);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(73, 23);
-            this.label2.TabIndex = 3;
-            this.label2.Text = "Sucursal";
+            this.LogisticaLblSucursal.AutoSize = true;
+            this.LogisticaLblSucursal.Font = new System.Drawing.Font("Segoe UI", 10.2F);
+            this.LogisticaLblSucursal.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(62)))), ((int)(((byte)(138)))), ((int)(((byte)(132)))));
+            this.LogisticaLblSucursal.Location = new System.Drawing.Point(135, 174);
+            this.LogisticaLblSucursal.Name = "LogisticaLblSucursal";
+            this.LogisticaLblSucursal.Size = new System.Drawing.Size(73, 23);
+            this.LogisticaLblSucursal.TabIndex = 3;
+            this.LogisticaLblSucursal.Text = "Sucursal";
             // 
-            // comboBox1
+            // LogisticaCboSucursal
             // 
-            this.comboBox1.Font = new System.Drawing.Font("Segoe UI", 10.2F);
-            this.comboBox1.FormattingEnabled = true;
-            this.comboBox1.Location = new System.Drawing.Point(139, 214);
-            this.comboBox1.Name = "comboBox1";
-            this.comboBox1.Size = new System.Drawing.Size(454, 31);
-            this.comboBox1.TabIndex = 4;
+            this.LogisticaCboSucursal.Font = new System.Drawing.Font("Segoe UI", 10.2F);
+            this.LogisticaCboSucursal.FormattingEnabled = true;
+            this.LogisticaCboSucursal.Location = new System.Drawing.Point(139, 214);
+            this.LogisticaCboSucursal.Name = "LogisticaCboSucursal";
+            this.LogisticaCboSucursal.Size = new System.Drawing.Size(454, 31);
+            this.LogisticaCboSucursal.TabIndex = 4;
             // 
-            // label3
+            // LogisticaLblFechaInicial
             // 
-            this.label3.AutoSize = true;
-            this.label3.Font = new System.Drawing.Font("Segoe UI", 10.2F);
-            this.label3.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(62)))), ((int)(((byte)(138)))), ((int)(((byte)(132)))));
-            this.label3.Location = new System.Drawing.Point(138, 268);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(102, 23);
-            this.label3.TabIndex = 5;
-            this.label3.Text = "Fecha inicial";
+            this.LogisticaLblFechaInicial.AutoSize = true;
+            this.LogisticaLblFechaInicial.Font = new System.Drawing.Font("Segoe UI", 10.2F);
+            this.LogisticaLblFechaInicial.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(62)))), ((int)(((byte)(138)))), ((int)(((byte)(132)))));
+            this.LogisticaLblFechaInicial.Location = new System.Drawing.Point(138, 268);
+            this.LogisticaLblFechaInicial.Name = "LogisticaLblFechaInicial";
+            this.LogisticaLblFechaInicial.Size = new System.Drawing.Size(102, 23);
+            this.LogisticaLblFechaInicial.TabIndex = 5;
+            this.LogisticaLblFechaInicial.Text = "Fecha inicial";
             // 
-            // dateTimePicker1
+            // LogisticaDtpFechaInicialCierre
             // 
-            this.dateTimePicker1.Font = new System.Drawing.Font("Segoe UI", 10.2F);
-            this.dateTimePicker1.Location = new System.Drawing.Point(139, 305);
-            this.dateTimePicker1.Name = "dateTimePicker1";
-            this.dateTimePicker1.Size = new System.Drawing.Size(250, 30);
-            this.dateTimePicker1.TabIndex = 6;
+            this.LogisticaDtpFechaInicialCierre.Font = new System.Drawing.Font("Segoe UI", 10.2F);
+            this.LogisticaDtpFechaInicialCierre.Location = new System.Drawing.Point(139, 305);
+            this.LogisticaDtpFechaInicialCierre.Name = "LogisticaDtpFechaInicialCierre";
+            this.LogisticaDtpFechaInicialCierre.Size = new System.Drawing.Size(250, 30);
+            this.LogisticaDtpFechaInicialCierre.TabIndex = 6;
             // 
-            // dateTimePicker2
+            // LogisticaDtpFechaFinalCierre
             // 
-            this.dateTimePicker2.Font = new System.Drawing.Font("Segoe UI", 10.2F);
-            this.dateTimePicker2.Location = new System.Drawing.Point(414, 305);
-            this.dateTimePicker2.Name = "dateTimePicker2";
-            this.dateTimePicker2.Size = new System.Drawing.Size(250, 30);
-            this.dateTimePicker2.TabIndex = 7;
+            this.LogisticaDtpFechaFinalCierre.Font = new System.Drawing.Font("Segoe UI", 10.2F);
+            this.LogisticaDtpFechaFinalCierre.Location = new System.Drawing.Point(414, 305);
+            this.LogisticaDtpFechaFinalCierre.Name = "LogisticaDtpFechaFinalCierre";
+            this.LogisticaDtpFechaFinalCierre.Size = new System.Drawing.Size(250, 30);
+            this.LogisticaDtpFechaFinalCierre.TabIndex = 7;
             // 
-            // label4
+            // LogisticaLblFechaFinal
             // 
-            this.label4.AutoSize = true;
-            this.label4.Font = new System.Drawing.Font("Segoe UI", 10.2F);
-            this.label4.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(62)))), ((int)(((byte)(138)))), ((int)(((byte)(132)))));
-            this.label4.Location = new System.Drawing.Point(410, 268);
-            this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(94, 23);
-            this.label4.TabIndex = 8;
-            this.label4.Text = "Fecha Final";
+            this.LogisticaLblFechaFinal.AutoSize = true;
+            this.LogisticaLblFechaFinal.Font = new System.Drawing.Font("Segoe UI", 10.2F);
+            this.LogisticaLblFechaFinal.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(62)))), ((int)(((byte)(138)))), ((int)(((byte)(132)))));
+            this.LogisticaLblFechaFinal.Location = new System.Drawing.Point(410, 268);
+            this.LogisticaLblFechaFinal.Name = "LogisticaLblFechaFinal";
+            this.LogisticaLblFechaFinal.Size = new System.Drawing.Size(94, 23);
+            this.LogisticaLblFechaFinal.TabIndex = 8;
+            this.LogisticaLblFechaFinal.Text = "Fecha Final";
             // 
-            // dataGridView1
+            // LogisticaDvgCierre
             // 
-            this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView1.Location = new System.Drawing.Point(139, 413);
-            this.dataGridView1.Name = "dataGridView1";
-            this.dataGridView1.RowHeadersWidth = 51;
-            this.dataGridView1.RowTemplate.Height = 24;
-            this.dataGridView1.Size = new System.Drawing.Size(856, 259);
-            this.dataGridView1.TabIndex = 9;
+            this.LogisticaDvgCierre.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.LogisticaDvgCierre.Location = new System.Drawing.Point(139, 413);
+            this.LogisticaDvgCierre.Name = "LogisticaDvgCierre";
+            this.LogisticaDvgCierre.RowHeadersWidth = 51;
+            this.LogisticaDvgCierre.RowTemplate.Height = 24;
+            this.LogisticaDvgCierre.Size = new System.Drawing.Size(856, 259);
+            this.LogisticaDvgCierre.TabIndex = 9;
             // 
-            // textBox1
+            // LogisticaTxtNombreCierre
             // 
-            this.textBox1.Font = new System.Drawing.Font("Segoe UI", 10.2F);
-            this.textBox1.Location = new System.Drawing.Point(142, 354);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(570, 30);
-            this.textBox1.TabIndex = 11;
-            this.textBox1.Text = "Ingresa un nombre";
+            this.LogisticaTxtNombreCierre.Font = new System.Drawing.Font("Segoe UI", 10.2F);
+            this.LogisticaTxtNombreCierre.Location = new System.Drawing.Point(142, 354);
+            this.LogisticaTxtNombreCierre.Name = "LogisticaTxtNombreCierre";
+            this.LogisticaTxtNombreCierre.Size = new System.Drawing.Size(570, 30);
+            this.LogisticaTxtNombreCierre.TabIndex = 11;
+            this.LogisticaTxtNombreCierre.Text = "Ingresa un nombre";
             // 
-            // button1
+            // LogisticaBtnBuscar
             // 
-            this.button1.Image = global::CapaVista_CierreInventario_Logistica.Properties.Resources.btn_buscar;
-            this.button1.Location = new System.Drawing.Point(935, 337);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(60, 66);
-            this.button1.TabIndex = 10;
-            this.button1.UseVisualStyleBackColor = true;
+            this.LogisticaBtnBuscar.Image = global::CapaVista_CierreInventario_Logistica.Properties.Resources.btn_buscar;
+            this.LogisticaBtnBuscar.Location = new System.Drawing.Point(935, 337);
+            this.LogisticaBtnBuscar.Name = "LogisticaBtnBuscar";
+            this.LogisticaBtnBuscar.Size = new System.Drawing.Size(60, 66);
+            this.LogisticaBtnBuscar.TabIndex = 10;
+            this.LogisticaBtnBuscar.UseVisualStyleBackColor = true;
             // 
-            // panel1
+            // LogisticaPnlConsultaCierre
             // 
-            this.panel1.BackgroundImage = global::CapaVista_CierreInventario_Logistica.Properties.Resources.FondoLogica21;
-            this.panel1.Controls.Add(this.panel2);
-            this.panel1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panel1.Location = new System.Drawing.Point(0, 0);
-            this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(1142, 733);
-            this.panel1.TabIndex = 12;
+            this.LogisticaPnlConsultaCierre.BackgroundImage = global::CapaVista_CierreInventario_Logistica.Properties.Resources.FondoLogica21;
+            this.LogisticaPnlConsultaCierre.Controls.Add(this.LogisticaPbDonButti);
+            this.LogisticaPnlConsultaCierre.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.LogisticaPnlConsultaCierre.Location = new System.Drawing.Point(0, 0);
+            this.LogisticaPnlConsultaCierre.Name = "LogisticaPnlConsultaCierre";
+            this.LogisticaPnlConsultaCierre.Size = new System.Drawing.Size(1142, 733);
+            this.LogisticaPnlConsultaCierre.TabIndex = 12;
             // 
-            // panel2
+            // LogisticaPbDonButti
             // 
-            this.panel2.BackColor = System.Drawing.Color.Transparent;
-            this.panel2.BackgroundImage = global::CapaVista_CierreInventario_Logistica.Properties.Resources._3;
-            this.panel2.Location = new System.Drawing.Point(699, 47);
-            this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(256, 319);
-            this.panel2.TabIndex = 0;
+            this.LogisticaPbDonButti.BackColor = System.Drawing.Color.Transparent;
+            this.LogisticaPbDonButti.BackgroundImage = global::CapaVista_CierreInventario_Logistica.Properties.Resources._7;
+            this.LogisticaPbDonButti.Location = new System.Drawing.Point(824, 45);
+            this.LogisticaPbDonButti.Name = "LogisticaPbDonButti";
+            this.LogisticaPbDonButti.Size = new System.Drawing.Size(201, 232);
+            this.LogisticaPbDonButti.TabIndex = 0;
+            this.LogisticaPbDonButti.TabStop = false;
             // 
             // FrmConsultaCierres
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1142, 733);
-            this.Controls.Add(this.textBox1);
-            this.Controls.Add(this.button1);
-            this.Controls.Add(this.dataGridView1);
-            this.Controls.Add(this.label4);
-            this.Controls.Add(this.dateTimePicker2);
-            this.Controls.Add(this.dateTimePicker1);
-            this.Controls.Add(this.label3);
-            this.Controls.Add(this.comboBox1);
-            this.Controls.Add(this.label2);
-            this.Controls.Add(this.label1);
-            this.Controls.Add(this.LogisticaLblTitulo);
-            this.Controls.Add(this.panel1);
+            this.Controls.Add(this.LogisticaTxtNombreCierre);
+            this.Controls.Add(this.LogisticaBtnBuscar);
+            this.Controls.Add(this.LogisticaDvgCierre);
+            this.Controls.Add(this.LogisticaLblFechaFinal);
+            this.Controls.Add(this.LogisticaDtpFechaFinalCierre);
+            this.Controls.Add(this.LogisticaDtpFechaInicialCierre);
+            this.Controls.Add(this.LogisticaLblFechaInicial);
+            this.Controls.Add(this.LogisticaCboSucursal);
+            this.Controls.Add(this.LogisticaLblSucursal);
+            this.Controls.Add(this.LogisticaLblSeleccionarPeriodo);
+            this.Controls.Add(this.LogisticaLblTituloConsultaCierre);
+            this.Controls.Add(this.LogisticaPnlConsultaCierre);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "FrmConsultaCierres";
-            this.Text = "50211 Consulta Cierres";
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
-            this.panel1.ResumeLayout(false);
+            this.Text = "5021 - Consulta Cierres";
+            ((System.ComponentModel.ISupportInitialize)(this.LogisticaDvgCierre)).EndInit();
+            this.LogisticaPnlConsultaCierre.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.LogisticaPbDonButti)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -202,18 +206,18 @@
 
         #endregion
 
-        private System.Windows.Forms.Label LogisticaLblTitulo;
-        private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.ComboBox comboBox1;
-        private System.Windows.Forms.Label label3;
-        private System.Windows.Forms.DateTimePicker dateTimePicker1;
-        private System.Windows.Forms.DateTimePicker dateTimePicker2;
-        private System.Windows.Forms.Label label4;
-        private System.Windows.Forms.DataGridView dataGridView1;
-        private System.Windows.Forms.Button button1;
-        private System.Windows.Forms.TextBox textBox1;
-        private System.Windows.Forms.Panel panel1;
-        private System.Windows.Forms.Panel panel2;
+        private System.Windows.Forms.Label LogisticaLblTituloConsultaCierre;
+        private System.Windows.Forms.Label LogisticaLblSeleccionarPeriodo;
+        private System.Windows.Forms.Label LogisticaLblSucursal;
+        private System.Windows.Forms.ComboBox LogisticaCboSucursal;
+        private System.Windows.Forms.Label LogisticaLblFechaInicial;
+        private System.Windows.Forms.DateTimePicker LogisticaDtpFechaInicialCierre;
+        private System.Windows.Forms.DateTimePicker LogisticaDtpFechaFinalCierre;
+        private System.Windows.Forms.Label LogisticaLblFechaFinal;
+        private System.Windows.Forms.DataGridView LogisticaDvgCierre;
+        private System.Windows.Forms.Button LogisticaBtnBuscar;
+        private System.Windows.Forms.TextBox LogisticaTxtNombreCierre;
+        private System.Windows.Forms.Panel LogisticaPnlConsultaCierre;
+        private System.Windows.Forms.PictureBox LogisticaPbDonButti;
     }
 }
