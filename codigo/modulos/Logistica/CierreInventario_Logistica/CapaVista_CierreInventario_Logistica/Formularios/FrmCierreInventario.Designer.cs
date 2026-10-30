@@ -29,181 +29,197 @@
         private void InitializeComponent()
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FrmCierreInventario));
-            this.LogisticaLblTitulo = new System.Windows.Forms.Label();
-            this.LogisticaCmbSucursal = new System.Windows.Forms.ComboBox();
-            this.label1 = new System.Windows.Forms.Label();
-            this.label2 = new System.Windows.Forms.Label();
-            this.label3 = new System.Windows.Forms.Label();
-            this.LogisticaCmbMes = new System.Windows.Forms.ComboBox();
-            this.LogisticaCmbAño = new System.Windows.Forms.ComboBox();
-            this.label4 = new System.Windows.Forms.Label();
-            this.label5 = new System.Windows.Forms.Label();
-            this.label6 = new System.Windows.Forms.Label();
-            this.label7 = new System.Windows.Forms.Label();
-            this.label8 = new System.Windows.Forms.Label();
-            this.label9 = new System.Windows.Forms.Label();
+            this.LogisticaCboSucursal = new System.Windows.Forms.ComboBox();
+            this.LogisticaCboMesCierre = new System.Windows.Forms.ComboBox();
+            this.LogisticaCboAñoCierre = new System.Windows.Forms.ComboBox();
+            this.LogisticaPnlCierreInventario = new System.Windows.Forms.Panel();
+            this.LogisticaBtnConfirmarCierre = new System.Windows.Forms.Button();
+            this.LogisticaBtnValidarPeriodo = new System.Windows.Forms.Button();
+            this.LogisticaBtnLimpiar = new System.Windows.Forms.Button();
+            this.LogisticaBtnConsultarCierre = new System.Windows.Forms.Button();
+            this.LogisticaLblDetalleInventario = new System.Windows.Forms.Label();
+            this.LogisticaLblTextoBodegasIncluidas = new System.Windows.Forms.Label();
+            this.LogisticaLblTextoProductosDiferencias = new System.Windows.Forms.Label();
+            this.LogisticaLblTextoProductosRegistrados = new System.Windows.Forms.Label();
+            this.LogisticaLblTextoMovimientoMes = new System.Windows.Forms.Label();
+            this.LogisticaLblProductosDiferencias = new System.Windows.Forms.Label();
             this.LogisticaDgvDetalleCierre = new System.Windows.Forms.DataGridView();
-            this.label10 = new System.Windows.Forms.Label();
-            this.label11 = new System.Windows.Forms.Label();
-            this.label12 = new System.Windows.Forms.Label();
-            this.label13 = new System.Windows.Forms.Label();
-            this.label14 = new System.Windows.Forms.Label();
-            this.button1 = new System.Windows.Forms.Button();
-            this.button2 = new System.Windows.Forms.Button();
-            this.button4 = new System.Windows.Forms.Button();
-            this.button3 = new System.Windows.Forms.Button();
-            this.button5 = new System.Windows.Forms.Button();
-            this.panel1 = new System.Windows.Forms.Panel();
+            this.LogisticaLblMovimientoMes = new System.Windows.Forms.Label();
+            this.LogisticaLblDatosCierre = new System.Windows.Forms.Label();
+            this.LogisticaLblBodegasIncluidas = new System.Windows.Forms.Label();
+            this.LogisticaLblMesCierre = new System.Windows.Forms.Label();
+            this.LogisticaLblProductosRegistrados = new System.Windows.Forms.Label();
+            this.LogisticaLblSucursal = new System.Windows.Forms.Label();
+            this.LogisticaLblAñoCierre = new System.Windows.Forms.Label();
+            this.LogisticaLblResumenInventario = new System.Windows.Forms.Label();
+            this.LogisticaLblTituloCierreInventario = new System.Windows.Forms.Label();
+            this.LogisticaPnlCierreInventario.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.LogisticaDgvDetalleCierre)).BeginInit();
-            this.panel1.SuspendLayout();
             this.SuspendLayout();
             // 
-            // LogisticaLblTitulo
+            // LogisticaCboSucursal
             // 
-            this.LogisticaLblTitulo.AutoSize = true;
-            this.LogisticaLblTitulo.BackColor = System.Drawing.Color.Transparent;
-            this.LogisticaLblTitulo.Font = new System.Drawing.Font("Segoe UI", 22.2F, System.Drawing.FontStyle.Bold);
-            this.LogisticaLblTitulo.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(62)))), ((int)(((byte)(138)))), ((int)(((byte)(132)))));
-            this.LogisticaLblTitulo.Location = new System.Drawing.Point(37, 22);
-            this.LogisticaLblTitulo.Name = "LogisticaLblTitulo";
-            this.LogisticaLblTitulo.Size = new System.Drawing.Size(368, 50);
-            this.LogisticaLblTitulo.TabIndex = 0;
-            this.LogisticaLblTitulo.Text = "Cierre de Inventario";
+            this.LogisticaCboSucursal.Font = new System.Drawing.Font("Segoe UI", 10.2F);
+            this.LogisticaCboSucursal.FormattingEnabled = true;
+            this.LogisticaCboSucursal.Location = new System.Drawing.Point(113, 195);
+            this.LogisticaCboSucursal.Name = "LogisticaCboSucursal";
+            this.LogisticaCboSucursal.Size = new System.Drawing.Size(460, 31);
+            this.LogisticaCboSucursal.TabIndex = 1;
             // 
-            // LogisticaCmbSucursal
+            // LogisticaCboMesCierre
             // 
-            this.LogisticaCmbSucursal.Font = new System.Drawing.Font("Segoe UI", 10.2F);
-            this.LogisticaCmbSucursal.FormattingEnabled = true;
-            this.LogisticaCmbSucursal.Location = new System.Drawing.Point(113, 195);
-            this.LogisticaCmbSucursal.Name = "LogisticaCmbSucursal";
-            this.LogisticaCmbSucursal.Size = new System.Drawing.Size(460, 31);
-            this.LogisticaCmbSucursal.TabIndex = 1;
+            this.LogisticaCboMesCierre.Font = new System.Drawing.Font("Segoe UI", 10.2F);
+            this.LogisticaCboMesCierre.FormattingEnabled = true;
+            this.LogisticaCboMesCierre.Location = new System.Drawing.Point(114, 306);
+            this.LogisticaCboMesCierre.Name = "LogisticaCboMesCierre";
+            this.LogisticaCboMesCierre.Size = new System.Drawing.Size(215, 31);
+            this.LogisticaCboMesCierre.TabIndex = 5;
             // 
-            // label1
+            // LogisticaCboAñoCierre
             // 
-            this.label1.AutoSize = true;
-            this.label1.BackColor = System.Drawing.Color.Transparent;
-            this.label1.Font = new System.Drawing.Font("Segoe UI", 13.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(62)))), ((int)(((byte)(138)))), ((int)(((byte)(132)))));
-            this.label1.Location = new System.Drawing.Point(111, 99);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(276, 30);
-            this.label1.TabIndex = 2;
-            this.label1.Text = "Datos generales de cierre";
+            this.LogisticaCboAñoCierre.Font = new System.Drawing.Font("Segoe UI", 10.2F);
+            this.LogisticaCboAñoCierre.FormattingEnabled = true;
+            this.LogisticaCboAñoCierre.Location = new System.Drawing.Point(377, 306);
+            this.LogisticaCboAñoCierre.Name = "LogisticaCboAñoCierre";
+            this.LogisticaCboAñoCierre.Size = new System.Drawing.Size(196, 31);
+            this.LogisticaCboAñoCierre.TabIndex = 6;
             // 
-            // label2
+            // LogisticaPnlCierreInventario
             // 
-            this.label2.AutoSize = true;
-            this.label2.BackColor = System.Drawing.Color.Transparent;
-            this.label2.Font = new System.Drawing.Font("Segoe UI", 10.2F);
-            this.label2.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(62)))), ((int)(((byte)(138)))), ((int)(((byte)(132)))));
-            this.label2.Location = new System.Drawing.Point(125, 157);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(73, 23);
-            this.label2.TabIndex = 3;
-            this.label2.Text = "Sucursal";
+            this.LogisticaPnlCierreInventario.BackgroundImage = global::CapaVista_CierreInventario_Logistica.Properties.Resources.FondoLogica21;
+            this.LogisticaPnlCierreInventario.Controls.Add(this.LogisticaBtnConfirmarCierre);
+            this.LogisticaPnlCierreInventario.Controls.Add(this.LogisticaBtnValidarPeriodo);
+            this.LogisticaPnlCierreInventario.Controls.Add(this.LogisticaBtnLimpiar);
+            this.LogisticaPnlCierreInventario.Controls.Add(this.LogisticaBtnConsultarCierre);
+            this.LogisticaPnlCierreInventario.Controls.Add(this.LogisticaLblDetalleInventario);
+            this.LogisticaPnlCierreInventario.Controls.Add(this.LogisticaLblTextoBodegasIncluidas);
+            this.LogisticaPnlCierreInventario.Controls.Add(this.LogisticaLblTextoProductosDiferencias);
+            this.LogisticaPnlCierreInventario.Controls.Add(this.LogisticaLblTextoProductosRegistrados);
+            this.LogisticaPnlCierreInventario.Controls.Add(this.LogisticaLblTextoMovimientoMes);
+            this.LogisticaPnlCierreInventario.Controls.Add(this.LogisticaLblProductosDiferencias);
+            this.LogisticaPnlCierreInventario.Controls.Add(this.LogisticaDgvDetalleCierre);
+            this.LogisticaPnlCierreInventario.Controls.Add(this.LogisticaLblMovimientoMes);
+            this.LogisticaPnlCierreInventario.Controls.Add(this.LogisticaLblDatosCierre);
+            this.LogisticaPnlCierreInventario.Controls.Add(this.LogisticaLblBodegasIncluidas);
+            this.LogisticaPnlCierreInventario.Controls.Add(this.LogisticaLblMesCierre);
+            this.LogisticaPnlCierreInventario.Controls.Add(this.LogisticaLblProductosRegistrados);
+            this.LogisticaPnlCierreInventario.Controls.Add(this.LogisticaLblSucursal);
+            this.LogisticaPnlCierreInventario.Controls.Add(this.LogisticaLblAñoCierre);
+            this.LogisticaPnlCierreInventario.Controls.Add(this.LogisticaLblResumenInventario);
+            this.LogisticaPnlCierreInventario.Controls.Add(this.LogisticaLblTituloCierreInventario);
+            this.LogisticaPnlCierreInventario.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.LogisticaPnlCierreInventario.Location = new System.Drawing.Point(0, 0);
+            this.LogisticaPnlCierreInventario.Name = "LogisticaPnlCierreInventario";
+            this.LogisticaPnlCierreInventario.Size = new System.Drawing.Size(1142, 733);
+            this.LogisticaPnlCierreInventario.TabIndex = 24;
             // 
-            // label3
+            // LogisticaBtnConfirmarCierre
             // 
-            this.label3.AutoSize = true;
-            this.label3.BackColor = System.Drawing.Color.Transparent;
-            this.label3.Font = new System.Drawing.Font("Segoe UI", 10.2F);
-            this.label3.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(62)))), ((int)(((byte)(138)))), ((int)(((byte)(132)))));
-            this.label3.Location = new System.Drawing.Point(124, 266);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(112, 23);
-            this.label3.TabIndex = 4;
-            this.label3.Text = "Mes de cierre";
+            this.LogisticaBtnConfirmarCierre.Location = new System.Drawing.Point(996, 592);
+            this.LogisticaBtnConfirmarCierre.Name = "LogisticaBtnConfirmarCierre";
+            this.LogisticaBtnConfirmarCierre.Size = new System.Drawing.Size(60, 66);
+            this.LogisticaBtnConfirmarCierre.TabIndex = 23;
+            this.LogisticaBtnConfirmarCierre.Text = "Confirmar Cierre";
+            this.LogisticaBtnConfirmarCierre.UseVisualStyleBackColor = true;
             // 
-            // LogisticaCmbMes
+            // LogisticaBtnValidarPeriodo
             // 
-            this.LogisticaCmbMes.Font = new System.Drawing.Font("Segoe UI", 10.2F);
-            this.LogisticaCmbMes.FormattingEnabled = true;
-            this.LogisticaCmbMes.Location = new System.Drawing.Point(114, 306);
-            this.LogisticaCmbMes.Name = "LogisticaCmbMes";
-            this.LogisticaCmbMes.Size = new System.Drawing.Size(215, 31);
-            this.LogisticaCmbMes.TabIndex = 5;
+            this.LogisticaBtnValidarPeriodo.Location = new System.Drawing.Point(377, 355);
+            this.LogisticaBtnValidarPeriodo.Name = "LogisticaBtnValidarPeriodo";
+            this.LogisticaBtnValidarPeriodo.Size = new System.Drawing.Size(92, 66);
+            this.LogisticaBtnValidarPeriodo.TabIndex = 19;
+            this.LogisticaBtnValidarPeriodo.Text = "Validar periodo";
+            this.LogisticaBtnValidarPeriodo.UseVisualStyleBackColor = true;
             // 
-            // LogisticaCmbAño
+            // LogisticaBtnLimpiar
             // 
-            this.LogisticaCmbAño.Font = new System.Drawing.Font("Segoe UI", 10.2F);
-            this.LogisticaCmbAño.FormattingEnabled = true;
-            this.LogisticaCmbAño.Location = new System.Drawing.Point(377, 306);
-            this.LogisticaCmbAño.Name = "LogisticaCmbAño";
-            this.LogisticaCmbAño.Size = new System.Drawing.Size(196, 31);
-            this.LogisticaCmbAño.TabIndex = 6;
+            this.LogisticaBtnLimpiar.Location = new System.Drawing.Point(486, 355);
+            this.LogisticaBtnLimpiar.Name = "LogisticaBtnLimpiar";
+            this.LogisticaBtnLimpiar.Size = new System.Drawing.Size(60, 66);
+            this.LogisticaBtnLimpiar.TabIndex = 20;
+            this.LogisticaBtnLimpiar.Text = "Limpiar";
+            this.LogisticaBtnLimpiar.UseVisualStyleBackColor = true;
             // 
-            // label4
+            // LogisticaBtnConsultarCierre
             // 
-            this.label4.AutoSize = true;
-            this.label4.BackColor = System.Drawing.Color.Transparent;
-            this.label4.Font = new System.Drawing.Font("Segoe UI", 10.2F);
-            this.label4.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(62)))), ((int)(((byte)(138)))), ((int)(((byte)(132)))));
-            this.label4.Location = new System.Drawing.Point(392, 266);
-            this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(41, 23);
-            this.label4.TabIndex = 7;
-            this.label4.Text = "Año";
+            this.LogisticaBtnConsultarCierre.Image = global::CapaVista_CierreInventario_Logistica.Properties.Resources.btn_consultar;
+            this.LogisticaBtnConsultarCierre.Location = new System.Drawing.Point(996, 472);
+            this.LogisticaBtnConsultarCierre.Name = "LogisticaBtnConsultarCierre";
+            this.LogisticaBtnConsultarCierre.Size = new System.Drawing.Size(60, 66);
+            this.LogisticaBtnConsultarCierre.TabIndex = 21;
+            this.LogisticaBtnConsultarCierre.UseVisualStyleBackColor = true;
+            this.LogisticaBtnConsultarCierre.Click += new System.EventHandler(this.button3_Click);
             // 
-            // label5
+            // LogisticaLblDetalleInventario
             // 
-            this.label5.AutoSize = true;
-            this.label5.BackColor = System.Drawing.Color.Transparent;
-            this.label5.Font = new System.Drawing.Font("Segoe UI", 13.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label5.ForeColor = System.Drawing.Color.White;
-            this.label5.Location = new System.Drawing.Point(747, 99);
-            this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(255, 30);
-            this.label5.TabIndex = 8;
-            this.label5.Text = "Resumen del inventario";
+            this.LogisticaLblDetalleInventario.AutoSize = true;
+            this.LogisticaLblDetalleInventario.BackColor = System.Drawing.Color.Transparent;
+            this.LogisticaLblDetalleInventario.Font = new System.Drawing.Font("Segoe UI", 10.2F);
+            this.LogisticaLblDetalleInventario.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(62)))), ((int)(((byte)(138)))), ((int)(((byte)(132)))));
+            this.LogisticaLblDetalleInventario.Location = new System.Drawing.Point(112, 387);
+            this.LogisticaLblDetalleInventario.Name = "LogisticaLblDetalleInventario";
+            this.LogisticaLblDetalleInventario.Size = new System.Drawing.Size(173, 23);
+            this.LogisticaLblDetalleInventario.TabIndex = 14;
+            this.LogisticaLblDetalleInventario.Text = "Detalle del Inventario";
             // 
-            // label6
+            // LogisticaLblTextoBodegasIncluidas
             // 
-            this.label6.AutoSize = true;
-            this.label6.BackColor = System.Drawing.Color.Transparent;
-            this.label6.Font = new System.Drawing.Font("Segoe UI", 10.2F);
-            this.label6.ForeColor = System.Drawing.SystemColors.WindowText;
-            this.label6.Location = new System.Drawing.Point(633, 203);
-            this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(176, 23);
-            this.label6.TabIndex = 9;
-            this.label6.Text = "Productos registrados";
+            this.LogisticaLblTextoBodegasIncluidas.AutoSize = true;
+            this.LogisticaLblTextoBodegasIncluidas.BackColor = System.Drawing.Color.Transparent;
+            this.LogisticaLblTextoBodegasIncluidas.Font = new System.Drawing.Font("Segoe UI", 10.2F);
+            this.LogisticaLblTextoBodegasIncluidas.ForeColor = System.Drawing.SystemColors.WindowText;
+            this.LogisticaLblTextoBodegasIncluidas.Location = new System.Drawing.Point(889, 203);
+            this.LogisticaLblTextoBodegasIncluidas.Name = "LogisticaLblTextoBodegasIncluidas";
+            this.LogisticaLblTextoBodegasIncluidas.Size = new System.Drawing.Size(146, 23);
+            this.LogisticaLblTextoBodegasIncluidas.TabIndex = 10;
+            this.LogisticaLblTextoBodegasIncluidas.Text = "bodegas incluidas";
             // 
-            // label7
+            // LogisticaLblTextoProductosDiferencias
             // 
-            this.label7.AutoSize = true;
-            this.label7.BackColor = System.Drawing.Color.Transparent;
-            this.label7.Font = new System.Drawing.Font("Segoe UI", 10.2F);
-            this.label7.ForeColor = System.Drawing.SystemColors.WindowText;
-            this.label7.Location = new System.Drawing.Point(889, 203);
-            this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(146, 23);
-            this.label7.TabIndex = 10;
-            this.label7.Text = "bodegas incluidas";
+            this.LogisticaLblTextoProductosDiferencias.AutoSize = true;
+            this.LogisticaLblTextoProductosDiferencias.BackColor = System.Drawing.Color.Transparent;
+            this.LogisticaLblTextoProductosDiferencias.Font = new System.Drawing.Font("Segoe UI", 10.2F);
+            this.LogisticaLblTextoProductosDiferencias.ForeColor = System.Drawing.Color.Black;
+            this.LogisticaLblTextoProductosDiferencias.Location = new System.Drawing.Point(863, 306);
+            this.LogisticaLblTextoProductosDiferencias.Name = "LogisticaLblTextoProductosDiferencias";
+            this.LogisticaLblTextoProductosDiferencias.Size = new System.Drawing.Size(206, 23);
+            this.LogisticaLblTextoProductosDiferencias.TabIndex = 12;
+            this.LogisticaLblTextoProductosDiferencias.Text = "productos con diferencias";
             // 
-            // label8
+            // LogisticaLblTextoProductosRegistrados
             // 
-            this.label8.AutoSize = true;
-            this.label8.BackColor = System.Drawing.Color.Transparent;
-            this.label8.Font = new System.Drawing.Font("Segoe UI", 10.2F);
-            this.label8.ForeColor = System.Drawing.Color.Black;
-            this.label8.Location = new System.Drawing.Point(633, 306);
-            this.label8.Name = "label8";
-            this.label8.Size = new System.Drawing.Size(172, 23);
-            this.label8.TabIndex = 11;
-            this.label8.Text = "Movimientos del mes";
+            this.LogisticaLblTextoProductosRegistrados.AutoSize = true;
+            this.LogisticaLblTextoProductosRegistrados.BackColor = System.Drawing.Color.Transparent;
+            this.LogisticaLblTextoProductosRegistrados.Font = new System.Drawing.Font("Segoe UI", 10.2F);
+            this.LogisticaLblTextoProductosRegistrados.ForeColor = System.Drawing.SystemColors.WindowText;
+            this.LogisticaLblTextoProductosRegistrados.Location = new System.Drawing.Point(633, 203);
+            this.LogisticaLblTextoProductosRegistrados.Name = "LogisticaLblTextoProductosRegistrados";
+            this.LogisticaLblTextoProductosRegistrados.Size = new System.Drawing.Size(176, 23);
+            this.LogisticaLblTextoProductosRegistrados.TabIndex = 9;
+            this.LogisticaLblTextoProductosRegistrados.Text = "Productos registrados";
             // 
-            // label9
+            // LogisticaLblTextoMovimientoMes
             // 
-            this.label9.AutoSize = true;
-            this.label9.BackColor = System.Drawing.Color.Transparent;
-            this.label9.Font = new System.Drawing.Font("Segoe UI", 10.2F);
-            this.label9.ForeColor = System.Drawing.Color.Black;
-            this.label9.Location = new System.Drawing.Point(863, 306);
-            this.label9.Name = "label9";
-            this.label9.Size = new System.Drawing.Size(206, 23);
-            this.label9.TabIndex = 12;
-            this.label9.Text = "productos con diferencias";
+            this.LogisticaLblTextoMovimientoMes.AutoSize = true;
+            this.LogisticaLblTextoMovimientoMes.BackColor = System.Drawing.Color.Transparent;
+            this.LogisticaLblTextoMovimientoMes.Font = new System.Drawing.Font("Segoe UI", 10.2F);
+            this.LogisticaLblTextoMovimientoMes.ForeColor = System.Drawing.Color.Black;
+            this.LogisticaLblTextoMovimientoMes.Location = new System.Drawing.Point(633, 306);
+            this.LogisticaLblTextoMovimientoMes.Name = "LogisticaLblTextoMovimientoMes";
+            this.LogisticaLblTextoMovimientoMes.Size = new System.Drawing.Size(172, 23);
+            this.LogisticaLblTextoMovimientoMes.TabIndex = 11;
+            this.LogisticaLblTextoMovimientoMes.Text = "Movimientos del mes";
+            // 
+            // LogisticaLblProductosDiferencias
+            // 
+            this.LogisticaLblProductosDiferencias.AutoSize = true;
+            this.LogisticaLblProductosDiferencias.BackColor = System.Drawing.Color.Transparent;
+            this.LogisticaLblProductosDiferencias.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.LogisticaLblProductosDiferencias.Location = new System.Drawing.Point(953, 353);
+            this.LogisticaLblProductosDiferencias.Name = "LogisticaLblProductosDiferencias";
+            this.LogisticaLblProductosDiferencias.Size = new System.Drawing.Size(23, 28);
+            this.LogisticaLblProductosDiferencias.TabIndex = 18;
+            this.LogisticaLblProductosDiferencias.Text = "0";
             // 
             // LogisticaDgvDetalleCierre
             // 
@@ -215,183 +231,158 @@
             this.LogisticaDgvDetalleCierre.Size = new System.Drawing.Size(830, 230);
             this.LogisticaDgvDetalleCierre.TabIndex = 13;
             // 
-            // label10
+            // LogisticaLblMovimientoMes
             // 
-            this.label10.AutoSize = true;
-            this.label10.BackColor = System.Drawing.Color.Transparent;
-            this.label10.Font = new System.Drawing.Font("Segoe UI", 10.2F);
-            this.label10.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(62)))), ((int)(((byte)(138)))), ((int)(((byte)(132)))));
-            this.label10.Location = new System.Drawing.Point(112, 387);
-            this.label10.Name = "label10";
-            this.label10.Size = new System.Drawing.Size(173, 23);
-            this.label10.TabIndex = 14;
-            this.label10.Text = "Detalle del Inventario";
+            this.LogisticaLblMovimientoMes.AutoSize = true;
+            this.LogisticaLblMovimientoMes.BackColor = System.Drawing.Color.Transparent;
+            this.LogisticaLblMovimientoMes.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.LogisticaLblMovimientoMes.Location = new System.Drawing.Point(709, 353);
+            this.LogisticaLblMovimientoMes.Name = "LogisticaLblMovimientoMes";
+            this.LogisticaLblMovimientoMes.Size = new System.Drawing.Size(23, 28);
+            this.LogisticaLblMovimientoMes.TabIndex = 17;
+            this.LogisticaLblMovimientoMes.Text = "0";
             // 
-            // label11
+            // LogisticaLblDatosCierre
             // 
-            this.label11.AutoSize = true;
-            this.label11.BackColor = System.Drawing.Color.Transparent;
-            this.label11.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label11.Location = new System.Drawing.Point(709, 247);
-            this.label11.Name = "label11";
-            this.label11.Size = new System.Drawing.Size(23, 28);
-            this.label11.TabIndex = 15;
-            this.label11.Text = "0";
+            this.LogisticaLblDatosCierre.AutoSize = true;
+            this.LogisticaLblDatosCierre.BackColor = System.Drawing.Color.Transparent;
+            this.LogisticaLblDatosCierre.Font = new System.Drawing.Font("Segoe UI", 13.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.LogisticaLblDatosCierre.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(62)))), ((int)(((byte)(138)))), ((int)(((byte)(132)))));
+            this.LogisticaLblDatosCierre.Location = new System.Drawing.Point(111, 99);
+            this.LogisticaLblDatosCierre.Name = "LogisticaLblDatosCierre";
+            this.LogisticaLblDatosCierre.Size = new System.Drawing.Size(276, 30);
+            this.LogisticaLblDatosCierre.TabIndex = 2;
+            this.LogisticaLblDatosCierre.Text = "Datos generales de cierre";
             // 
-            // label12
+            // LogisticaLblBodegasIncluidas
             // 
-            this.label12.AutoSize = true;
-            this.label12.BackColor = System.Drawing.Color.Transparent;
-            this.label12.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label12.Location = new System.Drawing.Point(953, 247);
-            this.label12.Name = "label12";
-            this.label12.Size = new System.Drawing.Size(23, 28);
-            this.label12.TabIndex = 16;
-            this.label12.Text = "0";
+            this.LogisticaLblBodegasIncluidas.AutoSize = true;
+            this.LogisticaLblBodegasIncluidas.BackColor = System.Drawing.Color.Transparent;
+            this.LogisticaLblBodegasIncluidas.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.LogisticaLblBodegasIncluidas.Location = new System.Drawing.Point(953, 247);
+            this.LogisticaLblBodegasIncluidas.Name = "LogisticaLblBodegasIncluidas";
+            this.LogisticaLblBodegasIncluidas.Size = new System.Drawing.Size(23, 28);
+            this.LogisticaLblBodegasIncluidas.TabIndex = 16;
+            this.LogisticaLblBodegasIncluidas.Text = "0";
             // 
-            // label13
+            // LogisticaLblMesCierre
             // 
-            this.label13.AutoSize = true;
-            this.label13.BackColor = System.Drawing.Color.Transparent;
-            this.label13.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label13.Location = new System.Drawing.Point(709, 353);
-            this.label13.Name = "label13";
-            this.label13.Size = new System.Drawing.Size(23, 28);
-            this.label13.TabIndex = 17;
-            this.label13.Text = "0";
+            this.LogisticaLblMesCierre.AutoSize = true;
+            this.LogisticaLblMesCierre.BackColor = System.Drawing.Color.Transparent;
+            this.LogisticaLblMesCierre.Font = new System.Drawing.Font("Segoe UI", 10.2F);
+            this.LogisticaLblMesCierre.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(62)))), ((int)(((byte)(138)))), ((int)(((byte)(132)))));
+            this.LogisticaLblMesCierre.Location = new System.Drawing.Point(124, 266);
+            this.LogisticaLblMesCierre.Name = "LogisticaLblMesCierre";
+            this.LogisticaLblMesCierre.Size = new System.Drawing.Size(112, 23);
+            this.LogisticaLblMesCierre.TabIndex = 4;
+            this.LogisticaLblMesCierre.Text = "Mes de cierre";
             // 
-            // label14
+            // LogisticaLblProductosRegistrados
             // 
-            this.label14.AutoSize = true;
-            this.label14.BackColor = System.Drawing.Color.Transparent;
-            this.label14.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label14.Location = new System.Drawing.Point(953, 353);
-            this.label14.Name = "label14";
-            this.label14.Size = new System.Drawing.Size(23, 28);
-            this.label14.TabIndex = 18;
-            this.label14.Text = "0";
+            this.LogisticaLblProductosRegistrados.AutoSize = true;
+            this.LogisticaLblProductosRegistrados.BackColor = System.Drawing.Color.Transparent;
+            this.LogisticaLblProductosRegistrados.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.LogisticaLblProductosRegistrados.Location = new System.Drawing.Point(709, 247);
+            this.LogisticaLblProductosRegistrados.Name = "LogisticaLblProductosRegistrados";
+            this.LogisticaLblProductosRegistrados.Size = new System.Drawing.Size(23, 28);
+            this.LogisticaLblProductosRegistrados.TabIndex = 15;
+            this.LogisticaLblProductosRegistrados.Text = "0";
             // 
-            // button1
+            // LogisticaLblSucursal
             // 
-            this.button1.Location = new System.Drawing.Point(377, 355);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(60, 66);
-            this.button1.TabIndex = 19;
-            this.button1.Text = "Validar periodo";
-            this.button1.UseVisualStyleBackColor = true;
+            this.LogisticaLblSucursal.AutoSize = true;
+            this.LogisticaLblSucursal.BackColor = System.Drawing.Color.Transparent;
+            this.LogisticaLblSucursal.Font = new System.Drawing.Font("Segoe UI", 10.2F);
+            this.LogisticaLblSucursal.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(62)))), ((int)(((byte)(138)))), ((int)(((byte)(132)))));
+            this.LogisticaLblSucursal.Location = new System.Drawing.Point(125, 157);
+            this.LogisticaLblSucursal.Name = "LogisticaLblSucursal";
+            this.LogisticaLblSucursal.Size = new System.Drawing.Size(73, 23);
+            this.LogisticaLblSucursal.TabIndex = 3;
+            this.LogisticaLblSucursal.Text = "Sucursal";
             // 
-            // button2
+            // LogisticaLblAñoCierre
             // 
-            this.button2.Location = new System.Drawing.Point(462, 355);
-            this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(60, 66);
-            this.button2.TabIndex = 20;
-            this.button2.Text = "Limpiar";
-            this.button2.UseVisualStyleBackColor = true;
+            this.LogisticaLblAñoCierre.AutoSize = true;
+            this.LogisticaLblAñoCierre.BackColor = System.Drawing.Color.Transparent;
+            this.LogisticaLblAñoCierre.Font = new System.Drawing.Font("Segoe UI", 10.2F);
+            this.LogisticaLblAñoCierre.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(62)))), ((int)(((byte)(138)))), ((int)(((byte)(132)))));
+            this.LogisticaLblAñoCierre.Location = new System.Drawing.Point(392, 266);
+            this.LogisticaLblAñoCierre.Name = "LogisticaLblAñoCierre";
+            this.LogisticaLblAñoCierre.Size = new System.Drawing.Size(41, 23);
+            this.LogisticaLblAñoCierre.TabIndex = 7;
+            this.LogisticaLblAñoCierre.Text = "Año";
             // 
-            // button4
+            // LogisticaLblResumenInventario
             // 
-            this.button4.Location = new System.Drawing.Point(1780, 790);
-            this.button4.Name = "button4";
-            this.button4.Size = new System.Drawing.Size(94, 104);
-            this.button4.TabIndex = 22;
-            this.button4.Text = "Ejecutar Cierre";
-            this.button4.UseVisualStyleBackColor = true;
+            this.LogisticaLblResumenInventario.AutoSize = true;
+            this.LogisticaLblResumenInventario.BackColor = System.Drawing.Color.Transparent;
+            this.LogisticaLblResumenInventario.Font = new System.Drawing.Font("Segoe UI", 13.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.LogisticaLblResumenInventario.ForeColor = System.Drawing.Color.White;
+            this.LogisticaLblResumenInventario.Location = new System.Drawing.Point(747, 99);
+            this.LogisticaLblResumenInventario.Name = "LogisticaLblResumenInventario";
+            this.LogisticaLblResumenInventario.Size = new System.Drawing.Size(255, 30);
+            this.LogisticaLblResumenInventario.TabIndex = 8;
+            this.LogisticaLblResumenInventario.Text = "Resumen del inventario";
             // 
-            // button3
+            // LogisticaLblTituloCierreInventario
             // 
-            this.button3.Image = global::CapaVista_CierreInventario_Logistica.Properties.Resources.btn_consultar;
-            this.button3.Location = new System.Drawing.Point(996, 472);
-            this.button3.Name = "button3";
-            this.button3.Size = new System.Drawing.Size(60, 66);
-            this.button3.TabIndex = 21;
-            this.button3.UseVisualStyleBackColor = true;
-            this.button3.Click += new System.EventHandler(this.button3_Click);
-            // 
-            // button5
-            // 
-            this.button5.Location = new System.Drawing.Point(996, 592);
-            this.button5.Name = "button5";
-            this.button5.Size = new System.Drawing.Size(60, 66);
-            this.button5.TabIndex = 23;
-            this.button5.Text = "Confirmar Cierre";
-            this.button5.UseVisualStyleBackColor = true;
-            // 
-            // panel1
-            // 
-            this.panel1.BackgroundImage = global::CapaVista_CierreInventario_Logistica.Properties.Resources.FondoLogica21;
-            this.panel1.Controls.Add(this.button5);
-            this.panel1.Controls.Add(this.button1);
-            this.panel1.Controls.Add(this.button2);
-            this.panel1.Controls.Add(this.button3);
-            this.panel1.Controls.Add(this.label10);
-            this.panel1.Controls.Add(this.label7);
-            this.panel1.Controls.Add(this.label9);
-            this.panel1.Controls.Add(this.label6);
-            this.panel1.Controls.Add(this.label8);
-            this.panel1.Controls.Add(this.label14);
-            this.panel1.Controls.Add(this.LogisticaDgvDetalleCierre);
-            this.panel1.Controls.Add(this.label13);
-            this.panel1.Controls.Add(this.label1);
-            this.panel1.Controls.Add(this.label12);
-            this.panel1.Controls.Add(this.label3);
-            this.panel1.Controls.Add(this.label11);
-            this.panel1.Controls.Add(this.label2);
-            this.panel1.Controls.Add(this.label4);
-            this.panel1.Controls.Add(this.label5);
-            this.panel1.Controls.Add(this.LogisticaLblTitulo);
-            this.panel1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panel1.Location = new System.Drawing.Point(0, 0);
-            this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(1142, 733);
-            this.panel1.TabIndex = 24;
+            this.LogisticaLblTituloCierreInventario.AutoSize = true;
+            this.LogisticaLblTituloCierreInventario.BackColor = System.Drawing.Color.Transparent;
+            this.LogisticaLblTituloCierreInventario.Font = new System.Drawing.Font("Segoe UI", 22.2F, System.Drawing.FontStyle.Bold);
+            this.LogisticaLblTituloCierreInventario.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(62)))), ((int)(((byte)(138)))), ((int)(((byte)(132)))));
+            this.LogisticaLblTituloCierreInventario.Location = new System.Drawing.Point(37, 22);
+            this.LogisticaLblTituloCierreInventario.Name = "LogisticaLblTituloCierreInventario";
+            this.LogisticaLblTituloCierreInventario.Size = new System.Drawing.Size(368, 50);
+            this.LogisticaLblTituloCierreInventario.TabIndex = 0;
+            this.LogisticaLblTituloCierreInventario.Text = "Cierre de Inventario";
             // 
             // FrmCierreInventario
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1142, 733);
-            this.Controls.Add(this.button4);
-            this.Controls.Add(this.LogisticaCmbAño);
-            this.Controls.Add(this.LogisticaCmbMes);
-            this.Controls.Add(this.LogisticaCmbSucursal);
-            this.Controls.Add(this.panel1);
+            this.Controls.Add(this.LogisticaCboAñoCierre);
+            this.Controls.Add(this.LogisticaCboMesCierre);
+            this.Controls.Add(this.LogisticaCboSucursal);
+            this.Controls.Add(this.LogisticaPnlCierreInventario);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
+            this.MaximizeBox = false;
             this.Name = "FrmCierreInventario";
-            this.Text = "5020 Cierre de Inventario";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
+            this.Text = "5020 - Cierre de Inventario";
+            this.LogisticaPnlCierreInventario.ResumeLayout(false);
+            this.LogisticaPnlCierreInventario.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.LogisticaDgvDetalleCierre)).EndInit();
-            this.panel1.ResumeLayout(false);
-            this.panel1.PerformLayout();
             this.ResumeLayout(false);
 
         }
 
         #endregion
 
-        private System.Windows.Forms.Label LogisticaLblTitulo;
-        private System.Windows.Forms.ComboBox LogisticaCmbSucursal;
-        private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.Label label3;
-        private System.Windows.Forms.ComboBox LogisticaCmbMes;
-        private System.Windows.Forms.ComboBox LogisticaCmbAño;
-        private System.Windows.Forms.Label label4;
-        private System.Windows.Forms.Label label5;
-        private System.Windows.Forms.Label label6;
-        private System.Windows.Forms.Label label7;
-        private System.Windows.Forms.Label label8;
-        private System.Windows.Forms.Label label9;
+        private System.Windows.Forms.Label LogisticaLblTituloCierreInventario;
+        private System.Windows.Forms.ComboBox LogisticaCboSucursal;
+        private System.Windows.Forms.Label LogisticaLblDatosCierre;
+        private System.Windows.Forms.Label LogisticaLblSucursal;
+        private System.Windows.Forms.Label LogisticaLblMesCierre;
+        private System.Windows.Forms.ComboBox LogisticaCboMesCierre;
+        private System.Windows.Forms.ComboBox LogisticaCboAñoCierre;
+        private System.Windows.Forms.Label LogisticaLblAñoCierre;
+        private System.Windows.Forms.Label LogisticaLblResumenInventario;
+        private System.Windows.Forms.Label LogisticaLblTextoProductosRegistrados;
+        private System.Windows.Forms.Label LogisticaLblTextoBodegasIncluidas;
+        private System.Windows.Forms.Label LogisticaLblTextoMovimientoMes;
+        private System.Windows.Forms.Label LogisticaLblTextoProductosDiferencias;
         private System.Windows.Forms.DataGridView LogisticaDgvDetalleCierre;
-        private System.Windows.Forms.Label label10;
-        private System.Windows.Forms.Label label11;
-        private System.Windows.Forms.Label label12;
-        private System.Windows.Forms.Label label13;
-        private System.Windows.Forms.Label label14;
-        private System.Windows.Forms.Button button1;
-        private System.Windows.Forms.Button button2;
-        private System.Windows.Forms.Button button3;
-        private System.Windows.Forms.Button button4;
-        private System.Windows.Forms.Button button5;
-        private System.Windows.Forms.Panel panel1;
+        private System.Windows.Forms.Label LogisticaLblDetalleInventario;
+        private System.Windows.Forms.Label LogisticaLblProductosRegistrados;
+        private System.Windows.Forms.Label LogisticaLblBodegasIncluidas;
+        private System.Windows.Forms.Label LogisticaLblMovimientoMes;
+        private System.Windows.Forms.Label LogisticaLblProductosDiferencias;
+        private System.Windows.Forms.Button LogisticaBtnValidarPeriodo;
+        private System.Windows.Forms.Button LogisticaBtnLimpiar;
+        private System.Windows.Forms.Button LogisticaBtnConsultarCierre;
+        private System.Windows.Forms.Button LogisticaBtnConfirmarCierre;
+        private System.Windows.Forms.Panel LogisticaPnlCierreInventario;
     }
 }
