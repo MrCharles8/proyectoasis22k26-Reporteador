@@ -1111,7 +1111,7 @@
             // 
             this.picChef.BackColor = System.Drawing.Color.Transparent;
             this.picChef.Image = global::CapaVista_Enlace_Logistica.Properties.Resources._7;
-            this.picChef.Location = new System.Drawing.Point(1171, 3);
+            this.picChef.Location = new System.Drawing.Point(1150, 3);
             this.picChef.Name = "picChef";
             this.picChef.Size = new System.Drawing.Size(275, 333);
             this.picChef.TabIndex = 0;
