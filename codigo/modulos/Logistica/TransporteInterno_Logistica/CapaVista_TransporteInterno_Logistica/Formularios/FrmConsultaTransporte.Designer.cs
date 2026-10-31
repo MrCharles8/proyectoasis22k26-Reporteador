@@ -30,14 +30,42 @@
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FrmConsultaTransporte));
             this.LogisticaNavConsultaTransporte = new CapaVista_Navegador.Navegador();
+            this.LogisticaLblTituloConsultaTransporte = new System.Windows.Forms.Label();
+            this.ogisticaLblDescripcionConsultaTransporte = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // LogisticaNavConsultaTransporte
             // 
-            this.LogisticaNavConsultaTransporte.Location = new System.Drawing.Point(-13, 100);
+            this.LogisticaNavConsultaTransporte.BackColor = System.Drawing.Color.Transparent;
+            this.LogisticaNavConsultaTransporte.Location = new System.Drawing.Point(27, 116);
+            this.LogisticaNavConsultaTransporte.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.LogisticaNavConsultaTransporte.Name = "LogisticaNavConsultaTransporte";
             this.LogisticaNavConsultaTransporte.Size = new System.Drawing.Size(1438, 111);
             this.LogisticaNavConsultaTransporte.TabIndex = 0;
+            // 
+            // LogisticaLblTituloConsultaTransporte
+            // 
+            this.LogisticaLblTituloConsultaTransporte.AutoSize = true;
+            this.LogisticaLblTituloConsultaTransporte.BackColor = System.Drawing.Color.Transparent;
+            this.LogisticaLblTituloConsultaTransporte.Font = new System.Drawing.Font("Lucida Fax", 19.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.LogisticaLblTituloConsultaTransporte.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(62)))), ((int)(((byte)(138)))), ((int)(((byte)(132)))));
+            this.LogisticaLblTituloConsultaTransporte.Location = new System.Drawing.Point(49, 16);
+            this.LogisticaLblTituloConsultaTransporte.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.LogisticaLblTituloConsultaTransporte.Name = "LogisticaLblTituloConsultaTransporte";
+            this.LogisticaLblTituloConsultaTransporte.Size = new System.Drawing.Size(440, 40);
+            this.LogisticaLblTituloConsultaTransporte.TabIndex = 1;
+            this.LogisticaLblTituloConsultaTransporte.Text = "Consulta de Transporte";
+            // 
+            // ogisticaLblDescripcionConsultaTransporte
+            // 
+            this.ogisticaLblDescripcionConsultaTransporte.AutoSize = true;
+            this.ogisticaLblDescripcionConsultaTransporte.BackColor = System.Drawing.Color.Transparent;
+            this.ogisticaLblDescripcionConsultaTransporte.Font = new System.Drawing.Font("Tahoma", 13.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.ogisticaLblDescripcionConsultaTransporte.Location = new System.Drawing.Point(53, 70);
+            this.ogisticaLblDescripcionConsultaTransporte.Name = "ogisticaLblDescripcionConsultaTransporte";
+            this.ogisticaLblDescripcionConsultaTransporte.Size = new System.Drawing.Size(716, 28);
+            this.ogisticaLblDescripcionConsultaTransporte.TabIndex = 8;
+            this.ogisticaLblDescripcionConsultaTransporte.Text = "Consulta el historial de viajes y genera reportes de transporte interno.";
             // 
             // FrmConsultaTransporte
             // 
@@ -45,6 +73,8 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(251)))), ((int)(((byte)(246)))), ((int)(((byte)(242)))));
             this.ClientSize = new System.Drawing.Size(1525, 912);
+            this.Controls.Add(this.ogisticaLblDescripcionConsultaTransporte);
+            this.Controls.Add(this.LogisticaLblTituloConsultaTransporte);
             this.Controls.Add(this.LogisticaNavConsultaTransporte);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MaximizeBox = false;
@@ -52,11 +82,14 @@
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "5014-Consultas de Transporte";
             this.ResumeLayout(false);
+            this.PerformLayout();
 
         }
 
         #endregion
 
         private CapaVista_Navegador.Navegador LogisticaNavConsultaTransporte;
+        private System.Windows.Forms.Label LogisticaLblTituloConsultaTransporte;
+        private System.Windows.Forms.Label ogisticaLblDescripcionConsultaTransporte;
     }
 }
