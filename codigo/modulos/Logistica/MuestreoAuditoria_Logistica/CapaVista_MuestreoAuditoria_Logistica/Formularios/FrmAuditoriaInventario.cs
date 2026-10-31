@@ -27,5 +27,10 @@ namespace CapaVista_MuestreoAuditoria_Logistica.Formularios
         {
             InitializeComponent();
         }
+
+        private void FrmAuditoriaInventario_Load(object sender, EventArgs e)
+        {
+
+        }
     }
 }
