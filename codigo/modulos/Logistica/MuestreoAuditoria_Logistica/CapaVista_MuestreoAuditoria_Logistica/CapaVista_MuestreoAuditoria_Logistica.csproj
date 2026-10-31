@@ -77,5 +77,8 @@
   <ItemGroup>
     <None Include="Resources\FondoLogistica.png" />
   </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Formularios\Solo para commit\" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
