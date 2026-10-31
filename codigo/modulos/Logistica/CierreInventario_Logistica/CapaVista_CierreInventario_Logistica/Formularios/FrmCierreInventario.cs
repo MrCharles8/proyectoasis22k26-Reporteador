@@ -28,14 +28,14 @@ namespace CapaVista_CierreInventario_Logistica.Formularios
         public FrmCierreInventario()
         {
             InitializeComponent();
+            MessageBox.Show("ESTOY EJECUTANDO LA VERSION NUEVA");
         }
 
-        private void button3_Click(object sender, EventArgs e)
+        public void button3_Click(object sender, EventArgs e)
         {
 
             FrmConsultaCierres frmConsulta = new FrmConsultaCierres();
-            frmConsulta.Show();
-            this.Hide(); // Oculta FrmCierreInventario
+            frmConsulta.ShowDialog();
         
     }
     }

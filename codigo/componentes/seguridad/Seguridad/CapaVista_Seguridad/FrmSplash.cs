@@ -10,7 +10,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-using CapaVista_Logistica;
+using CapaVista_Logistica.Formularios;
 
 /*
  * ============================================================
@@ -77,7 +77,7 @@ namespace CapaVista_Seguridad
                         break;
                     
                     case "Logistica":
-                        var MDILogistica = new FrmMDILogistica();
+                        var MDILogistica = new CapaVista_Logistica.Formularios.FrmMDILogistica();
                         MDILogistica.LogisticaMetActualizarInfoUsuario(
                         ClsSesionSeguridad.NombreEmpleado,
                         ClsSesionSeguridad.SeguridadMetRolesComoTexto());

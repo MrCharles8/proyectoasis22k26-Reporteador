@@ -1,20 +1,21 @@
 @echo off
 :: ============================================================================
 :: BUILD GLOBAL - LOGISTICA
-:: VERSION ACTUALIZADA: 9 CARPETAS - PORTABLE SIN EDITAR RUTAS
+:: VERSION CORREGIDA: 9 CARPETAS - ORDEN DE DEPENDENCIAS
 :: ============================================================================
 ::
 :: QUE HACE ESTE SCRIPT:
 :: 1. Usa la carpeta donde esta guardado este .bat como raiz de Logistica.
 :: 2. Busca MSBuild de Visual Studio automaticamente (cualquier edicion).
 :: 3. Compila las 9 carpetas que pertenecen al modulo de Logistica.
-::    Los ejecutables se compilan al final (Ejecucion_Logistica).
+::    Primero se compilan submodulos, luego Logistica y finalmente Ejecucion.
 :: 4. Dentro de cada componente compila en orden de capas:
 ::        CapaModelo -> CapaControlador -> CapaVista -> librerias -> ejecutables.
 ::    Esto ayuda cuando las capas referencian DLL de otras capas
 ::    (referencia a archivo), y en un clone nuevo esa DLL todavia no existe.
 :: 5. Si algun proyecto falla, repite todo el ciclo (hasta 3 rondas).
 :: 6. Copia las DLL de bin\Debug a bin\Release de cada proyecto compilado.
+::    NOTA: esta copia NO publica DLL en otros ejecutables externos.
 :: 7. Deja los logs en la carpeta "logs" y un resumen al final.
 ::
 :: DONDE COLOCARLO:
@@ -142,6 +143,7 @@ echo MSBuild: %MSBUILD_PATH% >> "%LOG_FILE%"
 :: --------------------------------------------------------------------------
 :: Se compilan primero Modelo, luego Controlador, Vista, librerias y ejecutables.
 :: Las dependencias entre carpetas pueden requerir hasta tres rondas.
+:: IMPORTANTE: el MDI principal va DESPUES de los submodulos.
 set "RONDA=1"
 
 :RONDA
@@ -149,14 +151,18 @@ set /a total=0
 set /a ok=0
 set /a fail=0
 if exist "%FALLIDOS%" del "%FALLIDOS%"
-call :CompilarComponente Logistica 0
+:: Primero se compilan los modulos que aportan DLL.
+:: Asi se evita que el MDI de Logistica copie dependencias anteriores.
 call :CompilarComponente Inventario_Logistica 0
 call :CompilarComponente Traslados_Logistica 0
 call :CompilarComponente TransporteInterno_Logistica 0
 call :CompilarComponente TransporteExterno_Logistica 0
 call :CompilarComponente MuestreoAuditoria_Logistica 0
 call :CompilarComponente CierreInventario_Logistica 0
+:: El modulo principal se recompila DESPUES de las DLL de los submodulos.
+call :CompilarComponente Logistica 0
 call :CompilarComponente Enlace_OtrosModulos_Logistica 0
+:: El ejecutable se compila al final, para actualizar sus referencias.
 call :CompilarComponente Ejecucion_Logistica 1
 if %fail% EQU 0 goto RONDA_FIN
 if %RONDA% GEQ 3 goto RONDA_FIN
