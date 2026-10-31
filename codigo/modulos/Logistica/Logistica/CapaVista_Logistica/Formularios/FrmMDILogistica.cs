@@ -30,7 +30,7 @@ using CapaVista_Inventario_Logistica.Formularios;
 using CapaVista_Traslados_Logistica.Formularios;
 
 // Formularios del módulo de Muestreo y Auditoría.
-using CapaVista_MuestreoAuditoria_Logistica;
+using CapaVista_MuestreoAuditoria_Logistica.Formularios;
 
 // Formularios del módulo de Cierre de Inventario.
 using CapaVista_CierreInventario_Logistica.Formularios;

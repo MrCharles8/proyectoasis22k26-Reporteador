@@ -1,4 +1,5 @@
-﻿namespace CapaVista_MuestreoAuditoria_Logistica
+﻿
+namespace CapaVista_MuestreoAuditoria_Logistica.Formularios
 {
     partial class FrmAuditoriaInventario
     {
@@ -82,7 +83,6 @@
             this.MuestreoLblTitulo.TabIndex = 0;
             this.MuestreoLblTitulo.Text = "Muestreo y Auditoría de Inventario";
             this.MuestreoLblTitulo.UseWaitCursor = true;
-            this.MuestreoLblTitulo.Click += new System.EventHandler(this.label1_Click);
             // 
             // MuestreoLblDescripcion
             // 
@@ -107,7 +107,7 @@
             this.MuestreoPnlOpciones.Controls.Add(this.MuestreoGpbConsulta);
             this.MuestreoPnlOpciones.Controls.Add(this.MuestreoGpbNuevaAuditoria);
             this.MuestreoPnlOpciones.Location = new System.Drawing.Point(52, 101);
-            this.MuestreoPnlOpciones.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.MuestreoPnlOpciones.Margin = new System.Windows.Forms.Padding(2);
             this.MuestreoPnlOpciones.Name = "MuestreoPnlOpciones";
             this.MuestreoPnlOpciones.Size = new System.Drawing.Size(867, 159);
             this.MuestreoPnlOpciones.TabIndex = 2;
@@ -125,9 +125,9 @@
             this.MuestreoGpbConsulta.Font = new System.Drawing.Font("Tahoma", 10.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.MuestreoGpbConsulta.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(106)))), ((int)(((byte)(44)))), ((int)(((byte)(18)))));
             this.MuestreoGpbConsulta.Location = new System.Drawing.Point(431, 8);
-            this.MuestreoGpbConsulta.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.MuestreoGpbConsulta.Margin = new System.Windows.Forms.Padding(2);
             this.MuestreoGpbConsulta.Name = "MuestreoGpbConsulta";
-            this.MuestreoGpbConsulta.Padding = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.MuestreoGpbConsulta.Padding = new System.Windows.Forms.Padding(2);
             this.MuestreoGpbConsulta.Size = new System.Drawing.Size(420, 138);
             this.MuestreoGpbConsulta.TabIndex = 4;
             this.MuestreoGpbConsulta.TabStop = false;
@@ -137,7 +137,7 @@
             // MuestreoBtnBuscar
             // 
             this.MuestreoBtnBuscar.Location = new System.Drawing.Point(278, 93);
-            this.MuestreoBtnBuscar.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.MuestreoBtnBuscar.Margin = new System.Windows.Forms.Padding(2);
             this.MuestreoBtnBuscar.Name = "MuestreoBtnBuscar";
             this.MuestreoBtnBuscar.Size = new System.Drawing.Size(120, 31);
             this.MuestreoBtnBuscar.TabIndex = 6;
@@ -148,7 +148,7 @@
             // MuestreoTxtBuscar
             // 
             this.MuestreoTxtBuscar.Location = new System.Drawing.Point(11, 98);
-            this.MuestreoTxtBuscar.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.MuestreoTxtBuscar.Margin = new System.Windows.Forms.Padding(2);
             this.MuestreoTxtBuscar.Name = "MuestreoTxtBuscar";
             this.MuestreoTxtBuscar.Size = new System.Drawing.Size(252, 25);
             this.MuestreoTxtBuscar.TabIndex = 5;
@@ -159,7 +159,7 @@
             this.MuestreoCboEstado.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.MuestreoCboEstado.FormattingEnabled = true;
             this.MuestreoCboEstado.Location = new System.Drawing.Point(150, 46);
-            this.MuestreoCboEstado.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.MuestreoCboEstado.Margin = new System.Windows.Forms.Padding(2);
             this.MuestreoCboEstado.Name = "MuestreoCboEstado";
             this.MuestreoCboEstado.Size = new System.Drawing.Size(114, 25);
             this.MuestreoCboEstado.TabIndex = 4;
@@ -170,7 +170,7 @@
             this.MuestreoCboBodega.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.MuestreoCboBodega.FormattingEnabled = true;
             this.MuestreoCboBodega.Location = new System.Drawing.Point(11, 46);
-            this.MuestreoCboBodega.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.MuestreoCboBodega.Margin = new System.Windows.Forms.Padding(2);
             this.MuestreoCboBodega.Name = "MuestreoCboBodega";
             this.MuestreoCboBodega.Size = new System.Drawing.Size(128, 25);
             this.MuestreoCboBodega.TabIndex = 3;
@@ -216,9 +216,9 @@
             this.MuestreoGpbNuevaAuditoria.Font = new System.Drawing.Font("Tahoma", 10.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.MuestreoGpbNuevaAuditoria.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(106)))), ((int)(((byte)(44)))), ((int)(((byte)(18)))));
             this.MuestreoGpbNuevaAuditoria.Location = new System.Drawing.Point(11, 8);
-            this.MuestreoGpbNuevaAuditoria.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.MuestreoGpbNuevaAuditoria.Margin = new System.Windows.Forms.Padding(2);
             this.MuestreoGpbNuevaAuditoria.Name = "MuestreoGpbNuevaAuditoria";
-            this.MuestreoGpbNuevaAuditoria.Padding = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.MuestreoGpbNuevaAuditoria.Padding = new System.Windows.Forms.Padding(2);
             this.MuestreoGpbNuevaAuditoria.Size = new System.Drawing.Size(405, 138);
             this.MuestreoGpbNuevaAuditoria.TabIndex = 3;
             this.MuestreoGpbNuevaAuditoria.TabStop = false;
@@ -233,7 +233,7 @@
             this.MuestreoBtnMultiple.Font = new System.Drawing.Font("Segoe UI", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.MuestreoBtnMultiple.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(106)))), ((int)(((byte)(44)))), ((int)(((byte)(18)))));
             this.MuestreoBtnMultiple.Location = new System.Drawing.Point(206, 37);
-            this.MuestreoBtnMultiple.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.MuestreoBtnMultiple.Margin = new System.Windows.Forms.Padding(2);
             this.MuestreoBtnMultiple.Name = "MuestreoBtnMultiple";
             this.MuestreoBtnMultiple.Size = new System.Drawing.Size(180, 61);
             this.MuestreoBtnMultiple.TabIndex = 1;
@@ -249,7 +249,7 @@
             this.MuestreoBtnIndividual.Font = new System.Drawing.Font("Segoe UI", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.MuestreoBtnIndividual.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(106)))), ((int)(((byte)(44)))), ((int)(((byte)(18)))));
             this.MuestreoBtnIndividual.Location = new System.Drawing.Point(15, 37);
-            this.MuestreoBtnIndividual.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.MuestreoBtnIndividual.Margin = new System.Windows.Forms.Padding(2);
             this.MuestreoBtnIndividual.Name = "MuestreoBtnIndividual";
             this.MuestreoBtnIndividual.Size = new System.Drawing.Size(180, 61);
             this.MuestreoBtnIndividual.TabIndex = 0;
@@ -273,7 +273,7 @@
             this.MuestreoPnlHistorial.Controls.Add(this.MuestreoDgvAuditorias);
             this.MuestreoPnlHistorial.Controls.Add(this.MuestreoLblHistorial);
             this.MuestreoPnlHistorial.Location = new System.Drawing.Point(52, 361);
-            this.MuestreoPnlHistorial.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.MuestreoPnlHistorial.Margin = new System.Windows.Forms.Padding(2);
             this.MuestreoPnlHistorial.Name = "MuestreoPnlHistorial";
             this.MuestreoPnlHistorial.Size = new System.Drawing.Size(867, 268);
             this.MuestreoPnlHistorial.TabIndex = 3;
@@ -296,7 +296,7 @@
             this.MuestreoBtnActualizar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.MuestreoBtnActualizar.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(106)))), ((int)(((byte)(44)))), ((int)(((byte)(18)))));
             this.MuestreoBtnActualizar.Location = new System.Drawing.Point(716, 223);
-            this.MuestreoBtnActualizar.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.MuestreoBtnActualizar.Margin = new System.Windows.Forms.Padding(2);
             this.MuestreoBtnActualizar.Name = "MuestreoBtnActualizar";
             this.MuestreoBtnActualizar.Size = new System.Drawing.Size(109, 28);
             this.MuestreoBtnActualizar.TabIndex = 6;
@@ -310,7 +310,7 @@
             this.MuestreoBtnEditar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.MuestreoBtnEditar.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(106)))), ((int)(((byte)(44)))), ((int)(((byte)(18)))));
             this.MuestreoBtnEditar.Location = new System.Drawing.Point(600, 223);
-            this.MuestreoBtnEditar.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.MuestreoBtnEditar.Margin = new System.Windows.Forms.Padding(2);
             this.MuestreoBtnEditar.Name = "MuestreoBtnEditar";
             this.MuestreoBtnEditar.Size = new System.Drawing.Size(109, 28);
             this.MuestreoBtnEditar.TabIndex = 5;
@@ -324,7 +324,7 @@
             this.MuestreoBtnConsultar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.MuestreoBtnConsultar.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(106)))), ((int)(((byte)(44)))), ((int)(((byte)(18)))));
             this.MuestreoBtnConsultar.Location = new System.Drawing.Point(484, 223);
-            this.MuestreoBtnConsultar.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.MuestreoBtnConsultar.Margin = new System.Windows.Forms.Padding(2);
             this.MuestreoBtnConsultar.Name = "MuestreoBtnConsultar";
             this.MuestreoBtnConsultar.Size = new System.Drawing.Size(109, 28);
             this.MuestreoBtnConsultar.TabIndex = 4;
@@ -338,7 +338,7 @@
             this.MuestreoBtnSiguiente.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.MuestreoBtnSiguiente.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(106)))), ((int)(((byte)(44)))), ((int)(((byte)(18)))));
             this.MuestreoBtnSiguiente.Location = new System.Drawing.Point(184, 223);
-            this.MuestreoBtnSiguiente.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.MuestreoBtnSiguiente.Margin = new System.Windows.Forms.Padding(2);
             this.MuestreoBtnSiguiente.Name = "MuestreoBtnSiguiente";
             this.MuestreoBtnSiguiente.Size = new System.Drawing.Size(79, 28);
             this.MuestreoBtnSiguiente.TabIndex = 3;
@@ -352,7 +352,7 @@
             this.MuestreoBtnAnterior.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.MuestreoBtnAnterior.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(106)))), ((int)(((byte)(44)))), ((int)(((byte)(18)))));
             this.MuestreoBtnAnterior.Location = new System.Drawing.Point(15, 223);
-            this.MuestreoBtnAnterior.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.MuestreoBtnAnterior.Margin = new System.Windows.Forms.Padding(2);
             this.MuestreoBtnAnterior.Name = "MuestreoBtnAnterior";
             this.MuestreoBtnAnterior.Size = new System.Drawing.Size(79, 28);
             this.MuestreoBtnAnterior.TabIndex = 2;
@@ -393,7 +393,7 @@
             this.colObservaciones});
             this.MuestreoDgvAuditorias.EnableHeadersVisualStyles = false;
             this.MuestreoDgvAuditorias.Location = new System.Drawing.Point(15, 41);
-            this.MuestreoDgvAuditorias.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.MuestreoDgvAuditorias.Margin = new System.Windows.Forms.Padding(2);
             this.MuestreoDgvAuditorias.MultiSelect = false;
             this.MuestreoDgvAuditorias.Name = "MuestreoDgvAuditorias";
             this.MuestreoDgvAuditorias.ReadOnly = true;
@@ -486,9 +486,10 @@
             this.Controls.Add(this.MuestreoPnlOpciones);
             this.Controls.Add(this.MuestreoLblDescripcion);
             this.Controls.Add(this.MuestreoLblTitulo);
+            this.Cursor = System.Windows.Forms.Cursors.WaitCursor;
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
-            this.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.Margin = new System.Windows.Forms.Padding(2);
             this.MaximizeBox = false;
             this.Name = "FrmAuditoriaInventario";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
