@@ -259,7 +259,9 @@ namespace CapaControlador_Inventario_Logistica.Modelos_de_Controladores
                     NombreCategoria = P.NombreCategoria,
                     NombreMarca = P.NombreMarca,
                     NombreLinea = P.NombreLinea,
-                    NombreProveedor = P.NombreProveedor
+                    NombreProveedor = P.NombreProveedor,
+                    CreatedAt = P.CreatedAt,
+                    UpdatedAt = P.UpdatedAt
                 })
                 .ToList();
         }

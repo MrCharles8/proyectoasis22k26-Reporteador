@@ -33,6 +33,8 @@ using System.Reflection;
 using System.Windows.Forms;
 
 using CapaControlador_Inventario_Logistica.Modelos_de_Controladores;
+using Microsoft.Reporting.WinForms;
+using SortOrder = System.Windows.Forms.SortOrder;
 
 namespace CapaVista_Inventario_Logistica.Formularios
 {
@@ -1305,11 +1307,73 @@ namespace CapaVista_Inventario_Logistica.Formularios
             object Sender,
             EventArgs E)
         {
-            MessageBox.Show(
-                "El reporte RDLC de productos está pendiente.",
-                "Información - Logística",
-                MessageBoxButtons.OK,
-                MessageBoxIcon.Information);
+            try
+            {
+                // Se obtienen TODOS los productos, no solo la página del DataGridView.
+                List<ClsDatosProducto> ListaProductos =
+                    _ModeloProducto.LogisticaFuncObtenerTodos();
+
+                if (ListaProductos.Count == 0)
+                {
+                    MessageBox.Show(
+                        "No hay productos registrados para imprimir.",
+                        "Información - Logística",
+                        MessageBoxButtons.OK,
+                        MessageBoxIcon.Information);
+                    return;
+                }
+
+                // Se utiliza el RDLC incrustado para evitar rutas externas.
+                Assembly Ensamblado = typeof(FrmMantenimientoProducto).Assembly;
+                string NombreRecurso = Ensamblado.GetManifestResourceNames()
+                    .FirstOrDefault(Nombre => Nombre.EndsWith(
+                        ".RpReporteProducto.rdlc",
+                        StringComparison.OrdinalIgnoreCase));
+
+                if (NombreRecurso == null)
+                {
+                    throw new FileNotFoundException(
+                        "No se encontró el recurso incrustado RpReporteProducto.rdlc. " +
+                        "Verifique que esté en Reportes y tenga Acción de compilación: Recurso incrustado.");
+                }
+
+                using (Form Ventana = new Form())
+                {
+                    Ventana.Text = "Reporte de Productos";
+                    Ventana.StartPosition = FormStartPosition.CenterParent;
+                    Ventana.Size = new Size(1150, 740);
+                    Ventana.MinimumSize = new Size(800, 550);
+
+                    ReportViewer Visor = new ReportViewer();
+                    Visor.Dock = DockStyle.Fill;
+                    Visor.ProcessingMode = ProcessingMode.Local;
+                    Visor.ShowPrintButton = true;
+                    Visor.ShowExportButton = true;
+
+                    using (Stream Definicion =
+                        Ensamblado.GetManifestResourceStream(NombreRecurso))
+                    {
+                        if (Definicion == null)
+                            throw new FileNotFoundException(
+                                "No fue posible leer RpReporteProducto.rdlc del ensamblado.");
+
+                        Visor.LocalReport.LoadReportDefinition(Definicion);
+                    }
+
+                    Visor.LocalReport.DataSources.Clear();
+                    Visor.LocalReport.DataSources.Add(
+                        new ReportDataSource("DsReporteProducto", ListaProductos));
+
+                    Ventana.Controls.Add(Visor);
+                    Visor.RefreshReport();
+                    Ventana.ShowDialog(this);
+                }
+            }
+            catch (Exception Ex)
+            {
+                Debug.WriteLine(Ex.ToString());
+                LogisticaProcMostrarError(Ex.Message);
+            }
         }
 
         private void LogisticaBtnAyudaProducto_Click(

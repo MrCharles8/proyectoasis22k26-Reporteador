@@ -9,6 +9,8 @@
  * ============================================================================
  */
 
+using System;
+
 namespace CapaModelo_Inventario_Logistica.Entidades
 {
     public class ClsProducto
@@ -30,6 +32,10 @@ namespace CapaModelo_Inventario_Logistica.Entidades
         public int StockMinimoProducto { get; set; }
         public int StockMaximoProducto { get; set; }
         public decimal PesoProducto { get; set; }
+
+        // Fechas existentes en tblProducto, usadas también por el reporte.
+        public DateTime CreatedAt { get; set; }
+        public DateTime UpdatedAt { get; set; }
 
         // Campos adicionales, recuperados con JOIN para las consultas.
         public string NombreCategoria { get; set; }

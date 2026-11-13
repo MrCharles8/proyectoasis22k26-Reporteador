@@ -50,10 +50,14 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Modelos de Controladores\ClsDatosCategoria.cs" />
     <Compile Include="Modelos de Controladores\ClsDatosProducto.cs" />
     <Compile Include="Modelos de Controladores\ClsDatosStock.cs" />
     <Compile Include="Modelos de Controladores\ClsEstadoEntidad.cs" />
     <Compile Include="Modelos de Controladores\ClsModeloBodega.cs" />
+    <Compile Include="Modelos de Controladores\ClsModeloCategoria.cs" />
+    <Compile Include="Modelos de Controladores\ClsModeloLinea.cs" />
+    <Compile Include="Modelos de Controladores\ClsModeloMovimientoInventario.cs" />
     <Compile Include="Modelos de Controladores\ClsModeloProducto.cs" />
     <Compile Include="Modelos de Controladores\ClsModelosDetalleMovimiento.cs" />
     <Compile Include="Modelos de Controladores\ClsModelosTipoMovimiento.cs" />

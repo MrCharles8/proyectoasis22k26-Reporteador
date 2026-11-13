@@ -1,11 +1,11 @@
 -- ============================================================================
--- TERMINUS ERP - MODULO DE LOGISTICA
--- ESTANDARIZACION DE BASE DE DATOS EST-01 V1.4
--- 43 TABLAS;
--- REVISION 03/11/2026
+-- TERMINUS ERP - MÓDULO LOGÍSTICA - SCRIPT INTEGRADO CORREGIDO
+-- Revisión: 11/11/2026 | Basado en dbLogistica(9).sql
+-- Integra las correcciones 
+-- IMPORTANTE: EJECUTAR EN UNA BASE dbLogistica NUEVA/VACÍA.
 -- ============================================================================
 
-CREATE DATABASE dbLogistica
+CREATE DATABASE IF NOT EXISTS dbLogistica
     CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci;
 USE dbLogistica;
 
@@ -18,9 +18,13 @@ idEmpresaTransportista INT NOT NULL AUTO_INCREMENT,
  nombreEmpresaTransportista VARCHAR(100) NOT NULL,
  contactoEmpresaTransportista VARCHAR(100) NOT NULL,
  telefonoEmpresaTransportista VARCHAR(30) COLLATE utf8mb4_unicode_ci NOT NULL,
+ nitEmpresaTransportista CHAR(10) NULL,
+ direccionEmpresaTransportista VARCHAR(500) NULL,
+ estadoEmpresaTransportista BOOLEAN NOT NULL DEFAULT TRUE,
  created_at TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,
  updated_at TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
  CONSTRAINT uqEmpresaTransportistaNombre UNIQUE (nombreEmpresaTransportista),
+ CONSTRAINT uqNitEmpresaTransportista UNIQUE (nitEmpresaTransportista),
     CONSTRAINT Pk_EmpresaTransportista PRIMARY KEY (idEmpresaTransportista)
 ) ENGINE=InnoDB;
 
@@ -32,6 +36,7 @@ idEmpresaTransportista INT NOT NULL AUTO_INCREMENT,
 CREATE TABLE tblTipoServicio (
 idTipoServicio INT NOT NULL AUTO_INCREMENT,
  nombreTipoServicio VARCHAR(100) NOT NULL,
+ estadoTipoServicio BOOLEAN NOT NULL DEFAULT TRUE,
  created_at TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,
  updated_at TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
  CONSTRAINT uqTipoServicioNombre UNIQUE (nombreTipoServicio),
@@ -47,6 +52,7 @@ idTipoServicio INT NOT NULL AUTO_INCREMENT,
 CREATE TABLE tblTarifaTransporte (
 idTarifaTransporte INT NOT NULL AUTO_INCREMENT,
  nombreTarifaTransporte VARCHAR(100) NOT NULL,
+ estadoTarifaTransporte BOOLEAN NOT NULL DEFAULT TRUE,
  created_at TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,
  updated_at TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
  CONSTRAINT uqTarifaTransporteNombre UNIQUE (nombreTarifaTransporte),
@@ -203,7 +209,6 @@ idTelemetriaTemperatura BIGINT AUTO_INCREMENT NOT NULL,
     Fk_Encabezado_Viaje_Codigo BIGINT NOT NULL,
     fechaHoraTelemetriaTemperatura DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP,
     temperaturaCelsiusTelemetriaTemperatura DECIMAL(5,2) NOT NULL,
-    /* Porcentaje en formato decimal: 0.6500 = 65 % (DECIMAL(5,4) permite llegar a 100 %) */
     humedadRelativaTelemetriaTemperatura DECIMAL(5,4) NOT NULL,
     puertaAbiertaTelemetriaTemperatura BOOLEAN NOT NULL DEFAULT FALSE,
     ubicacionGpsTelemetriaTemperatura VARCHAR(100) NOT NULL,
@@ -317,6 +322,9 @@ idMarca INT NOT NULL AUTO_INCREMENT,
     CONSTRAINT Pk_Marca PRIMARY KEY (idMarca)
 ) ENGINE=InnoDB;
 
+/* 	RESPONSABLE:
+	VELVETH SARAI CHAVEZ MEJIA 0901  23 6269
+ */ 
 -- tblProducto
 CREATE TABLE tblProducto (
 idProducto INT NOT NULL AUTO_INCREMENT,
@@ -533,30 +541,27 @@ idDetalleTraslado INT NOT NULL AUTO_INCREMENT,
 /* 	RESPONSABLE:
 	NILLS BERDUCIDO GOMEZ 0901 23 14275
 */ 
--- tblCierreMovimiento
-CREATE TABLE tblCierreMovimiento (
-idCierreMovimiento INT NOT NULL AUTO_INCREMENT,
-    nombreCierreMovimiento VARCHAR(100) NOT NULL,
+-- tblCierreInventario: se registra el cierre desde el MVC; no se anula ni modifica.
+CREATE TABLE tblCierreInventario (
+idCierreInventario INT NOT NULL AUTO_INCREMENT,
+    nombreCierreInventario VARCHAR(100) NOT NULL,
     Fk_Sucursal_Codigo INT NOT NULL,
-    fechaInicioCierreMovimiento DATE NOT NULL,
-    fechaFinCierreMovimiento DATE NOT NULL,
-    estadoCierreMovimiento ENUM('ABIERTO', 'EN_PROCESO', 'CERRADO') NOT NULL DEFAULT 'ABIERTO',
-    esCierreAnualCierreMovimiento BOOLEAN NOT NULL DEFAULT FALSE,
-    toleranciaCierreMovimiento INT NOT NULL DEFAULT 0,
-    diferenciaUnidadesCierreMovimiento INT NOT NULL DEFAULT 0,
-    diferenciaMontoCierreMovimiento DECIMAL(12,4) NOT NULL DEFAULT 0,
-    motivoAceptacionCierreMovimiento VARCHAR(500) NOT NULL,
+    fechaInicioCierreInventario DATE NOT NULL,
+    fechaFinCierreInventario DATE NOT NULL,
+    esCierreAnualCierreInventario BOOLEAN NOT NULL DEFAULT FALSE,
+    diferenciaUnidadesCierreInventario INT NOT NULL DEFAULT 0,
+    diferenciaMontoCierreInventario DECIMAL(12,4) NOT NULL DEFAULT 0,
+    motivoAceptacionCierreInventario VARCHAR(500) NOT NULL,
     -- El cierre ejecutado no puede anularse; por eso no se guarda motivoAnulacion.
-    observacionesCierreMovimiento VARCHAR(500) NOT NULL,
-    fechaEjecucionCierreMovimiento DATETIME NULL,
-    CONSTRAINT uqCierreMovimientoSucursalFin UNIQUE (Fk_Sucursal_Codigo, fechaFinCierreMovimiento, esCierreAnualCierreMovimiento),
-    CONSTRAINT ckCierreMovimientoFechas CHECK (fechaInicioCierreMovimiento <= fechaFinCierreMovimiento),
-    CONSTRAINT ckCierreEjecucion CHECK (estadoCierreMovimiento <> 'CERRADO' OR fechaEjecucionCierreMovimiento IS NOT NULL),
-    CONSTRAINT Fk_Cierre_Movimiento_Sucursal FOREIGN KEY (Fk_Sucursal_Codigo)
+    observacionesCierreInventario VARCHAR(500) NOT NULL,
+    fechaEjecucionCierreInventario DATETIME NULL, -- El MVC la establece al ejecutar el cierre
+    CONSTRAINT uqCierreInventarioSucursalFin UNIQUE (Fk_Sucursal_Codigo, fechaFinCierreInventario, esCierreAnualCierreInventario),
+    CONSTRAINT ckCierreInventarioFechas CHECK (fechaInicioCierreInventario <= fechaFinCierreInventario),
+    CONSTRAINT Fk_Cierre_Inventario_Sucursal FOREIGN KEY (Fk_Sucursal_Codigo)
         REFERENCES tblSucursal(idSucursal) ON DELETE RESTRICT,
     created_at TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,
     updated_at TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
-    CONSTRAINT Pk_CierreMovimiento PRIMARY KEY (idCierreMovimiento)
+    CONSTRAINT Pk_CierreInventario PRIMARY KEY (idCierreInventario)
 ) ENGINE=InnoDB;
 
 
@@ -565,38 +570,46 @@ idCierreMovimiento INT NOT NULL AUTO_INCREMENT,
  */ 
 -- tblMovimientoInventario
 CREATE TABLE tblMovimientoInventario (
-idMovimientoInventario INT NOT NULL AUTO_INCREMENT,
+    idMovimientoInventario INT NOT NULL AUTO_INCREMENT,
     Fk_Tipo_Movimiento_Codigo INT NOT NULL,
--- agregar sucursales destino y origen 
+    Fk_Sucursal_Origen_Codigo INT NULL,
     Fk_Bodega_Origen_Codigo INT NULL,
+    Fk_Sucursal_Destino_Codigo INT NULL,
     Fk_Bodega_Destino_Codigo INT NULL,
     Fk_Transporte_Codigo INT NULL,
-    Fk_Traslado_Codigo INT NULL COMMENT 'Relaciona movimientos de entrada/salida con su traslado',
+    Fk_Traslado_Codigo INT NULL COMMENT 'Relaciona movimientos con su traslado',
     fechaMovimientoInventario DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP,
-
     observacionesMovimientoInventario VARCHAR(500) NOT NULL,
     estadoMovimientoInventario ENUM('PENDIENTE', 'CUADRADO', 'CERRADO', 'ANULADO') NOT NULL DEFAULT 'PENDIENTE',
-    Fk_Cierre_Movimiento_Codigo INT NULL COMMENT 'FK al cierre; permite NULL mientras el movimiento no se haya cerrado', 
-    
+    Fk_Cierre_Inventario_Codigo INT NULL COMMENT 'NULL mientras el movimiento no pertenezca a un cierre',
     created_at TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,
     updated_at TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
 
-    CONSTRAINT Fk_Movimiento_Inventario_Tipo_Movimiento FOREIGN KEY (Fk_Tipo_Movimiento_Codigo)
-	REFERENCES tblTipoMovimiento(idTipoMovimiento) ON DELETE RESTRICT,
-
-    CONSTRAINT Fk_Movimiento_Inventario_Bodega_Origen FOREIGN KEY (Fk_Bodega_Origen_Codigo)
-    REFERENCES tblBodega(idBodega) ON DELETE RESTRICT,
-
-    CONSTRAINT Fk_Movimiento_Inventario_Bodega_Destino FOREIGN KEY (Fk_Bodega_Destino_Codigo)
-    REFERENCES tblBodega(idBodega) ON DELETE RESTRICT,
-
-    CONSTRAINT Fk_Movimiento_Inventario_Transporte FOREIGN KEY (Fk_Transporte_Codigo)
-    REFERENCES tblTransporte(idTransporte) ON DELETE RESTRICT,
-    CONSTRAINT Fk_Movimiento_Inventario_Traslado FOREIGN KEY (Fk_Traslado_Codigo)
-        REFERENCES tblTraslado(idTraslado) ON DELETE RESTRICT,
-    CONSTRAINT Fk_Movimiento_Inventario_Cierre_Movimiento FOREIGN KEY (Fk_Cierre_Movimiento_Codigo)
-        REFERENCES tblCierreMovimiento(idCierreMovimiento) ON DELETE RESTRICT,
-    CONSTRAINT Pk_MovimientoInventario PRIMARY KEY (idMovimientoInventario)
+    CONSTRAINT Pk_MovimientoInventario PRIMARY KEY (idMovimientoInventario),
+    CONSTRAINT Fk_Movimiento_Inventario_Tipo_Movimiento
+        FOREIGN KEY (Fk_Tipo_Movimiento_Codigo) REFERENCES tblTipoMovimiento(idTipoMovimiento) ON DELETE RESTRICT,
+    CONSTRAINT Fk_Movimiento_Inventario_Sucursal_Origen
+        FOREIGN KEY (Fk_Sucursal_Origen_Codigo) REFERENCES tblSucursal(idSucursal) ON DELETE RESTRICT,
+    CONSTRAINT Fk_Movimiento_Inventario_Sucursal_Destino
+        FOREIGN KEY (Fk_Sucursal_Destino_Codigo) REFERENCES tblSucursal(idSucursal) ON DELETE RESTRICT,
+    CONSTRAINT Fk_Movimiento_Inventario_Bodega_Origen
+        FOREIGN KEY (Fk_Bodega_Origen_Codigo, Fk_Sucursal_Origen_Codigo)
+        REFERENCES tblBodega(idBodega, Fk_Sucursal_Codigo) ON DELETE RESTRICT,
+    CONSTRAINT Fk_Movimiento_Inventario_Bodega_Destino
+        FOREIGN KEY (Fk_Bodega_Destino_Codigo, Fk_Sucursal_Destino_Codigo)
+        REFERENCES tblBodega(idBodega, Fk_Sucursal_Codigo) ON DELETE RESTRICT,
+    CONSTRAINT Fk_Movimiento_Inventario_Transporte
+        FOREIGN KEY (Fk_Transporte_Codigo) REFERENCES tblTransporte(idTransporte) ON DELETE RESTRICT,
+    CONSTRAINT Fk_Movimiento_Inventario_Traslado
+        FOREIGN KEY (Fk_Traslado_Codigo) REFERENCES tblTraslado(idTraslado) ON DELETE RESTRICT,
+    CONSTRAINT Fk_Movimiento_Inventario_Cierre_Inventario
+        FOREIGN KEY (Fk_Cierre_Inventario_Codigo) REFERENCES tblCierreInventario(idCierreInventario) ON DELETE RESTRICT,
+    CONSTRAINT ckMovimientoSucursalBodegaOrigen
+        CHECK ((Fk_Sucursal_Origen_Codigo IS NULL AND Fk_Bodega_Origen_Codigo IS NULL)
+            OR (Fk_Sucursal_Origen_Codigo IS NOT NULL AND Fk_Bodega_Origen_Codigo IS NOT NULL)),
+    CONSTRAINT ckMovimientoSucursalBodegaDestino
+        CHECK ((Fk_Sucursal_Destino_Codigo IS NULL AND Fk_Bodega_Destino_Codigo IS NULL)
+            OR (Fk_Sucursal_Destino_Codigo IS NOT NULL AND Fk_Bodega_Destino_Codigo IS NOT NULL))
 ) ENGINE=InnoDB;
 
 
@@ -630,19 +643,23 @@ idDetalleMovimiento INT NOT NULL AUTO_INCREMENT,
 */ 
 -- tblAuditoriaInventario
 CREATE TABLE tblAuditoriaInventario (
-idAuditoriaInventario INT NOT NULL AUTO_INCREMENT,
-    Fk_Movimiento_Inventario_Codigo INT NULL COMMENT 'Opcional: una auditoria puede realizarse sin movimiento previo',
+    idAuditoriaInventario INT NOT NULL AUTO_INCREMENT,
+    Fk_Movimiento_Inventario_Codigo INT NULL COMMENT 'La auditoría puede realizarse sin movimiento previo',
     Fk_Bodega_Codigo INT NOT NULL,
     tipoAuditoriaInventario ENUM('INDIVIDUAL', 'MULTIPLE') NOT NULL,
     estadoAuditoriaInventario ENUM('EN_PROCESO', 'FINALIZADA') NOT NULL DEFAULT 'EN_PROCESO',
     fechaAuditoriaInventario DATETIME NOT NULL,
+    encargadoBodegaAuditoriaInventario VARCHAR(100) NOT NULL,
+    responsableAuditoriaInventario VARCHAR(100) NOT NULL,
     resultadoAuditoriaInventario VARCHAR(100) NOT NULL,
-    observacionesCalidadAuditoriaInventario TEXT NOT NULL, -- Observaciones generales de la auditoria
+    observacionesCalidadAuditoriaInventario TEXT NOT NULL,
     created_at TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,
     updated_at TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
-    CONSTRAINT Fk_Auditoria_Inventario_Movimiento_Inventario FOREIGN KEY (Fk_Movimiento_Inventario_Codigo) REFERENCES tblMovimientoInventario(idMovimientoInventario) ON DELETE RESTRICT,
-    CONSTRAINT Fk_Auditoria_Inventario_Bodega FOREIGN KEY (Fk_Bodega_Codigo) REFERENCES tblBodega(idBodega) ON DELETE RESTRICT,
-    CONSTRAINT Pk_AuditoriaInventario PRIMARY KEY (idAuditoriaInventario)
+    CONSTRAINT Pk_AuditoriaInventario PRIMARY KEY (idAuditoriaInventario),
+    CONSTRAINT Fk_Auditoria_Inventario_Movimiento_Inventario
+        FOREIGN KEY (Fk_Movimiento_Inventario_Codigo) REFERENCES tblMovimientoInventario(idMovimientoInventario) ON DELETE RESTRICT,
+    CONSTRAINT Fk_Auditoria_Inventario_Bodega
+        FOREIGN KEY (Fk_Bodega_Codigo) REFERENCES tblBodega(idBodega) ON DELETE RESTRICT
 ) ENGINE=InnoDB;
 
 
@@ -653,19 +670,18 @@ CREATE TABLE tblDetalleAuditoria (
     Fk_Stock_Codigo INT NOT NULL,
     stockTeoricoDetalleAuditoria INT NOT NULL,
     stockFisicoDetalleAuditoria INT NOT NULL,
-    diferenciaDetalleAuditoria INT GENERATED ALWAYS AS
-        (stockFisicoDetalleAuditoria - stockTeoricoDetalleAuditoria) STORED NOT NULL,
+    diferenciaDetalleAuditoria INT NOT NULL COMMENT 'Calculado en C# como stock físico - stock teórico',
     observacionesDetalleAuditoria VARCHAR(500) NOT NULL DEFAULT '',
     created_at TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,
     updated_at TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+    CONSTRAINT Pk_DetalleAuditoria PRIMARY KEY (idDetalleAuditoria),
     CONSTRAINT uqDetalleAuditoriaStock UNIQUE (Fk_Auditoria_Inventario_Codigo, Fk_Stock_Codigo),
-    CONSTRAINT Fk_Detalle_Auditoria_Auditoria_Inventario FOREIGN KEY (Fk_Auditoria_Inventario_Codigo)
-        REFERENCES tblAuditoriaInventario(idAuditoriaInventario) ON DELETE RESTRICT,
-    CONSTRAINT Fk_Detalle_Auditoria_Stock FOREIGN KEY (Fk_Stock_Codigo)
-        REFERENCES tblStock(idStock) ON DELETE RESTRICT,
+    CONSTRAINT Fk_Detalle_Auditoria_Auditoria_Inventario
+        FOREIGN KEY (Fk_Auditoria_Inventario_Codigo) REFERENCES tblAuditoriaInventario(idAuditoriaInventario) ON DELETE RESTRICT,
+    CONSTRAINT Fk_Detalle_Auditoria_Stock
+        FOREIGN KEY (Fk_Stock_Codigo) REFERENCES tblStock(idStock) ON DELETE RESTRICT,
     CONSTRAINT ckDetalleAuditoriaStockTeorico CHECK (stockTeoricoDetalleAuditoria >= 0),
-    CONSTRAINT ckDetalleAuditoriaStockFisico CHECK (stockFisicoDetalleAuditoria >= 0),
-    CONSTRAINT Pk_DetalleAuditoria PRIMARY KEY (idDetalleAuditoria)
+    CONSTRAINT ckDetalleAuditoriaStockFisico CHECK (stockFisicoDetalleAuditoria >= 0)
 ) ENGINE=InnoDB;
 
 
@@ -675,7 +691,7 @@ CREATE TABLE tblDetalleAuditoria (
 -- tblDetalleCierre
 CREATE TABLE tblDetalleCierre (
 idDetalleCierre INT NOT NULL AUTO_INCREMENT,
-    Fk_Cierre_Movimiento_Codigo INT NOT NULL,
+    Fk_Cierre_Inventario_Codigo INT NOT NULL,
     Fk_Stock_Codigo INT NOT NULL,
     stockAnteriorDetalleCierre INT NOT NULL DEFAULT 0,
     stockActualDetalleCierre INT NOT NULL DEFAULT 0,
@@ -685,9 +701,9 @@ idDetalleCierre INT NOT NULL AUTO_INCREMENT,
     abonosAcumuladosDetalleCierre BIGINT NOT NULL DEFAULT 0,
     created_at TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,
     updated_at TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
-    CONSTRAINT Fk_Detalle_Cierre_Cierre_Movimiento FOREIGN KEY (Fk_Cierre_Movimiento_Codigo) REFERENCES tblCierreMovimiento(idCierreMovimiento) ON DELETE RESTRICT,
+    CONSTRAINT Fk_Detalle_Cierre_Cierre_Inventario FOREIGN KEY (Fk_Cierre_Inventario_Codigo) REFERENCES tblCierreInventario(idCierreInventario) ON DELETE RESTRICT,
     CONSTRAINT Fk_Detalle_Cierre_Stock FOREIGN KEY (Fk_Stock_Codigo) REFERENCES tblStock(idStock) ON DELETE RESTRICT,
-    CONSTRAINT uqDetalleCierreStock UNIQUE (Fk_Cierre_Movimiento_Codigo, Fk_Stock_Codigo),
+    CONSTRAINT uqDetalleCierreStock UNIQUE (Fk_Cierre_Inventario_Codigo, Fk_Stock_Codigo),
     CONSTRAINT Pk_DetalleCierre PRIMARY KEY (idDetalleCierre)
 ) ENGINE=InnoDB;
 
@@ -702,7 +718,7 @@ idDetalleCierre INT NOT NULL AUTO_INCREMENT,
 -- No modificar ni eliminar instantaneas desde la aplicacion luego del cierre.
 CREATE TABLE tblHistoricoInventario (
     idHistoricoInventario BIGINT NOT NULL AUTO_INCREMENT,
-    Fk_Cierre_Movimiento_Codigo INT NOT NULL,
+    Fk_Cierre_Inventario_Codigo INT NOT NULL,
     Fk_Stock_Codigo INT NOT NULL,
     Fk_Sucursal_Codigo INT NOT NULL,
     Fk_Bodega_Codigo INT NOT NULL,
@@ -725,10 +741,10 @@ CREATE TABLE tblHistoricoInventario (
     updated_at TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
 
     CONSTRAINT Pk_HistoricoInventario PRIMARY KEY (idHistoricoInventario),
-    CONSTRAINT uqHistoricoInventarioCierreStock UNIQUE (Fk_Cierre_Movimiento_Codigo, Fk_Stock_Codigo),
-    CONSTRAINT Fk_Historico_Inventario_Cierre_Movimiento
-        FOREIGN KEY (Fk_Cierre_Movimiento_Codigo)
-        REFERENCES tblCierreMovimiento(idCierreMovimiento) ON DELETE RESTRICT,
+    CONSTRAINT uqHistoricoInventarioCierreStock UNIQUE (Fk_Cierre_Inventario_Codigo, Fk_Stock_Codigo),
+    CONSTRAINT Fk_Historico_Inventario_Cierre_Inventario
+        FOREIGN KEY (Fk_Cierre_Inventario_Codigo)
+        REFERENCES tblCierreInventario(idCierreInventario) ON DELETE RESTRICT,
     CONSTRAINT Fk_Historico_Inventario_Stock
         FOREIGN KEY (Fk_Stock_Codigo)
         REFERENCES tblStock(idStock) ON DELETE RESTRICT,
@@ -750,28 +766,31 @@ CREATE TABLE tblHistoricoInventario (
 */
 -- tblServicioTransporteExterno
 CREATE TABLE tblServicioTransporteExterno (
-idServicioTransporteExterno INT NOT NULL AUTO_INCREMENT,
- Fk_Empresa_Transportista_Codigo INT NOT NULL,
- Fk_Tipo_Servicio_Codigo INT NOT NULL,
- Fk_Traslado_Codigo INT NOT NULL,
- numeroGuiaServicioTransporteExterno VARCHAR(30) NOT NULL,
- estadoServicioTransporteExterno VARCHAR(30) NOT NULL DEFAULT 'Programado',
- origenServicioTransporteExterno VARCHAR(100) NOT NULL,
- direccionOrigenServicioTransporteExterno VARCHAR(500) NOT NULL,
- destinoServicioTransporteExterno VARCHAR(100) NOT NULL,
- direccionDestinoServicioTransporteExterno VARCHAR(500) NOT NULL,
- fechaContratacionServicioTransporteExterno DATE NOT NULL,
- fechaEstimadaEntregaServicioTransporteExterno DATE NOT NULL,
- fechaEntregaRealServicioTransporteExterno DATE NULL,
- created_at TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,
- updated_at TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
- CONSTRAINT uqServicioNumeroGuia UNIQUE (numeroGuiaServicioTransporteExterno),
- CONSTRAINT Fk_Servicio_Transporte_Externo_Empresa_Transportista FOREIGN KEY (Fk_Empresa_Transportista_Codigo) REFERENCES tblEmpresaTransportista(idEmpresaTransportista) ON DELETE RESTRICT,
- CONSTRAINT Fk_Servicio_Transporte_Externo_Tipo_Servicio FOREIGN KEY (Fk_Tipo_Servicio_Codigo) REFERENCES tblTipoServicio(idTipoServicio) ON DELETE RESTRICT,
- CONSTRAINT Fk_Servicio_Transporte_Externo_Traslado FOREIGN KEY (Fk_Traslado_Codigo) REFERENCES tblTraslado(idTraslado) ON DELETE RESTRICT,
+    idServicioTransporteExterno INT NOT NULL AUTO_INCREMENT,
+    Fk_Empresa_Transportista_Codigo INT NOT NULL,
+    Fk_Tipo_Servicio_Codigo INT NOT NULL,
+    Fk_Traslado_Codigo INT NULL,
+    numeroGuiaServicioTransporteExterno VARCHAR(30) NULL,
+    estadoServicioTransporteExterno VARCHAR(30) NOT NULL DEFAULT 'Programado',
+    origenServicioTransporteExterno VARCHAR(100) NOT NULL,
+    direccionOrigenServicioTransporteExterno VARCHAR(500) NULL,
+    destinoServicioTransporteExterno VARCHAR(100) NOT NULL,
+    direccionDestinoServicioTransporteExterno VARCHAR(500) NULL,
+    fechaContratacionServicioTransporteExterno DATE NOT NULL,
+    fechaEstimadaEntregaServicioTransporteExterno DATE NOT NULL,
+    fechaEntregaRealServicioTransporteExterno DATE NULL,
+    created_at TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,
+    updated_at TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+    CONSTRAINT Pk_ServicioTransporteExterno PRIMARY KEY (idServicioTransporteExterno),
+    CONSTRAINT uqServicioNumeroGuia UNIQUE (numeroGuiaServicioTransporteExterno),
     CONSTRAINT ckServicioEstado CHECK (estadoServicioTransporteExterno IN ('Programado','En tránsito','Entregado','Cancelado')),
     CONSTRAINT ckServicioFechas CHECK (fechaEstimadaEntregaServicioTransporteExterno >= fechaContratacionServicioTransporteExterno),
-    CONSTRAINT Pk_ServicioTransporteExterno PRIMARY KEY (idServicioTransporteExterno)
+    CONSTRAINT Fk_Servicio_Transporte_Externo_Empresa_Transportista
+        FOREIGN KEY (Fk_Empresa_Transportista_Codigo) REFERENCES tblEmpresaTransportista(idEmpresaTransportista) ON DELETE RESTRICT,
+    CONSTRAINT Fk_Servicio_Transporte_Externo_Tipo_Servicio
+        FOREIGN KEY (Fk_Tipo_Servicio_Codigo) REFERENCES tblTipoServicio(idTipoServicio) ON DELETE RESTRICT,
+    CONSTRAINT Fk_Servicio_Transporte_Externo_Traslado
+        FOREIGN KEY (Fk_Traslado_Codigo) REFERENCES tblTraslado(idTraslado) ON DELETE RESTRICT
 ) ENGINE=InnoDB;
 
 
@@ -781,25 +800,26 @@ idServicioTransporteExterno INT NOT NULL AUTO_INCREMENT,
 */
 -- tblCostoTransporte
 CREATE TABLE tblCostoTransporte (
-idCostoTransporte INT NOT NULL AUTO_INCREMENT,
- Fk_Servicio_Transporte_Externo_Codigo INT NOT NULL,
- Fk_Tarifa_Transporte_Codigo INT NOT NULL,
- cantidadCostoTransporte DECIMAL(12,4) NOT NULL,
- costoUnitarioCostoTransporte DECIMAL(12,4) NOT NULL,
- costoTotalCostoTransporte DECIMAL(12,4) GENERATED ALWAYS AS
-     (ROUND(cantidadCostoTransporte * costoUnitarioCostoTransporte, 4)) STORED NOT NULL,
- monedaCostoTransporte CHAR(3) NOT NULL,
- tipoPagoCostoTransporte VARCHAR(30) NOT NULL,
- created_at TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,
- updated_at TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
- CONSTRAINT uqCostoServicio UNIQUE (Fk_Servicio_Transporte_Externo_Codigo),
- CONSTRAINT Fk_Costo_Transporte_Servicio_Transporte_Externo FOREIGN KEY (Fk_Servicio_Transporte_Externo_Codigo) REFERENCES tblServicioTransporteExterno(idServicioTransporteExterno) ON DELETE CASCADE,
- CONSTRAINT Fk_Costo_Transporte_Tarifa_Transporte FOREIGN KEY (Fk_Tarifa_Transporte_Codigo) REFERENCES tblTarifaTransporte(idTarifaTransporte) ON DELETE RESTRICT,
+    idCostoTransporte INT NOT NULL AUTO_INCREMENT,
+    Fk_Servicio_Transporte_Externo_Codigo INT NOT NULL,
+    Fk_Tarifa_Transporte_Codigo INT NOT NULL,
+    cantidadCostoTransporte DECIMAL(12,4) NOT NULL,
+    costoUnitarioCostoTransporte DECIMAL(12,4) NOT NULL,
+    costoTotalCostoTransporte DECIMAL(12,4) NOT NULL COMMENT 'Calculado por el programa, no en la base de datos',
+    monedaCostoTransporte CHAR(3) NOT NULL,
+    tipoPagoCostoTransporte VARCHAR(30) NOT NULL,
+    created_at TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,
+    updated_at TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+    CONSTRAINT Pk_CostoTransporte PRIMARY KEY (idCostoTransporte),
+    CONSTRAINT uqCostoServicio UNIQUE (Fk_Servicio_Transporte_Externo_Codigo),
     CONSTRAINT ckCostoCantidad CHECK (cantidadCostoTransporte > 0),
     CONSTRAINT ckCostoUnitario CHECK (costoUnitarioCostoTransporte >= 0),
     CONSTRAINT ckCostoMoneda CHECK (monedaCostoTransporte IN ('GTQ','USD')),
     CONSTRAINT ckCostoTipoPago CHECK (tipoPagoCostoTransporte IN ('Transferencia','Efectivo')),
-    CONSTRAINT Pk_CostoTransporte PRIMARY KEY (idCostoTransporte)
+    CONSTRAINT Fk_Costo_Transporte_Servicio_Transporte_Externo
+        FOREIGN KEY (Fk_Servicio_Transporte_Externo_Codigo) REFERENCES tblServicioTransporteExterno(idServicioTransporteExterno) ON DELETE RESTRICT,
+    CONSTRAINT Fk_Costo_Transporte_Tarifa_Transporte
+        FOREIGN KEY (Fk_Tarifa_Transporte_Codigo) REFERENCES tblTarifaTransporte(idTarifaTransporte) ON DELETE RESTRICT
 ) ENGINE=InnoDB;
 
 
@@ -809,16 +829,17 @@ idCostoTransporte INT NOT NULL AUTO_INCREMENT,
 */
 -- tblVehiculoTransporte
 CREATE TABLE tblVehiculoTransporte (
-idVehiculoTransporte INT NOT NULL AUTO_INCREMENT,
- Fk_Servicio_Transporte_Externo_Codigo INT NOT NULL,
- placaVehiculoTransporte VARCHAR(30) NOT NULL,
- tipoVehiculoTransporte VARCHAR(100) NOT NULL,
- capacidadVehiculoTransporte VARCHAR(100) NOT NULL,
- created_at TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,
- updated_at TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
- CONSTRAINT uqVehiculoServicio UNIQUE (Fk_Servicio_Transporte_Externo_Codigo),
- CONSTRAINT Fk_Vehiculo_Transporte_Servicio_Transporte_Externo FOREIGN KEY (Fk_Servicio_Transporte_Externo_Codigo) REFERENCES tblServicioTransporteExterno(idServicioTransporteExterno) ON DELETE CASCADE,
-    CONSTRAINT Pk_VehiculoTransporte PRIMARY KEY (idVehiculoTransporte)
+    idVehiculoTransporte INT NOT NULL AUTO_INCREMENT,
+    Fk_Servicio_Transporte_Externo_Codigo INT NOT NULL,
+    placaVehiculoTransporte VARCHAR(30) NULL,
+    tipoVehiculoTransporte VARCHAR(100) NULL,
+    capacidadVehiculoTransporte VARCHAR(100) NULL,
+    created_at TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,
+    updated_at TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+    CONSTRAINT Pk_VehiculoTransporte PRIMARY KEY (idVehiculoTransporte),
+    CONSTRAINT uqVehiculoServicio UNIQUE (Fk_Servicio_Transporte_Externo_Codigo),
+    CONSTRAINT Fk_Vehiculo_Transporte_Servicio_Transporte_Externo
+        FOREIGN KEY (Fk_Servicio_Transporte_Externo_Codigo) REFERENCES tblServicioTransporteExterno(idServicioTransporteExterno) ON DELETE RESTRICT
 ) ENGINE=InnoDB;
 
 
@@ -828,15 +849,16 @@ idVehiculoTransporte INT NOT NULL AUTO_INCREMENT,
 */
 -- tblConductorTransporte
 CREATE TABLE tblConductorTransporte (
-idConductorTransporte INT NOT NULL AUTO_INCREMENT,
- Fk_Servicio_Transporte_Externo_Codigo INT NOT NULL,
- nombreConductorTransporte VARCHAR(100) NOT NULL,
- telefonoConductorTransporte VARCHAR(30) COLLATE utf8mb4_unicode_ci NOT NULL,
- created_at TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,
- updated_at TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
- CONSTRAINT uqConductorServicio UNIQUE (Fk_Servicio_Transporte_Externo_Codigo),
- CONSTRAINT Fk_Conductor_Transporte_Servicio_Transporte_Externo FOREIGN KEY (Fk_Servicio_Transporte_Externo_Codigo) REFERENCES tblServicioTransporteExterno(idServicioTransporteExterno) ON DELETE CASCADE,
-    CONSTRAINT Pk_ConductorTransporte PRIMARY KEY (idConductorTransporte)
+    idConductorTransporte INT NOT NULL AUTO_INCREMENT,
+    Fk_Servicio_Transporte_Externo_Codigo INT NOT NULL,
+    nombreConductorTransporte VARCHAR(100) NULL,
+    telefonoConductorTransporte VARCHAR(30) COLLATE utf8mb4_unicode_ci NOT NULL,
+    created_at TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,
+    updated_at TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+    CONSTRAINT Pk_ConductorTransporte PRIMARY KEY (idConductorTransporte),
+    CONSTRAINT uqConductorServicio UNIQUE (Fk_Servicio_Transporte_Externo_Codigo),
+    CONSTRAINT Fk_Conductor_Transporte_Servicio_Transporte_Externo
+        FOREIGN KEY (Fk_Servicio_Transporte_Externo_Codigo) REFERENCES tblServicioTransporteExterno(idServicioTransporteExterno) ON DELETE RESTRICT
 ) ENGINE=InnoDB;
 
 
@@ -846,17 +868,19 @@ idConductorTransporte INT NOT NULL AUTO_INCREMENT,
 */
 -- tblProductoTransporte
 CREATE TABLE tblProductoTransporte (
-idProductoTransporte INT NOT NULL AUTO_INCREMENT,
- Fk_Servicio_Transporte_Externo_Codigo INT NOT NULL,
- Fk_Producto_Codigo INT NOT NULL,
- cantidadProductoTransporte DECIMAL(12,4) NOT NULL,
- unidadMedidaProductoTransporte VARCHAR(30) NOT NULL,
- created_at TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,
- updated_at TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
- CONSTRAINT Fk_Producto_Transporte_Servicio_Transporte_Externo FOREIGN KEY (Fk_Servicio_Transporte_Externo_Codigo) REFERENCES tblServicioTransporteExterno(idServicioTransporteExterno) ON DELETE CASCADE,
- CONSTRAINT Fk_Producto_Transporte_Producto FOREIGN KEY (Fk_Producto_Codigo) REFERENCES tblProducto(idProducto) ON DELETE RESTRICT,
+    idProductoTransporte INT NOT NULL AUTO_INCREMENT,
+    Fk_Servicio_Transporte_Externo_Codigo INT NOT NULL,
+    Fk_Producto_Codigo INT NOT NULL,
+    cantidadProductoTransporte DECIMAL(12,4) NOT NULL,
+    unidadMedidaProductoTransporte VARCHAR(30) NULL,
+    created_at TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,
+    updated_at TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+    CONSTRAINT Pk_ProductoTransporte PRIMARY KEY (idProductoTransporte),
     CONSTRAINT ckProductoCantidad CHECK (cantidadProductoTransporte > 0),
-    CONSTRAINT Pk_ProductoTransporte PRIMARY KEY (idProductoTransporte)
+    CONSTRAINT Fk_Producto_Transporte_Servicio_Transporte_Externo
+        FOREIGN KEY (Fk_Servicio_Transporte_Externo_Codigo) REFERENCES tblServicioTransporteExterno(idServicioTransporteExterno) ON DELETE RESTRICT,
+    CONSTRAINT Fk_Producto_Transporte_Producto
+        FOREIGN KEY (Fk_Producto_Codigo) REFERENCES tblProducto(idProducto) ON DELETE RESTRICT
 ) ENGINE=InnoDB;
 
 
@@ -866,15 +890,16 @@ idProductoTransporte INT NOT NULL AUTO_INCREMENT,
 */
 -- tblUbicacionTransporte
 CREATE TABLE tblUbicacionTransporte (
-idUbicacionTransporte INT NOT NULL AUTO_INCREMENT,
- Fk_Servicio_Transporte_Externo_Codigo INT NOT NULL,
- ubicacionActualUbicacionTransporte VARCHAR(500) NOT NULL,
- fechaActualizacionUbicacionTransporte DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP,
- created_at TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,
- updated_at TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
- CONSTRAINT Fk_Ubicacion_Transporte_Servicio_Transporte_Externo FOREIGN KEY (Fk_Servicio_Transporte_Externo_Codigo) REFERENCES tblServicioTransporteExterno(idServicioTransporteExterno) ON DELETE CASCADE,
- INDEX idxUbicacionServicioFecha (Fk_Servicio_Transporte_Externo_Codigo, fechaActualizacionUbicacionTransporte),
-    CONSTRAINT Pk_UbicacionTransporte PRIMARY KEY (idUbicacionTransporte)
+    idUbicacionTransporte INT NOT NULL AUTO_INCREMENT,
+    Fk_Servicio_Transporte_Externo_Codigo INT NOT NULL,
+    ubicacionActualUbicacionTransporte VARCHAR(500) NOT NULL,
+    fechaActualizacionUbicacionTransporte DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP,
+    created_at TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,
+    updated_at TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+    CONSTRAINT Pk_UbicacionTransporte PRIMARY KEY (idUbicacionTransporte),
+    INDEX idxUbicacionServicioFecha (Fk_Servicio_Transporte_Externo_Codigo, fechaActualizacionUbicacionTransporte),
+    CONSTRAINT Fk_Ubicacion_Transporte_Servicio_Transporte_Externo
+        FOREIGN KEY (Fk_Servicio_Transporte_Externo_Codigo) REFERENCES tblServicioTransporteExterno(idServicioTransporteExterno) ON DELETE RESTRICT
 ) ENGINE=InnoDB;
 
 
@@ -884,19 +909,20 @@ idUbicacionTransporte INT NOT NULL AUTO_INCREMENT,
 */
 -- tblIncidenciaTransporte
 CREATE TABLE tblIncidenciaTransporte (
-idIncidenciaTransporte INT NOT NULL AUTO_INCREMENT,
- Fk_Servicio_Transporte_Externo_Codigo INT NOT NULL,
- codigoIncidenciaTransporte VARCHAR(30) NOT NULL,
- fechaIncidenciaTransporte DATETIME NOT NULL,
- tipoIncidenciaTransporte VARCHAR(100) NOT NULL,
- descripcionIncidenciaTransporte TEXT NOT NULL, -- Relato amplio de incidencia, puede superar 255 caracteres
- responsableIncidenciaTransporte VARCHAR(100) NOT NULL,
- estadoIncidenciaTransporte VARCHAR(30) NOT NULL DEFAULT 'Pendiente',
- created_at TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,
- updated_at TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
- CONSTRAINT uqIncidenciaCodigo UNIQUE (codigoIncidenciaTransporte),
- CONSTRAINT Fk_Incidencia_Transporte_Servicio_Transporte_Externo FOREIGN KEY (Fk_Servicio_Transporte_Externo_Codigo) REFERENCES tblServicioTransporteExterno(idServicioTransporteExterno) ON DELETE CASCADE,
-    CONSTRAINT Pk_IncidenciaTransporte PRIMARY KEY (idIncidenciaTransporte)
+    idIncidenciaTransporte INT NOT NULL AUTO_INCREMENT,
+    Fk_Servicio_Transporte_Externo_Codigo INT NOT NULL,
+    codigoIncidenciaTransporte VARCHAR(30) NOT NULL,
+    fechaIncidenciaTransporte DATETIME NOT NULL,
+    tipoIncidenciaTransporte VARCHAR(100) NOT NULL,
+    descripcionIncidenciaTransporte TEXT NOT NULL,
+    responsableIncidenciaTransporte VARCHAR(100) NULL,
+    estadoIncidenciaTransporte VARCHAR(30) NOT NULL DEFAULT 'Pendiente',
+    created_at TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,
+    updated_at TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+    CONSTRAINT Pk_IncidenciaTransporte PRIMARY KEY (idIncidenciaTransporte),
+    CONSTRAINT uqIncidenciaCodigo UNIQUE (codigoIncidenciaTransporte),
+    CONSTRAINT Fk_Incidencia_Transporte_Servicio_Transporte_Externo
+        FOREIGN KEY (Fk_Servicio_Transporte_Externo_Codigo) REFERENCES tblServicioTransporteExterno(idServicioTransporteExterno) ON DELETE RESTRICT
 ) ENGINE=InnoDB;
 
 
@@ -906,24 +932,23 @@ idIncidenciaTransporte INT NOT NULL AUTO_INCREMENT,
 */
 -- tblHistorialTransporte
 CREATE TABLE tblHistorialTransporte (
-idHistorialTransporte INT NOT NULL AUTO_INCREMENT,
- Fk_Servicio_Transporte_Externo_Codigo INT NOT NULL,
- fechaMovimientoHistorialTransporte DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP,
- tipoMovimientoHistorialTransporte VARCHAR(100) NOT NULL,
- descripcionMovimientoHistorialTransporte VARCHAR(255) NOT NULL,
- estadoTransporteHistorialTransporte VARCHAR(30) NOT NULL,
- created_at TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,
- updated_at TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
- CONSTRAINT Fk_Historial_Transporte_Servicio_Transporte_Externo FOREIGN KEY (Fk_Servicio_Transporte_Externo_Codigo) REFERENCES tblServicioTransporteExterno(idServicioTransporteExterno) ON DELETE CASCADE,
-    CONSTRAINT Pk_HistorialTransporte PRIMARY KEY (idHistorialTransporte)
+    idHistorialTransporte INT NOT NULL AUTO_INCREMENT,
+    Fk_Servicio_Transporte_Externo_Codigo INT NOT NULL,
+    fechaMovimientoHistorialTransporte DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP,
+    tipoMovimientoHistorialTransporte VARCHAR(100) NOT NULL,
+    descripcionMovimientoHistorialTransporte VARCHAR(255) NOT NULL,
+    estadoTransporteHistorialTransporte VARCHAR(30) NULL,
+    created_at TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,
+    updated_at TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+    CONSTRAINT Pk_HistorialTransporte PRIMARY KEY (idHistorialTransporte),
+    CONSTRAINT Fk_Historial_Transporte_Servicio_Transporte_Externo
+        FOREIGN KEY (Fk_Servicio_Transporte_Externo_Codigo) REFERENCES tblServicioTransporteExterno(idServicioTransporteExterno) ON DELETE RESTRICT
 ) ENGINE=InnoDB;
 
 
--- ============================================================================
 -- tblEstadoSolicitudPago
--- Responsable: BRAYAN MOISES PINZON LOPEZ (carne incompleto en solicitud).
+-- Responsable: BRAYAN MOISES PINZON LOPEZ 0901 23 10511
 -- Catalogo de estados para las solicitudes de pago de transporte.
--- ============================================================================
 CREATE TABLE tblEstadoSolicitudPago (
     idEstadoSolicitudPago INT NOT NULL AUTO_INCREMENT,
     codigoEstadoSolicitudPago VARCHAR(30) NOT NULL,
@@ -950,7 +975,7 @@ VALUES
 CREATE TABLE tblSolicitudPagoTransporte (
 idSolicitudPagoTransporte INT NOT NULL AUTO_INCREMENT,
  Fk_Servicio_Transporte_Externo_Codigo INT NOT NULL,
- codigoSolicitudPagoTransporte VARCHAR(30) NOT NULL,
+ codigoSolicitudPagoTransporte VARCHAR(30) NULL,
  Fk_Estado_Solicitud_Pago_Codigo INT NOT NULL DEFAULT 1,
  referenciaBancariaSolicitudPagoTransporte VARCHAR(100) NULL,
  fechaPagoSolicitudPagoTransporte DATE NULL,
@@ -965,4 +990,90 @@ idSolicitudPagoTransporte INT NOT NULL AUTO_INCREMENT,
  CONSTRAINT Fk_Solicitud_Pago_Transporte_Servicio_Transporte_Externo FOREIGN KEY (Fk_Servicio_Transporte_Externo_Codigo)
   REFERENCES tblServicioTransporteExterno(idServicioTransporteExterno) ON DELETE CASCADE,
     CONSTRAINT Pk_SolicitudPagoTransporte PRIMARY KEY (idSolicitudPagoTransporte)
+) ENGINE=InnoDB;
+/*
+    Responsable:
+    GABRIELA PINTO GARCIA 9959 23 1087
+*/
+-- tblPlazo y tblCuentaPorPagar existen en el esquema general dbsistemaembutidos.
+-- Revisión de la relación compuesta según INF-S-003, apartado 6.
+CREATE TABLE tblFacturaTransporte (
+    idFacturaTransporte INT NOT NULL AUTO_INCREMENT,
+    Fk_Servicio_Transporte_Externo_Codigo INT NOT NULL,
+    Fk_Plazo_Codigo INT NOT NULL,
+    -- Las tres columnas son NULL cuando todavía no hay cuenta por pagar.
+    Fk_SerieDocumentoCuentaPorPagar VARCHAR(20) NULL,
+    Fk_NumeroDocumentoCuentaPorPagar VARCHAR(30) NULL,
+    Fk_IdConceptoProveedor INT NULL,
+
+    serieFacturaTransporte VARCHAR(30) NOT NULL,
+    numeroFacturaTransporte VARCHAR(30) NOT NULL,
+    fechaEmisionFacturaTransporte DATE NOT NULL,
+    montoFacturaTransporte DECIMAL(12,4) NOT NULL,
+    activaFacturaTransporte BOOLEAN NOT NULL DEFAULT TRUE,
+    created_at TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,
+    updated_at TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+
+    CONSTRAINT Pk_FacturaTransporte PRIMARY KEY (idFacturaTransporte),
+    CONSTRAINT uqFacturaServicio UNIQUE (Fk_Servicio_Transporte_Externo_Codigo),
+    CONSTRAINT uqFacturaCuentaPorPagar UNIQUE (
+        Fk_SerieDocumentoCuentaPorPagar,
+        Fk_NumeroDocumentoCuentaPorPagar,
+        Fk_IdConceptoProveedor
+    ),
+    CONSTRAINT uqFacturaDocumento UNIQUE (serieFacturaTransporte, numeroFacturaTransporte),
+    CONSTRAINT ckFacturaMonto CHECK (montoFacturaTransporte > 0),
+    CONSTRAINT ckFacturaCuentaPorPagarCompleta CHECK (
+        (Fk_SerieDocumentoCuentaPorPagar IS NULL
+         AND Fk_NumeroDocumentoCuentaPorPagar IS NULL
+         AND Fk_IdConceptoProveedor IS NULL)
+        OR
+        (Fk_SerieDocumentoCuentaPorPagar IS NOT NULL
+         AND Fk_NumeroDocumentoCuentaPorPagar IS NOT NULL
+         AND Fk_IdConceptoProveedor IS NOT NULL)
+    ),
+    CONSTRAINT Fk_Factura_Transporte_Servicio_Transporte_Externo
+        FOREIGN KEY (Fk_Servicio_Transporte_Externo_Codigo)
+        REFERENCES tblServicioTransporteExterno(idServicioTransporteExterno) ON DELETE RESTRICT,
+    CONSTRAINT Fk_Factura_Transporte_Plazo
+        FOREIGN KEY (Fk_Plazo_Codigo)
+        REFERENCES tblPlazo(idPlazo) ON DELETE RESTRICT,
+    CONSTRAINT Fk_Factura_Transporte_Cuenta_Por_Pagar
+        FOREIGN KEY (
+            Fk_SerieDocumentoCuentaPorPagar,
+            Fk_NumeroDocumentoCuentaPorPagar,
+            Fk_IdConceptoProveedor
+        ) REFERENCES tblCuentaPorPagar (
+            serieDocumentoCuentaPorPagar,
+            numeroDocumentoCuentaPorPagar,
+            idConceptoProveedor
+        ) ON DELETE RESTRICT
+) ENGINE=InnoDB;
+
+/*
+    Responsable:
+    GABRIELA PINTO GARCIA 9959 23 1087
+*/
+CREATE TABLE tblCuentaBancariaTransportista (
+    idCuentaBancariaTransportista INT NOT NULL AUTO_INCREMENT,
+    Fk_Empresa_Transportista_Codigo INT NOT NULL,
+    Fk_Banco_Codigo BIGINT NOT NULL,
+    Fk_TipoCuentaBancaria_Codigo BIGINT NOT NULL,
+    Fk_Moneda_Codigo BIGINT NOT NULL,
+    numeroCuentaBancariaTransportista VARCHAR(100) NOT NULL,
+    titularCuentaBancariaTransportista VARCHAR(100) NOT NULL,
+    activaCuentaBancariaTransportista BOOLEAN NOT NULL DEFAULT TRUE,
+    predeterminadaCuentaBancariaTransportista BOOLEAN NOT NULL DEFAULT FALSE,
+    created_at TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,
+    updated_at TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+    CONSTRAINT Pk_CuentaBancariaTransportista PRIMARY KEY (idCuentaBancariaTransportista),
+    CONSTRAINT uqCuentaBancariaTransportista UNIQUE (Fk_Banco_Codigo, numeroCuentaBancariaTransportista),
+    CONSTRAINT Fk_Cuenta_Bancaria_Transportista_Empresa_Transportista
+        FOREIGN KEY (Fk_Empresa_Transportista_Codigo) REFERENCES tblEmpresaTransportista(idEmpresaTransportista) ON DELETE RESTRICT,
+    CONSTRAINT Fk_Cuenta_Bancaria_Transportista_Banco
+        FOREIGN KEY (Fk_Banco_Codigo) REFERENCES tblBanco(idBanco) ON DELETE RESTRICT,
+    CONSTRAINT Fk_Cuenta_Bancaria_Transportista_Tipo_Cuenta_Bancaria
+        FOREIGN KEY (Fk_TipoCuentaBancaria_Codigo) REFERENCES tblTipoCuentaBancaria(idTipoCuentaBancaria) ON DELETE RESTRICT,
+    CONSTRAINT Fk_Cuenta_Bancaria_Transportista_Moneda
+        FOREIGN KEY (Fk_Moneda_Codigo) REFERENCES tblMoneda(idMoneda) ON DELETE RESTRICT
 ) ENGINE=InnoDB;

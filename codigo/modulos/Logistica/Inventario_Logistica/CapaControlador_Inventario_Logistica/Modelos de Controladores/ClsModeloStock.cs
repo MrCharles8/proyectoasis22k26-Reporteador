@@ -1,6 +1,9 @@
-﻿/*
+﻿
+/*
+ * ============================================================================
  * MÓDULO: LOGÍSTICA - INVENTARIO
  * ARCHIVO: ClsModeloStock.cs
+ *
  * REALIZADO POR: VELVETH SARAÍ CHAVEZ MEJÍA
  * CARNÉ: 0901 23 6269
  * FECHA: 07/11/2026
@@ -8,6 +11,10 @@
  * DESCRIPCIÓN:
  * Valida los datos del Stock y coordina las operaciones
  * entre la Vista y la Capa Modelo.
+ *
+ * Incluye cálculos de stock actual, stock virtual y
+ * variaciones de inventario según el signo del movimiento.
+ * ============================================================================
  */
 
 using System;
@@ -23,11 +30,19 @@ namespace CapaControlador_Inventario_Logistica.Modelos_de_Controladores
 {
     public class ClsModeloStock
     {
+        // ========================================================
+        // REPOSITORIO
+        // ========================================================
+
         private readonly ClsIRepositorioStock _Repositorio;
 
         public ClsDatosStock Stock { get; set; }
 
         public ClsEstadoEntidad Estado { get; set; }
+
+        // ========================================================
+        // CONSTRUCTOR PRINCIPAL
+        // ========================================================
 
         public ClsModeloStock()
         {
@@ -36,12 +51,19 @@ namespace CapaControlador_Inventario_Logistica.Modelos_de_Controladores
             Stock = new ClsDatosStock();
         }
 
-        // Constructor adicional para pruebas unitarias.
-        // Conserva el constructor original utilizado por la Vista.
+        // ========================================================
+        // CONSTRUCTOR PARA PRUEBAS UNITARIAS
+        // ========================================================
+
         public ClsModeloStock(ClsIRepositorioStock Repositorio)
         {
-            _Repositorio = Repositorio
-                ?? throw new ArgumentNullException(nameof(Repositorio));
+            if (Repositorio == null)
+            {
+                throw new ArgumentNullException(
+                    nameof(Repositorio));
+            }
+
+            _Repositorio = Repositorio;
 
             Stock = new ClsDatosStock();
         }
@@ -70,8 +92,7 @@ namespace CapaControlador_Inventario_Logistica.Modelos_de_Controladores
                     Filas = _Repositorio.LogisticaMetAgregar(
                         LogisticaFuncCrearEntidad(Stock));
 
-                    Mensaje =
-                        "El stock se guardó correctamente.";
+                    Mensaje = "El stock se guardó correctamente.";
                     break;
 
                 case ClsEstadoEntidad.Modified:
@@ -87,8 +108,7 @@ namespace CapaControlador_Inventario_Logistica.Modelos_de_Controladores
                     Filas = _Repositorio.LogisticaMetEditar(
                         LogisticaFuncCrearEntidad(Stock));
 
-                    Mensaje =
-                        "El stock se modificó correctamente.";
+                    Mensaje = "El stock se modificó correctamente.";
                     break;
 
                 case ClsEstadoEntidad.Deleted:
@@ -102,11 +122,11 @@ namespace CapaControlador_Inventario_Logistica.Modelos_de_Controladores
                     Filas = _Repositorio.LogisticaMetEliminar(
                         Stock.IdStock);
 
-                    Mensaje =
-                        "El stock se eliminó correctamente.";
+                    Mensaje = "El stock se eliminó correctamente.";
                     break;
 
                 default:
+
                     throw new InvalidOperationException(
                         "Operación no válida.");
             }
@@ -121,14 +141,13 @@ namespace CapaControlador_Inventario_Logistica.Modelos_de_Controladores
         }
 
         // ========================================================
-        // VALIDAR STOCK
+        // VALIDACIONES DEL STOCK
         // ========================================================
 
         private void LogisticaProcValidarStock(
             ClsDatosStock Datos)
         {
-            var Resultados =
-                new List<ValidationResult>();
+            var Resultados = new List<ValidationResult>();
 
             bool Valido = Validator.TryValidateObject(
                 Datos,
@@ -141,16 +160,13 @@ namespace CapaControlador_Inventario_Logistica.Modelos_de_Controladores
                 throw new ValidationException(
                     string.Join(
                         "\n",
-                        Resultados.Select(
-                            R => R.ErrorMessage)));
+                        Resultados.Select(R => R.ErrorMessage)));
             }
 
-            if (Datos.ApartadosStock >
-                Datos.StockActualStock)
+            if (Datos.ApartadosStock > Datos.StockActualStock)
             {
                 throw new ValidationException(
-                    "Los apartados no pueden superar " +
-                    "el stock actual.");
+                    "Los apartados no pueden superar el stock actual.");
             }
         }
 
@@ -191,7 +207,7 @@ namespace CapaControlador_Inventario_Logistica.Modelos_de_Controladores
         }
 
         // ========================================================
-        // CONSULTAR STOCK
+        // CONSULTAR TODOS LOS REGISTROS
         // ========================================================
 
         public List<ClsDatosStock> LogisticaFuncObtenerTodos()
@@ -260,7 +276,7 @@ namespace CapaControlador_Inventario_Logistica.Modelos_de_Controladores
         }
 
         // ========================================================
-        // OBTENER BODEGAS DE UNA SUCURSAL
+        // OBTENER BODEGAS POR SUCURSAL
         // ========================================================
 
         public List<ClsOpcionCatalogo>
@@ -280,6 +296,122 @@ namespace CapaControlador_Inventario_Logistica.Modelos_de_Controladores
         {
             return LogisticaFuncConvertirCatalogo(
                 _Repositorio.LogisticaMetObtenerProductos());
+        }
+
+        // ========================================================
+        // CALCULAR VARIACIÓN SEGÚN TIPO DE MOVIMIENTO
+        // ========================================================
+
+        public int LogisticaFuncCalcularVariacionMovimiento(
+            string SignoTipoMovimiento,
+            int Cantidad)
+        {
+            if (Cantidad <= 0)
+            {
+                throw new ArgumentException(
+                    "La cantidad debe ser mayor que cero.");
+            }
+
+            switch (SignoTipoMovimiento)
+            {
+                case "+":
+                    return Cantidad;
+
+                case "-":
+                    return -Cantidad;
+
+                default:
+                    throw new ArgumentException(
+                        "El signo del movimiento no es válido.");
+            }
+        }
+
+        // ========================================================
+        // CALCULAR STOCK ACTUAL
+        // ========================================================
+
+        public int LogisticaFuncCalcularStockActual(
+            int StockAnterior,
+            int CargosMes,
+            int AbonosMes)
+        {
+            if (StockAnterior < 0 ||
+                CargosMes < 0 ||
+                AbonosMes < 0)
+            {
+                throw new ValidationException(
+                    "Los valores no pueden ser negativos.");
+            }
+
+            long Resultado =
+                (long)StockAnterior +
+                CargosMes -
+                AbonosMes;
+
+            if (Resultado < 0 ||
+                Resultado > int.MaxValue)
+            {
+                throw new ValidationException(
+                    "El stock calculado está fuera del rango permitido.");
+            }
+
+            return (int)Resultado;
+        }
+
+        // ========================================================
+        // CALCULAR STOCK VIRTUAL
+        // ========================================================
+
+        public int LogisticaFuncCalcularStockVirtual(
+            int StockActual,
+            int Apartados)
+        {
+            if (StockActual < 0 || Apartados < 0)
+            {
+                throw new ValidationException(
+                    "El stock y los apartados no pueden ser negativos.");
+            }
+
+            if (Apartados > StockActual)
+            {
+                throw new ValidationException(
+                    "Los apartados no pueden superar el stock actual.");
+            }
+
+            return StockActual - Apartados;
+        }
+
+        // ========================================================
+        // CALCULAR SALDO DESPUÉS DE UN MOVIMIENTO
+        // ========================================================
+
+        public int LogisticaFuncCalcularStockConMovimiento(
+            int StockActual,
+            string SignoTipoMovimiento,
+            int Cantidad)
+        {
+            if (StockActual < 0)
+            {
+                throw new ValidationException(
+                    "El stock actual no puede ser negativo.");
+            }
+
+            int Variacion =
+                LogisticaFuncCalcularVariacionMovimiento(
+                    SignoTipoMovimiento,
+                    Cantidad);
+
+            long Resultado =
+                (long)StockActual + Variacion;
+
+            if (Resultado < 0 ||
+                Resultado > int.MaxValue)
+            {
+                throw new ValidationException(
+                    "El movimiento genera un stock fuera del rango permitido.");
+            }
+
+            return (int)Resultado;
         }
     }
 }

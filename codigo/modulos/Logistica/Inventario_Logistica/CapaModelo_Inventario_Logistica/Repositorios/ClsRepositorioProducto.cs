@@ -158,6 +158,8 @@ namespace CapaModelo_Inventario_Logistica.Repositorios
                     p.stockMinimoProducto,
                     p.stockMaximoProducto,
                     p.pesoProducto,
+                    p.created_at,
+                    p.updated_at,
                     c.nombreCategoria AS NombreCategoria,
                     m.nombreMarca AS NombreMarca,
                     l.nombreLinea AS NombreLinea,
@@ -263,7 +265,13 @@ namespace CapaModelo_Inventario_Logistica.Repositorios
 
                     NombreProveedor =
                         Convert.ToString(
-                            Fila["NombreProveedor"])
+                            Fila["NombreProveedor"]),
+
+                    CreatedAt =
+                        Convert.ToDateTime(Fila["created_at"]),
+
+                    UpdatedAt =
+                        Convert.ToDateTime(Fila["updated_at"])
                 };
 
                 Lista.Add(Producto);

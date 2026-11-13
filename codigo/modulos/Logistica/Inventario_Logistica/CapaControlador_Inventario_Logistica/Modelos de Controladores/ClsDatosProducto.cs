@@ -1,5 +1,4 @@
-﻿
-/*
+﻿/*
  * ============================================================================
  * MÓDULO: LOGÍSTICA - INVENTARIO
  * ARCHIVO: ClsDatosProducto.cs
@@ -92,5 +91,44 @@ namespace CapaControlador_Inventario_Logistica.Modelos_de_Controladores
         public string NombreMarca { get; set; }
         public string NombreLinea { get; set; }
         public string NombreProveedor { get; set; }
+
+        // Campos adicionales para el reporte RDLC. No modifican el CRUD.
+        public DateTime CreatedAt { get; set; }
+        public DateTime UpdatedAt { get; set; }
+
+        // ImagenProducto conserva Browsable(false) para respetar el mantenimiento.
+        // Esta propiedad expone los mismos bytes al diseñador RDLC.
+        public byte[] ImagenReporte
+        {
+            get { return ImagenProducto; }
+        }
+
+        // El RDLC necesita el MIME real para las imágenes de base de datos.
+        public string TipoImagenProducto
+        {
+            get
+            {
+                if (ImagenProducto == null || ImagenProducto.Length < 2)
+                    return "image/jpeg";
+
+                if (ImagenProducto.Length >= 8 &&
+                    ImagenProducto[0] == 137 && ImagenProducto[1] == 80 &&
+                    ImagenProducto[2] == 78 && ImagenProducto[3] == 71)
+                    return "image/png";
+
+                if (ImagenProducto[0] == 255 && ImagenProducto[1] == 216)
+                    return "image/jpeg";
+
+                if (ImagenProducto.Length >= 3 &&
+                    ImagenProducto[0] == 71 && ImagenProducto[1] == 73 &&
+                    ImagenProducto[2] == 70)
+                    return "image/gif";
+
+                if (ImagenProducto[0] == 66 && ImagenProducto[1] == 77)
+                    return "image/bmp";
+
+                return "image/jpeg";
+            }
+        }
     }
 }

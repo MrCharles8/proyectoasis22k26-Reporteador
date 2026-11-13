@@ -2,19 +2,18 @@
 /*
  * ============================================================================
  * MÓDULO: LOGÍSTICA - INVENTARIO
- * FORMULARIO: FrmMantenimientoStock.cs
+ * ARCHIVO: FrmMantenimientoStock.cs
  *
  * REALIZADO POR: VELVETH SARAÍ CHAVEZ MEJÍA
  * CARNÉ: 0901 23 6269
- * FECHA DE REALIZACIÓN: 07/11/2026
  *
  * DESCRIPCIÓN:
- * Formulario MVC para el mantenimiento de Stock.
- * Permite ingresar, consultar, modificar, eliminar, buscar
- * y visualizar existencias por sucursal, bodega y producto.
+ * Mantenimiento de stock mediante MVC.
+ * Permite ingresar, consultar, modificar, eliminar,
+ * buscar, calcular existencias e imprimir reportes.
  *
- * Incluye los mensajes de confirmación, éxito y error
- * establecidos en la estandarización de Logística.
+ * Los cálculos no modifican automáticamente la BD.
+ * Los datos se guardan mediante el botón Guardar.
  * ============================================================================
  */
 
@@ -25,9 +24,11 @@ using System.ComponentModel.DataAnnotations;
 using System.Diagnostics;
 using System.Drawing;
 using System.Drawing.Drawing2D;
+using System.IO;
 using System.Linq;
 using System.Reflection;
 using System.Windows.Forms;
+using Microsoft.Reporting.WinForms;
 
 using CapaControlador_Inventario_Logistica.Modelos_de_Controladores;
 
@@ -48,13 +49,15 @@ namespace CapaVista_Inventario_Logistica.Formularios
         private List<ClsDatosStock> _Filtrados =
             new List<ClsDatosStock>();
 
-        private bool _ModoEdicion;
+        private bool _ModoEdicion = false;
+
+        private bool _CargandoCombos = false;
+
+        private bool _CargandoDatosStock = false;
 
         private string _ColumnaOrden = "IdStock";
 
         private bool _OrdenAscendente = false;
-
-        private bool _CargandoCombos = false;
 
         private enum ClsTipoDialogo
         {
@@ -92,7 +95,6 @@ namespace CapaVista_Inventario_Logistica.Formularios
 
             LogisticaTxtIdStock.TabStop = false;
 
-            // Etiquetas de campos automáticos y booleanos.
             LogisticaLblIdStock.Text = "ID:";
 
             LogisticaLblEstadoStock.Text =
@@ -104,7 +106,6 @@ namespace CapaVista_Inventario_Logistica.Formularios
             LogisticaLblEstadoCompra.Text =
                 "Estado de compra:";
 
-            // Los ComboBox deben seleccionar registros válidos.
             LogisticaCboIdSucursal.DropDownStyle =
                 ComboBoxStyle.DropDownList;
 
@@ -114,7 +115,16 @@ namespace CapaVista_Inventario_Logistica.Formularios
             LogisticaCboProductoStock.DropDownStyle =
                 ComboBoxStyle.DropDownList;
 
-            // Estado de stock es un indicador calculado.
+            // Estos valores se calculan automáticamente.
+            LogisticaTxtStockActual.ReadOnly = true;
+
+            LogisticaTxtStockVirtual.ReadOnly = true;
+
+            LogisticaTxtStockActual.TabStop = false;
+
+            LogisticaTxtStockVirtual.TabStop = false;
+
+            // Indicador de existencia calculado.
             LogisticaChkEstadoStock.Enabled = false;
 
             LogisticaChkEstadoStock.TabStop = false;
@@ -147,7 +157,6 @@ namespace CapaVista_Inventario_Logistica.Formularios
             LogisticaDgvListadoStock.SelectionMode =
                 DataGridViewSelectionMode.FullRowSelect;
 
-            // Barra horizontal y vertical.
             LogisticaDgvListadoStock.AutoSizeColumnsMode =
                 DataGridViewAutoSizeColumnsMode.None;
 
@@ -157,10 +166,10 @@ namespace CapaVista_Inventario_Logistica.Formularios
             LogisticaDgvListadoStock.AllowUserToResizeColumns =
                 true;
 
-            // Colores de Logística.
             LogisticaDgvListadoStock.EnableHeadersVisualStyles =
                 false;
 
+            // Colores del módulo Logística.
             LogisticaDgvListadoStock
                 .ColumnHeadersDefaultCellStyle.BackColor =
                 Color.FromArgb(62, 138, 132);
@@ -192,10 +201,7 @@ namespace CapaVista_Inventario_Logistica.Formularios
                 .DefaultCellStyle.SelectionForeColor =
                 Color.White;
 
-            // ====================================================
-            // COLUMNAS DE STOCK
-            // ====================================================
-
+            // Columnas originales.
             LogisticaProcAgregarColumna(
                 "IdStock", "ID", 65);
 
@@ -237,7 +243,6 @@ namespace CapaVista_Inventario_Logistica.Formularios
             LogisticaProcAgregarColumna(
                 "ApartadosStock", "Apartados", 105);
 
-            // Columnas booleanas.
             LogisticaProcAgregarBooleano(
                 "TieneExistencias", "Con existencias");
 
@@ -266,17 +271,15 @@ namespace CapaVista_Inventario_Logistica.Formularios
                     DataPropertyName = Propiedad,
                     HeaderText = Titulo,
                     Width = Ancho,
-
                     AutoSizeMode =
                         DataGridViewAutoSizeColumnMode.None,
-
                     SortMode =
                         DataGridViewColumnSortMode.Programmatic
                 });
         }
 
         // ========================================================
-        // CREAR COLUMNA BOOLEANO
+        // CREAR COLUMNA BOOLEANA
         // ========================================================
 
         private void LogisticaProcAgregarBooleano(
@@ -290,14 +293,11 @@ namespace CapaVista_Inventario_Logistica.Formularios
                     DataPropertyName = Propiedad,
                     HeaderText = Titulo,
                     ValueType = typeof(bool),
-
                     TrueValue = true,
                     FalseValue = false,
-
                     ThreeState = false,
                     ReadOnly = true,
                     Width = 130,
-
                     SortMode =
                         DataGridViewColumnSortMode.Programmatic
                 });
@@ -340,6 +340,19 @@ namespace CapaVista_Inventario_Logistica.Formularios
 
             LogisticaTxtStockActual.TextChanged +=
                 LogisticaTxtStockActual_TextChanged;
+
+            // Eventos para calcular el stock.
+            LogisticaTxtAnteriorStock.TextChanged +=
+                LogisticaMetPrevisualizarCalculosStock;
+
+            LogisticaTxtCargosMes.TextChanged +=
+                LogisticaMetPrevisualizarCalculosStock;
+
+            LogisticaTxtAbonosMes.TextChanged +=
+                LogisticaMetPrevisualizarCalculosStock;
+
+            LogisticaTxtApartadosStock.TextChanged +=
+                LogisticaMetPrevisualizarCalculosStock;
 
             LogisticaTxtBusquedaInteligente.TextChanged +=
                 LogisticaTxtBusquedaInteligente_TextChanged;
@@ -495,7 +508,101 @@ namespace CapaVista_Inventario_Logistica.Formularios
         }
 
         // ========================================================
-        // RECARGAR REGISTROS
+        // CALCULAR STOCK ACTUAL Y VIRTUAL
+        // ========================================================
+
+        private void LogisticaMetCalcularTotalesStock()
+        {
+            int Anterior =
+                LogisticaFuncLeerEntero(
+                    LogisticaTxtAnteriorStock,
+                    "Stock anterior");
+
+            int Cargos =
+                LogisticaFuncLeerEntero(
+                    LogisticaTxtCargosMes,
+                    "Cargos del mes");
+
+            int Abonos =
+                LogisticaFuncLeerEntero(
+                    LogisticaTxtAbonosMes,
+                    "Abonos del mes");
+
+            int Apartados =
+                LogisticaFuncLeerEntero(
+                    LogisticaTxtApartadosStock,
+                    "Apartados");
+
+            // Se calculan desde el controlador MVC.
+            int Actual =
+                _ModeloStock.LogisticaFuncCalcularStockActual(
+                    Anterior,
+                    Cargos,
+                    Abonos);
+
+            int Virtual =
+                _ModeloStock.LogisticaFuncCalcularStockVirtual(
+                    Actual,
+                    Apartados);
+
+            LogisticaTxtStockActual.Text =
+                Actual.ToString();
+
+            LogisticaTxtStockVirtual.Text =
+                Virtual.ToString();
+        }
+
+        // ========================================================
+        // PREVISUALIZACIÓN AUTOMÁTICA
+        // ========================================================
+
+        private void LogisticaMetPrevisualizarCalculosStock(
+            object Sender,
+            EventArgs E)
+        {
+            if (_CargandoDatosStock || !_ModoEdicion)
+            {
+                return;
+            }
+
+            int Valor;
+
+            TextBox[] Campos =
+            {
+                LogisticaTxtAnteriorStock,
+                LogisticaTxtCargosMes,
+                LogisticaTxtAbonosMes,
+                LogisticaTxtApartadosStock
+            };
+
+            // Esperar hasta que los campos estén completos.
+            if (Campos.Any(C =>
+                !int.TryParse(
+                    C.Text.Trim(),
+                    out Valor) ||
+                Valor < 0))
+            {
+                LogisticaTxtStockActual.Clear();
+
+                LogisticaTxtStockVirtual.Clear();
+
+                return;
+            }
+
+            try
+            {
+                LogisticaMetCalcularTotalesStock();
+            }
+            catch (ValidationException)
+            {
+                LogisticaTxtStockActual.Clear();
+
+                LogisticaTxtStockVirtual.Clear();
+            }
+        }
+
+        // ========================================================
+        // RECARGAR STOCK
         // ========================================================
 
         private void LogisticaProcRecargarDatos()
@@ -507,7 +614,7 @@ namespace CapaVista_Inventario_Logistica.Formularios
         }
 
         // ========================================================
-        // BÚSQUEDA INTELIGENTE
+        // FILTRAR DATOS
         // ========================================================
 
         private void LogisticaProcFiltrarDatos()
@@ -529,20 +636,20 @@ namespace CapaVista_Inventario_Logistica.Formularios
                 (D.NombreProducto ?? "").IndexOf(
                     Buscar,
                     StringComparison.OrdinalIgnoreCase) >= 0
-
             ).ToList();
 
             LogisticaProcOrdenarDatos();
 
             LogisticaDgvListadoStock.DataSource = null;
 
-            LogisticaDgvListadoStock.DataSource = _Filtrados;
+            LogisticaDgvListadoStock.DataSource =
+                _Filtrados;
 
             LogisticaDgvListadoStock.ClearSelection();
         }
 
         // ========================================================
-        // EVENTO BÚSQUEDA
+        // EVENTO DE BÚSQUEDA
         // ========================================================
 
         private void LogisticaTxtBusquedaInteligente_TextChanged(
@@ -613,7 +720,7 @@ namespace CapaVista_Inventario_Logistica.Formularios
         }
 
         // ========================================================
-        // OBTENER STOCK SELECCIONADO
+        // OBTENER REGISTRO SELECCIONADO
         // ========================================================
 
         private ClsDatosStock LogisticaFuncStockSeleccionado()
@@ -638,7 +745,7 @@ namespace CapaVista_Inventario_Logistica.Formularios
         }
 
         // ========================================================
-        // DOBLE CLIC EN LA TABLA
+        // DOBLE CLIC EN DATAGRIDVIEW
         // ========================================================
 
         private void LogisticaDgvListadoStock_CellDoubleClick(
@@ -654,8 +761,8 @@ namespace CapaVista_Inventario_Logistica.Formularios
             {
                 LogisticaDgvListadoStock.ClearSelection();
 
-                LogisticaDgvListadoStock.Rows[E.RowIndex]
-                    .Selected = true;
+                LogisticaDgvListadoStock.Rows[
+                    E.RowIndex].Selected = true;
 
                 LogisticaProcCargarSeleccionado();
             }
@@ -666,7 +773,7 @@ namespace CapaVista_Inventario_Logistica.Formularios
         }
 
         // ========================================================
-        // CARGAR STOCK SELECCIONADO
+        // CARGAR REGISTRO SELECCIONADO
         // ========================================================
 
         private void LogisticaProcCargarSeleccionado()
@@ -674,59 +781,68 @@ namespace CapaVista_Inventario_Logistica.Formularios
             ClsDatosStock D =
                 LogisticaFuncStockSeleccionado();
 
-            _ModeloStock.Estado =
-                ClsEstadoEntidad.Modified;
+            // Evita recalcular mientras cargamos los datos.
+            _CargandoDatosStock = true;
 
-            LogisticaProcHabilitarEdicion(true);
+            try
+            {
+                _ModeloStock.Estado =
+                    ClsEstadoEntidad.Modified;
 
-            LogisticaTxtIdStock.Text =
-                D.IdStock.ToString();
+                LogisticaProcHabilitarEdicion(true);
 
-            // Seleccionar sucursal recarga las bodegas.
-            LogisticaCboIdSucursal.SelectedValue =
-                D.FkSucursalCodigo;
+                LogisticaTxtIdStock.Text =
+                    D.IdStock.ToString();
 
-            LogisticaCboBodegaStock.SelectedValue =
-                D.FkBodegaCodigo;
+                LogisticaCboIdSucursal.SelectedValue =
+                    D.FkSucursalCodigo;
 
-            LogisticaCboProductoStock.SelectedValue =
-                D.FkProductoCodigo;
+                LogisticaCboBodegaStock.SelectedValue =
+                    D.FkBodegaCodigo;
 
-            LogisticaTxtStockFisico.Text =
-                D.StockFisicoStock.ToString();
+                LogisticaCboProductoStock.SelectedValue =
+                    D.FkProductoCodigo;
 
-            LogisticaTxtStockVirtual.Text =
-                D.StockVirtualStock.ToString();
+                LogisticaTxtStockFisico.Text =
+                    D.StockFisicoStock.ToString();
 
-            LogisticaTxtAnteriorStock.Text =
-                D.StockAnteriorStock.ToString();
+                LogisticaTxtStockVirtual.Text =
+                    D.StockVirtualStock.ToString();
 
-            LogisticaTxtStockActual.Text =
-                D.StockActualStock.ToString();
+                LogisticaTxtAnteriorStock.Text =
+                    D.StockAnteriorStock.ToString();
 
-            LogisticaTxtCargosMes.Text =
-                D.CargosMesStock.ToString();
+                LogisticaTxtStockActual.Text =
+                    D.StockActualStock.ToString();
 
-            LogisticaTxtAbonosMes.Text =
-                D.AbonosMesStock.ToString();
+                LogisticaTxtCargosMes.Text =
+                    D.CargosMesStock.ToString();
 
-            LogisticaTxtCargosAcumulados.Text =
-                D.CargosAcumuladosStock.ToString();
+                LogisticaTxtAbonosMes.Text =
+                    D.AbonosMesStock.ToString();
 
-            LogisticaTxtAbonosAcumulados.Text =
-                D.AbonosAcumuladosStock.ToString();
+                LogisticaTxtCargosAcumulados.Text =
+                    D.CargosAcumuladosStock.ToString();
 
-            LogisticaTxtApartadosStock.Text =
-                D.ApartadosStock.ToString();
+                LogisticaTxtAbonosAcumulados.Text =
+                    D.AbonosAcumuladosStock.ToString();
 
-            LogisticaChkEstadoVenta.Checked =
-                D.EstadoVentaStock;
+                LogisticaTxtApartadosStock.Text =
+                    D.ApartadosStock.ToString();
 
-            LogisticaChkEstadoCompra.Checked =
-                D.EstadoCompraStock;
+                LogisticaChkEstadoVenta.Checked =
+                    D.EstadoVentaStock;
 
-            LogisticaChkEstadoStock.Checked =
-                D.TieneExistencias;
+                LogisticaChkEstadoCompra.Checked =
+                    D.EstadoCompraStock;
+
+                LogisticaChkEstadoStock.Checked =
+                    D.TieneExistencias;
+            }
+            finally
+            {
+                _CargandoDatosStock = false;
+            }
         }
 
         // ========================================================
@@ -824,7 +940,7 @@ namespace CapaVista_Inventario_Logistica.Formularios
         }
 
         // ========================================================
-        // VALIDAR ENTEROS
+        // LEER ENTEROS
         // ========================================================
 
         private int LogisticaFuncLeerEntero(
@@ -834,8 +950,8 @@ namespace CapaVista_Inventario_Logistica.Formularios
             int Valor;
 
             if (!int.TryParse(
-                    Campo.Text.Trim(),
-                    out Valor) ||
+                Campo.Text.Trim(),
+                out Valor) ||
                 Valor < 0)
             {
                 throw new ValidationException(
@@ -847,7 +963,7 @@ namespace CapaVista_Inventario_Logistica.Formularios
         }
 
         // ========================================================
-        // VALIDAR ENTEROS LARGOS
+        // LEER ENTEROS LARGOS
         // ========================================================
 
         private long LogisticaFuncLeerEnteroLargo(
@@ -857,8 +973,8 @@ namespace CapaVista_Inventario_Logistica.Formularios
             long Valor;
 
             if (!long.TryParse(
-                    Campo.Text.Trim(),
-                    out Valor) ||
+                Campo.Text.Trim(),
+                out Valor) ||
                 Valor < 0)
             {
                 throw new ValidationException(
@@ -870,7 +986,7 @@ namespace CapaVista_Inventario_Logistica.Formularios
         }
 
         // ========================================================
-        // LEER FORMULARIO
+        // OBTENER DATOS DEL FORMULARIO
         // ========================================================
 
         private ClsDatosStock LogisticaFuncLeerFormulario()
@@ -887,8 +1003,8 @@ namespace CapaVista_Inventario_Logistica.Formularios
                 ClsEstadoEntidad.Modified)
             {
                 if (!int.TryParse(
-                        LogisticaTxtIdStock.Text,
-                        out IdStock) ||
+                    LogisticaTxtIdStock.Text,
+                    out IdStock) ||
                     IdStock <= 0)
                 {
                     throw new ValidationException(
@@ -981,16 +1097,17 @@ namespace CapaVista_Inventario_Logistica.Formularios
                 return;
             }
 
-            if (!LogisticaFuncCamposCompletos())
-            {
-                LogisticaProcMostrarError(
-                    "Completar todos los campos.");
-
-                return;
-            }
-
             try
             {
+                // Recalcular siempre antes de guardar.
+                LogisticaMetCalcularTotalesStock();
+
+                if (!LogisticaFuncCamposCompletos())
+                {
+                    throw new ValidationException(
+                        "Completar todos los campos.");
+                }
+
                 _ModeloStock.Stock =
                     LogisticaFuncLeerFormulario();
 
@@ -1134,29 +1251,134 @@ namespace CapaVista_Inventario_Logistica.Formularios
         {
             _ModoEdicion = Habilitar;
 
-            LogistinaPnlDatosMovimiento.Enabled = Habilitar;
+            LogistinaPnlDatosMovimiento.Enabled =
+                Habilitar;
 
-            LogisticaBtnGuardarStock.Enabled = Habilitar;
+            LogisticaBtnGuardarStock.Enabled =
+                Habilitar;
 
-            // El estado se calcula automáticamente.
-            LogisticaChkEstadoStock.Enabled = false;
+            LogisticaChkEstadoStock.Enabled =
+                false;
         }
 
         // ========================================================
-        // IMPRIMIR Y AYUDA
+        // BOTÓN IMPRIMIR — RDLC
         // ========================================================
 
         private void LogisticaBtnImprimirStock_Click(
             object Sender,
             EventArgs E)
         {
-            MessageBox.Show(
-                "El reporte RDLC de Stock está pendiente " +
-                "de integrar.",
-                "Logística - Información",
-                MessageBoxButtons.OK,
-                MessageBoxIcon.Information);
+            try
+            {
+                List<ClsDatosStock> Lista =
+                    _ModeloStock.LogisticaFuncObtenerTodos();
+
+                if (Lista.Count == 0)
+                {
+                    MessageBox.Show(
+                        "No hay registros de stock para imprimir.",
+                        "Logística - Stock",
+                        MessageBoxButtons.OK,
+                        MessageBoxIcon.Information);
+
+                    return;
+                }
+
+                // Buscar el archivo RDLC incrustado.
+                var Ensamblado =
+                    typeof(FrmMantenimientoStock).Assembly;
+
+                string NombreRecurso = Ensamblado
+                    .GetManifestResourceNames()
+                    .FirstOrDefault(N =>
+                        N.EndsWith(
+                            ".RpReporteStock.rdlc",
+                            StringComparison.OrdinalIgnoreCase));
+
+                if (NombreRecurso == null)
+                {
+                    throw new InvalidOperationException(
+                        "No se encontró RpReporteStock.rdlc. " +
+                        "Configure su Acción de compilación " +
+                        "como Recurso incrustado.");
+                }
+
+                using (Stream ArchivoRdlc =
+                    Ensamblado.GetManifestResourceStream(
+                        NombreRecurso))
+                {
+                    if (ArchivoRdlc == null)
+                    {
+                        throw new InvalidOperationException(
+                            "No se pudo abrir el reporte.");
+                    }
+
+                    using (Form Ventana = new Form())
+                    using (ReportViewer Visor =
+                        new ReportViewer())
+                    {
+                        Ventana.Text =
+                            "Reporte de Stock - Logística";
+
+                        Ventana.StartPosition =
+                            FormStartPosition.CenterParent;
+
+                        Ventana.WindowState =
+                            FormWindowState.Maximized;
+
+                        Ventana.ShowIcon = false;
+
+                        Visor.Dock = DockStyle.Fill;
+
+                        Ventana.Controls.Add(Visor);
+
+                        Visor.Reset();
+
+                        Visor.ProcessingMode =
+                            ProcessingMode.Local;
+
+                        Visor.LocalReport.LoadReportDefinition(
+                            ArchivoRdlc);
+
+                        const string NombreDataSet =
+                            "DsReporteStock";
+
+                        var Nombres =
+                            Visor.LocalReport.GetDataSourceNames();
+
+                        if (!Nombres.Contains(NombreDataSet))
+                        {
+                            throw new InvalidOperationException(
+                                "El RDLC no tiene el DataSet " +
+                                NombreDataSet +
+                                ". Revise el diseñador.");
+                        }
+
+                        Visor.LocalReport.DataSources.Clear();
+
+                        Visor.LocalReport.DataSources.Add(
+                            new ReportDataSource(
+                                NombreDataSet,
+                                Lista));
+
+                        Visor.RefreshReport();
+
+                        Ventana.ShowDialog(this);
+                    }
+                }
+            }
+            catch (Exception Ex)
+            {
+                Debug.WriteLine(Ex.ToString());
+
+                LogisticaProcMostrarError(Ex.Message);
+            }
         }
+
+        // ========================================================
+        // BOTÓN AYUDA
+        // ========================================================
 
         private void LogisticaBtnAyudaStock_Click(
             object Sender,
@@ -1171,7 +1393,7 @@ namespace CapaVista_Inventario_Logistica.Formularios
         }
 
         // ========================================================
-        // CONFIRMACIÓN, ÉXITO Y ERROR
+        // MENSAJES Y DIÁLOGOS
         // ========================================================
 
         private bool LogisticaFuncConfirmarEliminacion(
@@ -1218,7 +1440,7 @@ namespace CapaVista_Inventario_Logistica.Formularios
         }
 
         // ========================================================
-        // DIÁLOGOS COMPACTOS DEL ESTÁNDAR LOGÍSTICA
+        // DIÁLOGOS DEL ESTÁNDAR LOGÍSTICA
         // ========================================================
 
         private DialogResult LogisticaFuncMostrarDialogo(
@@ -1244,7 +1466,8 @@ namespace CapaVista_Inventario_Logistica.Formularios
             {
                 Ventana.Text = Titulo;
 
-                Ventana.ClientSize = new Size(430, 185);
+                Ventana.ClientSize =
+                    new Size(430, 185);
 
                 Ventana.FormBorderStyle =
                     FormBorderStyle.FixedDialog;
@@ -1253,12 +1476,15 @@ namespace CapaVista_Inventario_Logistica.Formularios
                     FormStartPosition.CenterParent;
 
                 Ventana.MaximizeBox = false;
+
                 Ventana.MinimizeBox = false;
+
                 Ventana.ShowIcon = false;
+
                 Ventana.ShowInTaskbar = false;
+
                 Ventana.BackColor = Color.White;
 
-                // Ícono circular.
                 PictureBox Icono = new PictureBox
                 {
                     Location = new Point(24, 60),
@@ -1277,11 +1503,10 @@ namespace CapaVista_Inventario_Logistica.Formularios
                             P, 2, 2, 44, 44);
                     }
 
-                    using (Font F =
-                        new Font(
-                            "Segoe UI Symbol",
-                            20F,
-                            FontStyle.Bold))
+                    using (Font F = new Font(
+                        "Segoe UI Symbol",
+                        20F,
+                        FontStyle.Bold))
                     {
                         TextRenderer.DrawText(
                             E.Graphics,
@@ -1294,46 +1519,41 @@ namespace CapaVista_Inventario_Logistica.Formularios
                     }
                 };
 
-                // Título.
                 Label LblTitulo = new Label
                 {
                     Text = Titulo,
                     Location = new Point(90, 22),
                     Size = new Size(320, 30),
                     ForeColor = ColorIcono,
-
                     Font = new Font(
                         "Segoe UI",
                         13F,
                         FontStyle.Bold)
                 };
 
-                // Mensaje sin barras de desplazamiento.
                 Label LblMensaje = new Label
                 {
                     Text = Mensaje,
                     Location = new Point(90, 55),
                     Size = new Size(315, 77),
-                    ForeColor = Color.FromArgb(60, 60, 60),
-                    Font = new Font("Segoe UI", 9.5F),
+                    ForeColor = Color.FromArgb(
+                        60, 60, 60),
+                    Font = new Font(
+                        "Segoe UI",
+                        9.5F),
                     AutoEllipsis = true,
-
                     TextAlign =
                         ContentAlignment.MiddleLeft
                 };
 
-                // Botón principal.
                 Button Principal = new Button
                 {
                     Location = new Point(295, 143),
                     Size = new Size(115, 30),
-
-                    BackColor =
-                        Color.FromArgb(47, 49, 58),
-
+                    BackColor = Color.FromArgb(
+                        47, 49, 58),
                     ForeColor = Color.White,
                     FlatStyle = FlatStyle.Flat,
-
                     Font = new Font(
                         "Segoe UI",
                         9F,
@@ -1355,12 +1575,9 @@ namespace CapaVista_Inventario_Logistica.Formularios
                         Location = new Point(195, 143),
                         Size = new Size(90, 30),
                         BackColor = Color.White,
-
-                        ForeColor =
-                            Color.FromArgb(47, 49, 58),
-
+                        ForeColor = Color.FromArgb(
+                            47, 49, 58),
                         FlatStyle = FlatStyle.Flat,
-
                         DialogResult = DialogResult.No
                     };
 
@@ -1383,8 +1600,11 @@ namespace CapaVista_Inventario_Logistica.Formularios
                 }
 
                 Ventana.Controls.Add(Icono);
+
                 Ventana.Controls.Add(LblTitulo);
+
                 Ventana.Controls.Add(LblMensaje);
+
                 Ventana.Controls.Add(Principal);
 
                 return Ventana.ShowDialog(this);
