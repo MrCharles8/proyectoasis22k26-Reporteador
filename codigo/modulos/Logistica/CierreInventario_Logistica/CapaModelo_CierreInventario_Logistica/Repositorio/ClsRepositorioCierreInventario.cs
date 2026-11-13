@@ -4,7 +4,6 @@ using System.Data;
 using System.Data.Odbc;
 using CapaModelo_CierreInventario_Logistica.Contratos;
 using CapaModelo_CierreInventario_Logistica.Entidad;
-using CapaModelo_CierreInventario_Logistica.Validaciones;
 
 namespace CapaModelo_CierreInventario_Logistica.Repositorio
 {
@@ -117,18 +116,15 @@ namespace CapaModelo_CierreInventario_Logistica.Repositorio
         private string Validar(OdbcConnection cn, OdbcTransaction tx,
             int sucursal, DateTime inicio, DateTime fin, DataTable detalle)
         {
-            if (!ClsValidacionCierreInventario.ValidarPeriodoFinalizado(
-                inicio.Year, inicio.Month, DateTime.Today))
-            {
+            if (fin >= DateTime.Today)
                 return "El mes todavía no ha finalizado.";
-            }
             if (detalle.Rows.Count == 0)
                 return "La sucursal no tiene existencias registradas.";
 
             DateTime? ultimo = null;
             using (OdbcCommand cmd = Comando(cn, tx,
                 @"SELECT MAX(fechaFinCierreInventario) FROM tblCierreInventario
-                  WHERE Fk_Sucursal_Codigo=? AND estadoCierreInventario='CERRADO'
+                  WHERE Fk_Sucursal_Codigo=? AND fechaEjecucionCierreInventario IS NOT NULL
                     AND esCierreAnualCierreInventario=0", sucursal))
             {
                 object valor = cmd.ExecuteScalar();
@@ -143,22 +139,15 @@ namespace CapaModelo_CierreInventario_Logistica.Repositorio
                     AND esCierreAnualCierreInventario=0", sucursal, fin) > 0)
                 return "El cierre del período ya existe.";
 
-
             foreach (DataRow fila in detalle.Rows)
             {
-                long anterior = Convert.ToInt64(fila["Anterior"]);
-                long cargos = Convert.ToInt64(fila["Cargos"]);
-                long abonos = Convert.ToInt64(fila["Abonos"]);
-                long actual = Convert.ToInt64(fila["Actual"]);
-
-                if (!ClsValidacionCierreInventario.ValidarCuadratura(
-                    anterior, cargos, abonos, actual))
-                {
-                    return "El inventario contiene cantidades negativas " +
-                           "o diferencias en los saldos.";
-                }
+                if (Convert.ToInt64(fila["Diferencia"]) != 0)
+                    return "Hay diferencias en los saldos. Revise el detalle.";
+                if (Convert.ToInt64(fila["Anterior"]) < 0 ||
+                    Convert.ToInt64(fila["Cargos"]) < 0 ||
+                    Convert.ToInt64(fila["Abonos"]) < 0)
+                    return "El inventario contiene cantidades negativas.";
             }
-
 
             // No cerrar meses anteriores cuando el stock ya incorporó movimientos nuevos.
             int posteriores = Contar(cn, tx, @"SELECT COUNT(*) FROM tblMovimientoInventario m
@@ -271,11 +260,12 @@ namespace CapaModelo_CierreInventario_Logistica.Repositorio
                     Ejecutar(cn, tx, @"INSERT INTO tblCierreInventario
                         (nombreCierreInventario, Fk_Sucursal_Codigo,
                          fechaInicioCierreInventario, fechaFinCierreInventario,
-                         estadoCierreInventario, esCierreAnualCierreInventario,
+                         esCierreAnualCierreInventario,
                          diferenciaUnidadesCierreInventario,
                          diferenciaMontoCierreInventario,
+                         motivoAceptacionCierreInventario,
                          observacionesCierreInventario, fechaEjecucionCierreInventario)
-                        VALUES (?, ?, ?, ?, 'EN_PROCESO', 0, 0, 0, '', NOW())",
+                        VALUES (?, ?, ?, ?, 0, 0, 0, '', '', NOW())",
                         nombre, sucursal, inicio, fin);
                     int id = Contar(cn, tx, "SELECT LAST_INSERT_ID()");
 
@@ -321,10 +311,8 @@ namespace CapaModelo_CierreInventario_Logistica.Repositorio
                         cargosMesStock=0, abonosMesStock=0
                         WHERE Fk_Sucursal_Codigo=?", sucursal);
 
-                    Ejecutar(cn, tx, @"UPDATE tblCierreInventario
-                        SET estadoCierreInventario='CERRADO',
-                            fechaEjecucionCierreInventario=NOW()
-                        WHERE idCierreInventario=?", id);
+                    // No existe estadoCierreInventario en el esquema original.
+                    // La fecha de ejecución ya quedó registrada en el INSERT.
                     tx.Commit();
                     return id;
                 }
@@ -346,7 +334,8 @@ namespace CapaModelo_CierreInventario_Logistica.Repositorio
                     c.nombreCierreInventario AS Nombre, s.nombreSucursal AS Sucursal,
                     c.fechaInicioCierreInventario AS FechaInicio,
                     c.fechaFinCierreInventario AS FechaFin,
-                    c.estadoCierreInventario AS Estado,
+                    CASE WHEN c.fechaEjecucionCierreInventario IS NOT NULL
+                         THEN 'EJECUTADO' ELSE 'SIN EJECUTAR' END AS Estado,
                     c.fechaEjecucionCierreInventario AS FechaEjecucion
                     FROM tblCierreInventario c
                     INNER JOIN tblSucursal s ON s." + idSucursal + @"=c.Fk_Sucursal_Codigo
