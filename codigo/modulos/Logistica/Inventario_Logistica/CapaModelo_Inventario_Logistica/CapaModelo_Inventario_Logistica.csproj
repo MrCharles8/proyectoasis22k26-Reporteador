@@ -41,8 +41,11 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Contratos\ClsIRepisitorioMovimientoInventario.cs" />
     <Compile Include="Contratos\ClsIRepositoioProducto.cs" />
     <Compile Include="Contratos\ClsIRepositorioBodega.cs" />
+    <Compile Include="Contratos\ClsIRepositorioCategoria.cs" />
+    <Compile Include="Contratos\ClsIRepositorioLinea.cs" />
     <Compile Include="Contratos\ClsIRepositorioStock.cs" />
     <Compile Include="Contratos\ClsIRepositorioSucursal.cs" />
     <Compile Include="Contratos\IRepositorioGenerico.cs" />
@@ -50,11 +53,17 @@
     <Compile Include="Contratos\IRepositorioTipoMovimiento.cs" />
     <Compile Include="Entidades\ClsBodega.cs" />
     <Compile Include="Entidades\ClsCatalogo.cs" />
+    <Compile Include="Entidades\ClsCategoria.cs" />
     <Compile Include="Entidades\ClsDetalleMovimiento.cs" />
+    <Compile Include="Entidades\ClsLinea.cs" />
+    <Compile Include="Entidades\ClsMovimientoInventario.cs" />
     <Compile Include="Entidades\ClsProducto.cs" />
     <Compile Include="Entidades\ClsStock.cs" />
     <Compile Include="Entidades\ClsSucursal.cs" />
     <Compile Include="Repositorios\ClsRepositorioBodega.cs" />
+    <Compile Include="Repositorios\ClsRepositorioCategoria.cs" />
+    <Compile Include="Repositorios\ClsRepositorioLinea.cs" />
+    <Compile Include="Repositorios\ClsRepositorioMovimientoInventario.cs" />
     <Compile Include="Repositorios\ClsRepositorioStock.cs" />
     <Compile Include="Repositorios\ClsRepositorioSucursal.cs" />
     <Compile Include="Repositorios\ClsTipoMovimiento.cs" />
