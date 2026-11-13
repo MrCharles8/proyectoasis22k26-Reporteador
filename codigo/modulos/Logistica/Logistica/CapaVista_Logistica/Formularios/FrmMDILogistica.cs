@@ -608,6 +608,7 @@ namespace CapaVista_Logistica.Formularios
         private void LogisticaBtnSucursales_Click(object sender, EventArgs e)
         {
             LogisticaMetAbrirFormulario(new FrmMantenimientoSucursales());
+
         }
 
         private void LogisticaBtnCategoria_Click(object sender, EventArgs e)
