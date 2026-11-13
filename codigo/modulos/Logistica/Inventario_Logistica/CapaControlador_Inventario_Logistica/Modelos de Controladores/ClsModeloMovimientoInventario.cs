@@ -9,19 +9,17 @@
  * FECHA DE REALIZACIÓN: 13/11/2026
  *
  * DESCRIPCIÓN:
- * Controla las operaciones de los movimientos de
- * inventario entre la Vista y la Capa Modelo.
+ * Controla las operaciones de movimientos de inventario.
+ * Valida los datos, administra las consultas y comunica
+ * la Capa Vista con el repositorio correspondiente.
  *
- * Valida el tipo de movimiento, las sucursales,
- * las bodegas y los datos obligatorios.
- * Proporciona los registros para el DataGridView
- * y para el reporte RDLC del módulo.
+ * Proporciona los datos para el DataGridView y el
+ * reporte RpReporteMovimientoInventario.rdlc.
  * ============================================================================
  */
 
 using System;
 using System.Collections.Generic;
-using System.ComponentModel.DataAnnotations;
 using System.Linq;
 
 using CapaModelo_Inventario_Logistica.Contratos;
@@ -32,15 +30,10 @@ namespace CapaControlador_Inventario_Logistica.Modelos_de_Controladores
 {
     public class ClsModeloMovimientoInventario
     {
-        // ========================================================
-        // REPOSITORIO
-        // ========================================================
-
-        private readonly ClsIRepositorioMovimientoInventario
-            _Repositorio;
+        private readonly ClsIRepositorioMovimientoInventario _Repositorio;
 
         // ========================================================
-        // PROPIEDADES DEL MOVIMIENTO Y DEL RDLC
+        // PROPIEDADES DEL MOVIMIENTO
         // ========================================================
 
         public int IdMovimientoInventario { get; set; }
@@ -56,17 +49,12 @@ namespace CapaControlador_Inventario_Logistica.Modelos_de_Controladores
 
         public DateTime FechaMovimientoInventario { get; set; }
 
-        public string ObservacionesMovimientoInventario
-        {
-            get;
-            set;
-        }
+        public string ObservacionesMovimientoInventario { get; set; }
+        public string EstadoMovimientoInventario { get; set; }
 
-        public string EstadoMovimientoInventario
-        {
-            get;
-            set;
-        }
+        // ========================================================
+        // PROPIEDADES PARA CONSULTAS Y REPORTE RDLC
+        // ========================================================
 
         public string NombreTipoMovimiento { get; set; }
         public string SignoTipoMovimiento { get; set; }
@@ -80,188 +68,131 @@ namespace CapaControlador_Inventario_Logistica.Modelos_de_Controladores
         public string NombreTransporte { get; set; }
 
         // ========================================================
-        // CONSTRUCTOR PRINCIPAL
+        // CONSTRUCTORES
         // ========================================================
 
         public ClsModeloMovimientoInventario()
         {
-            _Repositorio =
-                new ClsRepositorioMovimientoInventario();
+            _Repositorio = new ClsRepositorioMovimientoInventario();
         }
-
-        // ========================================================
-        // CONSTRUCTOR PARA PRUEBAS UNITARIAS
-        // ========================================================
 
         public ClsModeloMovimientoInventario(
             ClsIRepositorioMovimientoInventario Repositorio)
         {
-            _Repositorio = Repositorio
-                ?? throw new ArgumentNullException(
-                    nameof(Repositorio));
+            if (Repositorio == null)
+                throw new ArgumentNullException(nameof(Repositorio));
+
+            _Repositorio = Repositorio;
         }
 
         // ========================================================
-        // VALIDAR DATOS
+        // VALIDACIÓN DE MOVIMIENTOS
         // ========================================================
 
         private void LogisticaProcValidarMovimiento(
             ClsModeloMovimientoInventario D)
         {
-            if (D == null)
-            {
-                throw new ValidationException(
-                    "No existen datos del movimiento.");
-            }
-
-            if (D.FkTipoMovimientoCodigo <= 0)
-            {
-                throw new ValidationException(
-                    "Seleccione el tipo de movimiento.");
-            }
+            if (D == null || D.FkTipoMovimientoCodigo <= 0)
+                throw new ArgumentException(
+                    "Seleccione un tipo de movimiento válido.");
 
             if (string.IsNullOrWhiteSpace(
                 D.ObservacionesMovimientoInventario))
-            {
-                throw new ValidationException(
-                    "Ingrese las observaciones.");
-            }
+                throw new ArgumentException(
+                    "Ingrese las observaciones del movimiento.");
 
             if (D.ObservacionesMovimientoInventario.Length > 500)
-            {
-                throw new ValidationException(
-                    "Las observaciones no pueden superar " +
-                    "los 500 caracteres.");
-            }
+                throw new ArgumentException(
+                    "Las observaciones no pueden superar 500 caracteres.");
 
-            bool SucursalOrigen =
-                D.FkSucursalOrigenCodigo.HasValue;
+            // La sucursal y su bodega deben seleccionarse juntas.
+            if (D.FkSucursalOrigenCodigo.HasValue !=
+                D.FkBodegaOrigenCodigo.HasValue)
+                throw new ArgumentException(
+                    "Seleccione sucursal y bodega de origen juntas.");
 
-            bool BodegaOrigen =
-                D.FkBodegaOrigenCodigo.HasValue;
+            if (D.FkSucursalDestinoCodigo.HasValue !=
+                D.FkBodegaDestinoCodigo.HasValue)
+                throw new ArgumentException(
+                    "Seleccione sucursal y bodega de destino juntas.");
 
-            bool SucursalDestino =
-                D.FkSucursalDestinoCodigo.HasValue;
+            bool Origen = D.FkSucursalOrigenCodigo.HasValue &&
+                          D.FkBodegaOrigenCodigo.HasValue;
 
-            bool BodegaDestino =
-                D.FkBodegaDestinoCodigo.HasValue;
-
-            if (SucursalOrigen != BodegaOrigen)
-            {
-                throw new ValidationException(
-                    "La sucursal y la bodega de origen " +
-                    "deben seleccionarse juntas.");
-            }
-
-            if (SucursalDestino != BodegaDestino)
-            {
-                throw new ValidationException(
-                    "La sucursal y la bodega de destino " +
-                    "deben seleccionarse juntas.");
-            }
+            bool Destino = D.FkSucursalDestinoCodigo.HasValue &&
+                           D.FkBodegaDestinoCodigo.HasValue;
 
             Tuple<string, string> Tipo =
                 _Repositorio.LogisticaMetObtenerTipo(
                     D.FkTipoMovimientoCodigo);
 
             if (Tipo == null)
+                throw new ArgumentException(
+                    "El tipo de movimiento seleccionado no existe.");
+
+            bool Traslado = Tipo.Item1.IndexOf(
+                "Traslado",
+                StringComparison.OrdinalIgnoreCase) >= 0;
+
+            if (Traslado)
             {
-                throw new ValidationException(
-                    "El tipo de movimiento no existe.");
+                if (!Origen || !Destino)
+                    throw new ArgumentException(
+                        "El traslado requiere origen y destino.");
             }
-
-            string Nombre = Tipo.Item1;
-            string Signo = Tipo.Item2;
-
-            bool EsTraslado =
-                Nombre.IndexOf(
-                    "TRASLADO",
-                    StringComparison.OrdinalIgnoreCase) >= 0;
-
-            if (EsTraslado)
+            else if (Tipo.Item2 == "+")
             {
-                if (!SucursalOrigen || !SucursalDestino)
-                {
-                    throw new ValidationException(
-                        "Un traslado necesita sucursal " +
-                        "y bodega de origen y destino.");
-                }
-
-                if (D.FkBodegaOrigenCodigo ==
-                    D.FkBodegaDestinoCodigo)
-                {
-                    throw new ValidationException(
-                        "La bodega de origen y destino " +
-                        "no pueden ser iguales.");
-                }
+                if (!Destino)
+                    throw new ArgumentException(
+                        "Seleccione una sucursal y bodega de destino.");
             }
-            else if (Signo == "+")
+            else if (Tipo.Item2 == "-")
             {
-                if (!SucursalDestino || SucursalOrigen)
-                {
-                    throw new ValidationException(
-                        "Una entrada necesita bodega " +
-                        "de destino y no debe tener origen.");
-                }
-            }
-            else if (Signo == "-")
-            {
-                if (!SucursalOrigen || SucursalDestino)
-                {
-                    throw new ValidationException(
-                        "Una salida necesita bodega " +
-                        "de origen y no debe tener destino.");
-                }
+                if (!Origen)
+                    throw new ArgumentException(
+                        "Seleccione una sucursal y bodega de origen.");
             }
             else
             {
-                throw new ValidationException(
-                    "El signo del tipo de movimiento " +
-                    "debe ser + o -.");
+                throw new ArgumentException(
+                    "El tipo de movimiento tiene un signo inválido.");
             }
+
+            if (Origen && Destino &&
+                D.FkBodegaOrigenCodigo.Value ==
+                D.FkBodegaDestinoCodigo.Value)
+                throw new ArgumentException(
+                    "La bodega de origen y destino deben ser diferentes.");
         }
 
         // ========================================================
-        // CONVERTIR A ENTIDAD
+        // CONVERTIR DATOS A ENTIDAD
         // ========================================================
 
-        private ClsMovimientoInventario
-            LogisticaFuncCrearEntidad(
-                ClsModeloMovimientoInventario D)
+        private ClsMovimientoInventario LogisticaFuncEntidad(
+            ClsModeloMovimientoInventario D)
         {
             return new ClsMovimientoInventario
             {
-                IdMovimientoInventario =
-                    D.IdMovimientoInventario,
+                IdMovimientoInventario = D.IdMovimientoInventario,
+                FkTipoMovimientoCodigo = D.FkTipoMovimientoCodigo,
 
-                FkTipoMovimientoCodigo =
-                    D.FkTipoMovimientoCodigo,
+                FkSucursalOrigenCodigo = D.FkSucursalOrigenCodigo,
+                FkBodegaOrigenCodigo = D.FkBodegaOrigenCodigo,
 
-                FkSucursalOrigenCodigo =
-                    D.FkSucursalOrigenCodigo,
+                FkSucursalDestinoCodigo = D.FkSucursalDestinoCodigo,
+                FkBodegaDestinoCodigo = D.FkBodegaDestinoCodigo,
 
-                FkBodegaOrigenCodigo =
-                    D.FkBodegaOrigenCodigo,
+                FkTransporteCodigo = D.FkTransporteCodigo,
 
-                FkSucursalDestinoCodigo =
-                    D.FkSucursalDestinoCodigo,
-
-                FkBodegaDestinoCodigo =
-                    D.FkBodegaDestinoCodigo,
-
-                FkTransporteCodigo =
-                    D.FkTransporteCodigo,
-
-                FechaMovimientoInventario =
-                    D.FechaMovimientoInventario,
-
+                FechaMovimientoInventario = D.FechaMovimientoInventario,
                 ObservacionesMovimientoInventario =
                     D.ObservacionesMovimientoInventario
             };
         }
 
         // ========================================================
-        // AGREGAR
+        // INGRESAR
         // ========================================================
 
         public string LogisticaFuncAgregar(
@@ -270,15 +201,13 @@ namespace CapaControlador_Inventario_Logistica.Modelos_de_Controladores
             LogisticaProcValidarMovimiento(D);
 
             int Filas = _Repositorio.LogisticaMetAgregar(
-                LogisticaFuncCrearEntidad(D));
+                LogisticaFuncEntidad(D));
 
             if (Filas <= 0)
-            {
                 throw new InvalidOperationException(
-                    "No se pudo guardar el movimiento.");
-            }
+                    "No se pudo registrar el movimiento.");
 
-            return "El movimiento se guardó correctamente.";
+            return "Movimiento registrado correctamente.";
         }
 
         // ========================================================
@@ -289,24 +218,20 @@ namespace CapaControlador_Inventario_Logistica.Modelos_de_Controladores
             ClsModeloMovimientoInventario D)
         {
             if (D == null || D.IdMovimientoInventario <= 0)
-            {
-                throw new ValidationException(
-                    "Seleccione el movimiento a modificar.");
-            }
+                throw new ArgumentException(
+                    "Seleccione un movimiento para modificar.");
 
             LogisticaProcValidarMovimiento(D);
 
             int Filas = _Repositorio.LogisticaMetEditar(
-                LogisticaFuncCrearEntidad(D));
+                LogisticaFuncEntidad(D));
 
             if (Filas <= 0)
-            {
                 throw new InvalidOperationException(
-                    "No fue posible modificar el movimiento. " +
+                    "No se pudo modificar el movimiento. " +
                     "Debe estar pendiente y sin detalles.");
-            }
 
-            return "El movimiento se modificó correctamente.";
+            return "Movimiento modificado correctamente.";
         }
 
         // ========================================================
@@ -316,27 +241,22 @@ namespace CapaControlador_Inventario_Logistica.Modelos_de_Controladores
         public string LogisticaFuncEliminar(int IdMovimiento)
         {
             if (IdMovimiento <= 0)
-            {
-                throw new ValidationException(
+                throw new ArgumentException(
                     "Seleccione un movimiento válido.");
-            }
 
-            int Filas =
-                _Repositorio.LogisticaMetEliminar(
-                    IdMovimiento);
+            int Filas = _Repositorio.LogisticaMetEliminar(
+                IdMovimiento);
 
             if (Filas <= 0)
-            {
                 throw new InvalidOperationException(
-                    "No se puede eliminar el movimiento. " +
+                    "No se pudo eliminar el movimiento. " +
                     "Debe estar pendiente y sin detalles.");
-            }
 
-            return "El movimiento se eliminó correctamente.";
+            return "Movimiento eliminado correctamente.";
         }
 
         // ========================================================
-        // CONSULTAR REGISTROS PARA LA VISTA Y EL RDLC
+        // CONSULTAR MOVIMIENTOS PARA VISTA Y RDLC
         // ========================================================
 
         public List<ClsModeloMovimientoInventario>
@@ -345,26 +265,16 @@ namespace CapaControlador_Inventario_Logistica.Modelos_de_Controladores
             return _Repositorio.LogisticaMetObtenerTodos()
                 .Select(D => new ClsModeloMovimientoInventario
                 {
-                    IdMovimientoInventario =
-                        D.IdMovimientoInventario,
+                    IdMovimientoInventario = D.IdMovimientoInventario,
+                    FkTipoMovimientoCodigo = D.FkTipoMovimientoCodigo,
 
-                    FkTipoMovimientoCodigo =
-                        D.FkTipoMovimientoCodigo,
+                    FkSucursalOrigenCodigo = D.FkSucursalOrigenCodigo,
+                    FkBodegaOrigenCodigo = D.FkBodegaOrigenCodigo,
 
-                    FkSucursalOrigenCodigo =
-                        D.FkSucursalOrigenCodigo,
+                    FkSucursalDestinoCodigo = D.FkSucursalDestinoCodigo,
+                    FkBodegaDestinoCodigo = D.FkBodegaDestinoCodigo,
 
-                    FkBodegaOrigenCodigo =
-                        D.FkBodegaOrigenCodigo,
-
-                    FkSucursalDestinoCodigo =
-                        D.FkSucursalDestinoCodigo,
-
-                    FkBodegaDestinoCodigo =
-                        D.FkBodegaDestinoCodigo,
-
-                    FkTransporteCodigo =
-                        D.FkTransporteCodigo,
+                    FkTransporteCodigo = D.FkTransporteCodigo,
 
                     FechaMovimientoInventario =
                         D.FechaMovimientoInventario,
@@ -375,37 +285,26 @@ namespace CapaControlador_Inventario_Logistica.Modelos_de_Controladores
                     EstadoMovimientoInventario =
                         D.EstadoMovimientoInventario,
 
-                    NombreTipoMovimiento =
-                        D.NombreTipoMovimiento,
+                    NombreTipoMovimiento = D.NombreTipoMovimiento,
+                    SignoTipoMovimiento = D.SignoTipoMovimiento,
 
-                    SignoTipoMovimiento =
-                        D.SignoTipoMovimiento,
+                    NombreSucursalOrigen = D.NombreSucursalOrigen,
+                    NombreBodegaOrigen = D.NombreBodegaOrigen,
 
-                    NombreSucursalOrigen =
-                        D.NombreSucursalOrigen,
+                    NombreSucursalDestino = D.NombreSucursalDestino,
+                    NombreBodegaDestino = D.NombreBodegaDestino,
 
-                    NombreBodegaOrigen =
-                        D.NombreBodegaOrigen,
-
-                    NombreSucursalDestino =
-                        D.NombreSucursalDestino,
-
-                    NombreBodegaDestino =
-                        D.NombreBodegaDestino,
-
-                    NombreTransporte =
-                        D.NombreTransporte
+                    NombreTransporte = D.NombreTransporte
                 })
                 .ToList();
         }
 
         // ========================================================
-        // CATÁLOGOS
+        // CATÁLOGOS DEL FORMULARIO
         // ========================================================
 
-        private List<ClsOpcionCatalogo>
-            LogisticaFuncConvertirCatalogo(
-                IEnumerable<ClsCatalogo> Datos)
+        private List<ClsOpcionCatalogo> LogisticaFuncCatalogo(
+            IEnumerable<ClsCatalogo> Datos)
         {
             return Datos.Select(D => new ClsOpcionCatalogo
             {
@@ -414,40 +313,35 @@ namespace CapaControlador_Inventario_Logistica.Modelos_de_Controladores
             }).ToList();
         }
 
-        public List<ClsOpcionCatalogo>
-            LogisticaFuncTipos()
+        public List<ClsOpcionCatalogo> LogisticaFuncTipos()
         {
-            return LogisticaFuncConvertirCatalogo(
+            return LogisticaFuncCatalogo(
                 _Repositorio.LogisticaMetObtenerTipos());
         }
 
-        public List<ClsOpcionCatalogo>
-            LogisticaFuncSucursales()
+        public List<ClsOpcionCatalogo> LogisticaFuncSucursales()
         {
-            return LogisticaFuncConvertirCatalogo(
+            return LogisticaFuncCatalogo(
                 _Repositorio.LogisticaMetObtenerSucursales());
         }
 
-        public List<ClsOpcionCatalogo>
-            LogisticaFuncBodegas(int IdSucursal)
+        public List<ClsOpcionCatalogo> LogisticaFuncBodegas(
+            int IdSucursal)
         {
-            return LogisticaFuncConvertirCatalogo(
-                _Repositorio.LogisticaMetObtenerBodegas(
-                    IdSucursal));
+            return LogisticaFuncCatalogo(
+                _Repositorio.LogisticaMetObtenerBodegas(IdSucursal));
         }
 
-        public List<ClsOpcionCatalogo>
-            LogisticaFuncTransportes()
+        public List<ClsOpcionCatalogo> LogisticaFuncTransportes()
         {
-            return LogisticaFuncConvertirCatalogo(
+            return LogisticaFuncCatalogo(
                 _Repositorio.LogisticaMetObtenerTransportes());
         }
 
-        public Tuple<string, string>
-            LogisticaFuncObtenerTipo(int IdTipo)
+        public Tuple<string, string> LogisticaFuncObtenerTipo(
+            int IdTipo)
         {
-            return _Repositorio.LogisticaMetObtenerTipo(
-                IdTipo);
+            return _Repositorio.LogisticaMetObtenerTipo(IdTipo);
         }
     }
 }
