@@ -59,8 +59,8 @@ namespace CapaVista_Inventario_Logistica.Formularios
 
             LogisticaNavSucursales.NavegadorMetConfigurar(
                 "tblSucursal",
-                4,
-                15,
+                5000,
+                5001,
                 _FuentesReporteSucursal
             );
         }

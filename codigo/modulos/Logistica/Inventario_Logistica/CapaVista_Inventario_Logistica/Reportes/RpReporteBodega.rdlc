@@ -42,6 +42,8 @@
                             <TextRun>
                               <Value>Pk Bodega</Value>
                               <Style>
+                                <FontStyle>Normal</FontStyle>
+                                <FontWeight>Bold</FontWeight>
                                 <Color>White</Color>
                               </Style>
                             </TextRun>
@@ -75,6 +77,8 @@
                             <TextRun>
                               <Value>Nombre Bodega</Value>
                               <Style>
+                                <FontStyle>Normal</FontStyle>
+                                <FontWeight>Bold</FontWeight>
                                 <Color>White</Color>
                               </Style>
                             </TextRun>
@@ -108,6 +112,8 @@
                             <TextRun>
                               <Value>Fk Sucursal Codigo</Value>
                               <Style>
+                                <FontStyle>Normal</FontStyle>
+                                <FontWeight>Bold</FontWeight>
                                 <Color>White</Color>
                               </Style>
                             </TextRun>
@@ -141,6 +147,8 @@
                             <TextRun>
                               <Value>Nombre Sucursal</Value>
                               <Style>
+                                <FontStyle>Normal</FontStyle>
+                                <FontWeight>Bold</FontWeight>
                                 <Color>White</Color>
                               </Style>
                             </TextRun>
@@ -174,6 +182,8 @@
                             <TextRun>
                               <Value>Pais Bodega</Value>
                               <Style>
+                                <FontStyle>Normal</FontStyle>
+                                <FontWeight>Bold</FontWeight>
                                 <Color>White</Color>
                               </Style>
                             </TextRun>
@@ -207,6 +217,8 @@
                             <TextRun>
                               <Value>Created At</Value>
                               <Style>
+                                <FontStyle>Normal</FontStyle>
+                                <FontWeight>Bold</FontWeight>
                                 <Color>White</Color>
                               </Style>
                             </TextRun>
@@ -240,6 +252,8 @@
                             <TextRun>
                               <Value>Updated At</Value>
                               <Style>
+                                <FontStyle>Normal</FontStyle>
+                                <FontWeight>Bold</FontWeight>
                                 <Color>White</Color>
                               </Style>
                             </TextRun>

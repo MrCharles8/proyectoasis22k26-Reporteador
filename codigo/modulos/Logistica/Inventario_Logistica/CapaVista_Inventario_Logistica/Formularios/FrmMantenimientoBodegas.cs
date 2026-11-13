@@ -34,23 +34,14 @@ namespace CapaVista_Inventario_Logistica.Formularios
         {
             InitializeComponent();
 
-            
-                // ================================================
                 // OBTENER LOS REGISTROS DE BODEGAS
-                // ================================================
-
                 List<ClsModeloBodega> ListaBodegas =
                     _DatosBodega.LogisticaMetObtenerTodos();
 
                 _FuentesReporteBodega.Add("DsReporteBodega", ListaBodegas);
-
-                // ================================================
                 // CONFIGURAR EL NAVEGADOR
-                // ================================================
-
-                LogisticaNavBodega.NavegadorMetConfigurar("tblBodega",4,4,_FuentesReporteBodega );
+                LogisticaNavBodega.NavegadorMetConfigurar("tblBodega",5000,5002,_FuentesReporteBodega );
             }
-           
         }
 }
 

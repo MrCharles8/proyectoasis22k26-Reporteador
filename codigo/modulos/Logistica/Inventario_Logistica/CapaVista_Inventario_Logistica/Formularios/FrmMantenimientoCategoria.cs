@@ -74,8 +74,8 @@ namespace CapaVista_Inventario_Logistica.Formularios
 
             LogisticaNavCategoria.NavegadorMetConfigurar(
                 "tblCategoria",
-                4,
-                6,
+                5000,
+                5003,
                 _FuentesReporteCategoria);
         }
     }
