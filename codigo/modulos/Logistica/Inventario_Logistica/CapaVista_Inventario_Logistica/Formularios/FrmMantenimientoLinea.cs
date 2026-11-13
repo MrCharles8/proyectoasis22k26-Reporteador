@@ -76,8 +76,8 @@ namespace CapaVista_Inventario_Logistica.Formularios
 
             LogisticaNavLinea.NavegadorMetConfigurar(
                 "tblLinea",
-                4,
-                6,
+                5000,
+                5004,
                 _FuentesReporteLinea);
         }
     }
