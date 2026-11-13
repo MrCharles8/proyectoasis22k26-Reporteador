@@ -1,15 +1,21 @@
 ﻿
 /*
+ * ============================================================================
  * MÓDULO: LOGÍSTICA - INVENTARIO
  * ARCHIVO: FrmMantenimientoMovimientoInventario.cs
+ *
  * REALIZADO POR: NILLS BERDUCIDO GÓMEZ
  * CARNÉ: 0901 23 14275
  * FECHA DE REALIZACIÓN: 13/11/2026
  *
  * DESCRIPCIÓN:
- * Administra encabezados de movimientos de inventario
- * pendientes mediante MVC. Incluye consultas, edición,
- * eliminación, navegación, catálogos e impresión RDLC.
+ * Formulario de mantenimiento de movimientos de inventario.
+ * Permite ingresar, consultar, modificar y eliminar encabezados,
+ * navegar entre registros y generar reportes RDLC.
+ *
+ * Las sucursales y bodegas de origen y destino pueden
+ * seleccionarse según las necesidades del movimiento.
+ * ============================================================================
  */
 
 using System;
@@ -17,7 +23,9 @@ using System.Collections.Generic;
 using System.Drawing;
 using System.IO;
 using System.Windows.Forms;
+
 using Microsoft.Reporting.WinForms;
+
 using CapaControlador_Inventario_Logistica.Modelos_de_Controladores;
 
 namespace CapaVista_Inventario_Logistica.Formularios
@@ -49,6 +57,7 @@ namespace CapaVista_Inventario_Logistica.Formularios
         public FrmMantenimientoMovimientoInventario()
         {
             InitializeComponent();
+
             LogisticaProcConfigurarTabla();
             LogisticaProcVincularEventos();
 
@@ -56,7 +65,7 @@ namespace CapaVista_Inventario_Logistica.Formularios
         }
 
         // ========================================================
-        // EVENTOS DE LOS BOTONES Y CONTROLES
+        // VINCULAR EVENTOS
         // ========================================================
 
         private void LogisticaProcVincularEventos()
@@ -65,6 +74,7 @@ namespace CapaVista_Inventario_Logistica.Formularios
             {
                 LogisticaProcLimpiar();
                 LogisticaProcCambiarModo(Modo.Ingresar);
+                LogisticaCboIdMovimiento.Focus();
             };
 
             LogisticaBtnConsultarMovimientoInventario.Click +=
@@ -100,13 +110,16 @@ namespace CapaVista_Inventario_Logistica.Formularios
 
             LogisticaBtnAyudaMovimientoInventario.Click +=
                 (s, e) => MessageBox.Show(
-                    "Ingrese un movimiento y seleccione el tipo " +
-                    "y la bodega correspondiente.\n\n" +
-                    "Guardar crea un encabezado PENDIENTE; " +
-                    "no modifica existencias.\n\n" +
-                    "Solo pueden modificarse o eliminarse " +
-                    "movimientos pendientes sin detalles.",
-                    "Ayuda - Movimientos",
+                    "1. Ingresar: crea un movimiento pendiente.\n" +
+                    "2. Consultar: muestra los registros.\n" +
+                    "3. Modificar: edita un movimiento pendiente.\n" +
+                    "4. Guardar: registra los datos.\n" +
+                    "5. Eliminar: elimina pendientes sin detalles.\n" +
+                    "6. Cancelar: descarta los cambios.\n" +
+                    "7. Imprimir: genera el reporte RDLC.\n\n" +
+                    "Las sucursales y bodegas deben seleccionarse " +
+                    "en pares. Este formulario no actualiza stock.",
+                    "Ayuda - Movimiento de Inventario",
                     MessageBoxButtons.OK,
                     MessageBoxIcon.Information);
 
@@ -126,47 +139,39 @@ namespace CapaVista_Inventario_Logistica.Formularios
             LogisticaBtnSalirMovimientoInventario.Click +=
                 (s, e) => Close();
 
+            // Cargar bodegas según la sucursal seleccionada.
             LogisticaCboIdSucursalOrigen.SelectedIndexChanged +=
                 (s, e) => LogisticaProcEjecutar(() =>
                 {
                     if (!_Cargando)
-                    {
                         LogisticaProcCargarBodegas(
                             LogisticaCboBodegaOrigen,
                             LogisticaFuncId(
                                 LogisticaCboIdSucursalOrigen));
-                    }
                 });
 
             LogisticaCboIdSucursalDestino.SelectedIndexChanged +=
                 (s, e) => LogisticaProcEjecutar(() =>
                 {
                     if (!_Cargando)
-                    {
                         LogisticaProcCargarBodegas(
                             LogisticaCboBodegaDestino,
                             LogisticaFuncId(
                                 LogisticaCboIdSucursalDestino));
-                    }
                 });
 
             LogisticaCboIdMovimiento.SelectedIndexChanged +=
                 (s, e) => LogisticaProcEjecutar(() =>
                 {
                     if (!_Cargando && _Modo != Modo.Consulta)
-                    {
-                        LogisticaProcAplicarTipo(true);
-                    }
+                        LogisticaProcAplicarTipo();
                 });
 
             LogisticaDgvListadoMovimientoInventario.CellClick +=
                 (s, e) =>
                 {
-                    if (e.RowIndex >= 0 &&
-                        _Modo == Modo.Consulta)
-                    {
+                    if (e.RowIndex >= 0 && _Modo == Modo.Consulta)
                         LogisticaProcSeleccionar(e.RowIndex);
-                    }
                 };
         }
 
@@ -199,12 +204,14 @@ namespace CapaVista_Inventario_Logistica.Formularios
             Tabla.Columns.Clear();
             Tabla.ReadOnly = true;
             Tabla.AllowUserToAddRows = false;
+            Tabla.AllowUserToDeleteRows = false;
             Tabla.MultiSelect = false;
             Tabla.RowHeadersVisible = false;
 
             Tabla.SelectionMode =
                 DataGridViewSelectionMode.FullRowSelect;
 
+            Tabla.ScrollBars = ScrollBars.Both;
             Tabla.EnableHeadersVisualStyles = false;
 
             Tabla.BackgroundColor =
@@ -225,7 +232,7 @@ namespace CapaVista_Inventario_Logistica.Formularios
             string[,] Columnas =
             {
                 { "IdMovimientoInventario", "ID" },
-                { "NombreTipoMovimiento", "Tipo" },
+                { "NombreTipoMovimiento", "Tipo de movimiento" },
                 { "SignoTipoMovimiento", "Signo" },
                 { "NombreSucursalOrigen", "Sucursal origen" },
                 { "NombreBodegaOrigen", "Bodega origen" },
@@ -244,7 +251,7 @@ namespace CapaVista_Inventario_Logistica.Formularios
                     {
                         DataPropertyName = Columnas[I, 0],
                         HeaderText = Columnas[I, 1],
-                        Width = I == 10 ? 200 : 135,
+                        Width = I == 10 ? 220 : 145,
                         SortMode =
                             DataGridViewColumnSortMode.NotSortable
                     };
@@ -273,6 +280,7 @@ namespace CapaVista_Inventario_Logistica.Formularios
 
             try
             {
+                Combo.DropDownStyle = ComboBoxStyle.DropDownList;
                 Combo.DataSource = null;
                 Combo.DisplayMember = "Nombre";
                 Combo.ValueMember = "Id";
@@ -310,6 +318,10 @@ namespace CapaVista_Inventario_Logistica.Formularios
                 LogisticaCboBodegaDestino, null);
         }
 
+        // ========================================================
+        // CARGAR BODEGAS POR SUCURSAL
+        // ========================================================
+
         private void LogisticaProcCargarBodegas(
             ComboBox Combo,
             int? Sucursal,
@@ -323,32 +335,42 @@ namespace CapaVista_Inventario_Logistica.Formularios
                     : new List<ClsOpcionCatalogo>());
 
             if (Bodega.HasValue)
-            {
                 Combo.SelectedValue = Bodega.Value;
-            }
         }
 
         private static int? LogisticaFuncId(ComboBox Combo)
         {
             int Id;
 
-            return Combo.SelectedValue != null &&
+            if (Combo.SelectedValue != null &&
                 int.TryParse(
                     Convert.ToString(Combo.SelectedValue),
-                    out Id) &&
-                Id > 0
-                    ? (int?)Id
-                    : null;
+                    out Id) && Id > 0)
+            {
+                return Id;
+            }
+
+            return null;
         }
 
         // ========================================================
-        // APLICAR TIPO DE MOVIMIENTO
+        // HABILITAR ORIGEN Y DESTINO
         // ========================================================
 
-        private void LogisticaProcAplicarTipo(bool Limpiar)
+        private void LogisticaProcAplicarTipo()
         {
-            int? Id =
-                LogisticaFuncId(LogisticaCboIdMovimiento);
+            // El tipo define cuáles campos son obligatorios,
+            // pero no bloquea las ubicaciones opcionales.
+
+            bool Editando = _Modo != Modo.Consulta;
+
+            LogisticaCboIdSucursalOrigen.Enabled = Editando;
+            LogisticaCboBodegaOrigen.Enabled = Editando;
+
+            LogisticaCboIdSucursalDestino.Enabled = Editando;
+            LogisticaCboBodegaDestino.Enabled = Editando;
+
+            int? Id = LogisticaFuncId(LogisticaCboIdMovimiento);
 
             Tuple<string, string> Tipo = Id.HasValue
                 ? _Modelo.LogisticaFuncObtenerTipo(Id.Value)
@@ -356,55 +378,36 @@ namespace CapaVista_Inventario_Logistica.Formularios
 
             bool Traslado = Tipo != null &&
                 Tipo.Item1.IndexOf(
-                    "TRASLADO",
+                    "Traslado",
                     StringComparison.OrdinalIgnoreCase) >= 0;
 
-            bool Origen = Tipo == null ||
-                Traslado || Tipo.Item2 == "-";
+            bool OrigenObligatorio = Tipo != null &&
+                (Traslado || Tipo.Item2 == "-");
 
-            bool Destino = Tipo == null ||
-                Traslado || Tipo.Item2 == "+";
+            bool DestinoObligatorio = Tipo != null &&
+                (Traslado || Tipo.Item2 == "+");
 
-            LogisticaCboIdSucursalOrigen.Enabled = Origen;
-            LogisticaCboBodegaOrigen.Enabled = Origen;
+            LogisticaLblSucursalOrigen.Text =
+                "Sucursal origen:" +
+                (OrigenObligatorio ? " *" : "");
 
-            LogisticaCboIdSucursalDestino.Enabled = Destino;
-            LogisticaCboBodegaDestino.Enabled = Destino;
+            LogisticaLblBodegaorigen.Text =
+                "Bodega origen:" +
+                (OrigenObligatorio ? " *" : "");
 
-            if (!Limpiar)
-            {
-                return;
-            }
+            LogisticaLblSucursalDestino.Text =
+                "Sucursal destino:" +
+                (DestinoObligatorio ? " *" : "");
 
-            bool Anterior = _Cargando;
-            _Cargando = true;
+            LogisticaLblBodegaDestino.Text =
+                "Bodega destino:" +
+                (DestinoObligatorio ? " *" : "");
 
-            try
-            {
-                if (!Origen)
-                {
-                    LogisticaCboIdSucursalOrigen.SelectedIndex = -1;
-
-                    LogisticaProcCargarBodegas(
-                        LogisticaCboBodegaOrigen, null);
-                }
-
-                if (!Destino)
-                {
-                    LogisticaCboIdSucursalDestino.SelectedIndex = -1;
-
-                    LogisticaProcCargarBodegas(
-                        LogisticaCboBodegaDestino, null);
-                }
-            }
-            finally
-            {
-                _Cargando = Anterior;
-            }
+            LogisticaLblTransporte.Text = "Transporte:";
         }
 
         // ========================================================
-        // CONSULTAR Y SELECCIONAR REGISTROS
+        // CONSULTAR REGISTROS
         // ========================================================
 
         private void LogisticaProcConsultar()
@@ -412,21 +415,19 @@ namespace CapaVista_Inventario_Logistica.Formularios
             _Registros = _Modelo.LogisticaMetObtenerTodos();
             _Indice = -1;
 
-            LogisticaDgvListadoMovimientoInventario.DataSource =
-                null;
-
+            LogisticaDgvListadoMovimientoInventario.DataSource = null;
             LogisticaDgvListadoMovimientoInventario.DataSource =
                 _Registros;
 
             if (_Registros.Count > 0)
-            {
                 LogisticaProcSeleccionar(0);
-            }
             else
-            {
                 LogisticaProcLimpiar();
-            }
         }
+
+        // ========================================================
+        // SELECCIONAR REGISTRO
+        // ========================================================
 
         private void LogisticaProcSeleccionar(int Indice)
         {
@@ -447,14 +448,24 @@ namespace CapaVista_Inventario_Logistica.Formularios
             if (Indice < Tabla.Rows.Count)
             {
                 Tabla.Rows[Indice].Selected = true;
+
+                if (Tabla.Rows[Indice].Visible)
+                {
+                    Tabla.FirstDisplayedScrollingRowIndex = Indice;
+                }
             }
 
             LogisticaProcMostrar(_Registros[Indice]);
         }
 
+        // ========================================================
+        // MOSTRAR DATOS DEL MOVIMIENTO
+        // ========================================================
+
         private void LogisticaProcMostrar(
             ClsModeloMovimientoInventario D)
         {
+            bool Anterior = _Cargando;
             _Cargando = true;
 
             try
@@ -465,18 +476,14 @@ namespace CapaVista_Inventario_Logistica.Formularios
                 LogisticaCboTransporte.SelectedIndex = -1;
 
                 if (D.FkTransporteCodigo.HasValue)
-                {
                     LogisticaCboTransporte.SelectedValue =
                         D.FkTransporteCodigo.Value;
-                }
 
                 LogisticaCboIdSucursalOrigen.SelectedIndex = -1;
 
                 if (D.FkSucursalOrigenCodigo.HasValue)
-                {
                     LogisticaCboIdSucursalOrigen.SelectedValue =
                         D.FkSucursalOrigenCodigo.Value;
-                }
 
                 LogisticaProcCargarBodegas(
                     LogisticaCboBodegaOrigen,
@@ -486,10 +493,8 @@ namespace CapaVista_Inventario_Logistica.Formularios
                 LogisticaCboIdSucursalDestino.SelectedIndex = -1;
 
                 if (D.FkSucursalDestinoCodigo.HasValue)
-                {
                     LogisticaCboIdSucursalDestino.SelectedValue =
                         D.FkSucursalDestinoCodigo.Value;
-                }
 
                 LogisticaProcCargarBodegas(
                     LogisticaCboBodegaDestino,
@@ -504,16 +509,17 @@ namespace CapaVista_Inventario_Logistica.Formularios
             }
             finally
             {
-                _Cargando = false;
+                _Cargando = Anterior;
             }
         }
 
         // ========================================================
-        // LIMPIAR CAMPOS
+        // LIMPIAR CONTROLES
         // ========================================================
 
         private void LogisticaProcLimpiar()
         {
+            bool Anterior = _Cargando;
             _Cargando = true;
 
             try
@@ -530,65 +536,82 @@ namespace CapaVista_Inventario_Logistica.Formularios
                 LogisticaProcCargarBodegas(
                     LogisticaCboBodegaDestino, null);
 
-                LogisticaDtpFechaMovimiento.Value =
-                    DateTime.Now;
+                LogisticaDtpFechaMovimiento.Value = DateTime.Now;
 
                 LogisticaTxtObservacionMovimientoInventario.Clear();
             }
             finally
             {
-                _Cargando = false;
+                _Cargando = Anterior;
             }
         }
 
         // ========================================================
-        // CAMBIAR MODO DEL FORMULARIO
+        // CAMBIAR MODO
         // ========================================================
 
         private void LogisticaProcCambiarModo(Modo Nuevo)
         {
             _Modo = Nuevo;
 
-            bool Editar = Nuevo != Modo.Consulta;
+            bool Editando = Nuevo != Modo.Consulta;
 
-            LogistinaPnlDatosMovimiento.Enabled = Editar;
+            LogistinaPnlDatosMovimiento.Enabled = Editando;
 
-            LogisticaBtnGuardarMovimientoInventario.Enabled = Editar;
-            LogisticaBtnCancelarMovimientoInventario.Enabled = Editar;
+            LogisticaBtnGuardarMovimientoInventario.Enabled =
+                Editando;
 
-            LogisticaBtnIngresarMovimientoInventario.Enabled = !Editar;
-            LogisticaBtnConsultarMovimientoInventario.Enabled = !Editar;
-            LogisticaBtnModificarMovimientoInventario.Enabled = !Editar;
-            LogistiaBtnEliminarMovimientoInventario.Enabled = !Editar;
-            LogisticaBtnRefrescarMovimientoInventario.Enabled = !Editar;
+            LogisticaBtnCancelarMovimientoInventario.Enabled =
+                Editando;
 
-            LogisticaDgvListadoMovimientoInventario.Enabled = !Editar;
-            LogisticaBtnInicioMovimientoInventario.Enabled = !Editar;
-            LogisticaBtnAnteriorMovimientoInventario.Enabled = !Editar;
-            LogisticaBtnSiguienteStock.Enabled = !Editar;
-            LogisticaBtnFinMovimientoInventario.Enabled = !Editar;
+            LogisticaBtnIngresarMovimientoInventario.Enabled =
+                !Editando;
 
-            if (Editar)
-            {
-                LogisticaProcAplicarTipo(false);
-            }
+            LogisticaBtnConsultarMovimientoInventario.Enabled =
+                !Editando;
+
+            LogisticaBtnModificarMovimientoInventario.Enabled =
+                !Editando;
+
+            LogistiaBtnEliminarMovimientoInventario.Enabled =
+                !Editando;
+
+            LogisticaBtnRefrescarMovimientoInventario.Enabled =
+                !Editando;
+
+            LogisticaBtnImprimirMovimientoInventario.Enabled =
+                !Editando;
+
+            LogisticaDgvListadoMovimientoInventario.Enabled =
+                !Editando;
+
+            LogisticaBtnInicioMovimientoInventario.Enabled =
+                !Editando;
+
+            LogisticaBtnAnteriorMovimientoInventario.Enabled =
+                !Editando;
+
+            LogisticaBtnSiguienteStock.Enabled = !Editando;
+
+            LogisticaBtnFinMovimientoInventario.Enabled =
+                !Editando;
+
+            LogisticaProcAplicarTipo();
         }
 
         // ========================================================
-        // LEER LOS DATOS DEL FORMULARIO
+        // LEER DATOS DEL FORMULARIO
         // ========================================================
 
         private ClsModeloMovimientoInventario
             LogisticaFuncLeerFormulario()
         {
-            int? Tipo =
-                LogisticaFuncId(LogisticaCboIdMovimiento);
+            int? Tipo = LogisticaFuncId(
+                LogisticaCboIdMovimiento);
 
             if (!Tipo.HasValue)
-            {
-                throw new InvalidOperationException(
-                    "Seleccione el tipo de movimiento.");
-            }
+                throw new ArgumentException(
+                    "Seleccione un tipo de movimiento.");
 
             return new ClsModeloMovimientoInventario
             {
@@ -599,32 +622,27 @@ namespace CapaVista_Inventario_Logistica.Formularios
 
                 FkTipoMovimientoCodigo = Tipo.Value,
 
-                FkSucursalOrigenCodigo =
-                    LogisticaFuncId(
-                        LogisticaCboIdSucursalOrigen),
+                FkSucursalOrigenCodigo = LogisticaFuncId(
+                    LogisticaCboIdSucursalOrigen),
 
-                FkBodegaOrigenCodigo =
-                    LogisticaFuncId(
-                        LogisticaCboBodegaOrigen),
+                FkBodegaOrigenCodigo = LogisticaFuncId(
+                    LogisticaCboBodegaOrigen),
 
-                FkSucursalDestinoCodigo =
-                    LogisticaFuncId(
-                        LogisticaCboIdSucursalDestino),
+                FkSucursalDestinoCodigo = LogisticaFuncId(
+                    LogisticaCboIdSucursalDestino),
 
-                FkBodegaDestinoCodigo =
-                    LogisticaFuncId(
-                        LogisticaCboBodegaDestino),
+                FkBodegaDestinoCodigo = LogisticaFuncId(
+                    LogisticaCboBodegaDestino),
 
-                FkTransporteCodigo =
-                    LogisticaFuncId(
-                        LogisticaCboTransporte),
+                FkTransporteCodigo = LogisticaFuncId(
+                    LogisticaCboTransporte),
 
                 FechaMovimientoInventario =
                     LogisticaDtpFechaMovimiento.Value,
 
                 ObservacionesMovimientoInventario =
                     LogisticaTxtObservacionMovimientoInventario
-                        .Text.Trim(),
+                    .Text.Trim(),
 
                 EstadoMovimientoInventario = "PENDIENTE"
             };
@@ -639,7 +657,7 @@ namespace CapaVista_Inventario_Logistica.Formularios
             if (_Indice < 0 || _Modo != Modo.Consulta)
             {
                 LogisticaProcError(
-                    "Seleccione un movimiento del listado.");
+                    "Seleccione un movimiento para modificar.");
                 return;
             }
 
@@ -657,7 +675,7 @@ namespace CapaVista_Inventario_Logistica.Formularios
             {
                 LogisticaProcCambiarModo(Modo.Modificar);
                 LogisticaProcMostrar(_Registros[_Indice]);
-                LogisticaProcAplicarTipo(false);
+                LogisticaProcAplicarTipo();
             });
         }
 
@@ -668,9 +686,7 @@ namespace CapaVista_Inventario_Logistica.Formularios
         private void LogisticaProcGuardar()
         {
             if (_Modo == Modo.Consulta)
-            {
                 return;
-            }
 
             LogisticaProcEjecutar(() =>
             {
@@ -683,7 +699,7 @@ namespace CapaVista_Inventario_Logistica.Formularios
 
                 MessageBox.Show(
                     Mensaje,
-                    "Logística",
+                    "Logística - Movimiento de Inventario",
                     MessageBoxButtons.OK,
                     MessageBoxIcon.Information);
 
@@ -701,16 +717,15 @@ namespace CapaVista_Inventario_Logistica.Formularios
             if (_Indice < 0 || _Modo != Modo.Consulta)
             {
                 LogisticaProcError(
-                    "Seleccione un movimiento del listado.");
+                    "Seleccione un movimiento para eliminar.");
                 return;
             }
 
-            int Id =
-                _Registros[_Indice].IdMovimientoInventario;
+            int Id = _Registros[_Indice].IdMovimientoInventario;
 
             if (MessageBox.Show(
-                "¿Eliminar el movimiento " + Id + "?",
-                "Confirmar",
+                "¿Desea eliminar el movimiento " + Id + "?",
+                "Confirmar eliminación",
                 MessageBoxButtons.YesNo,
                 MessageBoxIcon.Question) != DialogResult.Yes)
             {
@@ -719,9 +734,13 @@ namespace CapaVista_Inventario_Logistica.Formularios
 
             LogisticaProcEjecutar(() =>
             {
+                string Mensaje = _Modelo.LogisticaFuncEliminar(Id);
+
                 MessageBox.Show(
-                    _Modelo.LogisticaFuncEliminar(Id),
-                    "Logística");
+                    Mensaje,
+                    "Logística",
+                    MessageBoxButtons.OK,
+                    MessageBoxIcon.Information);
 
                 LogisticaProcConsultar();
             });
@@ -735,14 +754,10 @@ namespace CapaVista_Inventario_Logistica.Formularios
         {
             LogisticaProcCambiarModo(Modo.Consulta);
 
-            if (_Indice >= 0)
-            {
+            if (_Indice >= 0 && _Indice < _Registros.Count)
                 LogisticaProcSeleccionar(_Indice);
-            }
             else
-            {
                 LogisticaProcLimpiar();
-            }
         }
 
         // ========================================================
@@ -757,7 +772,7 @@ namespace CapaVista_Inventario_Logistica.Formularios
             if (Datos.Count == 0)
             {
                 MessageBox.Show(
-                    "No hay movimientos para imprimir.");
+                    "No existen movimientos para imprimir.");
                 return;
             }
 
@@ -771,16 +786,15 @@ namespace CapaVista_Inventario_Logistica.Formularios
                     StringComparison.OrdinalIgnoreCase));
 
             if (Recurso == null)
-            {
                 throw new InvalidOperationException(
-                    "RpReporteMovimientoInventario.rdlc " +
-                    "debe tener Acción de compilación: " +
+                    "No se encontró RpReporteMovimientoInventario.rdlc. " +
+                    "Configure su Acción de compilación como " +
                     "Recurso incrustado.");
-            }
 
             using (Form Ventana = new Form())
-            using (ReportViewer Visor = new ReportViewer())
             {
+                ReportViewer Visor = new ReportViewer();
+
                 Ventana.Text =
                     "Reporte de Movimiento de Inventario";
 
@@ -791,18 +805,18 @@ namespace CapaVista_Inventario_Logistica.Formularios
                     FormWindowState.Maximized;
 
                 Visor.Dock = DockStyle.Fill;
-
-                Visor.ProcessingMode =
-                    ProcessingMode.Local;
+                Visor.ProcessingMode = ProcessingMode.Local;
 
                 Ventana.Controls.Add(Visor);
 
                 using (Stream Archivo =
-                    Ensamblado.GetManifestResourceStream(
-                        Recurso))
+                    Ensamblado.GetManifestResourceStream(Recurso))
                 {
-                    Visor.LocalReport.LoadReportDefinition(
-                        Archivo);
+                    if (Archivo == null)
+                        throw new InvalidOperationException(
+                            "No se pudo abrir el archivo RDLC.");
+
+                    Visor.LocalReport.LoadReportDefinition(Archivo);
                 }
 
                 Visor.LocalReport.DataSources.Clear();
@@ -818,7 +832,7 @@ namespace CapaVista_Inventario_Logistica.Formularios
         }
 
         // ========================================================
-        // MANEJO DE ERRORES
+        // MANEJAR ERRORES
         // ========================================================
 
         private void LogisticaProcEjecutar(Action Accion)
