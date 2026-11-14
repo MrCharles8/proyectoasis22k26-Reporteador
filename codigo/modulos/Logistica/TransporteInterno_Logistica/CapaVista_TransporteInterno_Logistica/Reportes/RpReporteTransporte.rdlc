@@ -26,7 +26,7 @@ DE TRANSPORTE</Value>
         </Paragraphs>
         <rd:DefaultName>Textbox15</rd:DefaultName>
         <Top>0.59373cm</Top>
-        <Left>2.61706cm</Left>
+        <Left>4.92423cm</Left>
         <Height>2.49907cm</Height>
         <Width>12.58063cm</Width>
         <Style>
@@ -44,7 +44,7 @@ DE TRANSPORTE</Value>
         <Value>ID3</Value>
         <Sizing>FitProportional</Sizing>
         <Top>0.27517cm</Top>
-        <Left>15.93907cm</Left>
+        <Left>18.24624cm</Left>
         <Height>4.03366cm</Height>
         <Width>3.96062cm</Width>
         <ZIndex>1</ZIndex>
@@ -58,33 +58,33 @@ DE TRANSPORTE</Value>
         <TablixBody>
           <TablixColumns>
             <TablixColumn>
-              <Width>1.13467in</Width>
+              <Width>1.1555in</Width>
             </TablixColumn>
             <TablixColumn>
-              <Width>1.13467in</Width>
+              <Width>1.1555in</Width>
             </TablixColumn>
             <TablixColumn>
-              <Width>1.13467in</Width>
+              <Width>1.1555in</Width>
             </TablixColumn>
             <TablixColumn>
-              <Width>1.13467in</Width>
+              <Width>1.1555in</Width>
             </TablixColumn>
             <TablixColumn>
-              <Width>1.13467in</Width>
+              <Width>1.1555in</Width>
             </TablixColumn>
             <TablixColumn>
-              <Width>1.13467in</Width>
+              <Width>1.1555in</Width>
             </TablixColumn>
             <TablixColumn>
-              <Width>1.13467in</Width>
+              <Width>1.1555in</Width>
             </TablixColumn>
             <TablixColumn>
-              <Width>0.59896in</Width>
+              <Width>0.61979in</Width>
             </TablixColumn>
           </TablixColumns>
           <TablixRows>
             <TablixRow>
-              <Height>0.67931in</Height>
+              <Height>0.55848in</Height>
               <TablixCells>
                 <TablixCell>
                   <CellContents>
@@ -377,7 +377,7 @@ DE TRANSPORTE</Value>
               </TablixCells>
             </TablixRow>
             <TablixRow>
-              <Height>0.67931in</Height>
+              <Height>0.55848in</Height>
               <TablixCells>
                 <TablixCell>
                   <CellContents>
@@ -648,8 +648,8 @@ DE TRANSPORTE</Value>
         <DataSetName>DsReporteTransporte</DataSetName>
         <Top>1.76583in</Top>
         <Left>0.14167in</Left>
-        <Height>1.35862in</Height>
-        <Width>8.54166in</Width>
+        <Height>1.11695in</Height>
+        <Width>8.70833in</Width>
         <ZIndex>2</ZIndex>
         <Style>
           <Border>
@@ -663,7 +663,7 @@ DE TRANSPORTE</Value>
       <BackgroundColor>#fbf6f2</BackgroundColor>
     </Style>
   </Body>
-  <Width>8.97066in</Width>
+  <Width>9.029in</Width>
   <Page>
     <LeftMargin>1in</LeftMargin>
     <RightMargin>1in</RightMargin>
