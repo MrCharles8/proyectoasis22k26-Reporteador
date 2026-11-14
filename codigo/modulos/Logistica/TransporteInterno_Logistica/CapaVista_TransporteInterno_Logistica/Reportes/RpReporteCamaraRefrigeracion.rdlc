@@ -26,7 +26,7 @@ DE CAMARA REFRIGERACION</Value>
         </Paragraphs>
         <rd:DefaultName>Textbox15</rd:DefaultName>
         <Top>0.55033cm</Top>
-        <Left>3.4237cm</Left>
+        <Left>6.00072cm</Left>
         <Height>2.49907cm</Height>
         <Width>11.0143cm</Width>
         <Style>
@@ -43,8 +43,8 @@ DE CAMARA REFRIGERACION</Value>
         <Source>Embedded</Source>
         <Value>ID3</Value>
         <Sizing>FitProportional</Sizing>
-        <Top>0cm</Top>
-        <Left>14.62962cm</Left>
+        <Top>0.254cm</Top>
+        <Left>18.39728cm</Left>
         <Height>4.03366cm</Height>
         <Width>3.96062cm</Width>
         <ZIndex>1</ZIndex>
@@ -58,28 +58,28 @@ DE CAMARA REFRIGERACION</Value>
         <TablixBody>
           <TablixColumns>
             <TablixColumn>
-              <Width>0.91458in</Width>
+              <Width>0.96874in</Width>
             </TablixColumn>
             <TablixColumn>
-              <Width>0.91458in</Width>
+              <Width>0.96874in</Width>
             </TablixColumn>
             <TablixColumn>
-              <Width>0.91458in</Width>
+              <Width>0.96874in</Width>
             </TablixColumn>
             <TablixColumn>
-              <Width>0.91458in</Width>
+              <Width>0.96874in</Width>
             </TablixColumn>
             <TablixColumn>
-              <Width>0.91458in</Width>
+              <Width>0.96874in</Width>
             </TablixColumn>
             <TablixColumn>
-              <Width>0.91458in</Width>
+              <Width>0.96874in</Width>
             </TablixColumn>
             <TablixColumn>
-              <Width>0.91458in</Width>
+              <Width>0.96874in</Width>
             </TablixColumn>
             <TablixColumn>
-              <Width>0.91458in</Width>
+              <Width>0.96874in</Width>
             </TablixColumn>
           </TablixColumns>
           <TablixRows>
@@ -647,9 +647,9 @@ DE CAMARA REFRIGERACION</Value>
         </TablixRowHierarchy>
         <DataSetName>DsReporteCamaraRefrigeracion</DataSetName>
         <Top>1.82417in</Top>
-        <Left>0.43333in</Left>
+        <Left>0.64098in</Left>
         <Height>1.03916in</Height>
-        <Width>7.31663in</Width>
+        <Width>7.74996in</Width>
         <ZIndex>2</ZIndex>
         <Style>
           <Border>
@@ -664,7 +664,7 @@ DE CAMARA REFRIGERACION</Value>
       <BackgroundColor>#fbf6f2</BackgroundColor>
     </Style>
   </Body>
-  <Width>8.079in</Width>
+  <Width>9.029in</Width>
   <Page>
     <LeftMargin>1in</LeftMargin>
     <RightMargin>1in</RightMargin>

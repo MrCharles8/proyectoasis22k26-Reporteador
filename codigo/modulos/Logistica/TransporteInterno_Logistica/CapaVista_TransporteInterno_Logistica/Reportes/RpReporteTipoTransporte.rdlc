@@ -26,7 +26,7 @@ DE TIPOS DE TRANSPORTES</Value>
         </Paragraphs>
         <rd:DefaultName>Textbox15</rd:DefaultName>
         <Top>0.248cm</Top>
-        <Left>2.71135cm</Left>
+        <Left>4.40468cm</Left>
         <Height>2.49907cm</Height>
         <Width>12.58063cm</Width>
         <Style>
@@ -44,7 +44,7 @@ DE TIPOS DE TRANSPORTES</Value>
         <Value>ID3</Value>
         <Sizing>FitProportional</Sizing>
         <Top>0.248cm</Top>
-        <Left>15.80704cm</Left>
+        <Left>17.8602cm</Left>
         <Height>4.03366cm</Height>
         <Width>3.96062cm</Width>
         <ZIndex>1</ZIndex>
@@ -367,7 +367,7 @@ DE TIPOS DE TRANSPORTES</Value>
         </TablixRowHierarchy>
         <DataSetName>DsReporteTipoTransporte</DataSetName>
         <Top>1.85514in</Top>
-        <Left>0.94666in</Left>
+        <Left>1.42999in</Left>
         <Height>0.7332in</Height>
         <Width>6.08668in</Width>
         <ZIndex>2</ZIndex>
@@ -383,7 +383,7 @@ DE TIPOS DE TRANSPORTES</Value>
       <BackgroundColor>#fbf6f2</BackgroundColor>
     </Style>
   </Body>
-  <Width>8.079in</Width>
+  <Width>9.029in</Width>
   <Page>
     <LeftMargin>1in</LeftMargin>
     <RightMargin>1in</RightMargin>
