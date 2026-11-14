@@ -179,7 +179,7 @@ namespace Traslados_Logistica_Test
         }
 
         [TestMethod]
-        public void FiltrarTraslados_CombinaCodigoFechaYEstado()
+        public void FiltrarTraslados_CombinaCodigoRangoFechasYEstado()
         {
             // Arrange
             var Repositorio = new RepositorioTrasladoFalso
@@ -191,10 +191,11 @@ namespace Traslados_Logistica_Test
 
             // Act
             DataTable Resultado = Controlador.LogisticaMetFiltrarTraslados(
-                "TR-10", new System.DateTime(2026, 11, 8), "SOLICITADO");
+                "TR-10", new System.DateTime(2026, 11, 8),
+                new System.DateTime(2026, 11, 9), "SOLICITADO");
 
             // Assert
-            Assert.AreEqual(1, Resultado.Rows.Count);
+            Assert.AreEqual(2, Resultado.Rows.Count);
             Assert.AreEqual("TR-100", Resultado.Rows[0]["CodigoTraslado"]);
             Assert.AreEqual("TR-100", Controlador.LogisticaMetIrAInicio()["CodigoTraslado"]);
         }
@@ -208,6 +209,7 @@ namespace Traslados_Logistica_Test
             Tabla.Rows.Add("TR-100", new System.DateTime(2026, 11, 8, 9, 0, 0), "SOLICITADO");
             Tabla.Rows.Add("TR-101", new System.DateTime(2026, 11, 8, 9, 0, 0), "EN_TRANSITO");
             Tabla.Rows.Add("TR-102", new System.DateTime(2026, 11, 7, 9, 0, 0), "SOLICITADO");
+            Tabla.Rows.Add("TR-103", new System.DateTime(2026, 11, 9, 9, 0, 0), "SOLICITADO");
             return Tabla;
         }
 

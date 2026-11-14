@@ -45,8 +45,14 @@ namespace CapaControlador_Traslados_Logistica
         }
 
         public DataTable LogisticaMetFiltrarTraslados(
-            string Codigo, DateTime? FechaSolicitud, string Estado)
+            string Codigo, DateTime? FechaDesde, DateTime? FechaHasta, string Estado)
         {
+            if (FechaDesde.HasValue && FechaHasta.HasValue &&
+                FechaDesde.Value.Date > FechaHasta.Value.Date)
+            {
+                throw new ArgumentException("La fecha Desde no puede ser posterior a Hasta.");
+            }
+
             DataTable Resultados = _TablaTrasladosCompleta.Clone();
             string CodigoBuscado = (Codigo ?? string.Empty).Trim();
             string EstadoBuscado = (Estado ?? string.Empty).Trim();
@@ -60,9 +66,16 @@ namespace CapaControlador_Traslados_Logistica
                     continue;
                 }
 
-                if (FechaSolicitud.HasValue &&
+                if (FechaDesde.HasValue &&
                     (Traslado.IsNull("FechaSolicitud") ||
-                    Convert.ToDateTime(Traslado["FechaSolicitud"]).Date != FechaSolicitud.Value.Date))
+                    Convert.ToDateTime(Traslado["FechaSolicitud"]).Date < FechaDesde.Value.Date))
+                {
+                    continue;
+                }
+
+                if (FechaHasta.HasValue &&
+                    (Traslado.IsNull("FechaSolicitud") ||
+                    Convert.ToDateTime(Traslado["FechaSolicitud"]).Date > FechaHasta.Value.Date))
                 {
                     continue;
                 }

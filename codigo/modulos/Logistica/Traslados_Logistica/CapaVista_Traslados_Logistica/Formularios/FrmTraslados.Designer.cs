@@ -87,10 +87,12 @@
             this.LogisticaPnlFiltrosTraslados = new System.Windows.Forms.Panel();
             this.LogisticaTxtCodigoTrasladoFiltro = new System.Windows.Forms.TextBox();
             this.LogisticaLblCodigoTrasladoFiltro = new System.Windows.Forms.Label();
-            this.LogisticaDtpFechaDelFiltro = new System.Windows.Forms.DateTimePicker();
+            this.LogisticaDtpFechaDesdeFiltro = new System.Windows.Forms.DateTimePicker();
+            this.LogisticaDtpFechaHastaFiltro = new System.Windows.Forms.DateTimePicker();
             this.LogisticaCboEstadoFiltro = new System.Windows.Forms.ComboBox();
             this.LogisticaBtnBuscarTraslados = new System.Windows.Forms.Button();
             this.LogisticaLblFechaSolicitudFiltro = new System.Windows.Forms.Label();
+            this.LogisticaLblFechaHastaFiltro = new System.Windows.Forms.Label();
             this.LogisticaLblEstadoTrasladoFiltro = new System.Windows.Forms.Label();
             this.LogisticaPnlEncabezadoTraslado = new System.Windows.Forms.Panel();
             this.LogisticaBtnAyudaTraslados = new System.Windows.Forms.Button();
@@ -754,10 +756,12 @@
             this.LogisticaPnlFiltrosTraslados.BackColor = System.Drawing.Color.Transparent;
             this.LogisticaPnlFiltrosTraslados.Controls.Add(this.LogisticaTxtCodigoTrasladoFiltro);
             this.LogisticaPnlFiltrosTraslados.Controls.Add(this.LogisticaLblCodigoTrasladoFiltro);
-            this.LogisticaPnlFiltrosTraslados.Controls.Add(this.LogisticaDtpFechaDelFiltro);
+            this.LogisticaPnlFiltrosTraslados.Controls.Add(this.LogisticaDtpFechaDesdeFiltro);
+            this.LogisticaPnlFiltrosTraslados.Controls.Add(this.LogisticaDtpFechaHastaFiltro);
             this.LogisticaPnlFiltrosTraslados.Controls.Add(this.LogisticaCboEstadoFiltro);
             this.LogisticaPnlFiltrosTraslados.Controls.Add(this.LogisticaBtnBuscarTraslados);
             this.LogisticaPnlFiltrosTraslados.Controls.Add(this.LogisticaLblFechaSolicitudFiltro);
+            this.LogisticaPnlFiltrosTraslados.Controls.Add(this.LogisticaLblFechaHastaFiltro);
             this.LogisticaPnlFiltrosTraslados.Controls.Add(this.LogisticaLblEstadoTrasladoFiltro);
             this.LogisticaPnlFiltrosTraslados.Dock = System.Windows.Forms.DockStyle.Top;
             this.LogisticaPnlFiltrosTraslados.Location = new System.Drawing.Point(0, 615);
@@ -788,25 +792,36 @@
             this.LogisticaLblCodigoTrasladoFiltro.TabIndex = 64;
             this.LogisticaLblCodigoTrasladoFiltro.Text = "Código de Traslado:";
             // 
-            // LogisticaDtpFechaDelFiltro
+            // LogisticaDtpFechaDesdeFiltro
             // 
-            this.LogisticaDtpFechaDelFiltro.Font = new System.Drawing.Font("Segoe UI", 13.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.LogisticaDtpFechaDelFiltro.Format = System.Windows.Forms.DateTimePickerFormat.Short;
-            this.LogisticaDtpFechaDelFiltro.Location = new System.Drawing.Point(579, 33);
-            this.LogisticaDtpFechaDelFiltro.Margin = new System.Windows.Forms.Padding(0);
-            this.LogisticaDtpFechaDelFiltro.Name = "LogisticaDtpFechaDelFiltro";
-            this.LogisticaDtpFechaDelFiltro.ShowCheckBox = true;
-            this.LogisticaDtpFechaDelFiltro.Size = new System.Drawing.Size(200, 37);
-            this.LogisticaDtpFechaDelFiltro.TabIndex = 59;
+            this.LogisticaDtpFechaDesdeFiltro.Font = new System.Drawing.Font("Segoe UI", 13.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.LogisticaDtpFechaDesdeFiltro.Format = System.Windows.Forms.DateTimePickerFormat.Short;
+            this.LogisticaDtpFechaDesdeFiltro.Location = new System.Drawing.Point(544, 33);
+            this.LogisticaDtpFechaDesdeFiltro.Margin = new System.Windows.Forms.Padding(0);
+            this.LogisticaDtpFechaDesdeFiltro.Name = "LogisticaDtpFechaDesdeFiltro";
+            this.LogisticaDtpFechaDesdeFiltro.ShowCheckBox = true;
+            this.LogisticaDtpFechaDesdeFiltro.Size = new System.Drawing.Size(170, 37);
+            this.LogisticaDtpFechaDesdeFiltro.TabIndex = 59;
+            // 
+            // LogisticaDtpFechaHastaFiltro
+            // 
+            this.LogisticaDtpFechaHastaFiltro.Font = new System.Drawing.Font("Segoe UI", 13.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.LogisticaDtpFechaHastaFiltro.Format = System.Windows.Forms.DateTimePickerFormat.Short;
+            this.LogisticaDtpFechaHastaFiltro.Location = new System.Drawing.Point(780, 33);
+            this.LogisticaDtpFechaHastaFiltro.Margin = new System.Windows.Forms.Padding(0);
+            this.LogisticaDtpFechaHastaFiltro.Name = "LogisticaDtpFechaHastaFiltro";
+            this.LogisticaDtpFechaHastaFiltro.ShowCheckBox = true;
+            this.LogisticaDtpFechaHastaFiltro.Size = new System.Drawing.Size(170, 37);
+            this.LogisticaDtpFechaHastaFiltro.TabIndex = 60;
             // 
             // LogisticaCboEstadoFiltro
             // 
             this.LogisticaCboEstadoFiltro.Font = new System.Drawing.Font("Segoe UI", 13.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.LogisticaCboEstadoFiltro.FormattingEnabled = true;
-            this.LogisticaCboEstadoFiltro.Location = new System.Drawing.Point(892, 32);
+            this.LogisticaCboEstadoFiltro.Location = new System.Drawing.Point(1004, 32);
             this.LogisticaCboEstadoFiltro.Margin = new System.Windows.Forms.Padding(0);
             this.LogisticaCboEstadoFiltro.Name = "LogisticaCboEstadoFiltro";
-            this.LogisticaCboEstadoFiltro.Size = new System.Drawing.Size(350, 38);
+            this.LogisticaCboEstadoFiltro.Size = new System.Drawing.Size(260, 38);
             this.LogisticaCboEstadoFiltro.TabIndex = 59;
             // 
             // LogisticaBtnBuscarTraslados
@@ -818,7 +833,7 @@
             this.LogisticaBtnBuscarTraslados.FlatAppearance.BorderSize = 0;
             this.LogisticaBtnBuscarTraslados.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.LogisticaBtnBuscarTraslados.ForeColor = System.Drawing.Color.Transparent;
-            this.LogisticaBtnBuscarTraslados.Location = new System.Drawing.Point(1272, 14);
+            this.LogisticaBtnBuscarTraslados.Location = new System.Drawing.Point(1294, 14);
             this.LogisticaBtnBuscarTraslados.Margin = new System.Windows.Forms.Padding(0);
             this.LogisticaBtnBuscarTraslados.Name = "LogisticaBtnBuscarTraslados";
             this.LogisticaBtnBuscarTraslados.Size = new System.Drawing.Size(60, 60);
@@ -830,19 +845,31 @@
             this.LogisticaLblFechaSolicitudFiltro.AutoSize = true;
             this.LogisticaLblFechaSolicitudFiltro.Font = new System.Drawing.Font("Tahoma", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.LogisticaLblFechaSolicitudFiltro.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(62)))), ((int)(((byte)(138)))), ((int)(((byte)(132)))));
-            this.LogisticaLblFechaSolicitudFiltro.Location = new System.Drawing.Point(578, 15);
+            this.LogisticaLblFechaSolicitudFiltro.Location = new System.Drawing.Point(544, 15);
             this.LogisticaLblFechaSolicitudFiltro.Margin = new System.Windows.Forms.Padding(0);
             this.LogisticaLblFechaSolicitudFiltro.Name = "LogisticaLblFechaSolicitudFiltro";
-            this.LogisticaLblFechaSolicitudFiltro.Size = new System.Drawing.Size(172, 21);
+            this.LogisticaLblFechaSolicitudFiltro.Size = new System.Drawing.Size(69, 21);
             this.LogisticaLblFechaSolicitudFiltro.TabIndex = 63;
-            this.LogisticaLblFechaSolicitudFiltro.Text = "Fecha de Solicitud:";
+            this.LogisticaLblFechaSolicitudFiltro.Text = "Desde:";
+            // 
+            // LogisticaLblFechaHastaFiltro
+            // 
+            this.LogisticaLblFechaHastaFiltro.AutoSize = true;
+            this.LogisticaLblFechaHastaFiltro.Font = new System.Drawing.Font("Tahoma", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.LogisticaLblFechaHastaFiltro.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(62)))), ((int)(((byte)(138)))), ((int)(((byte)(132)))));
+            this.LogisticaLblFechaHastaFiltro.Location = new System.Drawing.Point(780, 15);
+            this.LogisticaLblFechaHastaFiltro.Margin = new System.Windows.Forms.Padding(0);
+            this.LogisticaLblFechaHastaFiltro.Name = "LogisticaLblFechaHastaFiltro";
+            this.LogisticaLblFechaHastaFiltro.Size = new System.Drawing.Size(65, 21);
+            this.LogisticaLblFechaHastaFiltro.TabIndex = 66;
+            this.LogisticaLblFechaHastaFiltro.Text = "Hasta:";
             // 
             // LogisticaLblEstadoTrasladoFiltro
             // 
             this.LogisticaLblEstadoTrasladoFiltro.AutoSize = true;
             this.LogisticaLblEstadoTrasladoFiltro.Font = new System.Drawing.Font("Tahoma", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.LogisticaLblEstadoTrasladoFiltro.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(62)))), ((int)(((byte)(138)))), ((int)(((byte)(132)))));
-            this.LogisticaLblEstadoTrasladoFiltro.Location = new System.Drawing.Point(892, 14);
+            this.LogisticaLblEstadoTrasladoFiltro.Location = new System.Drawing.Point(1004, 14);
             this.LogisticaLblEstadoTrasladoFiltro.Margin = new System.Windows.Forms.Padding(0);
             this.LogisticaLblEstadoTrasladoFiltro.Name = "LogisticaLblEstadoTrasladoFiltro";
             this.LogisticaLblEstadoTrasladoFiltro.Size = new System.Drawing.Size(178, 21);
@@ -966,13 +993,15 @@
         private System.Windows.Forms.Panel LogisticaPnlFiltrosTraslados;
         private System.Windows.Forms.Button LogisticaBtnBuscarTraslados;
         private System.Windows.Forms.ComboBox LogisticaCboEstadoTraslado;
-        private System.Windows.Forms.DateTimePicker LogisticaDtpFechaDelFiltro;
+        private System.Windows.Forms.DateTimePicker LogisticaDtpFechaDesdeFiltro;
+        private System.Windows.Forms.DateTimePicker LogisticaDtpFechaHastaFiltro;
         private System.Windows.Forms.ComboBox LogisticaCboTipoTransporte;
         private System.Windows.Forms.Button LogisticaBtnAyudaTraslados;
         private System.Windows.Forms.Button LogisticaBtnNuevoTraslados;
         private System.Windows.Forms.Label LogisticaLblEstadoTrasladoFiltro;
         private System.Windows.Forms.ComboBox LogisticaCboEstadoFiltro;
         private System.Windows.Forms.Label LogisticaLblFechaSolicitudFiltro;
+        private System.Windows.Forms.Label LogisticaLblFechaHastaFiltro;
         private System.Windows.Forms.TextBox LogisticaTxtCodigoTrasladoFiltro;
         private System.Windows.Forms.Label LogisticaLblCodigoTrasladoFiltro;
         private System.Windows.Forms.Label LogisticaLblNombreConductor;
