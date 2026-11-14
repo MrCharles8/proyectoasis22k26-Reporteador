@@ -470,9 +470,10 @@
             this.Controls.Add(this.LogisticaLblTitulo);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
+            this.MaximizeBox = false;
             this.Name = "FrmDetalleViaje";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "FrmDetalleViaje";
+            this.Text = "5027-Detalle Viaje";
             this.Load += new System.EventHandler(this.FrmDetalleViaje_Load);
             this.LogisticaPnlDatosDetalle.ResumeLayout(false);
             this.LogisticaPnlDatosDetalle.PerformLayout();

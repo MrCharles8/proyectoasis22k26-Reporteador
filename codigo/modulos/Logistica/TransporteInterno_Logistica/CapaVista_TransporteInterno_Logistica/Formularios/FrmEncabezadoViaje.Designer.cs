@@ -595,9 +595,10 @@
             this.Controls.Add(this.LogisticaLblTitulo);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
+            this.MaximizeBox = false;
             this.Name = "FrmEncabezadoViaje";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "FrmEncabezadoViaje";
+            this.Text = "5022-Encabezado Viaje";
             this.LogisticaPnlDatosViaje.ResumeLayout(false);
             this.LogisticaPnlDatosViaje.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.LogisticaNudPesoTotal)).EndInit();

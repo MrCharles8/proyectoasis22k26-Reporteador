@@ -514,9 +514,10 @@
             this.Controls.Add(this.LogisticaLblTitulo);
             this.Controls.Add(this.LogisticaBtnConsultar);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
+            this.MaximizeBox = false;
             this.Name = "FrmTelemetriaTransporte";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "FrmTelemetriaTransporte";
+            this.Text = "5032-Telemetria Transporte";
             this.LogisticaPnlDatosTelemetria.ResumeLayout(false);
             this.LogisticaPnlDatosTelemetria.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.LogisticaNudHumedad)).EndInit();

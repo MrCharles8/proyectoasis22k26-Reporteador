@@ -465,9 +465,10 @@
             this.Controls.Add(this.LogisticaLblTitulo);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
+            this.MaximizeBox = false;
             this.Name = "FrmAlertaCadenaFrio";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "FrmAlertaCadenaFrio";
+            this.Text = "5033-Alerta Cadena Frio";
             this.LogisticaPnlTituloDatos.ResumeLayout(false);
             this.LogisticaPnlTituloDatos.PerformLayout();
             this.LogisticaPnlEncabezadoAlerta.ResumeLayout(false);

@@ -37,17 +37,19 @@
             this.LogisticaRvReporteDetalleViajeProducto.Location = new System.Drawing.Point(0, 0);
             this.LogisticaRvReporteDetalleViajeProducto.Name = "LogisticaRvReporteDetalleViajeProducto";
             this.LogisticaRvReporteDetalleViajeProducto.ServerReport.BearerToken = null;
-            this.LogisticaRvReporteDetalleViajeProducto.Size = new System.Drawing.Size(800, 450);
+            this.LogisticaRvReporteDetalleViajeProducto.Size = new System.Drawing.Size(1471, 973);
             this.LogisticaRvReporteDetalleViajeProducto.TabIndex = 0;
             // 
             // FrmReporteDetalleViajeProducto
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(800, 450);
+            this.ClientSize = new System.Drawing.Size(1471, 973);
             this.Controls.Add(this.LogisticaRvReporteDetalleViajeProducto);
+            this.MaximizeBox = false;
             this.Name = "FrmReporteDetalleViajeProducto";
-            this.Text = "FrmReporteDetalleViajeProducto";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
+            this.Text = "5029-Reporte Detalle Viaje Producto";
             this.Load += new System.EventHandler(this.FrmReporteDetalleViajeProducto_Load_1);
             this.ResumeLayout(false);
 

@@ -30,7 +30,7 @@ namespace CapaVista_TransporteInterno_Logistica.Formularios
         {
             InitializeComponent();
 
-            LogisticaNavTransporteInterno.NavegadorMetConfigurar("tblTransporte", 4, 6);
+            LogisticaNavTransporteInterno.NavegadorMetConfigurar("tblTransporte", 4, 20);
         }
 
         // ============================================
@@ -79,6 +79,11 @@ namespace CapaVista_TransporteInterno_Logistica.Formularios
         {
             LogisticaMetAbrirFormulario(
                 new FrmMantenimientoConductor());
+        }
+
+        private void FrmMantenimientoTransporte_Load(object sender, EventArgs e)
+        {
+
         }
     }
 }
