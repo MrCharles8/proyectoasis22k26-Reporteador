@@ -855,41 +855,5 @@ namespace CapaVista_Inventario_Logistica.Formularios
                 MessageBoxButtons.OK,
                 MessageBoxIcon.Error);
         }
-
-        private void LogisticaProcMostrarAyuda(object sender, EventArgs e)
-        {
-            DirectoryInfo DirectorioActual =
-                new DirectoryInfo(AppDomain.CurrentDomain.BaseDirectory);
-
-            while (DirectorioActual != null)
-            {
-                string RutaAyuda = Path.Combine(
-                    DirectorioActual.FullName,
-                    "ayuda",
-                    "modulos",
-                    "logistica",
-                    "LogisticaAyudas",
-                    "LogisticaAyudas.chm");
-
-                if (File.Exists(RutaAyuda))
-                {
-                    Help.ShowHelp(this, RutaAyuda, "MovimientoInventario_Logistica.html");
-                    return;
-                }
-
-                DirectorioActual = DirectorioActual.Parent;
-            }
-
-            MessageBox.Show(
-                this,
-                "No se encontró el archivo de ayuda",
-                "MovimientoInventario_Logistica",
-                MessageBoxButtons.OK,
-                MessageBoxIcon.Error);
-        }
-        private void LogisticaBtnAyudaMovimientoInventario_Click(object sender, EventArgs e)
-        {
-            LogisticaProcMostrarAyuda(sender, e);
-        }
     }
 }

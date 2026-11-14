@@ -32,9 +32,7 @@ namespace CapaVista_Inventario_Logistica.Formularios
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FrmMantenimientoStock));
             this.LogisticaPnlStock = new System.Windows.Forms.Panel();
-            this.LogisticaLblBusquedaInteligente = new System.Windows.Forms.Label();
             this.LogisticaBtnImprimirStock = new System.Windows.Forms.Button();
-            this.LogisticaTxtBusquedaInteligente = new System.Windows.Forms.TextBox();
             this.LogisticaBtnRefrescarStock = new System.Windows.Forms.Button();
             this.LogisticaBtnAyudaStock = new System.Windows.Forms.Button();
             this.LogisticaBtnModificarStock = new System.Windows.Forms.Button();
@@ -46,24 +44,6 @@ namespace CapaVista_Inventario_Logistica.Formularios
             this.LogisticaLblDescripcionStock = new System.Windows.Forms.Label();
             this.LogisticaLblTituloStock = new System.Windows.Forms.Label();
             this.LogistinaPnlDatosMovimiento = new System.Windows.Forms.Panel();
-            this.LogisticaTxtApartadosStock = new System.Windows.Forms.TextBox();
-            this.LogisticaTxtAbonosAcumulados = new System.Windows.Forms.TextBox();
-            this.LogisticaTxtCargosAcumulados = new System.Windows.Forms.TextBox();
-            this.LogisticaTxtAbonosMes = new System.Windows.Forms.TextBox();
-            this.LogisticaTxtCargosMes = new System.Windows.Forms.TextBox();
-            this.LogisticaLblApartadosStock = new System.Windows.Forms.Label();
-            this.LogisticaLblAbonosAcumuladosStock = new System.Windows.Forms.Label();
-            this.LogisticaLblCargosAcumuladosStock = new System.Windows.Forms.Label();
-            this.LogisticaLblAbonosMesStock = new System.Windows.Forms.Label();
-            this.LogisticaLblCargosMesStock = new System.Windows.Forms.Label();
-            this.LogisticaLblStockActual = new System.Windows.Forms.Label();
-            this.LogisticaLblStockAnterior = new System.Windows.Forms.Label();
-            this.LogisticaTxtAnteriorStock = new System.Windows.Forms.TextBox();
-            this.LogisticaTxtStockActual = new System.Windows.Forms.TextBox();
-            this.LogisticaTxtStockVirtual = new System.Windows.Forms.TextBox();
-            this.LogisticaTxtStockFisico = new System.Windows.Forms.TextBox();
-            this.LogisticaTxtIdStock = new System.Windows.Forms.TextBox();
-            this.LogisticaLblIdStock = new System.Windows.Forms.Label();
             this.LogisticaLblEstadoCompra = new System.Windows.Forms.Label();
             this.LogisticaLblEstadoStock = new System.Windows.Forms.Label();
             this.LogisticaLblEstadoVenta = new System.Windows.Forms.Label();
@@ -81,6 +61,26 @@ namespace CapaVista_Inventario_Logistica.Formularios
             this.LogisticaLblStockVirual = new System.Windows.Forms.Label();
             this.LogisticaPnlListadoMovimiento = new System.Windows.Forms.Panel();
             this.LogisticaLblListadoStock = new System.Windows.Forms.Label();
+            this.LogisticaLblIdStock = new System.Windows.Forms.Label();
+            this.LogisticaTxtIdStock = new System.Windows.Forms.TextBox();
+            this.LogisticaTxtStockFisico = new System.Windows.Forms.TextBox();
+            this.LogisticaTxtStockVirtual = new System.Windows.Forms.TextBox();
+            this.LogisticaTxtStockActual = new System.Windows.Forms.TextBox();
+            this.LogisticaTxtAnteriorStock = new System.Windows.Forms.TextBox();
+            this.LogisticaLblStockAnterior = new System.Windows.Forms.Label();
+            this.LogisticaLblStockActual = new System.Windows.Forms.Label();
+            this.LogisticaLblCargosMesStock = new System.Windows.Forms.Label();
+            this.LogisticaLblAbonosMesStock = new System.Windows.Forms.Label();
+            this.LogisticaLblCargosAcumuladosStock = new System.Windows.Forms.Label();
+            this.LogisticaLblAbonosAcumuladosStock = new System.Windows.Forms.Label();
+            this.LogisticaLblApartadosStock = new System.Windows.Forms.Label();
+            this.LogisticaTxtCargosMes = new System.Windows.Forms.TextBox();
+            this.LogisticaTxtAbonosMes = new System.Windows.Forms.TextBox();
+            this.LogisticaTxtCargosAcumulados = new System.Windows.Forms.TextBox();
+            this.LogisticaTxtAbonosAcumulados = new System.Windows.Forms.TextBox();
+            this.LogisticaTxtApartadosStock = new System.Windows.Forms.TextBox();
+            this.LogisticaTxtBusquedaInteligente = new System.Windows.Forms.TextBox();
+            this.LogisticaLblBusquedaInteligente = new System.Windows.Forms.Label();
             this.LogisticaPnlStock.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.LogisticaDgvListadoStock)).BeginInit();
             this.LogistinaPnlDatosMovimiento.SuspendLayout();
@@ -112,18 +112,6 @@ namespace CapaVista_Inventario_Logistica.Formularios
             this.LogisticaPnlStock.Size = new System.Drawing.Size(1144, 741);
             this.LogisticaPnlStock.TabIndex = 0;
             // 
-            // LogisticaLblBusquedaInteligente
-            // 
-            this.LogisticaLblBusquedaInteligente.AutoSize = true;
-            this.LogisticaLblBusquedaInteligente.BackColor = System.Drawing.Color.Transparent;
-            this.LogisticaLblBusquedaInteligente.Font = new System.Drawing.Font("Tahoma", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.LogisticaLblBusquedaInteligente.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(62)))), ((int)(((byte)(138)))), ((int)(((byte)(132)))));
-            this.LogisticaLblBusquedaInteligente.Location = new System.Drawing.Point(402, 494);
-            this.LogisticaLblBusquedaInteligente.Name = "LogisticaLblBusquedaInteligente";
-            this.LogisticaLblBusquedaInteligente.Size = new System.Drawing.Size(83, 19);
-            this.LogisticaLblBusquedaInteligente.TabIndex = 44;
-            this.LogisticaLblBusquedaInteligente.Text = "Busqueda:";
-            // 
             // LogisticaBtnImprimirStock
             // 
             this.LogisticaBtnImprimirStock.BackgroundImage = global::CapaVista_Inventario_Logistica.Properties.Resources.btn_imprimir;
@@ -136,15 +124,6 @@ namespace CapaVista_Inventario_Logistica.Formularios
             this.LogisticaBtnImprimirStock.Size = new System.Drawing.Size(60, 66);
             this.LogisticaBtnImprimirStock.TabIndex = 29;
             this.LogisticaBtnImprimirStock.UseVisualStyleBackColor = true;
-            // 
-            // LogisticaTxtBusquedaInteligente
-            // 
-            this.LogisticaTxtBusquedaInteligente.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.LogisticaTxtBusquedaInteligente.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.LogisticaTxtBusquedaInteligente.Location = new System.Drawing.Point(541, 488);
-            this.LogisticaTxtBusquedaInteligente.Name = "LogisticaTxtBusquedaInteligente";
-            this.LogisticaTxtBusquedaInteligente.Size = new System.Drawing.Size(324, 25);
-            this.LogisticaTxtBusquedaInteligente.TabIndex = 30;
             // 
             // LogisticaBtnRefrescarStock
             // 
@@ -316,164 +295,6 @@ namespace CapaVista_Inventario_Logistica.Formularios
             this.LogistinaPnlDatosMovimiento.Name = "LogistinaPnlDatosMovimiento";
             this.LogistinaPnlDatosMovimiento.Size = new System.Drawing.Size(996, 287);
             this.LogistinaPnlDatosMovimiento.TabIndex = 14;
-            // 
-            // LogisticaTxtApartadosStock
-            // 
-            this.LogisticaTxtApartadosStock.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.LogisticaTxtApartadosStock.Location = new System.Drawing.Point(831, 204);
-            this.LogisticaTxtApartadosStock.Name = "LogisticaTxtApartadosStock";
-            this.LogisticaTxtApartadosStock.Size = new System.Drawing.Size(125, 25);
-            this.LogisticaTxtApartadosStock.TabIndex = 43;
-            // 
-            // LogisticaTxtAbonosAcumulados
-            // 
-            this.LogisticaTxtAbonosAcumulados.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.LogisticaTxtAbonosAcumulados.Location = new System.Drawing.Point(831, 169);
-            this.LogisticaTxtAbonosAcumulados.Name = "LogisticaTxtAbonosAcumulados";
-            this.LogisticaTxtAbonosAcumulados.Size = new System.Drawing.Size(125, 25);
-            this.LogisticaTxtAbonosAcumulados.TabIndex = 42;
-            // 
-            // LogisticaTxtCargosAcumulados
-            // 
-            this.LogisticaTxtCargosAcumulados.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.LogisticaTxtCargosAcumulados.Location = new System.Drawing.Point(831, 132);
-            this.LogisticaTxtCargosAcumulados.Name = "LogisticaTxtCargosAcumulados";
-            this.LogisticaTxtCargosAcumulados.Size = new System.Drawing.Size(125, 25);
-            this.LogisticaTxtCargosAcumulados.TabIndex = 41;
-            // 
-            // LogisticaTxtAbonosMes
-            // 
-            this.LogisticaTxtAbonosMes.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.LogisticaTxtAbonosMes.Location = new System.Drawing.Point(831, 93);
-            this.LogisticaTxtAbonosMes.Name = "LogisticaTxtAbonosMes";
-            this.LogisticaTxtAbonosMes.Size = new System.Drawing.Size(125, 25);
-            this.LogisticaTxtAbonosMes.TabIndex = 40;
-            // 
-            // LogisticaTxtCargosMes
-            // 
-            this.LogisticaTxtCargosMes.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.LogisticaTxtCargosMes.Location = new System.Drawing.Point(831, 62);
-            this.LogisticaTxtCargosMes.Name = "LogisticaTxtCargosMes";
-            this.LogisticaTxtCargosMes.Size = new System.Drawing.Size(125, 25);
-            this.LogisticaTxtCargosMes.TabIndex = 39;
-            // 
-            // LogisticaLblApartadosStock
-            // 
-            this.LogisticaLblApartadosStock.AutoSize = true;
-            this.LogisticaLblApartadosStock.Location = new System.Drawing.Point(649, 216);
-            this.LogisticaLblApartadosStock.Name = "LogisticaLblApartadosStock";
-            this.LogisticaLblApartadosStock.Size = new System.Drawing.Size(101, 19);
-            this.LogisticaLblApartadosStock.TabIndex = 38;
-            this.LogisticaLblApartadosStock.Text = "Apartados: *";
-            // 
-            // LogisticaLblAbonosAcumuladosStock
-            // 
-            this.LogisticaLblAbonosAcumuladosStock.AutoSize = true;
-            this.LogisticaLblAbonosAcumuladosStock.Location = new System.Drawing.Point(649, 178);
-            this.LogisticaLblAbonosAcumuladosStock.Name = "LogisticaLblAbonosAcumuladosStock";
-            this.LogisticaLblAbonosAcumuladosStock.Size = new System.Drawing.Size(172, 19);
-            this.LogisticaLblAbonosAcumuladosStock.TabIndex = 35;
-            this.LogisticaLblAbonosAcumuladosStock.Text = "Abonos acumulados: *";
-            // 
-            // LogisticaLblCargosAcumuladosStock
-            // 
-            this.LogisticaLblCargosAcumuladosStock.AutoSize = true;
-            this.LogisticaLblCargosAcumuladosStock.Location = new System.Drawing.Point(649, 140);
-            this.LogisticaLblCargosAcumuladosStock.Name = "LogisticaLblCargosAcumuladosStock";
-            this.LogisticaLblCargosAcumuladosStock.Size = new System.Drawing.Size(167, 19);
-            this.LogisticaLblCargosAcumuladosStock.TabIndex = 34;
-            this.LogisticaLblCargosAcumuladosStock.Text = "Cargos acumulados: *";
-            // 
-            // LogisticaLblAbonosMesStock
-            // 
-            this.LogisticaLblAbonosMesStock.AutoSize = true;
-            this.LogisticaLblAbonosMesStock.Location = new System.Drawing.Point(649, 99);
-            this.LogisticaLblAbonosMesStock.Name = "LogisticaLblAbonosMesStock";
-            this.LogisticaLblAbonosMesStock.Size = new System.Drawing.Size(143, 19);
-            this.LogisticaLblAbonosMesStock.TabIndex = 33;
-            this.LogisticaLblAbonosMesStock.Text = "Abonos del mes: *";
-            // 
-            // LogisticaLblCargosMesStock
-            // 
-            this.LogisticaLblCargosMesStock.AutoSize = true;
-            this.LogisticaLblCargosMesStock.Location = new System.Drawing.Point(649, 65);
-            this.LogisticaLblCargosMesStock.Name = "LogisticaLblCargosMesStock";
-            this.LogisticaLblCargosMesStock.Size = new System.Drawing.Size(138, 19);
-            this.LogisticaLblCargosMesStock.TabIndex = 32;
-            this.LogisticaLblCargosMesStock.Text = "Cargos del mes: *";
-            // 
-            // LogisticaLblStockActual
-            // 
-            this.LogisticaLblStockActual.AutoSize = true;
-            this.LogisticaLblStockActual.Font = new System.Drawing.Font("Tahoma", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.LogisticaLblStockActual.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(62)))), ((int)(((byte)(138)))), ((int)(((byte)(132)))));
-            this.LogisticaLblStockActual.Location = new System.Drawing.Point(333, 184);
-            this.LogisticaLblStockActual.Name = "LogisticaLblStockActual";
-            this.LogisticaLblStockActual.Size = new System.Drawing.Size(113, 19);
-            this.LogisticaLblStockActual.TabIndex = 31;
-            this.LogisticaLblStockActual.Text = "Stock actual: *";
-            // 
-            // LogisticaLblStockAnterior
-            // 
-            this.LogisticaLblStockAnterior.AutoSize = true;
-            this.LogisticaLblStockAnterior.Font = new System.Drawing.Font("Tahoma", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.LogisticaLblStockAnterior.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(62)))), ((int)(((byte)(138)))), ((int)(((byte)(132)))));
-            this.LogisticaLblStockAnterior.Location = new System.Drawing.Point(333, 147);
-            this.LogisticaLblStockAnterior.Name = "LogisticaLblStockAnterior";
-            this.LogisticaLblStockAnterior.Size = new System.Drawing.Size(127, 19);
-            this.LogisticaLblStockAnterior.TabIndex = 30;
-            this.LogisticaLblStockAnterior.Text = "Stock anterior: *";
-            // 
-            // LogisticaTxtAnteriorStock
-            // 
-            this.LogisticaTxtAnteriorStock.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.LogisticaTxtAnteriorStock.Location = new System.Drawing.Point(470, 143);
-            this.LogisticaTxtAnteriorStock.Name = "LogisticaTxtAnteriorStock";
-            this.LogisticaTxtAnteriorStock.Size = new System.Drawing.Size(125, 25);
-            this.LogisticaTxtAnteriorStock.TabIndex = 29;
-            // 
-            // LogisticaTxtStockActual
-            // 
-            this.LogisticaTxtStockActual.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.LogisticaTxtStockActual.Location = new System.Drawing.Point(470, 178);
-            this.LogisticaTxtStockActual.Name = "LogisticaTxtStockActual";
-            this.LogisticaTxtStockActual.Size = new System.Drawing.Size(125, 25);
-            this.LogisticaTxtStockActual.TabIndex = 28;
-            // 
-            // LogisticaTxtStockVirtual
-            // 
-            this.LogisticaTxtStockVirtual.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.LogisticaTxtStockVirtual.Location = new System.Drawing.Point(470, 99);
-            this.LogisticaTxtStockVirtual.Name = "LogisticaTxtStockVirtual";
-            this.LogisticaTxtStockVirtual.Size = new System.Drawing.Size(125, 25);
-            this.LogisticaTxtStockVirtual.TabIndex = 27;
-            // 
-            // LogisticaTxtStockFisico
-            // 
-            this.LogisticaTxtStockFisico.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.LogisticaTxtStockFisico.Location = new System.Drawing.Point(470, 65);
-            this.LogisticaTxtStockFisico.Name = "LogisticaTxtStockFisico";
-            this.LogisticaTxtStockFisico.Size = new System.Drawing.Size(125, 25);
-            this.LogisticaTxtStockFisico.TabIndex = 26;
-            // 
-            // LogisticaTxtIdStock
-            // 
-            this.LogisticaTxtIdStock.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.LogisticaTxtIdStock.Location = new System.Drawing.Point(118, 65);
-            this.LogisticaTxtIdStock.Name = "LogisticaTxtIdStock";
-            this.LogisticaTxtIdStock.Size = new System.Drawing.Size(168, 25);
-            this.LogisticaTxtIdStock.TabIndex = 25;
-            // 
-            // LogisticaLblIdStock
-            // 
-            this.LogisticaLblIdStock.AutoSize = true;
-            this.LogisticaLblIdStock.Font = new System.Drawing.Font("Tahoma", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.LogisticaLblIdStock.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(62)))), ((int)(((byte)(138)))), ((int)(((byte)(132)))));
-            this.LogisticaLblIdStock.Location = new System.Drawing.Point(21, 69);
-            this.LogisticaLblIdStock.Name = "LogisticaLblIdStock";
-            this.LogisticaLblIdStock.Size = new System.Drawing.Size(44, 19);
-            this.LogisticaLblIdStock.TabIndex = 24;
-            this.LogisticaLblIdStock.Text = "Id: *";
             // 
             // LogisticaLblEstadoCompra
             // 
@@ -676,6 +497,185 @@ namespace CapaVista_Inventario_Logistica.Formularios
             this.LogisticaLblListadoStock.Size = new System.Drawing.Size(131, 21);
             this.LogisticaLblListadoStock.TabIndex = 0;
             this.LogisticaLblListadoStock.Text = "Listado de Stock\r\n";
+            // 
+            // LogisticaLblIdStock
+            // 
+            this.LogisticaLblIdStock.AutoSize = true;
+            this.LogisticaLblIdStock.Font = new System.Drawing.Font("Tahoma", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.LogisticaLblIdStock.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(62)))), ((int)(((byte)(138)))), ((int)(((byte)(132)))));
+            this.LogisticaLblIdStock.Location = new System.Drawing.Point(21, 69);
+            this.LogisticaLblIdStock.Name = "LogisticaLblIdStock";
+            this.LogisticaLblIdStock.Size = new System.Drawing.Size(44, 19);
+            this.LogisticaLblIdStock.TabIndex = 24;
+            this.LogisticaLblIdStock.Text = "Id: *";
+            // 
+            // LogisticaTxtIdStock
+            // 
+            this.LogisticaTxtIdStock.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.LogisticaTxtIdStock.Location = new System.Drawing.Point(118, 65);
+            this.LogisticaTxtIdStock.Name = "LogisticaTxtIdStock";
+            this.LogisticaTxtIdStock.Size = new System.Drawing.Size(168, 25);
+            this.LogisticaTxtIdStock.TabIndex = 25;
+            // 
+            // LogisticaTxtStockFisico
+            // 
+            this.LogisticaTxtStockFisico.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.LogisticaTxtStockFisico.Location = new System.Drawing.Point(470, 65);
+            this.LogisticaTxtStockFisico.Name = "LogisticaTxtStockFisico";
+            this.LogisticaTxtStockFisico.Size = new System.Drawing.Size(125, 25);
+            this.LogisticaTxtStockFisico.TabIndex = 26;
+            // 
+            // LogisticaTxtStockVirtual
+            // 
+            this.LogisticaTxtStockVirtual.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.LogisticaTxtStockVirtual.Location = new System.Drawing.Point(470, 99);
+            this.LogisticaTxtStockVirtual.Name = "LogisticaTxtStockVirtual";
+            this.LogisticaTxtStockVirtual.Size = new System.Drawing.Size(125, 25);
+            this.LogisticaTxtStockVirtual.TabIndex = 27;
+            // 
+            // LogisticaTxtStockActual
+            // 
+            this.LogisticaTxtStockActual.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.LogisticaTxtStockActual.Location = new System.Drawing.Point(470, 178);
+            this.LogisticaTxtStockActual.Name = "LogisticaTxtStockActual";
+            this.LogisticaTxtStockActual.Size = new System.Drawing.Size(125, 25);
+            this.LogisticaTxtStockActual.TabIndex = 28;
+            // 
+            // LogisticaTxtAnteriorStock
+            // 
+            this.LogisticaTxtAnteriorStock.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.LogisticaTxtAnteriorStock.Location = new System.Drawing.Point(470, 143);
+            this.LogisticaTxtAnteriorStock.Name = "LogisticaTxtAnteriorStock";
+            this.LogisticaTxtAnteriorStock.Size = new System.Drawing.Size(125, 25);
+            this.LogisticaTxtAnteriorStock.TabIndex = 29;
+            // 
+            // LogisticaLblStockAnterior
+            // 
+            this.LogisticaLblStockAnterior.AutoSize = true;
+            this.LogisticaLblStockAnterior.Font = new System.Drawing.Font("Tahoma", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.LogisticaLblStockAnterior.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(62)))), ((int)(((byte)(138)))), ((int)(((byte)(132)))));
+            this.LogisticaLblStockAnterior.Location = new System.Drawing.Point(333, 147);
+            this.LogisticaLblStockAnterior.Name = "LogisticaLblStockAnterior";
+            this.LogisticaLblStockAnterior.Size = new System.Drawing.Size(127, 19);
+            this.LogisticaLblStockAnterior.TabIndex = 30;
+            this.LogisticaLblStockAnterior.Text = "Stock anterior: *";
+            // 
+            // LogisticaLblStockActual
+            // 
+            this.LogisticaLblStockActual.AutoSize = true;
+            this.LogisticaLblStockActual.Font = new System.Drawing.Font("Tahoma", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.LogisticaLblStockActual.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(62)))), ((int)(((byte)(138)))), ((int)(((byte)(132)))));
+            this.LogisticaLblStockActual.Location = new System.Drawing.Point(333, 184);
+            this.LogisticaLblStockActual.Name = "LogisticaLblStockActual";
+            this.LogisticaLblStockActual.Size = new System.Drawing.Size(113, 19);
+            this.LogisticaLblStockActual.TabIndex = 31;
+            this.LogisticaLblStockActual.Text = "Stock actual: *";
+            // 
+            // LogisticaLblCargosMesStock
+            // 
+            this.LogisticaLblCargosMesStock.AutoSize = true;
+            this.LogisticaLblCargosMesStock.Location = new System.Drawing.Point(649, 65);
+            this.LogisticaLblCargosMesStock.Name = "LogisticaLblCargosMesStock";
+            this.LogisticaLblCargosMesStock.Size = new System.Drawing.Size(138, 19);
+            this.LogisticaLblCargosMesStock.TabIndex = 32;
+            this.LogisticaLblCargosMesStock.Text = "Cargos del mes: *";
+            // 
+            // LogisticaLblAbonosMesStock
+            // 
+            this.LogisticaLblAbonosMesStock.AutoSize = true;
+            this.LogisticaLblAbonosMesStock.Location = new System.Drawing.Point(649, 99);
+            this.LogisticaLblAbonosMesStock.Name = "LogisticaLblAbonosMesStock";
+            this.LogisticaLblAbonosMesStock.Size = new System.Drawing.Size(143, 19);
+            this.LogisticaLblAbonosMesStock.TabIndex = 33;
+            this.LogisticaLblAbonosMesStock.Text = "Abonos del mes: *";
+            // 
+            // LogisticaLblCargosAcumuladosStock
+            // 
+            this.LogisticaLblCargosAcumuladosStock.AutoSize = true;
+            this.LogisticaLblCargosAcumuladosStock.Location = new System.Drawing.Point(649, 140);
+            this.LogisticaLblCargosAcumuladosStock.Name = "LogisticaLblCargosAcumuladosStock";
+            this.LogisticaLblCargosAcumuladosStock.Size = new System.Drawing.Size(167, 19);
+            this.LogisticaLblCargosAcumuladosStock.TabIndex = 34;
+            this.LogisticaLblCargosAcumuladosStock.Text = "Cargos acumulados: *";
+            // 
+            // LogisticaLblAbonosAcumuladosStock
+            // 
+            this.LogisticaLblAbonosAcumuladosStock.AutoSize = true;
+            this.LogisticaLblAbonosAcumuladosStock.Location = new System.Drawing.Point(649, 178);
+            this.LogisticaLblAbonosAcumuladosStock.Name = "LogisticaLblAbonosAcumuladosStock";
+            this.LogisticaLblAbonosAcumuladosStock.Size = new System.Drawing.Size(172, 19);
+            this.LogisticaLblAbonosAcumuladosStock.TabIndex = 35;
+            this.LogisticaLblAbonosAcumuladosStock.Text = "Abonos acumulados: *";
+            // 
+            // LogisticaLblApartadosStock
+            // 
+            this.LogisticaLblApartadosStock.AutoSize = true;
+            this.LogisticaLblApartadosStock.Location = new System.Drawing.Point(649, 216);
+            this.LogisticaLblApartadosStock.Name = "LogisticaLblApartadosStock";
+            this.LogisticaLblApartadosStock.Size = new System.Drawing.Size(101, 19);
+            this.LogisticaLblApartadosStock.TabIndex = 38;
+            this.LogisticaLblApartadosStock.Text = "Apartados: *";
+            // 
+            // LogisticaTxtCargosMes
+            // 
+            this.LogisticaTxtCargosMes.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.LogisticaTxtCargosMes.Location = new System.Drawing.Point(831, 62);
+            this.LogisticaTxtCargosMes.Name = "LogisticaTxtCargosMes";
+            this.LogisticaTxtCargosMes.Size = new System.Drawing.Size(125, 25);
+            this.LogisticaTxtCargosMes.TabIndex = 39;
+            // 
+            // LogisticaTxtAbonosMes
+            // 
+            this.LogisticaTxtAbonosMes.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.LogisticaTxtAbonosMes.Location = new System.Drawing.Point(831, 93);
+            this.LogisticaTxtAbonosMes.Name = "LogisticaTxtAbonosMes";
+            this.LogisticaTxtAbonosMes.Size = new System.Drawing.Size(125, 25);
+            this.LogisticaTxtAbonosMes.TabIndex = 40;
+            // 
+            // LogisticaTxtCargosAcumulados
+            // 
+            this.LogisticaTxtCargosAcumulados.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.LogisticaTxtCargosAcumulados.Location = new System.Drawing.Point(831, 132);
+            this.LogisticaTxtCargosAcumulados.Name = "LogisticaTxtCargosAcumulados";
+            this.LogisticaTxtCargosAcumulados.Size = new System.Drawing.Size(125, 25);
+            this.LogisticaTxtCargosAcumulados.TabIndex = 41;
+            // 
+            // LogisticaTxtAbonosAcumulados
+            // 
+            this.LogisticaTxtAbonosAcumulados.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.LogisticaTxtAbonosAcumulados.Location = new System.Drawing.Point(831, 169);
+            this.LogisticaTxtAbonosAcumulados.Name = "LogisticaTxtAbonosAcumulados";
+            this.LogisticaTxtAbonosAcumulados.Size = new System.Drawing.Size(125, 25);
+            this.LogisticaTxtAbonosAcumulados.TabIndex = 42;
+            // 
+            // LogisticaTxtApartadosStock
+            // 
+            this.LogisticaTxtApartadosStock.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.LogisticaTxtApartadosStock.Location = new System.Drawing.Point(831, 204);
+            this.LogisticaTxtApartadosStock.Name = "LogisticaTxtApartadosStock";
+            this.LogisticaTxtApartadosStock.Size = new System.Drawing.Size(125, 25);
+            this.LogisticaTxtApartadosStock.TabIndex = 43;
+            // 
+            // LogisticaTxtBusquedaInteligente
+            // 
+            this.LogisticaTxtBusquedaInteligente.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.LogisticaTxtBusquedaInteligente.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.LogisticaTxtBusquedaInteligente.Location = new System.Drawing.Point(541, 488);
+            this.LogisticaTxtBusquedaInteligente.Name = "LogisticaTxtBusquedaInteligente";
+            this.LogisticaTxtBusquedaInteligente.Size = new System.Drawing.Size(324, 25);
+            this.LogisticaTxtBusquedaInteligente.TabIndex = 30;
+            // 
+            // LogisticaLblBusquedaInteligente
+            // 
+            this.LogisticaLblBusquedaInteligente.AutoSize = true;
+            this.LogisticaLblBusquedaInteligente.BackColor = System.Drawing.Color.Transparent;
+            this.LogisticaLblBusquedaInteligente.Font = new System.Drawing.Font("Tahoma", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.LogisticaLblBusquedaInteligente.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(62)))), ((int)(((byte)(138)))), ((int)(((byte)(132)))));
+            this.LogisticaLblBusquedaInteligente.Location = new System.Drawing.Point(402, 494);
+            this.LogisticaLblBusquedaInteligente.Name = "LogisticaLblBusquedaInteligente";
+            this.LogisticaLblBusquedaInteligente.Size = new System.Drawing.Size(83, 19);
+            this.LogisticaLblBusquedaInteligente.TabIndex = 44;
+            this.LogisticaLblBusquedaInteligente.Text = "Busqueda:";
             // 
             // FrmMantenimientoStock
             // 

@@ -51,7 +51,7 @@
 			</OBJECT>
 		<LI> <OBJECT type="text/sitemap">
 			<param name="Name" value="Tipos de movimiento">
-			<param name="Local" value="TipoMovimiento_Logistica.html">
+			<param name="Local" value="Tipodemovimiento_Logistica.html">
 			<param name="ImageNumber" value="11">
 			</OBJECT>
 		<LI> <OBJECT type="text/sitemap">
@@ -77,7 +77,7 @@
 	<UL>
 		<LI> <OBJECT type="text/sitemap">
 			<param name="Name" value="Detalle de movimientos">
-			<param name="Local" value="DetalleMovimiento_Logistica.html">
+			<param name="Local" value="Detalledemovimiento_Logistica.html">
 			<param name="ImageNumber" value="11">
 			</OBJECT>
 		<LI> <OBJECT type="text/sitemap">
