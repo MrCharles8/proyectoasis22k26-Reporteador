@@ -32,9 +32,6 @@
             this.LogisticaNavTransporteInterno = new CapaVista_Navegador.Navegador();
             this.LogisticaLblTituloTransporteInterno = new System.Windows.Forms.Label();
             this.LogisticaLblDescripcionTransporteInterno = new System.Windows.Forms.Label();
-            this.LogisticaBtnConsultaTransporte = new System.Windows.Forms.Button();
-            this.LogisticaBtnControlTransporte = new System.Windows.Forms.Button();
-            this.LogisticaBtnGestionViajes = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // LogisticaNavTransporteInterno
@@ -70,51 +67,12 @@
             this.LogisticaLblDescripcionTransporteInterno.Text = "Administra la información de los vehículos utilizados en el transporte interno, i" +
     "ncluyendo placas, marcas, modelos, años, tipos de transporte.";
             // 
-            // LogisticaBtnConsultaTransporte
-            // 
-            this.LogisticaBtnConsultaTransporte.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(242)))), ((int)(((byte)(216)))), ((int)(((byte)(197)))));
-            this.LogisticaBtnConsultaTransporte.Location = new System.Drawing.Point(1087, 22);
-            this.LogisticaBtnConsultaTransporte.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
-            this.LogisticaBtnConsultaTransporte.Name = "LogisticaBtnConsultaTransporte";
-            this.LogisticaBtnConsultaTransporte.Size = new System.Drawing.Size(100, 37);
-            this.LogisticaBtnConsultaTransporte.TabIndex = 6;
-            this.LogisticaBtnConsultaTransporte.Text = "Consulta";
-            this.LogisticaBtnConsultaTransporte.UseVisualStyleBackColor = false;
-            this.LogisticaBtnConsultaTransporte.Click += new System.EventHandler(this.LogisticaBtnConsultaTransporte_Click);
-            // 
-            // LogisticaBtnControlTransporte
-            // 
-            this.LogisticaBtnControlTransporte.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(242)))), ((int)(((byte)(216)))), ((int)(((byte)(197)))));
-            this.LogisticaBtnControlTransporte.Location = new System.Drawing.Point(1195, 22);
-            this.LogisticaBtnControlTransporte.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
-            this.LogisticaBtnControlTransporte.Name = "LogisticaBtnControlTransporte";
-            this.LogisticaBtnControlTransporte.Size = new System.Drawing.Size(100, 37);
-            this.LogisticaBtnControlTransporte.TabIndex = 7;
-            this.LogisticaBtnControlTransporte.Text = "Control";
-            this.LogisticaBtnControlTransporte.UseVisualStyleBackColor = false;
-            this.LogisticaBtnControlTransporte.Click += new System.EventHandler(this.LogisticaBtnControlTransporte_Click);
-            // 
-            // LogisticaBtnGestionViajes
-            // 
-            this.LogisticaBtnGestionViajes.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(242)))), ((int)(((byte)(216)))), ((int)(((byte)(197)))));
-            this.LogisticaBtnGestionViajes.Location = new System.Drawing.Point(1316, 22);
-            this.LogisticaBtnGestionViajes.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
-            this.LogisticaBtnGestionViajes.Name = "LogisticaBtnGestionViajes";
-            this.LogisticaBtnGestionViajes.Size = new System.Drawing.Size(136, 37);
-            this.LogisticaBtnGestionViajes.TabIndex = 9;
-            this.LogisticaBtnGestionViajes.Text = "Gestion Viajes";
-            this.LogisticaBtnGestionViajes.UseVisualStyleBackColor = false;
-            this.LogisticaBtnGestionViajes.Click += new System.EventHandler(this.LogisticaBtnGestionViajes_Click);
-            // 
             // FrmMantenimientoTransporte
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(251)))), ((int)(((byte)(246)))), ((int)(((byte)(242)))));
             this.ClientSize = new System.Drawing.Size(1525, 912);
-            this.Controls.Add(this.LogisticaBtnGestionViajes);
-            this.Controls.Add(this.LogisticaBtnControlTransporte);
-            this.Controls.Add(this.LogisticaBtnConsultaTransporte);
             this.Controls.Add(this.LogisticaLblDescripcionTransporteInterno);
             this.Controls.Add(this.LogisticaLblTituloTransporteInterno);
             this.Controls.Add(this.LogisticaNavTransporteInterno);
@@ -125,6 +83,7 @@
             this.Name = "FrmMantenimientoTransporte";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "5013-Transporte Interno";
+            this.Load += new System.EventHandler(this.FrmMantenimientoTransporte_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -135,8 +94,5 @@
         private CapaVista_Navegador.Navegador LogisticaNavTransporteInterno;
         private System.Windows.Forms.Label LogisticaLblTituloTransporteInterno;
         private System.Windows.Forms.Label LogisticaLblDescripcionTransporteInterno;
-        private System.Windows.Forms.Button LogisticaBtnConsultaTransporte;
-        private System.Windows.Forms.Button LogisticaBtnControlTransporte;
-        private System.Windows.Forms.Button LogisticaBtnGestionViajes;
     }
 }

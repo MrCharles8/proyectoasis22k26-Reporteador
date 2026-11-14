@@ -37,17 +37,19 @@
             this.LogisticaRvReporteTelemetriaTemperatura.Location = new System.Drawing.Point(0, 0);
             this.LogisticaRvReporteTelemetriaTemperatura.Name = "LogisticaRvReporteTelemetriaTemperatura";
             this.LogisticaRvReporteTelemetriaTemperatura.ServerReport.BearerToken = null;
-            this.LogisticaRvReporteTelemetriaTemperatura.Size = new System.Drawing.Size(800, 450);
+            this.LogisticaRvReporteTelemetriaTemperatura.Size = new System.Drawing.Size(1471, 973);
             this.LogisticaRvReporteTelemetriaTemperatura.TabIndex = 0;
             // 
             // FrmReporteTelemetriaTemperatura
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(800, 450);
+            this.ClientSize = new System.Drawing.Size(1471, 973);
             this.Controls.Add(this.LogisticaRvReporteTelemetriaTemperatura);
+            this.MaximizeBox = false;
             this.Name = "FrmReporteTelemetriaTemperatura";
-            this.Text = "FrmReporteTelemetriaTemperatura";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
+            this.Text = "5032-Reporte Telemetria Transporte";
             this.Load += new System.EventHandler(this.FrmReporteTelemetriaTemperatura_Load);
             this.ResumeLayout(false);
 

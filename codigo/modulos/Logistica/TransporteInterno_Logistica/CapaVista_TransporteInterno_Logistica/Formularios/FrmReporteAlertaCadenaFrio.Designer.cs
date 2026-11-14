@@ -37,17 +37,19 @@
             this.LogisticaRvReporteAlertaCadenaFrio.Location = new System.Drawing.Point(0, 0);
             this.LogisticaRvReporteAlertaCadenaFrio.Name = "LogisticaRvReporteAlertaCadenaFrio";
             this.LogisticaRvReporteAlertaCadenaFrio.ServerReport.BearerToken = null;
-            this.LogisticaRvReporteAlertaCadenaFrio.Size = new System.Drawing.Size(800, 450);
+            this.LogisticaRvReporteAlertaCadenaFrio.Size = new System.Drawing.Size(1471, 973);
             this.LogisticaRvReporteAlertaCadenaFrio.TabIndex = 0;
             // 
             // FrmReporteAlertaCadenaFrio
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(800, 450);
+            this.ClientSize = new System.Drawing.Size(1471, 973);
             this.Controls.Add(this.LogisticaRvReporteAlertaCadenaFrio);
+            this.MaximizeBox = false;
             this.Name = "FrmReporteAlertaCadenaFrio";
-            this.Text = "FrmReporteAlertaCadenaFrio";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
+            this.Text = "5033-Reporte Alerta Cadena Frio";
             this.Load += new System.EventHandler(this.FrmReporteAlertaCadenaFrio_Load);
             this.ResumeLayout(false);
 

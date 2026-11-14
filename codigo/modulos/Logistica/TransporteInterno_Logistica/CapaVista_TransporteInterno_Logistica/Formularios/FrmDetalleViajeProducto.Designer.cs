@@ -407,10 +407,12 @@
             this.Controls.Add(this.LogisticaBtnConsultar);
             this.Controls.Add(this.LogisticaLblDescripcion);
             this.Controls.Add(this.LogisticaLblTitulo);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
+            this.MaximizeBox = false;
             this.Name = "FrmDetalleViajeProducto";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "FrmDetalleViajeProducto";
+            this.Text = "5029-Detalle Viaje Producto";
             this.LogisticaPnlDatosDetalle.ResumeLayout(false);
             this.LogisticaPnlDatosDetalle.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.LogisticaNudPesoTotal)).EndInit();
