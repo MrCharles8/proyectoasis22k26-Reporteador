@@ -55,7 +55,8 @@ namespace CapaVista_Traslados_Logistica.Formularios
                 "CANCELADO"
             });
             LogisticaCboEstadoFiltro.SelectedIndex = 0;
-            LogisticaDtpFechaDelFiltro.Checked = false;
+            LogisticaDtpFechaDesdeFiltro.Checked = false;
+            LogisticaDtpFechaHastaFiltro.Checked = false;
             LogisticaNudCantidadTraslados.Minimum = 1;
             LogisticaNudCantidadTraslados.Value = 1;
             LogisticaNudCantidadTraslados.Maximum = int.MaxValue;
@@ -151,16 +152,25 @@ namespace CapaVista_Traslados_Logistica.Formularios
         {
             try
             {
-                DateTime? FechaSolicitud = LogisticaDtpFechaDelFiltro.Checked
-                    ? (DateTime?)LogisticaDtpFechaDelFiltro.Value.Date
+                DateTime? FechaDesde = LogisticaDtpFechaDesdeFiltro.Checked
+                    ? (DateTime?)LogisticaDtpFechaDesdeFiltro.Value.Date
                     : null;
+                DateTime? FechaHasta = LogisticaDtpFechaHastaFiltro.Checked
+                    ? (DateTime?)LogisticaDtpFechaHastaFiltro.Value.Date
+                    : null;
+                if (FechaDesde.HasValue && FechaHasta.HasValue && FechaDesde > FechaHasta)
+                {
+                    LogisticaProcMostrarError("La fecha Desde no puede ser posterior a Hasta.");
+                    return;
+                }
+
                 string Estado = LogisticaCboEstadoFiltro.SelectedItem == null
                     ? "Todos"
                     : Convert.ToString(LogisticaCboEstadoFiltro.SelectedItem);
 
                 _ActualizandoLista = true;
                 LogisticaDgvListaTraslados.DataSource = _Traslado.LogisticaMetFiltrarTraslados(
-                    LogisticaTxtCodigoTrasladoFiltro.Text, FechaSolicitud, Estado);
+                    LogisticaTxtCodigoTrasladoFiltro.Text, FechaDesde, FechaHasta, Estado);
 
                 if (LogisticaDgvListaTraslados.Rows.Count > 0)
                 {
