@@ -41,6 +41,9 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Contratos\ClsIRepositorioCamaraRefrigeracion.cs" />
+    <Compile Include="Contratos\ClsIRepositorioTipoTransporte.cs" />
+    <Compile Include="Contratos\ClsIRepositorioTransporte.cs" />
     <Compile Include="Contratos\IRepositorioAlertaCadenaFrio.cs" />
     <Compile Include="Contratos\IRepositorioDetalleViaje.cs" />
     <Compile Include="Contratos\IRepositorioDetalleViajeLoteProducto.cs" />
@@ -48,20 +51,26 @@
     <Compile Include="Contratos\IRepositorioGenerico.cs" />
     <Compile Include="Contratos\IRepositorioTelemetriaTemperatura.cs" />
     <Compile Include="Entidades\ClsAlertaCadenaFrio.cs" />
+    <Compile Include="Entidades\ClsCamaraRefrigeracion.cs" />
     <Compile Include="Entidades\ClsCatalogoDetalleViajeLote.cs" />
     <Compile Include="Entidades\ClsCatalogoTransporteInterno.cs" />
     <Compile Include="Entidades\ClsDetalleViaje.cs" />
     <Compile Include="Entidades\ClsDetalleViajeLoteProducto.cs" />
     <Compile Include="Entidades\ClsEncabezadoViaje.cs" />
     <Compile Include="Entidades\ClsTelemetriaTemperatura.cs" />
+    <Compile Include="Entidades\ClsTipoTransporte.cs" />
+    <Compile Include="Entidades\ClsTransporte.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Repositorios\ClsRepositorio.cs" />
     <Compile Include="Repositorios\ClsRepositorioAlertaCadenaFrio.cs" />
+    <Compile Include="Repositorios\ClsRepositorioCamaraRefrigeracion.cs" />
     <Compile Include="Repositorios\ClsRepositorioDetalleViaje.cs" />
     <Compile Include="Repositorios\ClsRepositorioDetalleViajeLoteProducto.cs" />
     <Compile Include="Repositorios\ClsRepositorioEncabezadoViaje.cs" />
     <Compile Include="Repositorios\ClsRepositorioMaestro.cs" />
     <Compile Include="Repositorios\ClsRepositorioTelemetriaTemperatura.cs" />
+    <Compile Include="Repositorios\ClsRepositorioTipoTransporte.cs" />
+    <Compile Include="Repositorios\ClsRepositorioTransporte.cs" />
   </ItemGroup>
   <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

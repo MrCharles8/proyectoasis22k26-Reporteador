@@ -25,15 +25,49 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
+using CapaControlador_TransporteInterno_Logistica.Modelos_de_Controladores;
+
 namespace CapaVista_TransporteInterno_Logistica.Formularios
 {
     public partial class FrmMantenimientoCamaraRefrigeracion : Form
     {
+
+        private readonly ClsModeloCamaraRefrigeracion
+    _DatosCamara =
+        new ClsModeloCamaraRefrigeracion();
+
+        // =====================================================
+        // FUENTE DE DATOS PARA EL REPORTE
+        // =====================================================
+
+        private readonly Dictionary<string, object>
+            _FuentesReporteCamaraRefrigeracion =
+                new Dictionary<string, object>();
+
+        // =====================================================
+        // CONSTRUCTOR
+        // =====================================================
+
         public FrmMantenimientoCamaraRefrigeracion()
         {
             InitializeComponent();
 
-            LogisticaNavCamarasRefrigeracion.NavegadorMetConfigurar("tblCamaraRefrigeracion", 4, 6);
+            // Obtener los registros de las cámaras.
+            List<ClsModeloCamaraRefrigeracion> ListaCamaras =
+                _DatosCamara.LogisticaMetObtenerTodos();
+
+            // Asignar registros al DataSet.
+            _FuentesReporteCamaraRefrigeracion.Add(
+                "DsReporteCamaraRefrigeracion",
+                ListaCamaras);
+
+            // Configurar el Navegador.
+            LogisticaNavCamarasRefrigeracion.NavegadorMetConfigurar(
+                "tblCamaraRefrigeracion",
+                5000,
+                5028,
+                _FuentesReporteCamaraRefrigeracion);
         }
+
     }
 }

@@ -16,74 +16,54 @@
 // ============================================================================
 
 using System;
+using System.Collections.Generic;
+using System.Data;
 using System.Windows.Forms;
+
+using CapaControlador_TransporteInterno_Logistica.Modelos_de_Controladores;
 
 namespace CapaVista_TransporteInterno_Logistica.Formularios
 {
     public partial class FrmMantenimientoTransporte : Form
     {
-        // ============================================
-        // CONSTRUCTOR PRINCIPAL
-        // ============================================
+
+
+        private readonly ClsModeloTransporte
+    _DatosTransporte =
+        new ClsModeloTransporte();
+
+        // =====================================================
+        // FUENTE DE DATOS PARA EL REPORTE
+        // =====================================================
+
+        private readonly Dictionary<string, object>
+            _FuentesReporteTransporte =
+                new Dictionary<string, object>();
+
+        // =====================================================
+        // CONSTRUCTOR
+        // =====================================================
 
         public FrmMantenimientoTransporte()
         {
             InitializeComponent();
 
-            LogisticaNavTransporteInterno.NavegadorMetConfigurar("tblTransporte", 4, 20);
+            List<ClsModeloTransporte> ListaTransportes =
+                _DatosTransporte.LogisticaMetObtenerTodos();
+
+            _FuentesReporteTransporte.Add(
+                "DsReporteTransporte",
+                ListaTransportes);
+
+            LogisticaNavTransporteInterno.NavegadorMetConfigurar(
+                "tblTransporte",
+                5000,
+                5013,
+                _FuentesReporteTransporte);
         }
 
-        // ============================================
-        // MÉTODO PARA ABRIR FORMULARIOS
-        // ============================================
 
-        private void LogisticaMetAbrirFormulario(Form Formulario)
-        {
-            using (Formulario)
-            {
-                Formulario.StartPosition =
-                    FormStartPosition.CenterParent;
 
-                Formulario.ShowDialog(this);
-            }
-        }
 
-        // ============================================
-        // CONSULTA DE TRANSPORTE
-        // ============================================
-
-        private void LogisticaBtnConsultaTransporte_Click(
-            object sender, EventArgs e)
-        {
-            LogisticaMetAbrirFormulario(
-                new FrmMantenimientoEstadoTransporte());
-        }
-
-        // ============================================
-        // CONTROL DE TRANSPORTE
-        // ============================================
-
-        private void LogisticaBtnControlTransporte_Click(
-            object sender, EventArgs e)
-        {
-            LogisticaMetAbrirFormulario(
-                new FrmMantenimientoTipoTransporte());
-        }
-
-        // ============================================
-        // GESTIÓN DE VIAJES
-        // ============================================
-
-        private void LogisticaBtnGestionViajes_Click(
-            object sender, EventArgs e)
-        {
-            LogisticaMetAbrirFormulario(
-                new FrmMantenimientoConductor());
-        }
-
-        private void FrmMantenimientoTransporte_Load(object sender, EventArgs e)
-        {
-
-        }
     }
 }
