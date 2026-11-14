@@ -52,6 +52,9 @@
     <Compile Include="Modelos de Controladores\ClsDatosEncabezadoViaje.cs" />
     <Compile Include="Modelos de Controladores\ClsControladorEncabezadoViaje.cs" />
     <Compile Include="Modelos de Controladores\ClsDatosTelemetriaTemperatura.cs" />
+    <Compile Include="Modelos de Controladores\ClsModeloCamaraRefrigeracion.cs" />
+    <Compile Include="Modelos de Controladores\ClsModeloTipoTransporte.cs" />
+    <Compile Include="Modelos de Controladores\ClsModeloTransporte.cs" />
     <Compile Include="Modelos de Controladores\ClsOpcionCatalogo.cs" />
     <Compile Include="Modelos de Controladores\ClsOpcionCatalogoLote.cs" />
     <Compile Include="Modelos de Controladores\ClsValidacionesAlertaCadenaFrio.cs" />

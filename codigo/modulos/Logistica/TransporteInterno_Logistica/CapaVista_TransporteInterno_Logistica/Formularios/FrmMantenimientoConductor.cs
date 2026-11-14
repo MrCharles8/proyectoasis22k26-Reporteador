@@ -29,12 +29,18 @@ namespace CapaVista_TransporteInterno_Logistica.Formularios
 {
     public partial class FrmMantenimientoConductor : Form
     {
+
+        private readonly Dictionary<string, object>
+            _FuentesReporteConductor =
+                new Dictionary<string, object>();
+
         public FrmMantenimientoConductor()
         {
             InitializeComponent();
 
-            LogisticaNavConductores.NavegadorMetConfigurar("tblConductor", 4, 6);
+            
         }
+
 
         private void FrmMantenimientoConductor_Load(object sender, EventArgs e)
         {

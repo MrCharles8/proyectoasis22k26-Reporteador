@@ -25,15 +25,43 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
+using CapaControlador_TransporteInterno_Logistica.Modelos_de_Controladores;
+
 namespace CapaVista_TransporteInterno_Logistica.Formularios
 {
     public partial class FrmMantenimientoTipoTransporte : Form
     {
+
+        private readonly ClsModeloTipoTransporte
+            _DatosTipoTransporte =
+                new ClsModeloTipoTransporte();
+
+        private readonly Dictionary<string, object>
+            _FuentesReporteTipoTransporte =
+                new Dictionary<string, object>();
+
         public FrmMantenimientoTipoTransporte()
         {
             InitializeComponent();
 
-            LogisticaNavTipoTransporte.NavegadorMetConfigurar("tblTipoTransporte", 4, 6);
+            // Obtener los registros de tipos de transporte.
+            List<ClsModeloTipoTransporte> ListaTipos =
+                _DatosTipoTransporte.LogisticaMetObtenerTodos();
+
+            // Asignar los datos al reporte.
+            _FuentesReporteTipoTransporte.Add(
+                "DsReporteTipoTransporte",
+                ListaTipos);
+
+            // Configurar el Navegador.
+            LogisticaNavTipoTransporte.NavegadorMetConfigurar(
+                "tblTipoTransporte",
+                5000,
+                5015,
+                _FuentesReporteTipoTransporte);
         }
+
+
+
     }
 }

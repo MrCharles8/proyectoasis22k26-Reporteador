@@ -83,7 +83,6 @@
             this.Name = "FrmMantenimientoTransporte";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "5013-Transporte Interno";
-            this.Load += new System.EventHandler(this.FrmMantenimientoTransporte_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
 

@@ -236,10 +236,13 @@
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
     </EmbeddedResource>
     <EmbeddedResource Include="Reportes\RpReporteAlertaCadenaFrio.rdlc" />
+    <EmbeddedResource Include="Reportes\RpReporteCamaraRefrigeracion.rdlc" />
     <EmbeddedResource Include="Reportes\RpReporteDetalleViaje.rdlc" />
     <EmbeddedResource Include="Reportes\RpReporteDetalleViajeProducto.rdlc" />
     <EmbeddedResource Include="Reportes\RpReporteEncabezadoViaje.rdlc" />
     <EmbeddedResource Include="Reportes\RpReporteTelemetriaTemperatura.rdlc" />
+    <EmbeddedResource Include="Reportes\RpReporteTipoTransporte.rdlc" />
+    <EmbeddedResource Include="Reportes\RpReporteTransporte.rdlc" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="SqlServerTypes\readme.htm" />
@@ -262,6 +265,9 @@
     <None Include="Properties\DataSources\CapaControlador_TransporteInterno_Logistica.Modelos_de_Controladores.ClsDatosDetalleViaje.datasource" />
     <None Include="Properties\DataSources\CapaControlador_TransporteInterno_Logistica.Modelos_de_Controladores.ClsDatosDetalleViajeLoteProducto.datasource" />
     <None Include="Properties\DataSources\CapaControlador_TransporteInterno_Logistica.Modelos_de_Controladores.ClsDatosTelemetriaTemperatura.datasource" />
+    <None Include="Properties\DataSources\CapaControlador_TransporteInterno_Logistica.Modelos_de_Controladores.ClsModeloCamaraRefrigeracion.datasource" />
+    <None Include="Properties\DataSources\CapaControlador_TransporteInterno_Logistica.Modelos_de_Controladores.ClsModeloTipoTransporte.datasource" />
+    <None Include="Properties\DataSources\CapaControlador_TransporteInterno_Logistica.Modelos_de_Controladores.ClsModeloTransporte.datasource" />
     <None Include="Properties\DataSources\ClsDatosReporteEncabezadoViaje.datasource" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
