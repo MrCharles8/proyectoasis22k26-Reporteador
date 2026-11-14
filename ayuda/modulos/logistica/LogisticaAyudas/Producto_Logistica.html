@@ -1,54 +1,138 @@
-<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<!doctype html>
 <html lang="es">
-<head>
-<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
-<title>Manual de Usuario - Producto | Logística</title>
-<style type="text/css">
-html, body { background:#fdf6e7; margin:0; padding:0; color:#412c20; font-family:Arial,Helvetica,sans-serif; font-size:15px; line-height:1.6; }
-.portada { margin:0; padding:0; width:100%; }
-.portada img { display:block; width:100%; height:auto; border:0; }
-.contenido { max-width:950px; margin:0 auto; padding:22px 20px 50px; }
-h1 { font-size:27px; color:#64250e; margin:16px 0; }
-h2 { font-size:20px; color:#71321b; margin:0 0 10px; }
-p { margin:0 0 15px; }
-section { margin:30px 0 40px; }
-.captura { display:block; width:100%; max-width:950px; height:auto; margin:15px auto 0; border:1px solid #e7d8c6; }
-</style>
-</head>
-<body>
-<div class="portada"><img src="Imagenes/Producto/portada.png" alt="Embutidos de Calidad - Manual de Usuario"></div>
-<div class="contenido">
-<h1>Manual de Usuario: Productos</h1>
-<p>El formulario <strong>Producto</strong> permite administrar el catálogo de productos de la empresa, incluyendo sus datos generales, características, clasificación comercial, precios y existencias mínimas y máximas. También permite consultar los productos registrados desde el listado inferior.</p>
-
-<section>
-<h2>1. Interfaz principal de Productos</h2>
-<p>Al abrir la ventana <strong>5006 - Producto</strong>, se presenta una barra de botones en la parte superior para realizar las operaciones de mantenimiento. En el centro se encuentra el formulario con los campos del producto y el espacio destinado a su imagen. En la parte inferior aparecen el campo <strong>Buscar</strong>, la tabla de productos registrados y los botones <strong>Anterior</strong> y <strong>Siguiente</strong>, que permiten desplazarse entre las páginas del listado.</p>
-<p>Esta distribución permite consultar la información de los productos y acceder a las opciones de gestión desde una misma ventana.</p>
-<img class="captura" src="Imagenes/Producto/Interfaz.png" alt="Interfaz principal de Productos con el formulario, botones y listado señalados">
-</section>
-
-<section>
-<h2>2. Botones de gestión</h2>
-<p>En la barra superior se encuentran las opciones principales del formulario. <strong>Ingresar</strong> permite iniciar el registro de un nuevo producto; <strong>Consultar</strong> permite revisar los productos; <strong>Modificar</strong> permite editar la información del producto seleccionado; <strong>Guardar</strong> registra los datos ingresados o los cambios realizados; y <strong>Eliminar</strong> permite solicitar la eliminación de un registro.</p>
-<p>Además, <strong>Refrescar</strong> actualiza la información del listado, <strong>Imprimir</strong> da acceso a la función de impresión y <strong>Ayuda</strong> abre las instrucciones de uso del formulario. Para modificar o eliminar un producto existente, primero debe seleccionarse el registro correspondiente en la tabla.</p>
-<img class="captura" src="Imagenes/Producto/Gestion.png" alt="Botones superiores de gestión de Productos señalados">
-</section>
-
-<section>
-<h2>3. Ingresar y completar los datos del producto</h2>
-<p>Para comenzar un registro, presione <strong>Ingresar</strong> y complete los campos habilitados. El formulario incluye el <strong>ID</strong>, que identifica al producto; el <strong>SKU</strong>, usado como código comercial; el <strong>Nombre</strong>; la <strong>Clasificación</strong>; el <strong>País</strong> y la <strong>Descripción</strong>.</p>
-<p>También dispone de listas para seleccionar la <strong>Categoría</strong>, <strong>Marca</strong>, <strong>Línea</strong> y <strong>Proveedor</strong>. El campo <strong>Peso</strong> describe una característica física del producto. En el área de valores comerciales se pueden ingresar el <strong>Precio de Costo</strong>, <strong>Precio de Venta</strong>, <strong>Stock Mínimo</strong>, <strong>Stock Máximo</strong> y <strong>Comisión</strong>.</p>
-<p>A la derecha se encuentra un recuadro para visualizar la imagen del producto y el botón <strong>Agregar Imagen</strong>, que permite seleccionar una imagen para asociarla al registro. Después de revisar los datos, utilice <strong>Guardar</strong> para registrarlos.</p>
-<img class="captura" src="Imagenes/Producto/Ingreso.png" alt="Formulario de ingreso de Productos con el botón Ingresar resaltado">
-</section>
-
-<section>
-<h2>4. Búsqueda y consulta de productos</h2>
-<p>Para localizar un producto, escriba su nombre o parte de él en el campo <strong>Buscar</strong>, situado sobre la tabla inferior. El listado permite visualizar los registros que coinciden con el texto introducido. En la captura de ejemplo se escribe <strong>Chorizo</strong> y se muestran los productos relacionados con esa búsqueda.</p>
-<p>La tabla presenta datos como <strong>ID</strong>, <strong>SKU</strong>, <strong>Nombre</strong>, <strong>Clasificación</strong>, <strong>País</strong>, <strong>Categoría</strong>, <strong>Marca</strong> y <strong>Línea</strong>. En la parte inferior, los botones <strong>Anterior</strong> y <strong>Siguiente</strong> permiten desplazarse entre páginas cuando el listado tiene más resultados de los que caben en una sola página.</p>
-<img class="captura" src="Imagenes/Producto/Busqueda.png" alt="Búsqueda de productos por la palabra Chorizo y resultados en la tabla">
-</section>
-</div>
-</body>
+  <head>
+    <meta charset="utf-8" />
+    <title>Manual de Ayudas - Producto</title>
+    <style>
+      body {
+        font-family: Arial, Helvetica, sans-serif;
+        color: #302b25;
+        margin: 0 auto;
+        max-width: 950px;
+        padding: 16px 22px 50px;
+        background: #fff;
+        line-height: 1.55;
+      }
+      .portada {
+        text-align: center;
+        margin: 0 auto 24px;
+      }
+      .portada img {
+        width: 100%;
+        max-width: 520px;
+        height: auto;
+        border: 0;
+      }
+      h1 {
+        color: #71321b;
+        font-size: 26px;
+        margin-top: 20px;
+      }
+      h2 {
+        color: #71321b;
+        font-size: 20px;
+        margin-bottom: 9px;
+      }
+      p {
+        margin: 0 0 14px;
+      }
+      section {
+        margin: 28px 0 38px;
+      }
+      section img {
+        width: 100%;
+        max-width: 880px;
+        height: auto;
+        border: 1px solid #ddd;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="portada">
+      <img
+        src="Imagenes/Producto/portada.png"
+        alt="Embutidos de Calidad, S. A. - Manual de Ayudas"
+      />
+    </div>
+    <h1>Ayuda: Producto</h1>
+    <section>
+      <h2>1. Ingresar Producto</h2>
+      <p>
+        Primero tendremos el botón de “Ingresar”, el cual despliega los campos a
+        llenar para esta tabla, así como también muestra los datos ya ingresados
+        en la parte inferior.
+      </p>
+      <img src="Imagenes/Producto/01_ingresar.png" alt="Ingresar Producto" />
+    </section>
+    <section>
+      <h2>2. Guardar Producto</h2>
+      <p>
+        Se ingresan los valores que se quieren registrar y se procede a dar clic
+        sobre el botón “Guardar” para registrar los cambios.
+      </p>
+      <img src="Imagenes/Producto/02_guardar.png" alt="Guardar Producto" />
+    </section>
+    <section>
+      <h2>3. Confirmación de registro</h2>
+      <p>
+        Se despliega una ventana para la confirmación de registro de datos. Se
+        acepta o se cancela según sea el caso.
+      </p>
+      <img src="Imagenes/Producto/03_confirmacion.png" alt="Confirmación de registro" />
+    </section>
+    <section>
+      <h2>4. Resultado del registro</h2>
+      <p>
+        Después de confirmar el ingreso, el registro aparece en la tabla
+        inferior.
+      </p>
+      <img src="Imagenes/Producto/04_resultado.png" alt="Resultado del registro" />
+    </section>
+    <section>
+      <h2>5. Consultar Producto</h2>
+      <p>
+        Podremos realizar consultas para buscar algún registro en específico.
+        Para ello se procede a dar clic al botón de consulta.
+      </p>
+      <img src="Imagenes/Producto/05_consultar.png" alt="Consultar Producto" />
+    </section>
+    <section>
+      <h2>6. Ingresar filtros de búsqueda</h2>
+      <p>
+        Se despliega una ventana con campos que se deberán llenar según lo que
+        necesitemos buscar: “Campo”, “Operador” y “Valor”.
+      </p>
+      <img src="Imagenes/Producto/06_filtros.png" alt="Ingresar filtros de búsqueda" />
+    </section>
+    <section>
+      <h2>7. Resultado de la consulta</h2>
+      <p>
+        Al ingresar los valores que necesitemos buscar, se procede a dar clic al
+        botón de consultar y los resultados se verán reflejados en la parte
+        inferior, aplicando los filtros.
+      </p>
+      <img
+        src="Imagenes/Producto/07_resultado_consulta.png"
+        alt="Resultado de la consulta"
+      />
+    </section>
+    <section>
+      <h2>8. Modificar Producto</h2>
+      <p>
+        Si se desea modificar algún registro, se debe dar clic en el botón
+        “Modificar”, teniendo seleccionado el registro (ID) que se desea
+        modificar. Se podrán cambiar los valores de este registro, a excepción
+        del ID.
+      </p>
+      <img src="Imagenes/Productos/08_modificar.png" alt="Modificar Producto" />
+    </section>
+    <section>
+      <h2>9. Otros botones</h2>
+      <p>
+        También se cuenta con botones para la navegación entre los registros,
+        así como los botones Refrescar, Imprimir y Salir.
+      </p>
+      <img src="Imagenes/Producto/09_acciones.png" alt="Otros botones" />
+    </section>
+  </body>
 </html>
