@@ -730,12 +730,12 @@ namespace CapaVista_Logistica.Formularios
 
         private void LogisticaBtnSaldos_Click(object sender, EventArgs e)
         {
-
+            LogisticaMetAbrirFormulario(new FrmSaldosInventario());
         }
 
         private void LogisticaBtnHistoricoInventario_Click(object sender, EventArgs e)
         {
-
+            LogisticaMetAbrirFormulario(new FrmHistorico());
         }
 
         private void LogisticaBtnCierreInventario_Click(object sender, EventArgs e)
