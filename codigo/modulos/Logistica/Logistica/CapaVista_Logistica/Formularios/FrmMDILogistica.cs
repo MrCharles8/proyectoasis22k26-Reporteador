@@ -10,18 +10,18 @@
  * ============================================================================
  */
 
+using CapaVista_CierreInventario_Logistica.Formularios;
+using CapaVista_Enlace_Logistica.Formas;
+using CapaVista_Inventario_Logistica.Formularios;
+using CapaVista_MuestreoAuditoria_Logistica.Formularios;
+using CapaVista_TransporteExterno_Logistica.Formularios;
+using CapaVista_TransporteInterno_Logistica.Formularios;
+using CapaVista_Traslados_Logistica.Formularios;
 using System;
 using System.Collections.Generic;
 using System.Drawing;
+using System.IO;
 using System.Windows.Forms;
-
-using CapaVista_Inventario_Logistica.Formularios;
-using CapaVista_Traslados_Logistica.Formularios;
-using CapaVista_MuestreoAuditoria_Logistica.Formularios;
-using CapaVista_CierreInventario_Logistica.Formularios;
-using CapaVista_Enlace_Logistica.Formas;
-using CapaVista_TransporteInterno_Logistica.Formularios;
-using CapaVista_TransporteExterno_Logistica.Formularios;
 
 namespace CapaVista_Logistica.Formularios
 {
@@ -814,6 +814,43 @@ namespace CapaVista_Logistica.Formularios
 
             // El panel principal ocupa el espacio disponible
             LogisticaPnlMDI.Dock = DockStyle.Fill;
+        }
+
+        private void LogisticaProcMostrarAyuda(object sender, EventArgs e)
+        {
+            DirectoryInfo DirectorioActual =
+                new DirectoryInfo(AppDomain.CurrentDomain.BaseDirectory);
+
+            while (DirectorioActual != null)
+            {
+                string RutaAyuda = Path.Combine(
+                    DirectorioActual.FullName,
+                    "ayuda",
+                    "modulos",
+                    "logistica",
+                    "LogisticaAyudas",
+                    "LogisticaAyudas.chm");
+
+                if (File.Exists(RutaAyuda))
+                {
+                    Help.ShowHelp(this, RutaAyuda, "MDI_Logistica.html");
+                    return;
+                }
+
+                DirectorioActual = DirectorioActual.Parent;
+            }
+
+            MessageBox.Show(
+                this,
+                "No se encontró el archivo de ayuda",
+                "MDI_Logistica",
+                MessageBoxButtons.OK,
+                MessageBoxIcon.Error);
+        }
+
+        private void LogisticaBtnAyuda_Click(object sender, EventArgs e)
+        {
+            LogisticaProcMostrarAyuda(sender, e);
         }
     }
 }

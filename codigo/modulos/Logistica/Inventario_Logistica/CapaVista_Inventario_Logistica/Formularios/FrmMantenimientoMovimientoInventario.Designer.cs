@@ -47,6 +47,10 @@ namespace CapaVista_Inventario_Logistica.Formularios
             this.LogisticaLblDescripcionMovimientoInventario = new System.Windows.Forms.Label();
             this.LogisticaLblTituloMovimientoInventario = new System.Windows.Forms.Label();
             this.LogistinaPnlDatosMovimiento = new System.Windows.Forms.Panel();
+            this.LogisticaCboIdSucursalDestino = new System.Windows.Forms.ComboBox();
+            this.LogisticaCboIdSucursalOrigen = new System.Windows.Forms.ComboBox();
+            this.LogisticaLblSucursalDestino = new System.Windows.Forms.Label();
+            this.LogisticaLblSucursalOrigen = new System.Windows.Forms.Label();
             this.LogisticaTxtObservacionMovimientoInventario = new System.Windows.Forms.TextBox();
             this.LogisticaDtpFechaMovimiento = new System.Windows.Forms.DateTimePicker();
             this.LogisticaCboTransporte = new System.Windows.Forms.ComboBox();
@@ -62,10 +66,6 @@ namespace CapaVista_Inventario_Logistica.Formularios
             this.LogisticaLblFecha = new System.Windows.Forms.Label();
             this.LogisticaPnlListadoMovimiento = new System.Windows.Forms.Panel();
             this.LogisticaLblListadoMovimiento = new System.Windows.Forms.Label();
-            this.LogisticaLblSucursalOrigen = new System.Windows.Forms.Label();
-            this.LogisticaLblSucursalDestino = new System.Windows.Forms.Label();
-            this.LogisticaCboIdSucursalOrigen = new System.Windows.Forms.ComboBox();
-            this.LogisticaCboIdSucursalDestino = new System.Windows.Forms.ComboBox();
             this.LogisticaPnlMovimientoInventario.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.LogisticaDgvListadoMovimientoInventario)).BeginInit();
             this.LogistinaPnlDatosMovimiento.SuspendLayout();
@@ -207,6 +207,7 @@ namespace CapaVista_Inventario_Logistica.Formularios
             this.LogisticaBtnAyudaMovimientoInventario.Size = new System.Drawing.Size(60, 66);
             this.LogisticaBtnAyudaMovimientoInventario.TabIndex = 27;
             this.LogisticaBtnAyudaMovimientoInventario.UseVisualStyleBackColor = true;
+            this.LogisticaBtnAyudaMovimientoInventario.Click += new System.EventHandler(this.LogisticaBtnAyudaMovimientoInventario_Click);
             // 
             // LogisticaBtnCancelarMovimientoInventario
             // 
@@ -347,6 +348,46 @@ namespace CapaVista_Inventario_Logistica.Formularios
             this.LogistinaPnlDatosMovimiento.Name = "LogistinaPnlDatosMovimiento";
             this.LogistinaPnlDatosMovimiento.Size = new System.Drawing.Size(996, 287);
             this.LogistinaPnlDatosMovimiento.TabIndex = 14;
+            // 
+            // LogisticaCboIdSucursalDestino
+            // 
+            this.LogisticaCboIdSucursalDestino.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.LogisticaCboIdSucursalDestino.FormattingEnabled = true;
+            this.LogisticaCboIdSucursalDestino.Location = new System.Drawing.Point(214, 166);
+            this.LogisticaCboIdSucursalDestino.Name = "LogisticaCboIdSucursalDestino";
+            this.LogisticaCboIdSucursalDestino.Size = new System.Drawing.Size(259, 25);
+            this.LogisticaCboIdSucursalDestino.TabIndex = 28;
+            // 
+            // LogisticaCboIdSucursalOrigen
+            // 
+            this.LogisticaCboIdSucursalOrigen.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.LogisticaCboIdSucursalOrigen.FormattingEnabled = true;
+            this.LogisticaCboIdSucursalOrigen.Location = new System.Drawing.Point(214, 113);
+            this.LogisticaCboIdSucursalOrigen.Name = "LogisticaCboIdSucursalOrigen";
+            this.LogisticaCboIdSucursalOrigen.Size = new System.Drawing.Size(259, 25);
+            this.LogisticaCboIdSucursalOrigen.TabIndex = 27;
+            // 
+            // LogisticaLblSucursalDestino
+            // 
+            this.LogisticaLblSucursalDestino.AutoSize = true;
+            this.LogisticaLblSucursalDestino.Font = new System.Drawing.Font("Tahoma", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.LogisticaLblSucursalDestino.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(62)))), ((int)(((byte)(138)))), ((int)(((byte)(132)))));
+            this.LogisticaLblSucursalDestino.Location = new System.Drawing.Point(14, 172);
+            this.LogisticaLblSucursalDestino.Name = "LogisticaLblSucursalDestino";
+            this.LogisticaLblSucursalDestino.Size = new System.Drawing.Size(144, 19);
+            this.LogisticaLblSucursalDestino.TabIndex = 26;
+            this.LogisticaLblSucursalDestino.Text = "Sucursal destino: *";
+            // 
+            // LogisticaLblSucursalOrigen
+            // 
+            this.LogisticaLblSucursalOrigen.AutoSize = true;
+            this.LogisticaLblSucursalOrigen.Font = new System.Drawing.Font("Tahoma", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.LogisticaLblSucursalOrigen.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(62)))), ((int)(((byte)(138)))), ((int)(((byte)(132)))));
+            this.LogisticaLblSucursalOrigen.Location = new System.Drawing.Point(14, 119);
+            this.LogisticaLblSucursalOrigen.Name = "LogisticaLblSucursalOrigen";
+            this.LogisticaLblSucursalOrigen.Size = new System.Drawing.Size(138, 19);
+            this.LogisticaLblSucursalOrigen.TabIndex = 25;
+            this.LogisticaLblSucursalOrigen.Text = "Sucursal origen: *";
             // 
             // LogisticaTxtObservacionMovimientoInventario
             // 
@@ -507,46 +548,6 @@ namespace CapaVista_Inventario_Logistica.Formularios
             this.LogisticaLblListadoMovimiento.Size = new System.Drawing.Size(185, 21);
             this.LogisticaLblListadoMovimiento.TabIndex = 0;
             this.LogisticaLblListadoMovimiento.Text = "Listado de movimientos";
-            // 
-            // LogisticaLblSucursalOrigen
-            // 
-            this.LogisticaLblSucursalOrigen.AutoSize = true;
-            this.LogisticaLblSucursalOrigen.Font = new System.Drawing.Font("Tahoma", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.LogisticaLblSucursalOrigen.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(62)))), ((int)(((byte)(138)))), ((int)(((byte)(132)))));
-            this.LogisticaLblSucursalOrigen.Location = new System.Drawing.Point(14, 119);
-            this.LogisticaLblSucursalOrigen.Name = "LogisticaLblSucursalOrigen";
-            this.LogisticaLblSucursalOrigen.Size = new System.Drawing.Size(138, 19);
-            this.LogisticaLblSucursalOrigen.TabIndex = 25;
-            this.LogisticaLblSucursalOrigen.Text = "Sucursal origen: *";
-            // 
-            // LogisticaLblSucursalDestino
-            // 
-            this.LogisticaLblSucursalDestino.AutoSize = true;
-            this.LogisticaLblSucursalDestino.Font = new System.Drawing.Font("Tahoma", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.LogisticaLblSucursalDestino.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(62)))), ((int)(((byte)(138)))), ((int)(((byte)(132)))));
-            this.LogisticaLblSucursalDestino.Location = new System.Drawing.Point(14, 172);
-            this.LogisticaLblSucursalDestino.Name = "LogisticaLblSucursalDestino";
-            this.LogisticaLblSucursalDestino.Size = new System.Drawing.Size(144, 19);
-            this.LogisticaLblSucursalDestino.TabIndex = 26;
-            this.LogisticaLblSucursalDestino.Text = "Sucursal destino: *";
-            // 
-            // LogisticaCboIdSucursalOrigen
-            // 
-            this.LogisticaCboIdSucursalOrigen.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.LogisticaCboIdSucursalOrigen.FormattingEnabled = true;
-            this.LogisticaCboIdSucursalOrigen.Location = new System.Drawing.Point(214, 113);
-            this.LogisticaCboIdSucursalOrigen.Name = "LogisticaCboIdSucursalOrigen";
-            this.LogisticaCboIdSucursalOrigen.Size = new System.Drawing.Size(259, 25);
-            this.LogisticaCboIdSucursalOrigen.TabIndex = 27;
-            // 
-            // LogisticaCboIdSucursalDestino
-            // 
-            this.LogisticaCboIdSucursalDestino.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.LogisticaCboIdSucursalDestino.FormattingEnabled = true;
-            this.LogisticaCboIdSucursalDestino.Location = new System.Drawing.Point(214, 166);
-            this.LogisticaCboIdSucursalDestino.Name = "LogisticaCboIdSucursalDestino";
-            this.LogisticaCboIdSucursalDestino.Size = new System.Drawing.Size(259, 25);
-            this.LogisticaCboIdSucursalDestino.TabIndex = 28;
             // 
             // FrmMantenimientoMovimientoInventario
             // 

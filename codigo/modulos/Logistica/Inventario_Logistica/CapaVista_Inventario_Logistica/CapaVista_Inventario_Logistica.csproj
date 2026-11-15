@@ -72,6 +72,12 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="ClsTipoMovimiento.cs" />
+    <Compile Include="Formularios\FrmHistorico.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Formularios\FrmHistorico.Designer.cs">
+      <DependentUpon>FrmHistorico.cs</DependentUpon>
+    </Compile>
     <Compile Include="Formularios\FrmMantenimientoBodegas.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -147,6 +153,9 @@
     <Compile Include="SqlServerTypes\Loader.cs" />
   </ItemGroup>
   <ItemGroup>
+    <EmbeddedResource Include="Formularios\FrmHistorico.resx">
+      <DependentUpon>FrmHistorico.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Formularios\FrmMantenimientoBodegas.resx">
       <DependentUpon>FrmMantenimientoBodegas.cs</DependentUpon>
     </EmbeddedResource>

@@ -1379,17 +1379,44 @@ namespace CapaVista_Inventario_Logistica.Formularios
         // ========================================================
         // BOTÓN AYUDA
         // ========================================================
+        private void LogisticaProcMostrarAyuda(object sender, EventArgs e)
+        {
+            DirectoryInfo DirectorioActual =
+                new DirectoryInfo(AppDomain.CurrentDomain.BaseDirectory);
+
+            while (DirectorioActual != null)
+            {
+                string RutaAyuda = Path.Combine(
+                    DirectorioActual.FullName,
+                    "ayuda",
+                    "modulos",
+                    "logistica",
+                    "LogisticaAyudas",
+                    "LogisticaAyudas.chm");
+
+                if (File.Exists(RutaAyuda))
+                {
+                    Help.ShowHelp(this, RutaAyuda, "Stock_Logistica.html");
+                    return;
+                }
+
+                DirectorioActual = DirectorioActual.Parent;
+            }
+
+            MessageBox.Show(
+                this,
+                "No se encontró el archivo de ayuda",
+                "Stock_Logistica",
+                MessageBoxButtons.OK,
+                MessageBoxIcon.Error);
+        }
+
 
         private void LogisticaBtnAyudaStock_Click(
             object Sender,
             EventArgs E)
         {
-            MessageBox.Show(
-                "La ayuda CHM de Stock está pendiente " +
-                "de integrar.",
-                "Logística - Información",
-                MessageBoxButtons.OK,
-                MessageBoxIcon.Information);
+            LogisticaProcMostrarAyuda(Sender, E);
         }
 
         // ========================================================
@@ -1610,5 +1637,8 @@ namespace CapaVista_Inventario_Logistica.Formularios
                 return Ventana.ShowDialog(this);
             }
         }
+
+      
+       
     }
 }
