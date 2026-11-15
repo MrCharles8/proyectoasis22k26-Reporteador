@@ -108,21 +108,6 @@ namespace CapaVista_Inventario_Logistica.Formularios
                 (s, e) => LogisticaProcEjecutar(
                     LogisticaProcImprimir);
 
-            LogisticaBtnAyudaMovimientoInventario.Click +=
-                (s, e) => MessageBox.Show(
-                    "1. Ingresar: crea un movimiento pendiente.\n" +
-                    "2. Consultar: muestra los registros.\n" +
-                    "3. Modificar: edita un movimiento pendiente.\n" +
-                    "4. Guardar: registra los datos.\n" +
-                    "5. Eliminar: elimina pendientes sin detalles.\n" +
-                    "6. Cancelar: descarta los cambios.\n" +
-                    "7. Imprimir: genera el reporte RDLC.\n\n" +
-                    "Las sucursales y bodegas deben seleccionarse " +
-                    "en pares. Este formulario no actualiza stock.",
-                    "Ayuda - Movimiento de Inventario",
-                    MessageBoxButtons.OK,
-                    MessageBoxIcon.Information);
-
             LogisticaBtnInicioMovimientoInventario.Click +=
                 (s, e) => LogisticaProcSeleccionar(0);
 
