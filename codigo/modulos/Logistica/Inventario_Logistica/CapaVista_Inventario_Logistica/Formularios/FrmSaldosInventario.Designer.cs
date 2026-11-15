@@ -42,7 +42,7 @@
             this.MaximizeBox = false;
             this.Name = "FrmSaldosInventario";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "5027 - Saldos";
+            this.Text = "5014 - Saldos";
             this.ResumeLayout(false);
 
         }
