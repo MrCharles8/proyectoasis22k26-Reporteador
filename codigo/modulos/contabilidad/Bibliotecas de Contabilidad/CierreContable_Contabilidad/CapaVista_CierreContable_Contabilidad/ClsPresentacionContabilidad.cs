@@ -22,7 +22,8 @@ namespace CapaVista_Contabilidad
 
         private static readonly System.Collections.Generic.Dictionary<string, int> _Codigos = new System.Collections.Generic.Dictionary<string, int>
         {
-            { "FrmCierreContable", 10004 }
+            { "FrmCierreContable", 10004 },
+            { "FrmReporteCierreContable", 10004 }
         };
 
         internal static void ContabilidadMetPrepararVentana(Form Formulario, string Titulo, Size AreaCliente)

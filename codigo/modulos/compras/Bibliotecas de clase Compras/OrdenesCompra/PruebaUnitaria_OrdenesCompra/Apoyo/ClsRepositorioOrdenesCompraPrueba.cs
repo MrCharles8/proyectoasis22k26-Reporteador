@@ -156,6 +156,10 @@ namespace PruebaUnitaria_OrdenesCompra.Apoyo
             Fila["estadoOrdenCompra"] = Estado;
         }
 
+        internal bool TieneCompra { get; set; }
+
+        public bool ComprasFuncTieneCompra(int Id) => TieneCompra;
+
         public void ComprasProcAnular(int Id)
         {
             if (!OmitirAnulacion)

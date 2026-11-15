@@ -20,9 +20,19 @@ namespace CapaControlador_OrdenesCompra
             return _Repositorio.ComprasFuncListarDetalles(Id);
         }
 
+        public const string ComprasMensajeOrdenConCompra = "No se puede anular la orden porque tiene una compra registrada.";
+
+        public bool ComprasFuncTieneCompra(int Id)
+        {
+            ClsOrdenesCompraValidar.ComprasProcValidarId(Id);
+            return _Repositorio.ComprasFuncTieneCompra(Id);
+        }
+
         public ClsOrdenesCompraDatos ComprasFuncAnular(int Id)
         {
             ClsOrdenesCompraValidar.ComprasProcValidarId(Id);
+            if (_Repositorio.ComprasFuncTieneCompra(Id))
+                throw new InvalidOperationException(ComprasMensajeOrdenConCompra);
             _Repositorio.ComprasProcAnular(Id);
             var Orden = ComprasFuncObtener(Id);
             if (Orden == null || Orden.Estado != "Anulada")

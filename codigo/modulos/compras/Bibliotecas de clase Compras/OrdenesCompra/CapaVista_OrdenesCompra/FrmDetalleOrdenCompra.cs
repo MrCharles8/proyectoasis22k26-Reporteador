@@ -216,13 +216,20 @@ namespace CapaVista_OrdenesCompra
             try
             {
                 int Id = _Compra.IdOrdenCompra;
+                if (await Task.Run(() => _Controlador.ComprasFuncTieneCompra(Id)))
+                {
+                    MessageBox.Show(this, ClsDetallesOrdenesCompraControlador.ComprasMensajeOrdenConCompra,
+                        "Órdenes de compra", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    return;
+                }
                 _Compra = await Task.Run(() => _Controlador.ComprasFuncAnular(Id));
                 OrdenGuardada = true;
                 ComprasProcMostrarEncabezado();
             }
             catch (Exception Ex)
             {
-                MessageBox.Show(this, "No se pudo anular la orden. " + Ex.Message,
+                MessageBox.Show(this, Ex.Message == ClsDetallesOrdenesCompraControlador.ComprasMensajeOrdenConCompra
+                    ? Ex.Message : "No se pudo anular la orden. " + Ex.Message,
                     "Órdenes de compra", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
             finally

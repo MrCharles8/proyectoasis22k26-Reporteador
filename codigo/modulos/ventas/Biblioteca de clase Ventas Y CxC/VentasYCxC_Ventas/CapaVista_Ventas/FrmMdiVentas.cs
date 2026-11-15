@@ -53,11 +53,17 @@ namespace CapaVista_Ventas
                 const string Configuracion = "Release";
 #endif
                 string RutaModulo = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "CapaVista_CierreMovimientos_Ventas.dll");
-                if (!File.Exists(RutaModulo))
-                    RutaModulo = Path.GetFullPath(Path.Combine(
-                    AppDomain.CurrentDomain.BaseDirectory,
-                    @"..\..\..\..\Biblioteca de clase Ventas Y CxC\CierreMovimientos_Ventas\CapaVista_CierreMovimientos_Ventas\bin\" +
-                    Configuracion + @"\CapaVista_CierreMovimientos_Ventas.dll"));
+                // Sube desde el ejecutable hasta la carpeta codigo, para abrir Cierre desde cualquier módulo.
+                DirectoryInfo Carpeta = new DirectoryInfo(AppDomain.CurrentDomain.BaseDirectory);
+                while (!File.Exists(RutaModulo) && Carpeta != null)
+                {
+                    string Candidata = Path.Combine(Carpeta.FullName,
+                        @"codigo\modulos\ventas\Biblioteca de clase Ventas Y CxC\CierreMovimientos_Ventas\CapaVista_CierreMovimientos_Ventas\bin\" +
+                        Configuracion + @"\CapaVista_CierreMovimientos_Ventas.dll");
+                    if (File.Exists(Candidata))
+                        RutaModulo = Candidata;
+                    Carpeta = Carpeta.Parent;
+                }
 
                 if (!File.Exists(RutaModulo))
                     throw new FileNotFoundException(

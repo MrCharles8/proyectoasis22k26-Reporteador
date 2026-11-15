@@ -36,5 +36,14 @@ namespace CapaModelo_OrdenesCompra.Repositorios
                 return Datos.Rows.Count == 0 ? null : new ClsOrdenesCompraEntidad(Datos.Rows[0]);
             }
         }
+
+        internal bool ComprasFuncTieneCompra(int Id)
+        {
+            ComprasProcValidarId(Id);
+            using (DataTable Datos = ComprasFuncConsultar("SELECT COUNT(*) FROM tblEncabezadoCompra WHERE idOrdenCompra = ?", Id))
+            {
+                return Convert.ToInt32(Datos.Rows[0][0]) > 0;
+            }
+        }
     }
 }

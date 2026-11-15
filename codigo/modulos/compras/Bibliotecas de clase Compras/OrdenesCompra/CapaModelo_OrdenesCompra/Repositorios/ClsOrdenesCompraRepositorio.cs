@@ -42,6 +42,8 @@ namespace CapaModelo_OrdenesCompra.Repositorios
 
         public DataTable ComprasFuncListarProveedores() => _Catalogos.ComprasFuncListarProveedores();
 
+        public bool ComprasFuncTieneCompra(int Id) => new ClsEncabezadosOrdenesCompraConsultar().ComprasFuncTieneCompra(Id);
+
         public void ComprasProcAnular(int Id) => _Comandos.ComprasProcAnular(Id);
 
         public void ComprasProcCambiarEstado(int Id, string Estado) => _Comandos.ComprasProcCambiarEstado(Id, Estado);

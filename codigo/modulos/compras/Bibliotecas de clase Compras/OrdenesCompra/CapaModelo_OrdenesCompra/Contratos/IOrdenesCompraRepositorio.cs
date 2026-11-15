@@ -37,6 +37,8 @@ namespace CapaModelo_OrdenesCompra.Contratos
 
         DataTable ComprasFuncListarProveedores();
 
+        bool ComprasFuncTieneCompra(int Id);
+
         void ComprasProcAnular(int Id);
 
         void ComprasProcActualizarVencimiento(int Id, System.DateTime Fecha);

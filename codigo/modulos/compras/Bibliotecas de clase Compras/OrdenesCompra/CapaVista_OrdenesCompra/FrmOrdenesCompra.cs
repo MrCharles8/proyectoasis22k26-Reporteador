@@ -61,6 +61,7 @@ namespace CapaVista_OrdenesCompra
         public long? IdTipoCambioSeleccionado { get; private set; }
         public decimal? TipoCambioSeleccionado { get; private set; }
         public int? IdProveedorSeleccionado { get; private set; }
+        private const string ComprasMensajeProveedorSinProductos = "El proveedor no tiene productos registrados.";
         public int? IdPlazoSeleccionado { get; private set; }
         public DateTime? FechaVencimiento { get; private set; }
 
@@ -380,7 +381,10 @@ namespace CapaVista_OrdenesCompra
             {
                 if (_Liberado || _CargandoCatalogos || _ActualizandoProducto || Combo.IsDisposed) return;
                 bool Invalido = !string.IsNullOrWhiteSpace(Combo.Text) && Combo.FindStringExact(Combo.Text) < 0;
-                ComprasProcEstablecerError(Combo, Invalido ? "Selecciona una opción del catálogo." : string.Empty);
+                string Mensaje = Invalido ? "Selecciona una opción del catálogo." : string.Empty;
+                if (Mensaje.Length == 0 && Combo == ComprasCboNombreProducto && ComprasFuncProveedorSinProductos())
+                    Mensaje = ComprasMensajeProveedorSinProductos;
+                ComprasProcEstablecerError(Combo, Mensaje);
             };
             EventHandler Programar = (Remitente, Evento) =>
             {
@@ -433,7 +437,7 @@ namespace CapaVista_OrdenesCompra
                     if (_Liberado || IsDisposed || Disposing || Version != _VersionCambio) return;
                     if (Cotizacion.Rows.Count == 0)
                     {
-                        ComprasProcEstablecerError(ComprasCboMoneda, "No existe una cotizacion hacia GTQ para la fecha de emision o una fecha anterior.");
+                        ComprasProcEstablecerError(ComprasCboMoneda, "No hay tipo de cambio registrado para esta moneda.");
                         return;
                     }
                     var Fila = Cotizacion.Rows[0];
@@ -567,18 +571,26 @@ namespace CapaVista_OrdenesCompra
                 _Edicion.Establecer(ComprasCboSkuProducto, false);
                 _Edicion.Establecer(ComprasCboNombreProducto, false);
                 _VistaProductosSku.RowFilter = _VistaProductosNombre.RowFilter = Filtro;
+                bool SinProductos = Proveedor != null && _VistaProductosNombre.Count == 0;
                 foreach (var Combo in new[] { ComprasCboSkuProducto, ComprasCboNombreProducto })
                 {
                     Combo.SelectedIndex = -1;
                     Combo.Text = string.Empty;
                     ComprasProcEstablecerError(Combo, string.Empty);
-                    _Edicion.Establecer(Combo, Proveedor != null && _CapturaDisponible);
+                    _Edicion.Establecer(Combo, Proveedor != null && !SinProductos && _CapturaDisponible);
                 }
+                if (SinProductos)
+                    ComprasProcEstablecerError(ComprasCboNombreProducto, ComprasMensajeProveedorSinProductos);
                 ComprasProcLimpiarDatosProducto();
                 _ProductoEditado = null;
                 ComprasProcEstadoBotonesProducto();
             }
             finally { _ActualizandoProducto = Anterior; }
+        }
+
+        private bool ComprasFuncProveedorSinProductos()
+        {
+            return IdProveedorSeleccionado.HasValue && _VistaProductosNombre != null && _VistaProductosNombre.Count == 0;
         }
 
         private void ComprasProcLimpiarDatosProducto()
@@ -1022,7 +1034,8 @@ namespace CapaVista_OrdenesCompra
             if (_CargandoCatalogos || _Liberado) return;
             var Producto = ComprasFuncFila(ComprasCboNombreProducto);
             var Bodega = ComprasFuncFila(ComprasCboBodega);
-            ComprasProcEstablecerError(ComprasCboNombreProducto, Producto == null ? "Selecciona un producto." : string.Empty);
+            ComprasProcEstablecerError(ComprasCboNombreProducto, Producto != null ? string.Empty
+                : ComprasFuncProveedorSinProductos() ? ComprasMensajeProveedorSinProductos : "Selecciona un producto.");
             ComprasProcEstablecerError(ComprasCboBodega, Bodega == null ? "Selecciona una bodega." : string.Empty);
             ComprasProcActualizarDescuentos();
             if (Producto == null || Bodega == null || string.IsNullOrWhiteSpace(ComprasTxtTotalProducto.Text)) return;
@@ -1133,8 +1146,9 @@ namespace CapaVista_OrdenesCompra
             _Edicion.Aplicar(ComprasGbxBodega, _CapturaDisponible);
             _Edicion.Establecer(ComprasCboBodega, _CapturaDisponible && ComprasFuncFila(ComprasCboSucursal) != null);
             _Edicion.Aplicar(ComprasGbxProducto, _CapturaDisponible);
-            _Edicion.Establecer(ComprasCboSkuProducto, _CapturaDisponible && Proveedor != null);
-            _Edicion.Establecer(ComprasCboNombreProducto, _CapturaDisponible && Proveedor != null);
+            bool HayProductos = Proveedor != null && _VistaProductosNombre != null && _VistaProductosNombre.Count > 0;
+            _Edicion.Establecer(ComprasCboSkuProducto, _CapturaDisponible && HayProductos);
+            _Edicion.Establecer(ComprasCboNombreProducto, _CapturaDisponible && HayProductos);
             _Edicion.Establecer(ComprasUsrProductos, _CapturaDisponible);
             bool PuedeGuardar = _CapturaDisponible && ComprasUsrProductos.Detalles.Rows.Count > 0;
             _Edicion.Aplicar(ComprasGbxFinalizacion, PuedeGuardar);

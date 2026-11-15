@@ -1,15 +1,15 @@
 /*
  * ==================================================================
- * ï¿½rea : Seguridad
+ * Área : Seguridad
  * Autor : Cristian David Sipac Ispache
- * Carnï¿½ : 9959-23-1567
+ * Carné : 9959-23-1567
  * Fecha : 22/09/2026
  * ==================================================================
- * Propï¿½sito :
+ * Propósito :
  *  El FrmMantenimientoPerfiles es el formulario donde el usuario
  *  gestiona los perfiles del sistema: puede agregar, modificar,
  *  eliminar, consultar por nombre y navegar entre los registros
- *  listados en el grid, controlando el acceso segï¿½n los permisos
+ *  listados en el grid, controlando el acceso según los permisos
  *  asignados al usuario.
  * ===================================================================
 */
@@ -78,22 +78,22 @@ namespace CapaVista_Seguridad
         private void SeguridadMetConfigurarEncabezadosGrid()
         {
             if (SeguridadDgvListaRoles.Columns["IdRol"] != null)
-                SeguridadDgvListaRoles.Columns["IdRol"].HeaderText = "Cï¿½digo Perfil";
+                SeguridadDgvListaRoles.Columns["IdRol"].HeaderText = "Código Perfil";
 
             if (SeguridadDgvListaRoles.Columns["NombreRol"] != null)
                 SeguridadDgvListaRoles.Columns["NombreRol"].HeaderText = "Nombre del Perfil";
 
             if (SeguridadDgvListaRoles.Columns["DescripcionRol"] != null)
-                SeguridadDgvListaRoles.Columns["DescripcionRol"].HeaderText = "Descripciï¿½n";
+                SeguridadDgvListaRoles.Columns["DescripcionRol"].HeaderText = "Descripción";
 
             if (SeguridadDgvListaRoles.Columns["IsActive"] != null)
                 SeguridadDgvListaRoles.Columns["IsActive"].HeaderText = "Estado";
 
             if (SeguridadDgvListaRoles.Columns["CreatedAt"] != null)
-                SeguridadDgvListaRoles.Columns["CreatedAt"].HeaderText = "Fecha Creaciï¿½n";
+                SeguridadDgvListaRoles.Columns["CreatedAt"].HeaderText = "Fecha Creación";
 
             if (SeguridadDgvListaRoles.Columns["UpdatedAt"] != null)
-                SeguridadDgvListaRoles.Columns["UpdatedAt"].HeaderText = "ï¿½ltima Actualizaciï¿½n";
+                SeguridadDgvListaRoles.Columns["UpdatedAt"].HeaderText = "Última Actualización";
         }
 
         private void SeguridadMetActualizarContador()

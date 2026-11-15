@@ -70,7 +70,9 @@ namespace CapaVista_Herramientas.Controles
         private void ComprasMetIntercambiar(object Remitente, EventArgs Evento)
         {
             object Origen = ComprasCboOrigen.SelectedValue;
-            ComprasCboOrigen.SelectedValue = ComprasCboDestino.SelectedValue;
+            object Destino = ComprasCboDestino.SelectedValue;
+            if (Origen == null || Destino == null) return;
+            ComprasCboOrigen.SelectedValue = Destino;
             ComprasCboDestino.SelectedValue = Origen;
             if (!string.IsNullOrWhiteSpace(ComprasTxtMonto.Text)) ComprasProcConvertir();
         }
