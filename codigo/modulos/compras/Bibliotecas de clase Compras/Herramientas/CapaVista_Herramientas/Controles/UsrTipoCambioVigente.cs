@@ -76,6 +76,8 @@ namespace CapaVista_Herramientas.Controles
             }
             catch (InvalidOperationException Error)
             {
+                ComprasDgvTiposCambio.DataSource = null;
+                ComprasLblNota.Texto = "No se pudo consultar el tipo de cambio.";
                 MessageBox.Show(Error.Message, "Tipo de cambio vigente", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }

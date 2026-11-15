@@ -75,6 +75,11 @@ namespace CapaControlador_OrdenesCompra
             return _Detalles.ComprasFuncListarDetalles(Id);
         }
 
+        public bool ComprasFuncTieneCompra(int Id)
+        {
+            return _Detalles.ComprasFuncTieneCompra(Id);
+        }
+
         public ClsOrdenesCompraDatos ComprasFuncAnular(int Id)
         {
             return _Detalles.ComprasFuncAnular(Id);
